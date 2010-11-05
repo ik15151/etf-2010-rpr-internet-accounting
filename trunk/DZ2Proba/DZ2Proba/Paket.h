@@ -1,5 +1,5 @@
 #pragma once
-//aldin
+
 using namespace System;
 
 ref class Paket
