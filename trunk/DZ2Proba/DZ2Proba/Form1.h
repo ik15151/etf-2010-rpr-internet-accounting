@@ -2373,6 +2373,7 @@ private: System::Void Promjena_Enter(System::Object^  sender, System::EventArgs^
 				p_modem->Checked = false; 
 				p_ime->Clear ();
 				p_prezime->Clear ();
+				p_broj_licne_karte->Clear ();
 				p_naziv->Clear (); 
 				p_PDV_broj->Clear ();
 				cBox_odabir->Items->Clear ();
@@ -2394,22 +2395,23 @@ private: System::Void cBox_odabir_SelectedIndexChanged(System::Object^  sender, 
 					 p_modem->Checked = korisnik->Modem ();
 					 p_mirovanje->Checked = korisnik->Mirovanje ();
 					 p_suspenzija->Checked = korisnik->Suspenzija ();
-
-					// KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
-					 //if (k != 0) 
-					//	 p_ime->Text = k->Ime ();
-
-					 //if (korisnik::typeid == KorisnikOsoba::typeid)
-					 //{
-					//	 p_ime->Text = static_cast <KorisnikOsoba ^> (korisnik)->Ime ();
-					//	 p_prezime->Text = static_cast <KorisnikOsoba ^> (korisnik)->Prezime ();
-					//	 p_broj_licne_karte->Text = Convert::ToString (static_cast <KorisnikOsoba ^> (korisnik)->Broj_licne_karte ());
-					// }
-					 //if (korisnik::typeid == KorisnikFirma::typeid)
-					 //{
-					//	 p_naziv->Text = static_cast <KorisnikFirma ^> (korisnik)->Naziv ();
-					//	 p_PDV_broj->Text = Convert::ToString (static_cast <KorisnikFirma ^> (korisnik)->PDV_broj ());
-					 //}
+					
+					
+					 try
+					 {
+						KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+						 p_ime->Text = k->Ime ();
+						 p_prezime->Text = k->Prezime ();
+						 p_broj_licne_karte->Text = k->Broj_licne_karte ();
+						 tabControl3->SelectedIndex = 0;
+					 }
+					 catch (...)
+					 {
+						 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+						 p_naziv->Text = k->Naziv ();
+						 p_PDV_broj->Text = Convert::ToString (k->PDV_broj ());
+						 tabControl3->SelectedIndex = 1;
+					 } 
 
 				 }
 		 }
@@ -2430,15 +2432,47 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 						 k->Mirovanje (p_mirovanje->Checked);
 						 k->Suspenzija (p_suspenzija->Checked);
 
+						  try
+						 {
+							KorisnikOsoba ^ko = dynamic_cast <KorisnikOsoba ^> (k);
+							 ko->Ime (p_ime->Text);
+							 ko->Prezime (p_prezime->Text);
+							 ko->Broj_licne_karte (p_broj_licne_karte->Text);
+							 
+						 }
+						 catch (...)
+						 {
+							 KorisnikFirma ^kf = dynamic_cast <KorisnikFirma ^> (k);
+							 kf->Naziv (p_naziv->Text);
+							 kf->PDV_broj (int::Parse (p_PDV_broj->Text));
+						 } 
+
+						 p_adresa->Clear ();
+						 p_telefon->Clear ();
+						 p_paket->SelectedIndex = -1;
+						 p_username->Clear ();
+						 p_password->Clear ();
+						 p_modem->Checked = false;
+						 p_mirovanje->Checked = false;
+						 p_suspenzija->Checked = false;
+						 p_ime->Clear ();
+						 p_prezime->Clear ();
+						 p_broj_licne_karte->Clear ();
+						 p_naziv->Clear ();
+						 p_PDV_broj->Clear ();
+						 //cBox_odabir->SelectedIndex = -1;
+
 						 MessageBox::Show ("Promjene su uspješno spašene.", "Promjena podataka", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					 }
 					 catch (...)
 					 {
 						 MessageBox::Show ("Promjene nisu spašene.", "Promjena podataka", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					 }
-					 
+					 }					 
 				 }
 			 }
+
+			 
+
 		 }
 private: System::Void Placanje_Enter(System::Object^  sender, System::EventArgs^  e) {
 
