@@ -2255,6 +2255,42 @@ private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs
 					 if (k->Suspenzija () == true)
 						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());				
 			 }
+			
+			 if (atribut == "Ime osobe")
+			 {			 
+				 for each (Korisnik ^korisnik in korisnici)
+				 {
+
+					  try
+					 {
+						 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+						 if (uneseno == k->Ime ())
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());	
+					 }
+					 catch (...)
+					 {
+						 						 
+					 } 
+				 }
+			 }
+
+			 if (atribut == "Naziv firme")
+			 {			 
+				 for each (Korisnik ^korisnik in korisnici)
+				 {
+					  try
+					 {
+						 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+						 if (uneseno == k->Naziv ())
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());	
+					 }
+					 catch (...)
+					 {
+												 
+					 } 
+				 }
+			 }
+			 
 
 			 
 			 if (listBox_pretraga->Items->Count == 0)
