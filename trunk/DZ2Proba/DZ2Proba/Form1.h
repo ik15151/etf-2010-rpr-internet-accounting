@@ -2058,6 +2058,7 @@ private: System::Windows::Forms::Button^  button1;
 			this->Controls->Add(this->toolStrip1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"Internet accounting";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
