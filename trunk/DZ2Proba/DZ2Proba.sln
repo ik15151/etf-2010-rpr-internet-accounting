@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DZ2Proba", "DZ2Proba\DZ2Proba.vcproj", "{D34CF25C-7009-4FF8-BC04-1C65A511F5E1}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 10
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DZ2Proba", "DZ2Proba\DZ2Proba.vcxproj", "{D34CF25C-7009-4FF8-BC04-1C65A511F5E1}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
