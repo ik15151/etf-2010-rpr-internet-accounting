@@ -1,4 +1,5 @@
 #pragma once
+#include "About.h"
 
 
 namespace DZ3 {
@@ -271,6 +272,7 @@ namespace DZ3 {
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
 			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(153, 22);
 			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi sa Sabily";
+			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
 			// pictureBox1
 			// 
@@ -291,7 +293,6 @@ namespace DZ3 {
 			this->ClientSize = System::Drawing::Size(362, 273);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
-			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->Name = L"Form1";
@@ -306,6 +307,20 @@ namespace DZ3 {
 #pragma endregion
 	private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
+private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 About ^a = gcnew About ();
+			 a->Show ();
+
+			 Form1 ^f = gcnew Form1 ();
+			 f->Show ();
+
+			 
+		 }
+
+
+
+
 };
 }
 
