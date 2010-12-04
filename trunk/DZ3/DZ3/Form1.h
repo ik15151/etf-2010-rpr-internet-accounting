@@ -157,6 +157,7 @@ namespace DZ3 {
 			this->izlazToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Q));
 			this->izlazToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->izlazToolStripMenuItem->Text = L"Izlaz";
+			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click_1);
 			// 
 			// pomoæToolStripMenuItem
 			// 
@@ -297,6 +298,7 @@ namespace DZ3 {
 			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"Sabily";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
@@ -311,14 +313,17 @@ private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  send
 
 			 About ^a = gcnew About ();
 			 a->Show ();
-
-			 Form1 ^f = gcnew Form1 ();
-			 f->Show ();
-
 			 
 		 }
 
+private: System::Void izlazToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
+			 Application::Exit ();
+		 }
+
+
+private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+		 }
 
 
 };
