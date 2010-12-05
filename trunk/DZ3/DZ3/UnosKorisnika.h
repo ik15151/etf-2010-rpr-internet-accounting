@@ -41,22 +41,22 @@ namespace DZ3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::GroupBox^  groupBox5;
+
 	protected: 
-	private: System::Windows::Forms::CheckBox^  c_chBox_modem;
-	private: System::Windows::Forms::GroupBox^  groupBox2;
-	private: System::Windows::Forms::ComboBox^  c_CBox_paket;
-	private: System::Windows::Forms::Label^  label6;
-	private: System::Windows::Forms::TextBox^  c_username;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::TextBox^  c_password;
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^  button5;
-	private: System::Windows::Forms::GroupBox^  groupBox1;
-	private: System::Windows::Forms::TextBox^  c_adresa;
-	private: System::Windows::Forms::Label^  Prezime;
-	private: System::Windows::Forms::Label^  Ime;
-	private: System::Windows::Forms::TextBox^  c_telefon;
+
+
+
+
+
 	private: System::Windows::Forms::Button^  Unesi;
 	private: System::Windows::Forms::TabControl^  tabControl2;
 	private: System::Windows::Forms::TabPage^  tabPage1;
@@ -72,6 +72,7 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::TextBox^  c_naziv_firme;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
 
 	private:
 		/// <summary>
@@ -86,21 +87,7 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
-			this->c_chBox_modem = (gcnew System::Windows::Forms::CheckBox());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->c_CBox_paket = (gcnew System::Windows::Forms::ComboBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->c_username = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->c_password = (gcnew System::Windows::Forms::TextBox());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->c_adresa = (gcnew System::Windows::Forms::TextBox());
-			this->Prezime = (gcnew System::Windows::Forms::Label());
-			this->Ime = (gcnew System::Windows::Forms::Label());
-			this->c_telefon = (gcnew System::Windows::Forms::TextBox());
 			this->Unesi = (gcnew System::Windows::Forms::Button());
 			this->tabControl2 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
@@ -116,164 +103,26 @@ namespace DZ3 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->c_naziv_firme = (gcnew System::Windows::Forms::TextBox());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
-			this->groupBox5->SuspendLayout();
-			this->groupBox2->SuspendLayout();
-			this->groupBox1->SuspendLayout();
+			this->kontrolaUnosKorisnika1 = (gcnew KontrolaUnos::KontrolaUnosKorisnika());
 			this->tabControl2->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// groupBox5
-			// 
-			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
-			this->groupBox5->Controls->Add(this->c_chBox_modem);
-			this->groupBox5->Location = System::Drawing::Point(12, 350);
-			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(318, 51);
-			this->groupBox5->TabIndex = 97;
-			this->groupBox5->TabStop = false;
-			this->groupBox5->Text = L"Najam opreme";
-			// 
-			// c_chBox_modem
-			// 
-			this->c_chBox_modem->AutoSize = true;
-			this->c_chBox_modem->Location = System::Drawing::Point(111, 19);
-			this->c_chBox_modem->Name = L"c_chBox_modem";
-			this->c_chBox_modem->Size = System::Drawing::Size(61, 17);
-			this->c_chBox_modem->TabIndex = 0;
-			this->c_chBox_modem->Text = L"Modem";
-			this->c_chBox_modem->UseVisualStyleBackColor = true;
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->BackColor = System::Drawing::Color::Transparent;
-			this->groupBox2->Controls->Add(this->c_CBox_paket);
-			this->groupBox2->Controls->Add(this->label6);
-			this->groupBox2->Controls->Add(this->c_username);
-			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Controls->Add(this->label7);
-			this->groupBox2->Controls->Add(this->c_password);
-			this->groupBox2->Location = System::Drawing::Point(12, 231);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(318, 113);
-			this->groupBox2->TabIndex = 96;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Pristupni podaci";
-			// 
-			// c_CBox_paket
-			// 
-			this->c_CBox_paket->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->c_CBox_paket->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->c_CBox_paket->FormattingEnabled = true;
-			this->c_CBox_paket->Location = System::Drawing::Point(111, 22);
-			this->c_CBox_paket->Name = L"c_CBox_paket";
-			this->c_CBox_paket->Size = System::Drawing::Size(172, 21);
-			this->c_CBox_paket->TabIndex = 0;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(19, 56);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(58, 13);
-			this->label6->TabIndex = 20;
-			this->label6->Text = L"Username:";
-			// 
-			// c_username
-			// 
-			this->c_username->Location = System::Drawing::Point(111, 49);
-			this->c_username->Name = L"c_username";
-			this->c_username->Size = System::Drawing::Size(172, 20);
-			this->c_username->TabIndex = 1;
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(19, 30);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(38, 13);
-			this->label4->TabIndex = 3;
-			this->label4->Text = L"Paket:";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(19, 82);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(56, 13);
-			this->label7->TabIndex = 14;
-			this->label7->Text = L"Password:";
-			// 
-			// c_password
-			// 
-			this->c_password->Location = System::Drawing::Point(111, 75);
-			this->c_password->Name = L"c_password";
-			this->c_password->PasswordChar = '*';
-			this->c_password->Size = System::Drawing::Size(172, 20);
-			this->c_password->TabIndex = 2;
-			// 
 			// button5
 			// 
 			this->button5->AutoSize = true;
-			this->button5->Location = System::Drawing::Point(255, 407);
+			this->button5->Location = System::Drawing::Point(253, 416);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
 			this->button5->TabIndex = 1;
 			this->button5->Text = L"Izlaz";
 			this->button5->UseVisualStyleBackColor = true;
 			// 
-			// groupBox1
-			// 
-			this->groupBox1->BackColor = System::Drawing::Color::Transparent;
-			this->groupBox1->Controls->Add(this->c_adresa);
-			this->groupBox1->Controls->Add(this->Prezime);
-			this->groupBox1->Controls->Add(this->Ime);
-			this->groupBox1->Controls->Add(this->c_telefon);
-			this->groupBox1->Location = System::Drawing::Point(12, 146);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(316, 79);
-			this->groupBox1->TabIndex = 95;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Kontaktni podaci";
-			this->groupBox1->Enter += gcnew System::EventHandler(this, &UnosKorisnika::groupBox1_Enter);
-			// 
-			// c_adresa
-			// 
-			this->c_adresa->Location = System::Drawing::Point(111, 20);
-			this->c_adresa->Name = L"c_adresa";
-			this->c_adresa->Size = System::Drawing::Size(172, 20);
-			this->c_adresa->TabIndex = 0;
-			// 
-			// Prezime
-			// 
-			this->Prezime->AutoSize = true;
-			this->Prezime->Location = System::Drawing::Point(19, 53);
-			this->Prezime->Name = L"Prezime";
-			this->Prezime->Size = System::Drawing::Size(46, 13);
-			this->Prezime->TabIndex = 17;
-			this->Prezime->Text = L"Telefon:";
-			// 
-			// Ime
-			// 
-			this->Ime->AutoSize = true;
-			this->Ime->Location = System::Drawing::Point(19, 27);
-			this->Ime->Name = L"Ime";
-			this->Ime->Size = System::Drawing::Size(43, 13);
-			this->Ime->TabIndex = 15;
-			this->Ime->Text = L"Adresa:";
-			// 
-			// c_telefon
-			// 
-			this->c_telefon->Location = System::Drawing::Point(111, 46);
-			this->c_telefon->Name = L"c_telefon";
-			this->c_telefon->Size = System::Drawing::Size(172, 20);
-			this->c_telefon->TabIndex = 1;
-			// 
 			// Unesi
 			// 
 			this->Unesi->AutoSize = true;
-			this->Unesi->Location = System::Drawing::Point(166, 407);
+			this->Unesi->Location = System::Drawing::Point(164, 416);
 			this->Unesi->Name = L"Unesi";
 			this->Unesi->Size = System::Drawing::Size(75, 23);
 			this->Unesi->TabIndex = 0;
@@ -406,34 +255,34 @@ namespace DZ3 {
 			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 444);
+			this->statusStrip1->Location = System::Drawing::Point(0, 455);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(342, 22);
 			this->statusStrip1->TabIndex = 100;
 			this->statusStrip1->Text = L"statusStrip1";
+			// 
+			// kontrolaUnosKorisnika1
+			// 
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::Color::White;
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 142);
+			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
+			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 268);
+			this->kontrolaUnosKorisnika1->TabIndex = 101;
 			// 
 			// UnosKorisnika
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(342, 466);
+			this->ClientSize = System::Drawing::Size(342, 477);
+			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->statusStrip1);
-			this->Controls->Add(this->groupBox5);
-			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->button5);
-			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->Unesi);
 			this->Controls->Add(this->tabControl2);
 			this->MaximizeBox = false;
 			this->Name = L"UnosKorisnika";
 			this->Text = L"Unos novog korisnika";
-			this->groupBox5->ResumeLayout(false);
-			this->groupBox5->PerformLayout();
-			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
 			this->tabControl2->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();

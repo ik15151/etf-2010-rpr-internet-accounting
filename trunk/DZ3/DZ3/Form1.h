@@ -42,6 +42,7 @@ namespace DZ3 {
 			korisnici = gcnew ArrayList ();
 			racuni = gcnew ArrayList ();
 			paketi = gcnew ArrayList ();
+
 			paketi->Add (gcnew Paket ("Economic", "7 GB", "1250/128 kbps", 15));
 			paketi->Add (gcnew Paket ("Standard", "18 GB", "2048/256 kbps", 25));
 			paketi->Add (gcnew Paket ("Flat", "Neogranièeno", "3072/1024 kbps", 65));
