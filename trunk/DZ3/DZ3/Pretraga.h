@@ -45,7 +45,7 @@ namespace DZ3 {
 	private: System::Windows::Forms::ListView^  listView2;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Splitter^  splitter1;
+
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::ComboBox^  cbx_pretrazivanje;
@@ -73,7 +73,7 @@ namespace DZ3 {
 	private: System::Windows::Forms::ColumnHeader^  columnHeader17;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader18;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader19;
-	private: System::Windows::Forms::RichTextBox^  richTextBox1;
+
 
 	protected: 
 
@@ -90,19 +90,8 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::ListViewItem^  listViewItem1 = (gcnew System::Windows::Forms::ListViewItem(L""));
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Pretraga::typeid));
+			System::Windows::Forms::ListViewItem^  listViewItem2 = (gcnew System::Windows::Forms::ListViewItem(L""));
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
-			this->listView2 = (gcnew System::Windows::Forms::ListView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->splitter1 = (gcnew System::Windows::Forms::Splitter());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->cbx_pretrazivanje = (gcnew System::Windows::Forms::ComboBox());
-			this->label23 = (gcnew System::Windows::Forms::Label());
-			this->unos_pretrazivanje = (gcnew System::Windows::Forms::TextBox());
-			this->label24 = (gcnew System::Windows::Forms::Label());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -112,6 +101,9 @@ namespace DZ3 {
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader9 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader20 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader21 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->listView2 = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader10 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader11 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader12 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -122,9 +114,14 @@ namespace DZ3 {
 			this->columnHeader17 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader18 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader19 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader20 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader21 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->cbx_pretrazivanje = (gcnew System::Windows::Forms::ComboBox());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->unos_pretrazivanje = (gcnew System::Windows::Forms::TextBox());
+			this->label24 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -135,115 +132,14 @@ namespace DZ3 {
 				this->columnHeader9, this->columnHeader20, this->columnHeader21});
 			this->listView1->FullRowSelect = true;
 			this->listView1->GridLines = true;
-			this->listView1->Location = System::Drawing::Point(12, 220);
+			this->listView1->Location = System::Drawing::Point(15, 109);
+			this->listView1->MultiSelect = false;
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(908, 145);
+			this->listView1->Size = System::Drawing::Size(654, 213);
 			this->listView1->Sorting = System::Windows::Forms::SortOrder::Descending;
 			this->listView1->TabIndex = 0;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
-			// 
-			// listView2
-			// 
-			this->listView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, this->columnHeader11, 
-				this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, this->columnHeader17, 
-				this->columnHeader18, this->columnHeader19});
-			this->listView2->FullRowSelect = true;
-			this->listView2->GridLines = true;
-			this->listView2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) {listViewItem1});
-			this->listView2->Location = System::Drawing::Point(12, 424);
-			this->listView2->MultiSelect = false;
-			this->listView2->Name = L"listView2";
-			this->listView2->Size = System::Drawing::Size(908, 144);
-			this->listView2->TabIndex = 1;
-			this->listView2->UseCompatibleStateImageBehavior = false;
-			this->listView2->View = System::Windows::Forms::View::Details;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(9, 194);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(174, 13);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"Pregled informacija o fizièkim licima:";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 391);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(177, 13);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"Pregled informacija o pravnim licima:";
-			// 
-			// splitter1
-			// 
-			this->splitter1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->splitter1->Location = System::Drawing::Point(0, 0);
-			this->splitter1->Name = L"splitter1";
-			this->splitter1->Size = System::Drawing::Size(932, 182);
-			this->splitter1->TabIndex = 4;
-			this->splitter1->TabStop = false;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(836, 133);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(84, 23);
-			this->button2->TabIndex = 36;
-			this->button2->Text = L"Pretraži";
-			this->button2->UseVisualStyleBackColor = true;
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::Color::White;
-			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel1->Controls->Add(this->cbx_pretrazivanje);
-			this->panel1->Controls->Add(this->label23);
-			this->panel1->Controls->Add(this->unos_pretrazivanje);
-			this->panel1->Controls->Add(this->label24);
-			this->panel1->Location = System::Drawing::Point(518, 24);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(402, 97);
-			this->panel1->TabIndex = 37;
-			// 
-			// cbx_pretrazivanje
-			// 
-			this->cbx_pretrazivanje->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cbx_pretrazivanje->FormattingEnabled = true;
-			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Username", L"Ime osobe", L"Naziv firme", 
-				L"Aktivni raèuni", L"Zamrznuti raèuni", L"Suspendovani raèuni"});
-			this->cbx_pretrazivanje->Location = System::Drawing::Point(155, 19);
-			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
-			this->cbx_pretrazivanje->Size = System::Drawing::Size(223, 21);
-			this->cbx_pretrazivanje->TabIndex = 1;
-			// 
-			// label23
-			// 
-			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(14, 56);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(37, 13);
-			this->label23->TabIndex = 26;
-			this->label23->Text = L"Unesi:";
-			// 
-			// unos_pretrazivanje
-			// 
-			this->unos_pretrazivanje->AllowDrop = true;
-			this->unos_pretrazivanje->Location = System::Drawing::Point(155, 56);
-			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
-			this->unos_pretrazivanje->Size = System::Drawing::Size(223, 20);
-			this->unos_pretrazivanje->TabIndex = 2;
-			// 
-			// label24
-			// 
-			this->label24->AutoSize = true;
-			this->label24->Location = System::Drawing::Point(14, 19);
-			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(86, 13);
-			this->label24->TabIndex = 25;
-			this->label24->Text = L"Pretraživanje po:";
 			// 
 			// columnHeader1
 			// 
@@ -278,7 +174,7 @@ namespace DZ3 {
 			// columnHeader7
 			// 
 			this->columnHeader7->Text = L"Username";
-			this->columnHeader7->Width = 73;
+			this->columnHeader7->Width = 70;
 			// 
 			// columnHeader8
 			// 
@@ -289,6 +185,32 @@ namespace DZ3 {
 			// 
 			this->columnHeader9->Text = L"Modem";
 			this->columnHeader9->Width = 53;
+			// 
+			// columnHeader20
+			// 
+			this->columnHeader20->Text = L"Mirovanje";
+			this->columnHeader20->Width = 69;
+			// 
+			// columnHeader21
+			// 
+			this->columnHeader21->Text = L"Suspenzija";
+			this->columnHeader21->Width = 102;
+			// 
+			// listView2
+			// 
+			this->listView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, this->columnHeader11, 
+				this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, this->columnHeader17, 
+				this->columnHeader18, this->columnHeader19});
+			this->listView2->FullRowSelect = true;
+			this->listView2->GridLines = true;
+			this->listView2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) {listViewItem2});
+			this->listView2->Location = System::Drawing::Point(15, 347);
+			this->listView2->MultiSelect = false;
+			this->listView2->Name = L"listView2";
+			this->listView2->Size = System::Drawing::Size(657, 214);
+			this->listView2->TabIndex = 1;
+			this->listView2->UseCompatibleStateImageBehavior = false;
+			this->listView2->View = System::Windows::Forms::View::Details;
 			// 
 			// columnHeader10
 			// 
@@ -339,37 +261,91 @@ namespace DZ3 {
 			this->columnHeader19->Text = L"Suspenzija";
 			this->columnHeader19->Width = 68;
 			// 
-			// columnHeader20
+			// label1
 			// 
-			this->columnHeader20->Text = L"Mirovanje";
-			this->columnHeader20->Width = 68;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(12, 93);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(174, 13);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Pregled informacija o fizièkim licima:";
 			// 
-			// columnHeader21
+			// label2
 			// 
-			this->columnHeader21->Text = L"Suspenzija";
-			this->columnHeader21->Width = 102;
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(12, 331);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(177, 13);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"Pregled informacija o pravnim licima:";
 			// 
-			// richTextBox1
+			// button2
 			// 
-			this->richTextBox1->BackColor = System::Drawing::Color::White;
-			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(238)));
-			this->richTextBox1->Location = System::Drawing::Point(15, 24);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->ReadOnly = true;
-			this->richTextBox1->Size = System::Drawing::Size(465, 129);
-			this->richTextBox1->TabIndex = 39;
-			this->richTextBox1->Text = resources->GetString(L"richTextBox1.Text");
+			this->button2->Location = System::Drawing::Point(557, 19);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(84, 23);
+			this->button2->TabIndex = 36;
+			this->button2->Text = L"Pretraži";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Pretraga::button2_Click);
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::White;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->button2);
+			this->panel1->Controls->Add(this->cbx_pretrazivanje);
+			this->panel1->Controls->Add(this->label23);
+			this->panel1->Controls->Add(this->unos_pretrazivanje);
+			this->panel1->Controls->Add(this->label24);
+			this->panel1->Location = System::Drawing::Point(12, 12);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(657, 64);
+			this->panel1->TabIndex = 37;
+			// 
+			// cbx_pretrazivanje
+			// 
+			this->cbx_pretrazivanje->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cbx_pretrazivanje->FormattingEnabled = true;
+			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Username", L"Ime osobe", L"Naziv firme", 
+				L"Aktivni raèuni", L"Zamrznuti raèuni", L"Suspendovani raèuni"});
+			this->cbx_pretrazivanje->Location = System::Drawing::Point(106, 19);
+			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
+			this->cbx_pretrazivanje->Size = System::Drawing::Size(157, 21);
+			this->cbx_pretrazivanje->TabIndex = 1;
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(296, 27);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(37, 13);
+			this->label23->TabIndex = 26;
+			this->label23->Text = L"Unesi:";
+			// 
+			// unos_pretrazivanje
+			// 
+			this->unos_pretrazivanje->AllowDrop = true;
+			this->unos_pretrazivanje->Location = System::Drawing::Point(339, 19);
+			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
+			this->unos_pretrazivanje->Size = System::Drawing::Size(173, 20);
+			this->unos_pretrazivanje->TabIndex = 2;
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(14, 22);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(86, 13);
+			this->label24->TabIndex = 25;
+			this->label24->Text = L"Pretraživanje po:";
 			// 
 			// Pretraga
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(932, 595);
-			this->Controls->Add(this->richTextBox1);
-			this->Controls->Add(this->button2);
+			this->ClientSize = System::Drawing::Size(687, 573);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->splitter1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->listView2);
@@ -387,5 +363,7 @@ namespace DZ3 {
 #pragma endregion
 	private: System::Void Pretraga_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
 };
 }

@@ -72,9 +72,10 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label16;
 	private: System::Windows::Forms::Label^  label15;
 	private: System::Windows::Forms::Label^  label14;
-	private: System::Windows::Forms::Splitter^  splitter1;
+
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::GroupBox^  groupBox4;
 
 	private:
 		/// <summary>
@@ -119,13 +120,14 @@ namespace DZ3 {
 			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->splitter1 = (gcnew System::Windows::Forms::Splitter());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			this->groupBox4->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox2
@@ -182,7 +184,7 @@ namespace DZ3 {
 			this->cijena->AutoSize = true;
 			this->cijena->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(238)));
-			this->cijena->Location = System::Drawing::Point(202, 535);
+			this->cijena->Location = System::Drawing::Point(199, 495);
 			this->cijena->Name = L"cijena";
 			this->cijena->Size = System::Drawing::Size(41, 13);
 			this->cijena->TabIndex = 14;
@@ -193,7 +195,7 @@ namespace DZ3 {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(238)));
-			this->label4->Location = System::Drawing::Point(30, 535);
+			this->label4->Location = System::Drawing::Point(27, 495);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(75, 13);
 			this->label4->TabIndex = 13;
@@ -209,7 +211,7 @@ namespace DZ3 {
 			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Controls->Add(this->label7);
-			this->groupBox1->Location = System::Drawing::Point(13, 303);
+			this->groupBox1->Location = System::Drawing::Point(12, 278);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(290, 122);
 			this->groupBox1->TabIndex = 12;
@@ -382,9 +384,9 @@ namespace DZ3 {
 			this->groupBox3->Controls->Add(this->label16);
 			this->groupBox3->Controls->Add(this->label15);
 			this->groupBox3->Controls->Add(this->label14);
-			this->groupBox3->Location = System::Drawing::Point(13, 432);
+			this->groupBox3->Location = System::Drawing::Point(12, 406);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(289, 78);
+			this->groupBox3->Size = System::Drawing::Size(289, 70);
 			this->groupBox3->TabIndex = 16;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Dodatno";
@@ -392,7 +394,7 @@ namespace DZ3 {
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(189, 53);
+			this->label17->Location = System::Drawing::Point(187, 46);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(34, 13);
 			this->label17->TabIndex = 3;
@@ -410,7 +412,7 @@ namespace DZ3 {
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(17, 53);
+			this->label15->Location = System::Drawing::Point(18, 46);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(30, 13);
 			this->label15->TabIndex = 1;
@@ -425,18 +427,9 @@ namespace DZ3 {
 			this->label14->TabIndex = 0;
 			this->label14->Text = L"Modem:";
 			// 
-			// splitter1
-			// 
-			this->splitter1->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->splitter1->Location = System::Drawing::Point(0, 563);
-			this->splitter1->Name = L"splitter1";
-			this->splitter1->Size = System::Drawing::Size(313, 55);
-			this->splitter1->TabIndex = 17;
-			this->splitter1->TabStop = false;
-			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(202, 579);
+			this->button1->Location = System::Drawing::Point(189, 37);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 18;
@@ -445,12 +438,24 @@ namespace DZ3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(33, 579);
+			this->button2->Location = System::Drawing::Point(20, 37);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 19;
 			this->button2->Text = L"Plaæeno";
 			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->BackColor = System::Drawing::SystemColors::Control;
+			this->groupBox4->Controls->Add(this->button2);
+			this->groupBox4->Controls->Add(this->button1);
+			this->groupBox4->Location = System::Drawing::Point(13, 530);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(288, 76);
+			this->groupBox4->TabIndex = 20;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Plaæanje u banci";
 			// 
 			// RacunPrint
 			// 
@@ -458,9 +463,7 @@ namespace DZ3 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(313, 618);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->splitter1);
+			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->cijena);
@@ -478,6 +481,7 @@ namespace DZ3 {
 			this->panel1->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

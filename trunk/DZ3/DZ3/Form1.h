@@ -1,5 +1,9 @@
 #pragma once
 #include "About.h"
+#include "Pretraga.h"
+#include "UnosKorisnika.h"
+#include "RacunNaplata.h"
+#include "RacunPrint.h"
 
 
 namespace DZ3 {
@@ -141,6 +145,7 @@ namespace DZ3 {
 			this->noviKorisnikToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::N));
 			this->noviKorisnikToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->noviKorisnikToolStripMenuItem->Text = L"Novi korisnik...";
+			this->noviKorisnikToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::noviKorisnikToolStripMenuItem_Click);
 			// 
 			// pretragaToolStripMenuItem
 			// 
@@ -149,6 +154,7 @@ namespace DZ3 {
 			this->pretragaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
 			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->pretragaToolStripMenuItem->Text = L"Pretraga...";
+			this->pretragaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::pretragaToolStripMenuItem_Click);
 			// 
 			// izlazToolStripMenuItem
 			// 
@@ -183,73 +189,74 @@ namespace DZ3 {
 			// januarToolStripMenuItem
 			// 
 			this->januarToolStripMenuItem->Name = L"januarToolStripMenuItem";
-			this->januarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->januarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->januarToolStripMenuItem->Text = L"Januar";
+			this->januarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::januarToolStripMenuItem_Click);
 			// 
 			// februarToolStripMenuItem
 			// 
 			this->februarToolStripMenuItem->Name = L"februarToolStripMenuItem";
-			this->februarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->februarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->februarToolStripMenuItem->Text = L"Februar";
 			// 
 			// martToolStripMenuItem
 			// 
 			this->martToolStripMenuItem->Name = L"martToolStripMenuItem";
-			this->martToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->martToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->martToolStripMenuItem->Text = L"Mart";
 			// 
 			// aprilToolStripMenuItem
 			// 
 			this->aprilToolStripMenuItem->Name = L"aprilToolStripMenuItem";
-			this->aprilToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->aprilToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->aprilToolStripMenuItem->Text = L"April";
 			// 
 			// majToolStripMenuItem
 			// 
 			this->majToolStripMenuItem->Name = L"majToolStripMenuItem";
-			this->majToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->majToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->majToolStripMenuItem->Text = L"Maj";
 			// 
 			// juniToolStripMenuItem
 			// 
 			this->juniToolStripMenuItem->Name = L"juniToolStripMenuItem";
-			this->juniToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->juniToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->juniToolStripMenuItem->Text = L"Juni";
 			// 
 			// juliToolStripMenuItem
 			// 
 			this->juliToolStripMenuItem->Name = L"juliToolStripMenuItem";
-			this->juliToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->juliToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->juliToolStripMenuItem->Text = L"Juli";
 			// 
 			// augustToolStripMenuItem
 			// 
 			this->augustToolStripMenuItem->Name = L"augustToolStripMenuItem";
-			this->augustToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->augustToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->augustToolStripMenuItem->Text = L"August";
 			// 
 			// septembarToolStripMenuItem
 			// 
 			this->septembarToolStripMenuItem->Name = L"septembarToolStripMenuItem";
-			this->septembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->septembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->septembarToolStripMenuItem->Text = L"Septembar";
 			// 
 			// oktobarToolStripMenuItem
 			// 
 			this->oktobarToolStripMenuItem->Name = L"oktobarToolStripMenuItem";
-			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->oktobarToolStripMenuItem->Text = L"Oktobar";
 			// 
 			// novembarToolStripMenuItem
 			// 
 			this->novembarToolStripMenuItem->Name = L"novembarToolStripMenuItem";
-			this->novembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->novembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->novembarToolStripMenuItem->Text = L"Novembar";
 			// 
 			// decembarToolStripMenuItem
 			// 
 			this->decembarToolStripMenuItem->Name = L"decembarToolStripMenuItem";
-			this->decembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->decembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->decembarToolStripMenuItem->Text = L"Decembar";
 			// 
 			// naplataToolStripMenuItem
@@ -258,6 +265,7 @@ namespace DZ3 {
 			this->naplataToolStripMenuItem->Name = L"naplataToolStripMenuItem";
 			this->naplataToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->naplataToolStripMenuItem->Text = L"Naplata...";
+			this->naplataToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::naplataToolStripMenuItem_Click);
 			// 
 			// pomoæToolStripMenuItem1
 			// 
@@ -310,14 +318,10 @@ namespace DZ3 {
 	private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
 			 About ^a = gcnew About ();
-			 a->Show ();
-			 
+			 a->ShowDialog ();			 
 		 }
-
 private: System::Void izlazToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
-
 			 Application::Exit ();
 		 }
 
@@ -326,6 +330,25 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 		 }
 
 
+private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 Pretraga ^p = gcnew Pretraga ();
+			 p->Show ();
+		 }
+private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 UnosKorisnika ^uk = gcnew UnosKorisnika ();
+			 uk->Show ();
+		 }
+private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 RacunNaplata ^rn = gcnew RacunNaplata ();
+			 rn->Show ();
+		 }
+private: System::Void januarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			RacunPrint ^rp = gcnew RacunPrint ();
+			//rp->r_mjesec->Text = "Januar";
+			rp->ShowDialog ();
+
+		 }
 };
 }
 

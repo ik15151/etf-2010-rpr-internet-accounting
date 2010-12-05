@@ -128,9 +128,9 @@ namespace DZ3 {
 			// 
 			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox5->Controls->Add(this->c_chBox_modem);
-			this->groupBox5->Location = System::Drawing::Point(16, 440);
+			this->groupBox5->Location = System::Drawing::Point(12, 350);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(312, 56);
+			this->groupBox5->Size = System::Drawing::Size(318, 51);
 			this->groupBox5->TabIndex = 97;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Najam opreme";
@@ -141,7 +141,7 @@ namespace DZ3 {
 			this->c_chBox_modem->Location = System::Drawing::Point(111, 19);
 			this->c_chBox_modem->Name = L"c_chBox_modem";
 			this->c_chBox_modem->Size = System::Drawing::Size(61, 17);
-			this->c_chBox_modem->TabIndex = 11;
+			this->c_chBox_modem->TabIndex = 0;
 			this->c_chBox_modem->Text = L"Modem";
 			this->c_chBox_modem->UseVisualStyleBackColor = true;
 			// 
@@ -154,9 +154,9 @@ namespace DZ3 {
 			this->groupBox2->Controls->Add(this->label4);
 			this->groupBox2->Controls->Add(this->label7);
 			this->groupBox2->Controls->Add(this->c_password);
-			this->groupBox2->Location = System::Drawing::Point(16, 310);
+			this->groupBox2->Location = System::Drawing::Point(12, 231);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(312, 124);
+			this->groupBox2->Size = System::Drawing::Size(318, 113);
 			this->groupBox2->TabIndex = 96;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Pristupni podaci";
@@ -169,12 +169,12 @@ namespace DZ3 {
 			this->c_CBox_paket->Location = System::Drawing::Point(111, 22);
 			this->c_CBox_paket->Name = L"c_CBox_paket";
 			this->c_CBox_paket->Size = System::Drawing::Size(172, 21);
-			this->c_CBox_paket->TabIndex = 8;
+			this->c_CBox_paket->TabIndex = 0;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(19, 62);
+			this->label6->Location = System::Drawing::Point(19, 56);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(58, 13);
 			this->label6->TabIndex = 20;
@@ -182,10 +182,10 @@ namespace DZ3 {
 			// 
 			// c_username
 			// 
-			this->c_username->Location = System::Drawing::Point(111, 55);
+			this->c_username->Location = System::Drawing::Point(111, 49);
 			this->c_username->Name = L"c_username";
 			this->c_username->Size = System::Drawing::Size(172, 20);
-			this->c_username->TabIndex = 9;
+			this->c_username->TabIndex = 1;
 			// 
 			// label4
 			// 
@@ -199,7 +199,7 @@ namespace DZ3 {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(19, 95);
+			this->label7->Location = System::Drawing::Point(19, 82);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(56, 13);
 			this->label7->TabIndex = 14;
@@ -207,20 +207,20 @@ namespace DZ3 {
 			// 
 			// c_password
 			// 
-			this->c_password->Location = System::Drawing::Point(111, 88);
+			this->c_password->Location = System::Drawing::Point(111, 75);
 			this->c_password->Name = L"c_password";
 			this->c_password->PasswordChar = '*';
 			this->c_password->Size = System::Drawing::Size(172, 20);
-			this->c_password->TabIndex = 10;
+			this->c_password->TabIndex = 2;
 			// 
 			// button5
 			// 
 			this->button5->AutoSize = true;
-			this->button5->Location = System::Drawing::Point(253, 509);
+			this->button5->Location = System::Drawing::Point(255, 407);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
-			this->button5->TabIndex = 99;
-			this->button5->Text = L"Izaði";
+			this->button5->TabIndex = 1;
+			this->button5->Text = L"Izlaz";
 			this->button5->UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
@@ -230,9 +230,9 @@ namespace DZ3 {
 			this->groupBox1->Controls->Add(this->Prezime);
 			this->groupBox1->Controls->Add(this->Ime);
 			this->groupBox1->Controls->Add(this->c_telefon);
-			this->groupBox1->Location = System::Drawing::Point(16, 209);
+			this->groupBox1->Location = System::Drawing::Point(12, 146);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(312, 95);
+			this->groupBox1->Size = System::Drawing::Size(316, 79);
 			this->groupBox1->TabIndex = 95;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Kontaktni podaci";
@@ -243,12 +243,12 @@ namespace DZ3 {
 			this->c_adresa->Location = System::Drawing::Point(111, 20);
 			this->c_adresa->Name = L"c_adresa";
 			this->c_adresa->Size = System::Drawing::Size(172, 20);
-			this->c_adresa->TabIndex = 6;
+			this->c_adresa->TabIndex = 0;
 			// 
 			// Prezime
 			// 
 			this->Prezime->AutoSize = true;
-			this->Prezime->Location = System::Drawing::Point(19, 62);
+			this->Prezime->Location = System::Drawing::Point(19, 53);
 			this->Prezime->Name = L"Prezime";
 			this->Prezime->Size = System::Drawing::Size(46, 13);
 			this->Prezime->TabIndex = 17;
@@ -265,19 +265,19 @@ namespace DZ3 {
 			// 
 			// c_telefon
 			// 
-			this->c_telefon->Location = System::Drawing::Point(111, 55);
+			this->c_telefon->Location = System::Drawing::Point(111, 46);
 			this->c_telefon->Name = L"c_telefon";
 			this->c_telefon->Size = System::Drawing::Size(172, 20);
-			this->c_telefon->TabIndex = 7;
+			this->c_telefon->TabIndex = 1;
 			// 
 			// Unesi
 			// 
 			this->Unesi->AutoSize = true;
-			this->Unesi->Location = System::Drawing::Point(164, 509);
+			this->Unesi->Location = System::Drawing::Point(166, 407);
 			this->Unesi->Name = L"Unesi";
 			this->Unesi->Size = System::Drawing::Size(75, 23);
-			this->Unesi->TabIndex = 98;
-			this->Unesi->Text = L"Unesi";
+			this->Unesi->TabIndex = 0;
+			this->Unesi->Text = L"Unos";
 			this->Unesi->UseVisualStyleBackColor = true;
 			// 
 			// tabControl2
@@ -289,8 +289,8 @@ namespace DZ3 {
 			this->tabControl2->Location = System::Drawing::Point(12, 12);
 			this->tabControl2->Name = L"tabControl2";
 			this->tabControl2->SelectedIndex = 0;
-			this->tabControl2->Size = System::Drawing::Size(316, 191);
-			this->tabControl2->TabIndex = 94;
+			this->tabControl2->Size = System::Drawing::Size(316, 128);
+			this->tabControl2->TabIndex = 1;
 			// 
 			// tabPage1
 			// 
@@ -305,21 +305,21 @@ namespace DZ3 {
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(308, 165);
+			this->tabPage1->Size = System::Drawing::Size(308, 102);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Osoba";
 			// 
 			// c_broj_licne_karte
 			// 
-			this->c_broj_licne_karte->Location = System::Drawing::Point(111, 106);
+			this->c_broj_licne_karte->Location = System::Drawing::Point(107, 65);
 			this->c_broj_licne_karte->Name = L"c_broj_licne_karte";
 			this->c_broj_licne_karte->Size = System::Drawing::Size(172, 20);
-			this->c_broj_licne_karte->TabIndex = 5;
+			this->c_broj_licne_karte->TabIndex = 3;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(19, 113);
+			this->label8->Location = System::Drawing::Point(11, 72);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(80, 13);
 			this->label8->TabIndex = 13;
@@ -327,14 +327,14 @@ namespace DZ3 {
 			// 
 			// c_prezime
 			// 
-			this->c_prezime->Location = System::Drawing::Point(111, 63);
+			this->c_prezime->Location = System::Drawing::Point(107, 39);
 			this->c_prezime->Name = L"c_prezime";
 			this->c_prezime->Size = System::Drawing::Size(172, 20);
 			this->c_prezime->TabIndex = 2;
 			// 
 			// c_ime
 			// 
-			this->c_ime->Location = System::Drawing::Point(111, 26);
+			this->c_ime->Location = System::Drawing::Point(107, 13);
 			this->c_ime->Name = L"c_ime";
 			this->c_ime->Size = System::Drawing::Size(172, 20);
 			this->c_ime->TabIndex = 1;
@@ -342,7 +342,7 @@ namespace DZ3 {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(19, 70);
+			this->label3->Location = System::Drawing::Point(11, 46);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(47, 13);
 			this->label3->TabIndex = 10;
@@ -351,10 +351,10 @@ namespace DZ3 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(19, 33);
+			this->label2->Location = System::Drawing::Point(15, 20);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(27, 13);
-			this->label2->TabIndex = 9;
+			this->label2->TabIndex = 0;
 			this->label2->Text = L"Ime:";
 			// 
 			// tabPage2
@@ -368,14 +368,14 @@ namespace DZ3 {
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(330, 165);
+			this->tabPage2->Size = System::Drawing::Size(308, 102);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Firma";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(19, 100);
+			this->label9->Location = System::Drawing::Point(17, 60);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(52, 13);
 			this->label9->TabIndex = 10;
@@ -383,15 +383,15 @@ namespace DZ3 {
 			// 
 			// c_PDV_broj
 			// 
-			this->c_PDV_broj->Location = System::Drawing::Point(111, 93);
+			this->c_PDV_broj->Location = System::Drawing::Point(107, 53);
 			this->c_PDV_broj->Name = L"c_PDV_broj";
 			this->c_PDV_broj->Size = System::Drawing::Size(172, 20);
-			this->c_PDV_broj->TabIndex = 9;
+			this->c_PDV_broj->TabIndex = 1;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(19, 53);
+			this->label1->Location = System::Drawing::Point(15, 34);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(37, 13);
 			this->label1->TabIndex = 8;
@@ -399,14 +399,14 @@ namespace DZ3 {
 			// 
 			// c_naziv_firme
 			// 
-			this->c_naziv_firme->Location = System::Drawing::Point(111, 46);
+			this->c_naziv_firme->Location = System::Drawing::Point(107, 27);
 			this->c_naziv_firme->Name = L"c_naziv_firme";
 			this->c_naziv_firme->Size = System::Drawing::Size(172, 20);
-			this->c_naziv_firme->TabIndex = 7;
+			this->c_naziv_firme->TabIndex = 0;
 			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 546);
+			this->statusStrip1->Location = System::Drawing::Point(0, 444);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(342, 22);
 			this->statusStrip1->TabIndex = 100;
@@ -416,7 +416,8 @@ namespace DZ3 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(342, 568);
+			this->BackColor = System::Drawing::Color::White;
+			this->ClientSize = System::Drawing::Size(342, 466);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox2);
