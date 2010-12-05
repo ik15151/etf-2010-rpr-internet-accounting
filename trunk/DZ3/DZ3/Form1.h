@@ -5,6 +5,12 @@
 #include "RacunNaplata.h"
 #include "RacunPrint.h"
 
+#include "KorisnikOsoba.h"
+#include "KorisnikFirma.h"
+#include "Paket.h"
+#include "Racun.h"
+#include "RacunPrint.h"
+
 
 namespace DZ3 {
 
@@ -33,7 +39,18 @@ namespace DZ3 {
 			//
 			//TODO: Add the constructor code here
 			//
+			korisnici = gcnew ArrayList ();
+			racuni = gcnew ArrayList ();
+			paketi = gcnew ArrayList ();
+			paketi->Add (gcnew Paket ("Economic", "7 GB", "1250/128 kbps", 15));
+			paketi->Add (gcnew Paket ("Standard", "18 GB", "2048/256 kbps", 25));
+			paketi->Add (gcnew Paket ("Flat", "Neogranièeno", "3072/1024 kbps", 65));
 		}
+
+	private:
+		ArrayList ^korisnici;
+		ArrayList ^paketi;
+		ArrayList ^racuni;
 
 	protected:
 		/// <summary>

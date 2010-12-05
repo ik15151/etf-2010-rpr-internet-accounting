@@ -1,4 +1,6 @@
 #pragma once
+#include "PromjenaOsoba.h"
+#include "PromjenaFirma.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -364,6 +366,11 @@ namespace DZ3 {
 	private: System::Void Pretraga_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 PromjenaOsoba ^po = gcnew PromjenaOsoba ();
+			 po->Show ();
+
+			 PromjenaFirma ^pf = gcnew PromjenaFirma ();
+			 pf->Show ();
 		 }
 };
 }

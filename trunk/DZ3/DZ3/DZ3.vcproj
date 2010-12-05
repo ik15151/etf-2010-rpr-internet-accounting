@@ -204,6 +204,26 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Korisnik.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\KorisnikFirma.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\KorisnikOsoba.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Paket.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Racun.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -254,6 +274,22 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\Korisnik.h"
+				>
+			</File>
+			<File
+				RelativePath=".\KorisnikFirma.h"
+				>
+			</File>
+			<File
+				RelativePath=".\KorisnikOsoba.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Paket.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Pretraga.cpp"
 				>
 			</File>
@@ -294,6 +330,10 @@
 					SubType="Designer"
 					>
 				</File>
+			</File>
+			<File
+				RelativePath=".\Racun.h"
+				>
 			</File>
 			<File
 				RelativePath=".\RacunNaplata.cpp"
