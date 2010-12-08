@@ -1,6 +1,10 @@
 #pragma once
 #include "PromjenaOsoba.h"
 #include "PromjenaFirma.h"
+#include "Korisnik.h"
+#include "KorisnikOsoba.h"
+#include "KorisnikFirma.h"
+//#include "Racun.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -32,6 +36,16 @@ namespace DZ3 {
 			//
 		}
 
+		Pretraga(ArrayList ^k, ArrayList ^r)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			korisnici = k;
+			//racuni = r;
+		}
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -43,8 +57,17 @@ namespace DZ3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ListView^  listView1;
-	private: System::Windows::Forms::ListView^  listView2;
+
+	private:
+		ArrayList ^korisnici;
+	private: System::Windows::Forms::ListView^  listViewOsoba;
+			 //ArrayList ^racuni;
+
+
+
+	private: System::Windows::Forms::ListView^  listViewFirma;
+
+
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 
@@ -92,8 +115,7 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::ListViewItem^  listViewItem2 = (gcnew System::Windows::Forms::ListViewItem(L""));
-			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->listViewOsoba = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -105,7 +127,7 @@ namespace DZ3 {
 			this->columnHeader9 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader20 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader21 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->listView2 = (gcnew System::Windows::Forms::ListView());
+			this->listViewFirma = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader10 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader11 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader12 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -127,21 +149,21 @@ namespace DZ3 {
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// listView1
+			// listViewOsoba
 			// 
-			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(11) {this->columnHeader1, this->columnHeader2, 
-				this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, this->columnHeader8, 
-				this->columnHeader9, this->columnHeader20, this->columnHeader21});
-			this->listView1->FullRowSelect = true;
-			this->listView1->GridLines = true;
-			this->listView1->Location = System::Drawing::Point(15, 109);
-			this->listView1->MultiSelect = false;
-			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(654, 213);
-			this->listView1->Sorting = System::Windows::Forms::SortOrder::Descending;
-			this->listView1->TabIndex = 0;
-			this->listView1->UseCompatibleStateImageBehavior = false;
-			this->listView1->View = System::Windows::Forms::View::Details;
+			this->listViewOsoba->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(11) {this->columnHeader1, 
+				this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, 
+				this->columnHeader8, this->columnHeader9, this->columnHeader20, this->columnHeader21});
+			this->listViewOsoba->FullRowSelect = true;
+			this->listViewOsoba->GridLines = true;
+			this->listViewOsoba->Location = System::Drawing::Point(15, 109);
+			this->listViewOsoba->MultiSelect = false;
+			this->listViewOsoba->Name = L"listViewOsoba";
+			this->listViewOsoba->Size = System::Drawing::Size(654, 213);
+			this->listViewOsoba->Sorting = System::Windows::Forms::SortOrder::Descending;
+			this->listViewOsoba->TabIndex = 0;
+			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
+			this->listViewOsoba->View = System::Windows::Forms::View::Details;
 			// 
 			// columnHeader1
 			// 
@@ -166,7 +188,7 @@ namespace DZ3 {
 			// columnHeader5
 			// 
 			this->columnHeader5->Text = L"Telefon";
-			this->columnHeader5->Width = 81;
+			this->columnHeader5->Width = 77;
 			// 
 			// columnHeader6
 			// 
@@ -198,21 +220,20 @@ namespace DZ3 {
 			this->columnHeader21->Text = L"Suspenzija";
 			this->columnHeader21->Width = 102;
 			// 
-			// listView2
+			// listViewFirma
 			// 
-			this->listView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, this->columnHeader11, 
-				this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, this->columnHeader17, 
-				this->columnHeader18, this->columnHeader19});
-			this->listView2->FullRowSelect = true;
-			this->listView2->GridLines = true;
-			this->listView2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) {listViewItem2});
-			this->listView2->Location = System::Drawing::Point(15, 347);
-			this->listView2->MultiSelect = false;
-			this->listView2->Name = L"listView2";
-			this->listView2->Size = System::Drawing::Size(657, 214);
-			this->listView2->TabIndex = 1;
-			this->listView2->UseCompatibleStateImageBehavior = false;
-			this->listView2->View = System::Windows::Forms::View::Details;
+			this->listViewFirma->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, 
+				this->columnHeader11, this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, 
+				this->columnHeader17, this->columnHeader18, this->columnHeader19});
+			this->listViewFirma->FullRowSelect = true;
+			this->listViewFirma->GridLines = true;
+			this->listViewFirma->Location = System::Drawing::Point(18, 347);
+			this->listViewFirma->MultiSelect = false;
+			this->listViewFirma->Name = L"listViewFirma";
+			this->listViewFirma->Size = System::Drawing::Size(657, 214);
+			this->listViewFirma->TabIndex = 1;
+			this->listViewFirma->UseCompatibleStateImageBehavior = false;
+			this->listViewFirma->View = System::Windows::Forms::View::Details;
 			// 
 			// columnHeader10
 			// 
@@ -227,7 +248,7 @@ namespace DZ3 {
 			// columnHeader12
 			// 
 			this->columnHeader12->Text = L"Adresa";
-			this->columnHeader12->Width = 93;
+			this->columnHeader12->Width = 80;
 			// 
 			// columnHeader13
 			// 
@@ -350,8 +371,8 @@ namespace DZ3 {
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->listView2);
-			this->Controls->Add(this->listView1);
+			this->Controls->Add(this->listViewFirma);
+			this->Controls->Add(this->listViewOsoba);
 			this->MaximizeBox = false;
 			this->Name = L"Pretraga";
 			this->Text = L"Pretraga";
@@ -366,11 +387,105 @@ namespace DZ3 {
 	private: System::Void Pretraga_Load(System::Object^  sender, System::EventArgs^  e) {
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 PromjenaOsoba ^po = gcnew PromjenaOsoba ();
-			 po->Show ();
+			 
+			 ListViewItem ^temp = gcnew ListViewItem ();
 
-			 PromjenaFirma ^pf = gcnew PromjenaFirma ();
-			 pf->Show ();
+			 listViewOsoba->Items->Clear ();
+			 listViewFirma->Items->Clear ();
+
+			 // moram uraditi validaciju ako nije unesen nista u polje za unos
+			 String ^uneseno = unos_pretrazivanje->Text;
+			 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();
+
+			 unos_pretrazivanje->Clear ();
+			 cbx_pretrazivanje->SelectedIndex = -1;
+
+			 
+			/*
+			 if (atribut == "Username")
+			 {			 
+				 for each (Korisnik ^k in korisnici)
+					 if (uneseno == k->Username ())
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());			
+			 }
+
+			 if (atribut == "Aktivni raèuni")
+			 {			 
+				 for each (Korisnik ^k in korisnici)
+					 if (k->Mirovanje () == false && k->Suspenzija () == false)
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());						
+			 }
+
+			 if (atribut == "Zamrznuti raèuni")
+			 {			 
+				 for each (Korisnik ^k in korisnici)
+					 if (k->Mirovanje () == true)
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());				
+			 }
+
+			 if (atribut == "Suspendovani raèuni")
+			 {			 
+				 for each (Korisnik ^k in korisnici)
+					 if (k->Suspenzija () == true)
+						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());				
+			 }
+			 */
+			
+			 if (atribut == "Ime osobe")
+			 {			 
+				 for each (Korisnik ^korisnik in korisnici)
+				 {
+
+					  try
+					 {
+						 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+						 if (uneseno == k->Ime ())
+						 {
+							 temp = listViewOsoba->Items->Add (k->Ime ());	
+							 temp->SubItems->Add (k->Prezime ());
+							 temp->SubItems->Add (k->Broj_licne_karte ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Username ());
+							 temp->SubItems->Add (k->Password ());
+							 //temp->SubItems->Add (k->Modem ());
+							 //temp->SubItems->Add (k->Mirovanje ());
+							 //temp->SubItems->Add (k->Suspenzija ());
+
+						 }
+					 }
+					 catch (...) // treba one exception za cast-anje!!!!!!!!
+					 {
+						 						 
+					 } 
+				 }
+			 }
+
+			 if (atribut == "Naziv firme")
+			 {			 
+				 for each (Korisnik ^korisnik in korisnici)
+				 {
+					  try
+					 {
+						 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+						 if (uneseno == k->Naziv ())
+							 listViewFirma->Items->Add (k->Naziv ());
+					 }
+					 catch (...)
+					 {
+												 
+					 } 
+				 }
+			 }
+			 
+
+			 
+			 if (listViewOsoba->Items->Count == 0 && listViewFirma->Items->Count == 0)
+				 MessageBox::Show ("Nema trazenih podataka.");
+
+
+
+
 		 }
 };
 }

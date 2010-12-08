@@ -110,7 +110,7 @@ namespace DZ3 {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(59, 13);
 			this->label3->TabIndex = 3;
-			this->label3->Text = L"Verzija: 0.3";
+			this->label3->Text = L"Verzija: 1.3";
 			// 
 			// label4
 			// 
