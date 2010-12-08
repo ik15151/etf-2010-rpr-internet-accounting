@@ -354,7 +354,7 @@ private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, S
 			 p->Show ();
 		 }
 private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 UnosKorisnika ^uk = gcnew UnosKorisnika ();
+			 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi);
 			 uk->Show ();
 		 }
 private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {

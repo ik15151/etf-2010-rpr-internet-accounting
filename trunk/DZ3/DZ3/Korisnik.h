@@ -6,12 +6,11 @@ using namespace System;
 
 ref class Korisnik abstract
 {
-	String ^_username, ^_naziv_paketa, ^_adresa, ^_password;
-	int _telefon;
+	String ^_username, ^_naziv_paketa, ^_adresa, ^_password, ^_telefon;
 	bool _modem, _suspenzija, _mirovanje;
 
 public:
-	Korisnik (String ^username, String ^naziv_paketa, String ^adresa, String ^password, int telefon, bool modem) 
+	Korisnik (String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon, bool modem) 
 		:_username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _modem (modem), _suspenzija (false), _mirovanje (false)  {}
 
 	String ^Username () { return _username; }
@@ -26,8 +25,8 @@ public:
 	String ^Password () { return _password; }
 	void Password (String ^val) { _password = val; }
 
-	int Telefon () { return _telefon; }
-	void Telefon (int val) { _telefon = val; }
+	String ^Telefon () { return _telefon; }
+	void Telefon (String ^val) { _telefon = val; }
 
 	bool Modem () { return _modem; }
 	void Modem (bool val) { _modem = val; }

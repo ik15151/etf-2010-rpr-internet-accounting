@@ -1,4 +1,8 @@
 #pragma once
+#include "Korisnik.h"
+#include "KorisnikOsoba.h"
+#include "KorisnikFirma.h"
+#include "Paket.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -30,6 +34,16 @@ namespace DZ3 {
 			//
 		}
 
+		UnosKorisnika(ArrayList ^k, ArrayList ^p)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			korisnici = k;
+			paketi = p;
+		}
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -42,20 +56,13 @@ namespace DZ3 {
 			}
 		}
 
+	private:
+		ArrayList ^korisnici;
+		ArrayList ^paketi;
+
 	protected: 
 
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^  button5;
-
-
-
-
 
 	private: System::Windows::Forms::Button^  Unesi;
 	private: System::Windows::Forms::TabControl^  tabControl2;
@@ -322,6 +329,7 @@ namespace DZ3 {
 			this->Name = L"UnosKorisnika";
 			this->Text = L"Unos novog korisnika";
 			this->CursorChanged += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_CursorChanged);
+			this->Load += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Load);
 			this->Shown += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Shown);
 			this->AutoValidateChanged += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_AutoValidateChanged);
 			this->Activated += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Activated);
@@ -388,7 +396,7 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 			 Close ();
 		 }
 private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e) {
-
+		
 			 try
 			 {
 				 kontrolaUnosKorisnika1->setAdresa ();
@@ -404,6 +412,49 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 toolStripStatusLabel1->Text = "Podaci nisu spašeni zbog pogrešnog unosa.";
 				 MessageBox::Show ("Podaci nisu spašeni zbog pogrešnog unosa.", "Greška pri unosu", MessageBoxButtons::OK, MessageBoxIcon::Warning) ;				 
 			 }
+			
+
+		try
+		{
+			/*
+			for each (Korisnik ^k in korisnici)
+				if (c_username->Text == k->Username ())
+					throw "Isti username!";
+			*/
+
+			// mora se rijesiti unos paketa :(((
+
+			 if (tabControl2->SelectedIndex == 0)
+			 {
+				
+				KorisnikOsoba ^ko = gcnew KorisnikOsoba (kontrolaUnosKorisnika1->getUsername (), kontrolaUnosKorisnika1->getPaket (), kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
+				korisnici->Add (ko);
+
+				kontrolaUnosKorisnika1->Resetuj ();
+				c_ime->Clear (); 
+				c_prezime->Clear (); 
+				c_broj_licne_karte->Clear ();
+
+				MessageBox::Show ("Uspješno ste unijeli podatke o osobi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+			 }
+			 if (tabControl2->SelectedIndex == 1)
+			 {
+				 KorisnikFirma ^kf = gcnew KorisnikFirma (kontrolaUnosKorisnika1->getUsername (), kontrolaUnosKorisnika1->getPaket (), kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_naziv_firme->Text, c_PDV_broj->Text);
+				korisnici->Add (kf);
+
+				kontrolaUnosKorisnika1->Resetuj ();
+				c_naziv_firme->Clear (); 
+				c_PDV_broj->Clear (); 
+
+				MessageBox::Show ("Uspješno ste unijeli podatke o firmi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			 }
+		}
+		catch (...)
+		 {
+			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Unos korisnika", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
+		 }
+		 
 	
 
 
@@ -509,5 +560,15 @@ private: System::Void c_naziv_firme_Validating(System::Object^  sender, System::
 				toolStripStatusLabel1->Text = "";
 			 }
 		 }
+private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventArgs^  e) {
+		/*			
+			 for each (Paket ^p in paketi)
+			{
+				c_CBox_paket->Items->Add (p->Naziv_paketa ());
+				p_paket->Items->Add (p->Naziv_paketa ());
+			}
+			*/
+		 }
+		 
 };
 }
