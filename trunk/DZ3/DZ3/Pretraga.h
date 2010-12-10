@@ -151,6 +151,8 @@ namespace DZ3 {
 			// 
 			// listViewOsoba
 			// 
+			this->listViewOsoba->Activation = System::Windows::Forms::ItemActivation::OneClick;
+			this->listViewOsoba->AllowColumnReorder = true;
 			this->listViewOsoba->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(11) {this->columnHeader1, 
 				this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, 
 				this->columnHeader8, this->columnHeader9, this->columnHeader20, this->columnHeader21});
@@ -164,6 +166,7 @@ namespace DZ3 {
 			this->listViewOsoba->TabIndex = 0;
 			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
 			this->listViewOsoba->View = System::Windows::Forms::View::Details;
+			this->listViewOsoba->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewOsoba_ItemActivate);
 			// 
 			// columnHeader1
 			// 
@@ -222,6 +225,7 @@ namespace DZ3 {
 			// 
 			// listViewFirma
 			// 
+			this->listViewFirma->AllowColumnReorder = true;
 			this->listViewFirma->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, 
 				this->columnHeader11, this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, 
 				this->columnHeader17, this->columnHeader18, this->columnHeader19});
@@ -486,6 +490,24 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 
 
+		 }
+private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System::EventArgs^  e) {
+			 /*
+			 temp = listViewOsoba->Items->Add (k->Ime ());	
+			 temp->SubItems->Add (k->Prezime ());
+			 temp->SubItems->Add (k->Broj_licne_karte ());
+			 temp->SubItems->Add (k->Adresa ());
+			 temp->SubItems->Add (k->Telefon ());
+			 temp->SubItems->Add (k->Username ());
+			 temp->SubItems->Add (k->Password ());
+			 */
+			//for each (ListViewItem ^li in listViewOsoba->Items)
+				
+
+			String ^ime = listViewOsoba->Items [0]->Text;
+			MessageBox::Show (ime);
+
+			 //PromjenaOsoba ^po = gcnew PromjenaOsoba (listViewOsoba->ItemActivate, listViewOsoba->Sub );
 		 }
 };
 }

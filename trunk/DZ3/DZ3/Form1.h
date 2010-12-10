@@ -64,6 +64,14 @@ namespace DZ3 {
 				delete components;
 			}
 		}
+
+	private: 
+		void Form1_GotFocus(Object sender, EventArgs e) {
+
+			MessageBox::Show("You are in the Control.GotFocus event.");
+
+		}
+
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	protected: 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
@@ -345,6 +353,7 @@ private: System::Void izlazToolStripMenuItem_Click_1(System::Object^  sender, Sy
 
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+			
 		 }
 
 

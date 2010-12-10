@@ -568,6 +568,14 @@ private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventA
 				p_paket->Items->Add (p->Naziv_paketa ());
 			}
 			*/
+
+			  
+		 }
+
+
+private: System::Void UnosKorisnika_GotFocus (System::Object^  sender, System::EventArgs^  e) {
+			 MessageBox::Show ("aaa");
+			  
 		 }
 		 
 };

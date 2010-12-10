@@ -1,4 +1,5 @@
 #pragma once
+#include "KorisnikOsoba.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -30,6 +31,18 @@ namespace DZ3 {
 			//
 		}
 
+		/*
+		PromjenaOsoba(KorisnikOsoba ^k)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			korisnik = gcnew KorisnikOsoba ();
+			korisnik = k;	
+			
+		}
+		*/
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -41,6 +54,10 @@ namespace DZ3 {
 				delete components;
 			}
 		}
+
+	private:
+		//KorisnikOsoba ^korisnik;
+
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	protected: 
 	private: System::Windows::Forms::CheckBox^  c_chBox_modem;
@@ -385,8 +402,7 @@ namespace DZ3 {
 			// toolStripStatusLabel1
 			// 
 			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
-			this->toolStripStatusLabel1->Size = System::Drawing::Size(118, 17);
-			this->toolStripStatusLabel1->Text = L"toolStripStatusLabel1";
+			this->toolStripStatusLabel1->Size = System::Drawing::Size(0, 17);
 			// 
 			// PromjenaOsoba
 			// 
