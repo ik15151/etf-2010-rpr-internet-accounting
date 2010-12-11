@@ -4,12 +4,14 @@
 #include "KorisnikFirma.h"
 #include "Paket.h"
 
+
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+
 
 
 namespace DZ3 {
@@ -84,7 +86,14 @@ namespace DZ3 {
 	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
 
 	private: System::Windows::Forms::MaskedTextBox^  c_PDV_broj;
+	private: System::Windows::Forms::ComboBox^  cmbBoxPaket;
+	private: System::Windows::Forms::Label^  lbPaket;
 	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
+
+
+
+
 
 
 
@@ -125,6 +134,8 @@ namespace DZ3 {
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
+			this->cmbBoxPaket = (gcnew System::Windows::Forms::ComboBox());
+			this->lbPaket = (gcnew System::Windows::Forms::Label());
 			this->kontrolaUnosKorisnika1 = (gcnew KontrolaUnos::KontrolaUnosKorisnika());
 			this->tabControl2->SuspendLayout();
 			this->tabPage1->SuspendLayout();
@@ -136,7 +147,7 @@ namespace DZ3 {
 			// button5
 			// 
 			this->button5->AutoSize = true;
-			this->button5->Location = System::Drawing::Point(253, 416);
+			this->button5->Location = System::Drawing::Point(255, 479);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
 			this->button5->TabIndex = 1;
@@ -147,7 +158,7 @@ namespace DZ3 {
 			// Unesi
 			// 
 			this->Unesi->AutoSize = true;
-			this->Unesi->Location = System::Drawing::Point(164, 416);
+			this->Unesi->Location = System::Drawing::Point(166, 479);
 			this->Unesi->Name = L"Unesi";
 			this->Unesi->Size = System::Drawing::Size(75, 23);
 			this->Unesi->TabIndex = 0;
@@ -289,7 +300,7 @@ namespace DZ3 {
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 455);
+			this->statusStrip1->Location = System::Drawing::Point(0, 505);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(342, 22);
 			this->statusStrip1->TabIndex = 100;
@@ -305,13 +316,34 @@ namespace DZ3 {
 			// 
 			this->errorProvider1->ContainerControl = this;
 			// 
+			// cmbBoxPaket
+			// 
+			this->cmbBoxPaket->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbBoxPaket->FlatStyle = System::Windows::Forms::FlatStyle::System;
+			this->cmbBoxPaket->FormattingEnabled = true;
+			this->cmbBoxPaket->Location = System::Drawing::Point(123, 146);
+			this->cmbBoxPaket->Name = L"cmbBoxPaket";
+			this->cmbBoxPaket->Size = System::Drawing::Size(172, 21);
+			this->cmbBoxPaket->TabIndex = 15;
+			// 
+			// lbPaket
+			// 
+			this->lbPaket->AutoSize = true;
+			this->lbPaket->Location = System::Drawing::Point(31, 154);
+			this->lbPaket->Name = L"lbPaket";
+			this->lbPaket->Size = System::Drawing::Size(38, 13);
+			this->lbPaket->TabIndex = 14;
+			this->lbPaket->Text = L"Paket:";
+			// 
 			// kontrolaUnosKorisnika1
 			// 
 			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::Color::White;
-			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 142);
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 173);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 268);
 			this->kontrolaUnosKorisnika1->TabIndex = 101;
+			this->kontrolaUnosKorisnika1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &UnosKorisnika::kontrolaUnosKorisnika1_MouseMove_1);
+			this->kontrolaUnosKorisnika1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &UnosKorisnika::kontrolaUnosKorisnika1_KeyPress_1);
 			// 
 			// UnosKorisnika
 			// 
@@ -319,8 +351,10 @@ namespace DZ3 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoValidate = System::Windows::Forms::AutoValidate::EnablePreventFocusChange;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(342, 477);
+			this->ClientSize = System::Drawing::Size(342, 527);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
+			this->Controls->Add(this->cmbBoxPaket);
+			this->Controls->Add(this->lbPaket);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->Unesi);
@@ -427,7 +461,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 if (tabControl2->SelectedIndex == 0)
 			 {
 				
-				KorisnikOsoba ^ko = gcnew KorisnikOsoba (kontrolaUnosKorisnika1->getUsername (), kontrolaUnosKorisnika1->getPaket (), kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
+				KorisnikOsoba ^ko = gcnew KorisnikOsoba (kontrolaUnosKorisnika1->getUsername (), "Treba paket u konstruktor", kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 				korisnici->Add (ko);
 
 				kontrolaUnosKorisnika1->Resetuj ();
@@ -440,7 +474,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 }
 			 if (tabControl2->SelectedIndex == 1)
 			 {
-				 KorisnikFirma ^kf = gcnew KorisnikFirma (kontrolaUnosKorisnika1->getUsername (), kontrolaUnosKorisnika1->getPaket (), kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_naziv_firme->Text, c_PDV_broj->Text);
+				 KorisnikFirma ^kf = gcnew KorisnikFirma (kontrolaUnosKorisnika1->getUsername (), "Treba paket u konstruktor", kontrolaUnosKorisnika1->getAdresa (), kontrolaUnosKorisnika1->getPassword (), kontrolaUnosKorisnika1->getTelefon (), kontrolaUnosKorisnika1->getModem (), c_naziv_firme->Text, c_PDV_broj->Text);
 				korisnici->Add (kf);
 
 				kontrolaUnosKorisnika1->Resetuj ();
@@ -574,9 +608,33 @@ private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventA
 
 
 private: System::Void UnosKorisnika_GotFocus (System::Object^  sender, System::EventArgs^  e) {
-			 MessageBox::Show ("aaa");
+			 MessageBox::Show ("Probaaaa");
 			  
 		 }
 		 
+private: System::Void kontrolaUnosKorisnika1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+			
+		 }
+private: System::Void kontrolaUnosKorisnika1_MouseHover(System::Object^  sender, System::EventArgs^  e) {
+			
+		 }
+
+
+
+
+private: System::Void kontrolaUnosKorisnika1_MouseMove_1(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+			 
+		 }
+private: System::Void kontrolaUnosKorisnika1_KeyPress_1(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+			try
+			 {
+				 //kontrolaUnosKorisnika1->setAdresa ();
+			 }
+			catch (System::Exception ^e)
+			 {
+				 toolStripStatusLabel1->ForeColor = Color::Red;
+				 toolStripStatusLabel1->Text = e->Message;
+			 }
+		 }
 };
 }

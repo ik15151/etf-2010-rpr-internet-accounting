@@ -77,6 +77,15 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label23;
 	private: System::Windows::Forms::TextBox^  unos_pretrazivanje;
 	private: System::Windows::Forms::Label^  label24;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader22;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader23;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader24;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader25;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader26;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader27;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader28;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader29;
+	private: System::Windows::Forms::ColumnHeader^  columnHeader30;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader2;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader3;
@@ -85,19 +94,34 @@ namespace DZ3 {
 	private: System::Windows::Forms::ColumnHeader^  columnHeader6;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader8;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader9;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader20;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader21;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader10;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader11;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader12;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader13;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader14;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader15;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader16;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader17;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader18;
-	private: System::Windows::Forms::ColumnHeader^  columnHeader19;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	protected: 
@@ -116,28 +140,7 @@ namespace DZ3 {
 		void InitializeComponent(void)
 		{
 			this->listViewOsoba = (gcnew System::Windows::Forms::ListView());
-			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader9 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader20 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader21 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->listViewFirma = (gcnew System::Windows::Forms::ListView());
-			this->columnHeader10 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader11 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader12 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader13 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader14 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader15 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader16 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader17 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader18 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader19 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -146,6 +149,23 @@ namespace DZ3 {
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->unos_pretrazivanje = (gcnew System::Windows::Forms::TextBox());
 			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->columnHeader22 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader23 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader24 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader25 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader26 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader27 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader28 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader29 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader30 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -153,12 +173,12 @@ namespace DZ3 {
 			// 
 			this->listViewOsoba->Activation = System::Windows::Forms::ItemActivation::OneClick;
 			this->listViewOsoba->AllowColumnReorder = true;
-			this->listViewOsoba->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(11) {this->columnHeader1, 
-				this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, 
-				this->columnHeader8, this->columnHeader9, this->columnHeader20, this->columnHeader21});
+			this->listViewOsoba->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(9) {this->columnHeader22, 
+				this->columnHeader23, this->columnHeader24, this->columnHeader25, this->columnHeader26, this->columnHeader27, this->columnHeader28, 
+				this->columnHeader29, this->columnHeader30});
 			this->listViewOsoba->FullRowSelect = true;
 			this->listViewOsoba->GridLines = true;
-			this->listViewOsoba->Location = System::Drawing::Point(15, 109);
+			this->listViewOsoba->Location = System::Drawing::Point(18, 109);
 			this->listViewOsoba->MultiSelect = false;
 			this->listViewOsoba->Name = L"listViewOsoba";
 			this->listViewOsoba->Size = System::Drawing::Size(654, 213);
@@ -168,67 +188,12 @@ namespace DZ3 {
 			this->listViewOsoba->View = System::Windows::Forms::View::Details;
 			this->listViewOsoba->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewOsoba_ItemActivate);
 			// 
-			// columnHeader1
-			// 
-			this->columnHeader1->Text = L"Ime";
-			this->columnHeader1->Width = 70;
-			// 
-			// columnHeader2
-			// 
-			this->columnHeader2->Text = L"Prezime";
-			this->columnHeader2->Width = 118;
-			// 
-			// columnHeader3
-			// 
-			this->columnHeader3->Text = L"Broj liène karte";
-			this->columnHeader3->Width = 94;
-			// 
-			// columnHeader4
-			// 
-			this->columnHeader4->Text = L"Adresa";
-			this->columnHeader4->Width = 84;
-			// 
-			// columnHeader5
-			// 
-			this->columnHeader5->Text = L"Telefon";
-			this->columnHeader5->Width = 77;
-			// 
-			// columnHeader6
-			// 
-			this->columnHeader6->Text = L"Paket";
-			this->columnHeader6->Width = 77;
-			// 
-			// columnHeader7
-			// 
-			this->columnHeader7->Text = L"Username";
-			this->columnHeader7->Width = 70;
-			// 
-			// columnHeader8
-			// 
-			this->columnHeader8->Text = L"Password";
-			this->columnHeader8->Width = 81;
-			// 
-			// columnHeader9
-			// 
-			this->columnHeader9->Text = L"Modem";
-			this->columnHeader9->Width = 53;
-			// 
-			// columnHeader20
-			// 
-			this->columnHeader20->Text = L"Mirovanje";
-			this->columnHeader20->Width = 69;
-			// 
-			// columnHeader21
-			// 
-			this->columnHeader21->Text = L"Suspenzija";
-			this->columnHeader21->Width = 102;
-			// 
 			// listViewFirma
 			// 
 			this->listViewFirma->AllowColumnReorder = true;
-			this->listViewFirma->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(10) {this->columnHeader10, 
-				this->columnHeader11, this->columnHeader12, this->columnHeader13, this->columnHeader14, this->columnHeader15, this->columnHeader16, 
-				this->columnHeader17, this->columnHeader18, this->columnHeader19});
+			this->listViewFirma->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(8) {this->columnHeader1, 
+				this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, 
+				this->columnHeader8});
 			this->listViewFirma->FullRowSelect = true;
 			this->listViewFirma->GridLines = true;
 			this->listViewFirma->Location = System::Drawing::Point(18, 347);
@@ -238,55 +203,6 @@ namespace DZ3 {
 			this->listViewFirma->TabIndex = 1;
 			this->listViewFirma->UseCompatibleStateImageBehavior = false;
 			this->listViewFirma->View = System::Windows::Forms::View::Details;
-			// 
-			// columnHeader10
-			// 
-			this->columnHeader10->Text = L"Naziv";
-			this->columnHeader10->Width = 168;
-			// 
-			// columnHeader11
-			// 
-			this->columnHeader11->Text = L"PDV broj";
-			this->columnHeader11->Width = 130;
-			// 
-			// columnHeader12
-			// 
-			this->columnHeader12->Text = L"Adresa";
-			this->columnHeader12->Width = 80;
-			// 
-			// columnHeader13
-			// 
-			this->columnHeader13->Text = L"Telefon";
-			this->columnHeader13->Width = 86;
-			// 
-			// columnHeader14
-			// 
-			this->columnHeader14->Text = L"Paket";
-			this->columnHeader14->Width = 79;
-			// 
-			// columnHeader15
-			// 
-			this->columnHeader15->Text = L"Username";
-			this->columnHeader15->Width = 72;
-			// 
-			// columnHeader16
-			// 
-			this->columnHeader16->Text = L"Password";
-			this->columnHeader16->Width = 85;
-			// 
-			// columnHeader17
-			// 
-			this->columnHeader17->Text = L"Modem";
-			// 
-			// columnHeader18
-			// 
-			this->columnHeader18->Text = L"Mirovanje";
-			this->columnHeader18->Width = 62;
-			// 
-			// columnHeader19
-			// 
-			this->columnHeader19->Text = L"Suspenzija";
-			this->columnHeader19->Width = 68;
 			// 
 			// label1
 			// 
@@ -367,6 +283,79 @@ namespace DZ3 {
 			this->label24->TabIndex = 25;
 			this->label24->Text = L"Pretraživanje po:";
 			// 
+			// columnHeader22
+			// 
+			this->columnHeader22->Text = L"Username";
+			this->columnHeader22->Width = 80;
+			// 
+			// columnHeader23
+			// 
+			this->columnHeader23->Text = L"Ime";
+			this->columnHeader23->Width = 71;
+			// 
+			// columnHeader24
+			// 
+			this->columnHeader24->Text = L"Prezime";
+			this->columnHeader24->Width = 78;
+			// 
+			// columnHeader25
+			// 
+			this->columnHeader25->Text = L"Broj liène karte";
+			this->columnHeader25->Width = 85;
+			// 
+			// columnHeader26
+			// 
+			this->columnHeader26->Text = L"Adresa";
+			// 
+			// columnHeader27
+			// 
+			this->columnHeader27->Text = L"Telefon";
+			// 
+			// columnHeader28
+			// 
+			this->columnHeader28->Text = L"Paket";
+			// 
+			// columnHeader29
+			// 
+			this->columnHeader29->Text = L"Password";
+			// 
+			// columnHeader30
+			// 
+			this->columnHeader30->Text = L"Modem";
+			this->columnHeader30->Width = 80;
+			// 
+			// columnHeader1
+			// 
+			this->columnHeader1->Text = L"Username";
+			// 
+			// columnHeader2
+			// 
+			this->columnHeader2->Text = L"Naziv";
+			// 
+			// columnHeader3
+			// 
+			this->columnHeader3->Text = L"PDV broj";
+			// 
+			// columnHeader4
+			// 
+			this->columnHeader4->Text = L"Adresa";
+			// 
+			// columnHeader5
+			// 
+			this->columnHeader5->Text = L"Telefon";
+			// 
+			// columnHeader6
+			// 
+			this->columnHeader6->Text = L"Paket";
+			// 
+			// columnHeader7
+			// 
+			this->columnHeader7->Text = L"Password";
+			// 
+			// columnHeader8
+			// 
+			this->columnHeader8->Text = L"Modem";
+			// 
 			// Pretraga
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -397,21 +386,57 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 listViewOsoba->Items->Clear ();
 			 listViewFirma->Items->Clear ();
 
-			 // moram uraditi validaciju ako nije unesen nista u polje za unos
-			 String ^uneseno = unos_pretrazivanje->Text;
-			 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();
+			 
+// moram uraditi validaciju ako nije unesen nista u polje za unos
 
+			 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();
+			 String ^uneseno = unos_pretrazivanje->Text;
 			 unos_pretrazivanje->Clear ();
 			 cbx_pretrazivanje->SelectedIndex = -1;
 
-			 
-			/*
+			
+			 /*
 			 if (atribut == "Username")
-			 {			 
-				 for each (Korisnik ^k in korisnici)
-					 if (uneseno == k->Username ())
-						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());			
+			 {
+				 for each (Korisnik ^korisnik in korisnici)
+					 if (uneseno == korisnik->Username ())
+					 {
+						 try
+						 {
+							 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+							 temp = listViewOsoba->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Ime ());
+							 temp->SubItems->Add (k->Prezime ());
+							 temp->SubItems->Add (k->Broj_licne_karte ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
+						 }
+						 catch (...)
+						 {
+							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik))
+							 temp = listViewFirma->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Naziv ());
+							 temp->SubItems->Add (k->PDV_broj ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
+						 }
+					 }
 			 }
+			 */
+
+			 /*
 
 			 if (atribut == "Aktivni raèuni")
 			 {			 
@@ -439,29 +464,29 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 {			 
 				 for each (Korisnik ^korisnik in korisnici)
 				 {
-
 					  try
 					 {
 						 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
 						 if (uneseno == k->Ime ())
 						 {
-							 temp = listViewOsoba->Items->Add (k->Ime ());	
+							 temp = listViewOsoba->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Ime ());
 							 temp->SubItems->Add (k->Prezime ());
 							 temp->SubItems->Add (k->Broj_licne_karte ());
 							 temp->SubItems->Add (k->Adresa ());
 							 temp->SubItems->Add (k->Telefon ());
-							 temp->SubItems->Add (k->Username ());
+							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
 							 temp->SubItems->Add (k->Password ());
-							 //temp->SubItems->Add (k->Modem ());
-							 //temp->SubItems->Add (k->Mirovanje ());
-							 //temp->SubItems->Add (k->Suspenzija ());
-
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
 						 }
 					 }
-					 catch (...) // treba one exception za cast-anje!!!!!!!!
+					 catch (InvalidCastException ^c) // ovdje bi mozda trebalo My exception
 					 {
-						 						 
-					 } 
+						 MessageBox::Show ("Greska pri dinamickom konvertovanju korisnika u osoba-korisnika.");
+					 }
 				 }
 			 }
 
@@ -473,24 +498,34 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 					 {
 						 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
 						 if (uneseno == k->Naziv ())
-							 listViewFirma->Items->Add (k->Naziv ());
+						 {			
+							 temp = listViewFirma->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Naziv ());
+							 temp->SubItems->Add (k->PDV_broj ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE"); 
+						 } 						 
+
 					 }
-					 catch (...)
+					 catch (InvalidCastException ^c) // ovdje bi mozda trebalo My exception
 					 {
-												 
+						 MessageBox::Show ("Greska pri dinamickom konvertovanju korisnika u firma-korisnika.");
 					 } 
 				 }
 			 }
 			 
-
 			 
 			 if (listViewOsoba->Items->Count == 0 && listViewFirma->Items->Count == 0)
 				 MessageBox::Show ("Nema trazenih podataka.");
 
-
-
-
 		 }
+		 
 private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System::EventArgs^  e) {
 			 /*
 			 temp = listViewOsoba->Items->Add (k->Ime ());	

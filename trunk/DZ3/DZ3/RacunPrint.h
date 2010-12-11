@@ -1,4 +1,7 @@
 #pragma once
+#include "Korisnik.h"
+#include "Paket.h"
+#include "Racun.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -29,6 +32,16 @@ namespace DZ3 {
 			//TODO: Add the constructor code here
 			//
 		}
+		RacunPrint(Korisnik ^k, Racun ^r, Paket ^p)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			korisnik = k;
+			racun = r;
+			paket = p;
+		}
 
 	protected:
 		/// <summary>
@@ -41,6 +54,11 @@ namespace DZ3 {
 				delete components;
 			}
 		}
+	private:
+		Racun ^racuni;
+		Korisnik ^korisnik;
+		Paket ^paket;
+
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	protected: 
 	private: System::Windows::Forms::Label^  r_adresa;
@@ -68,9 +86,10 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  r_id_racuna;
 	private: System::Windows::Forms::GroupBox^  groupBox3;
-	private: System::Windows::Forms::Label^  label17;
-	private: System::Windows::Forms::Label^  label16;
-	private: System::Windows::Forms::Label^  label15;
+	private: System::Windows::Forms::Label^  r_modem;
+
+
+
 	private: System::Windows::Forms::Label^  label14;
 
 	private: System::Windows::Forms::Button^  button1;
@@ -116,9 +135,7 @@ namespace DZ3 {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->r_id_racuna = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->r_modem = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -380,43 +397,23 @@ namespace DZ3 {
 			// 
 			// groupBox3
 			// 
-			this->groupBox3->Controls->Add(this->label17);
-			this->groupBox3->Controls->Add(this->label16);
-			this->groupBox3->Controls->Add(this->label15);
+			this->groupBox3->Controls->Add(this->r_modem);
 			this->groupBox3->Controls->Add(this->label14);
 			this->groupBox3->Location = System::Drawing::Point(12, 406);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(289, 70);
+			this->groupBox3->Size = System::Drawing::Size(289, 55);
 			this->groupBox3->TabIndex = 16;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Dodatno";
+			this->groupBox3->Text = L"Najam opreme";
 			// 
-			// label17
+			// r_modem
 			// 
-			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(187, 46);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(34, 13);
-			this->label17->TabIndex = 3;
-			this->label17->Text = L"r_dug";
-			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(189, 20);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(50, 13);
-			this->label16->TabIndex = 2;
-			this->label16->Text = L"r_modem";
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(18, 46);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(30, 13);
-			this->label15->TabIndex = 1;
-			this->label15->Text = L"Dug:";
+			this->r_modem->AutoSize = true;
+			this->r_modem->Location = System::Drawing::Point(189, 20);
+			this->r_modem->Name = L"r_modem";
+			this->r_modem->Size = System::Drawing::Size(50, 13);
+			this->r_modem->TabIndex = 2;
+			this->r_modem->Text = L"r_modem";
 			// 
 			// label14
 			// 
@@ -444,6 +441,7 @@ namespace DZ3 {
 			this->button2->TabIndex = 19;
 			this->button2->Text = L"Plaæeno";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &RacunPrint::button2_Click);
 			// 
 			// groupBox4
 			// 
@@ -473,6 +471,7 @@ namespace DZ3 {
 			this->MaximizeBox = false;
 			this->Name = L"RacunPrint";
 			this->Text = L"Raèun";
+			this->Load += gcnew System::EventHandler(this, &RacunPrint::RacunPrint_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
@@ -487,5 +486,21 @@ namespace DZ3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void RacunPrint_Load(System::Object^  sender, System::EventArgs^  e) {
+				 r_username->Text = korisnik->Username ();
+				 r_adresa->Text = korisnik->Adresa ();
+				 if (korisnik->Modem ())
+					 r_modem->Text = "6 KM";
+				 else
+					 r_modem->Text = "0 KM";
+				 r_naziv_paketa->Text = paket->Naziv_paketa ();
+				 r_limit->Text = paket->Download_limit ();
+				 r_brzina->Text = paket->Brzina_pristupa_download_upload ();
+				 r_cijena->Text = paket->Cijena ().ToString ();
+			 }
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 
+
+		 }
+};
 }

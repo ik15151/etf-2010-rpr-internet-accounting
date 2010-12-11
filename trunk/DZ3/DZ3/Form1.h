@@ -367,13 +367,27 @@ private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sende
 			 uk->Show ();
 		 }
 private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 RacunNaplata ^rn = gcnew RacunNaplata ();
+			 RacunNaplata ^rn = gcnew RacunNaplata (korisnici, racuni);
 			 rn->Show ();
 		 }
 private: System::Void januarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			RacunPrint ^rp = gcnew RacunPrint ();
-			//rp->r_mjesec->Text = "Januar";
-			rp->ShowDialog ();
+			for each (Racun ^r in racuni)
+				r->Mjesec ("Januar");
+
+			 for each (Korisnik ^k in korisnici)
+			{
+				if (k->Suspenzija () == false && k->Mirovanje () == false)
+				{
+					for each (Paket ^p in paketi)
+						if (k->Naziv_paketa () == p->Naziv_paketa ())
+						{
+							Racun ^r = gcnew Racun ();
+							racuni->Add (r);
+							RacunPrint ^rp = gcnew RacunPrint (k, racuni, p);
+							rp->ShowDialog ();
+						}
+				}
+			}
 
 		 }
 };

@@ -1,4 +1,6 @@
 #pragma once
+#include "Korisnik.h"
+#include "Racun.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -29,6 +31,15 @@ namespace DZ3 {
 			//TODO: Add the constructor code here
 			//
 		}
+		RacunNaplata(ArrayList ^k, ArrayList ^r)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			korisnici = k;
+			racuni = r;
+		}
 
 	protected:
 		/// <summary>
@@ -41,17 +52,13 @@ namespace DZ3 {
 				delete components;
 			}
 		}
+	private:
+		ArrayList ^korisnici, ^racuni;
+	private: System::Windows::Forms::ComboBox^  cBoxkorisnici;
 
 	protected: 
 
 
-
-
-
-
-
-
-	private: System::Windows::Forms::ComboBox^  t_korisnici;
 	private: System::Windows::Forms::ComboBox^  t_mjesec;
 	private: System::Windows::Forms::Label^  label29;
 	private: System::Windows::Forms::Label^  label30;
@@ -71,7 +78,7 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->t_korisnici = (gcnew System::Windows::Forms::ComboBox());
+			this->cBoxkorisnici = (gcnew System::Windows::Forms::ComboBox());
 			this->t_mjesec = (gcnew System::Windows::Forms::ComboBox());
 			this->label29 = (gcnew System::Windows::Forms::Label());
 			this->label30 = (gcnew System::Windows::Forms::Label());
@@ -80,22 +87,22 @@ namespace DZ3 {
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// t_korisnici
+			// cBoxkorisnici
 			// 
-			this->t_korisnici->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->t_korisnici->FormattingEnabled = true;
-			this->t_korisnici->Location = System::Drawing::Point(68, 17);
-			this->t_korisnici->Name = L"t_korisnici";
-			this->t_korisnici->Size = System::Drawing::Size(169, 21);
-			this->t_korisnici->Sorted = true;
-			this->t_korisnici->TabIndex = 0;
+			this->cBoxkorisnici->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cBoxkorisnici->FormattingEnabled = true;
+			this->cBoxkorisnici->Location = System::Drawing::Point(68, 17);
+			this->cBoxkorisnici->Name = L"cBoxkorisnici";
+			this->cBoxkorisnici->Size = System::Drawing::Size(169, 21);
+			this->cBoxkorisnici->Sorted = true;
+			this->cBoxkorisnici->TabIndex = 0;
 			// 
 			// t_mjesec
 			// 
 			this->t_mjesec->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->t_mjesec->FormattingEnabled = true;
-			this->t_mjesec->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"januar", L"februar", L"mart", L"april", L"maj", 
-				L"juni", L"juli", L"august", L"septembar", L"oktobar", L"novembar", L"decembar"});
+			this->t_mjesec->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"Januar", L"Februar", L"Mart", L"April", L"Maj", 
+				L"Juni", L"Juli", L"August", L"Septembar", L"Oktobar", L"Novembar", L"Decembar"});
 			this->t_mjesec->Location = System::Drawing::Point(67, 66);
 			this->t_mjesec->Name = L"t_mjesec";
 			this->t_mjesec->Size = System::Drawing::Size(169, 21);
@@ -122,7 +129,7 @@ namespace DZ3 {
 			// panel1
 			// 
 			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel1->Controls->Add(this->t_korisnici);
+			this->panel1->Controls->Add(this->cBoxkorisnici);
 			this->panel1->Controls->Add(this->label30);
 			this->panel1->Controls->Add(this->t_mjesec);
 			this->panel1->Controls->Add(this->label29);
@@ -139,6 +146,7 @@ namespace DZ3 {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Plaæeno";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &RacunNaplata::button1_Click);
 			// 
 			// RacunNaplata
 			// 
@@ -151,11 +159,41 @@ namespace DZ3 {
 			this->MaximizeBox = false;
 			this->Name = L"RacunNaplata";
 			this->Text = L"Naplata";
+			this->Load += gcnew System::EventHandler(this, &RacunNaplata::RacunNaplata_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	};
+	private: System::Void RacunNaplata_Load(System::Object^  sender, System::EventArgs^  e) {
+				 for each (Korisnik ^k in korisnici)
+				 {
+					 if (k->Suspenzija () == true)
+						 cBoxkorisnici->Items->Add (k->Username ());
+				 }
+			 }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 bool placeno = false;
+			 for each (Racun ^r in racuni)
+			 {
+				 if (r->Username () == cBoxkorisnici->SelectedItem->ToString ())
+				 {
+					 r->Placeno (true);
+					 for each (Korisnik ^k in korisnici)
+					 {
+						 if (k->Username () == cBoxkorisnici->SelectedItem->ToString ())
+							 k->Suspenzija (false);
+					 }
+					 placeno = true;
+					 return;
+				 }
+			 }
+
+			 if (!placeno)
+				 MessageBox::Show ("Greška pri ažuriranju podataka.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+
+
+		 }
+};
 }
