@@ -55,7 +55,7 @@ namespace DZ3 {
 			}
 		}
 	private:
-		Racun ^racuni;
+		Racun ^racun;
 		Korisnik ^korisnik;
 		Paket ^paket;
 
@@ -432,6 +432,7 @@ namespace DZ3 {
 			this->button1->TabIndex = 18;
 			this->button1->Text = L"Neplaæeno";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &RacunPrint::button1_Click);
 			// 
 			// button2
 			// 
@@ -497,10 +498,15 @@ namespace DZ3 {
 				 r_limit->Text = paket->Download_limit ();
 				 r_brzina->Text = paket->Brzina_pristupa_download_upload ();
 				 r_cijena->Text = paket->Cijena ().ToString ();
+				 r_id_racuna->Text = racun->Id_racuna ().ToString ();
+				 r_mjesec->Text = racun->Mjesec ();
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-
+			 racun->Placeno (true);
+		 }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			korisnik->Suspenzija (true);
+			
 		 }
 };
 }
