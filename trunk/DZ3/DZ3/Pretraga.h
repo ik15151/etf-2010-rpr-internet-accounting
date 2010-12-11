@@ -475,7 +475,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Broj_licne_karte ());
 							 temp->SubItems->Add (k->Adresa ());
 							 temp->SubItems->Add (k->Telefon ());
-							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
 							 if (k->Modem ())
 								temp->SubItems->Add ("DA");
@@ -504,7 +504,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->PDV_broj ());
 							 temp->SubItems->Add (k->Adresa ());
 							 temp->SubItems->Add (k->Telefon ());
-							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
 							 if (k->Modem ())
 								temp->SubItems->Add ("DA");

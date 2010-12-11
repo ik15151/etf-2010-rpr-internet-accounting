@@ -186,9 +186,13 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 							 k->Suspenzija (false);
 					 }
 					 placeno = true;
+					 cBoxkorisnici->SelectedIndex = -1;
+					 t_mjesec->SelectedIndex = -1;
+					 //treba izbaciti orisnika koji je platio
 					 return;
 				 }
 			 }
+			// mora se uraditi Exception kad nije izabran korisnik ili mjesec
 
 			 if (!placeno)
 				 MessageBox::Show ("Greška pri ažuriranju podataka.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Warning);

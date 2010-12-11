@@ -491,21 +491,30 @@ namespace DZ3 {
 				 r_username->Text = korisnik->Username ();
 				 r_adresa->Text = korisnik->Adresa ();
 				 if (korisnik->Modem ())
+				 {
 					 r_modem->Text = "6 KM";
+					 cijena->Text = (paket->Cijena () + 6).ToString ();
+				 }
 				 else
+				 {
 					 r_modem->Text = "0 KM";
+					 cijena->Text = paket->Cijena ().ToString ();
+				 }
 				 r_naziv_paketa->Text = paket->Naziv_paketa ();
 				 r_limit->Text = paket->Download_limit ();
 				 r_brzina->Text = paket->Brzina_pristupa_download_upload ();
 				 r_cijena->Text = paket->Cijena ().ToString ();
 				 r_id_racuna->Text = racun->Id_racuna ().ToString ();
 				 r_mjesec->Text = racun->Mjesec ();
+				 
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 			 racun->Placeno (true);
+			 Close ();
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 			korisnik->Suspenzija (true);
+			Close ();
 			
 		 }
 };
