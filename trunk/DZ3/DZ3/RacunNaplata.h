@@ -174,10 +174,21 @@ namespace DZ3 {
 				 }
 			 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (cBoxkorisnici->SelectedIndex == -1)
+			 {
+				 MessageBox::Show ("Morate odabrati korisnika.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 return;
+			 }
+			 if (t_mjesec->SelectedIndex == -1)
+			 {
+				 MessageBox::Show ("Morate odabrati mjesec.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 return;
+			 }
+			 
 			 bool placeno = false;
 			 for each (Racun ^r in racuni)
 			 {
-				 if (r->Username () == cBoxkorisnici->SelectedItem->ToString ())
+				 if (r->Username () == cBoxkorisnici->SelectedItem->ToString () && r->Mjesec () == t_mjesec->SelectedItem->ToString ())
 				 {
 					 r->Placeno (true);
 					 for each (Korisnik ^k in korisnici)
@@ -188,14 +199,13 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 placeno = true;
 					 cBoxkorisnici->SelectedIndex = -1;
 					 t_mjesec->SelectedIndex = -1;
-					 //treba izbaciti orisnika koji je platio
+					 //treba izbaciti korisnika koji je platio
 					 return;
 				 }
 			 }
-			// mora se uraditi Exception kad nije izabran korisnik ili mjesec
 
 			 if (!placeno)
-				 MessageBox::Show ("Greška pri ažuriranju podataka.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				 MessageBox::Show ("Nije odabran odgovarajuæi mjesec.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 
 
 		 }

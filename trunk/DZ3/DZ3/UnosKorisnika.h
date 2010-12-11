@@ -90,8 +90,10 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  lbPaket;
 
 	private: System::Windows::Forms::GroupBox^  groupBox1;
-	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
+	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
 
 
 
@@ -313,7 +315,7 @@ namespace DZ3 {
 			// 
 			// toolStripStatusLabel1
 			// 
-			this->toolStripStatusLabel1->BackColor = System::Drawing::Color::Gainsboro;
+			this->toolStripStatusLabel1->BackColor = System::Drawing::SystemColors::Control;
 			this->toolStripStatusLabel1->ForeColor = System::Drawing::Color::Red;
 			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
 			this->toolStripStatusLabel1->Size = System::Drawing::Size(0, 17);
@@ -359,16 +361,13 @@ namespace DZ3 {
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 232);
 			this->kontrolaUnosKorisnika1->TabIndex = 103;
-			this->kontrolaUnosKorisnika1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &UnosKorisnika::kontrolaUnosKorisnika1_MouseMove_2);
-			this->kontrolaUnosKorisnika1->CursorChanged += gcnew System::EventHandler(this, &UnosKorisnika::kontrolaUnosKorisnika1_CursorChanged);
-			this->kontrolaUnosKorisnika1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &UnosKorisnika::kontrolaUnosKorisnika1_KeyPress_2);
 			// 
 			// UnosKorisnika
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoValidate = System::Windows::Forms::AutoValidate::EnablePreventFocusChange;
-			this->BackColor = System::Drawing::Color::White;
+			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->ClientSize = System::Drawing::Size(342, 499);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
@@ -578,7 +577,6 @@ private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::Com
 			 if (c_PDV_broj->Text->Length < 12)
 			 {
 				c_PDV_broj->Focus ();
-				toolStripStatusLabel1->ForeColor = Color::Red;
 				toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
 				errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
 			 }
