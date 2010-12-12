@@ -199,7 +199,7 @@ namespace DZ3 {
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(308, 102);
+			this->tabPage1->Size = System::Drawing::Size(281, 102);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Osoba";
 			// 
@@ -334,6 +334,7 @@ namespace DZ3 {
 			this->cmbBoxPaket->Name = L"cmbBoxPaket";
 			this->cmbBoxPaket->Size = System::Drawing::Size(152, 21);
 			this->cmbBoxPaket->TabIndex = 15;
+			this->cmbBoxPaket->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::cmbBoxPaket_Validating);
 			// 
 			// lbPaket
 			// 
@@ -379,12 +380,7 @@ namespace DZ3 {
 			this->MaximizeBox = false;
 			this->Name = L"UnosKorisnika";
 			this->Text = L"Unos novog korisnika";
-			this->CursorChanged += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_CursorChanged);
 			this->Load += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Load);
-			this->Shown += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Shown);
-			this->AutoValidateChanged += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_AutoValidateChanged);
-			this->Activated += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Activated);
-			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &UnosKorisnika::UnosKorisnika_MouseMove);
 			this->tabControl2->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
@@ -400,54 +396,11 @@ namespace DZ3 {
 
 		}
 #pragma endregion
-	private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
-			 }
-private: System::Void kontrolaUnosKorisnika1_Enter(System::Object^  sender, System::EventArgs^  e) {
 
-		 }
-private: System::Void kontrolaUnosKorisnika1_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			
-		 }
-private: System::Void kontrolaUnosKorisnika1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void kontrolaUnosKorisnika1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-
-		 }
-private: System::Void UnosKorisnika_Activated(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void UnosKorisnika_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			
-		 }
-private: System::Void UnosKorisnika_Shown(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void UnosKorisnika_CursorChanged(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void UnosKorisnika_AutoValidateChanged(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void c_ime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (c_ime->Text->Length < 3)
-			 {
-				 c_ime->Focus ();
-				 toolStripStatusLabel1->ForeColor = Color::Red;
-				 toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
-				 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
-			 }
-			 else
-			 {
-				errorProvider1->Clear ();
-				toolStripStatusLabel1->Text = "";
-			 }
-
-						 
-		 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Close ();
-		 }
+			Close ();
+ }
+
 private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		try
@@ -500,39 +453,53 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 toolStripStatusLabel1->Text = "Podaci nisu spašeni zbog pogrešnog unosa.";
 			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Unos korisnika", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
 		 } 
-	
 
+}
 
+private: System::Void c_ime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+		 
+	// ne smiju biti brojevi u imenu
+		 if (c_ime->Text->Length < 3)
+		 {
+			 c_ime->Focus ();
+			 toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
+			 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
 		 }
+		 else
+		 {
+			errorProvider1->Clear ();
+			toolStripStatusLabel1->Text = "";
+		 }
+
+}
 private: System::Void c_prezime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			if (c_prezime->Text->Length < 3)
+			// ne smiju biti brojevi u prezimenu
+			 if (c_prezime->Text->Length < 3)
 			 {
 				 c_prezime->Focus ();
-				 toolStripStatusLabel1->ForeColor = Color::Red;
 				 toolStripStatusLabel1->Text = "Prezime ne smije sadržavati manje od 3 slova.";
 				 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");				
-			 }
+			 }			
 			else
 			 {
 				errorProvider1->Clear ();
 				toolStripStatusLabel1->Text = "";
-			 }
+			 }		
+			
 
-		 }
+ }
 private: System::Void c_broj_licne_karte_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 			 if (c_broj_licne_karte->Text->Length < 9)
 			 {
 				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->ForeColor = Color::Red;
 				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Prezime ne smije sadržavati manje od 9 znakova.");	
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
 			 }
 			else if (c_broj_licne_karte->Text->Length > 9)
 			 {
 				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->ForeColor = Color::Red;
 				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Prezime ne smije sadržavati više od 9 znakova.");	
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
 			 }
 			else if (c_broj_licne_karte->Text->Length == 9)
 			 {
@@ -541,40 +508,40 @@ private: System::Void c_broj_licne_karte_Validating(System::Object^  sender, Sys
 				 wchar_t sesto = c_broj_licne_karte->Text [5];
 				 wchar_t sedmo = c_broj_licne_karte->Text [6];
 				 wchar_t osmo = c_broj_licne_karte->Text [7];
-				 wchar_t deveto = c_broj_licne_karte->Text [8];			
-				 /*
-				 int trece = c_broj_licne_karte->Text [2];
-				 int cetvrto = c_broj_licne_karte->Text [3];
-				 int peto = c_broj_licne_karte->Text [4];
-				 */
+				 wchar_t deveto = c_broj_licne_karte->Text [8];		
 
-
+				 // Mora se ispitati da li su 3., 4., i 5. slova!
+				
 				 if ((prvo < '0' || drugo < '0' || sesto < '0' || sedmo < '0' || osmo < '0' || deveto < '0')  || (prvo > '9' || drugo > '9' || sesto > '9' || sedmo > '9' || osmo > '9' || deveto > '9') )
 				 {
 					c_broj_licne_karte->Focus ();
-					toolStripStatusLabel1->ForeColor = Color::Red;
-					toolStripStatusLabel1->Text = "Format broja liène karte treba biti: 2 slova + 3 slova + 4 broja.";
-					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte treba biti: 2 slova + 3 slova + 4 broja.");
+					toolStripStatusLabel1->Text = "Format broja liène karte: 2 slova + 3 slova + 4 broja.";
+					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte: 2 slova + 3 slova + 4 broja.");
 				 }
-				/*
-				 if ((trece || cetvrto || peto) < 'A' || (trece || cetvrto || peto) > 'Z')
-				 {
-					c_broj_licne_karte->Focus ();
-					toolStripStatusLabel1->ForeColor = Color::Red;
-					toolStripStatusLabel1->Text = "Treci, cetvrti i peti znak moraju biti slova.";
-					errorProvider1->SetError (c_broj_licne_karte, "Treci, cetvrti i peti znak moraju biti slova.");
-				 }
-				 */
-				 else // ovaj mi nesto ne radi
+			 }
+			else 
 				 {
 					errorProvider1->Clear ();
 					toolStripStatusLabel1->Text = "";
 				 }
-
-			 }
 			 			 
 
 		 }
+private: System::Void c_naziv_firme_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+ 
+			 //ovdje se mora ispitati da ne bude brojeva u nazivu
+			 if (c_naziv_firme->Text->Length < 3)
+			 {
+				toolStripStatusLabel1->Text = "Naziv firme ne može imati manje od tri slova.";
+				errorProvider1->SetError (c_naziv_firme, "Naziv firme ne može imati manje od tri slova.");
+				c_naziv_firme->Focus ();
+			 }
+			 else 
+			 {
+				errorProvider1->Clear ();
+				toolStripStatusLabel1->Text = "";
+			 }
+}
 private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 			 if (c_PDV_broj->Text->Length < 12)
 			 {
@@ -588,57 +555,33 @@ private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::Com
 				toolStripStatusLabel1->Text = "";
 			 }
 		 }
-private: System::Void c_naziv_firme_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (c_naziv_firme->Text->Length < 3)
+
+private: System::Void cmbBoxPaket_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 if (cmbBoxPaket->SelectedIndex == -1)
 			 {
-				toolStripStatusLabel1->ForeColor = Color::Red;
-				toolStripStatusLabel1->Text = "Naziv firme ne može imati manje od tri slova.";
-				errorProvider1->SetError (c_naziv_firme, "Naziv firme ne može imati manje od tri slova.");
-				c_naziv_firme->Focus ();
+				 cmbBoxPaket->Focus ();
+				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
+				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
 			 }
-			 
-			//ovdje se mora ispitati da ne bude brojeva u nazivu
-			 else 
+			 else
 			 {
 				errorProvider1->Clear ();
 				toolStripStatusLabel1->Text = "";
 			 }
-		 }
+}
+
 private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventArgs^  e) {
 			 for each (Paket ^p in paketi)
 				cmbBoxPaket->Items->Add (p->Naziv_paketa ());
 		 }
 
-private: System::Void UnosKorisnika_GotFocus (System::Object^  sender, System::EventArgs^  e) {
-		  
-		 }
-		 
-private: System::Void kontrolaUnosKorisnika1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
-			
-		 }
-private: System::Void kontrolaUnosKorisnika1_MouseHover(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
-private: System::Void kontrolaUnosKorisnika1_MouseMove_1(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			 
-		 }
-private: System::Void kontrolaUnosKorisnika1_KeyPress_1(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
-			
-		 }
 
-private: System::Void kontrolaUnosKorisnika1_CursorChanged(System::Object^  sender, System::EventArgs^  e) {
-			
-		 }
 private: System::Void kontrolaUnosKorisnika1_MouseMove_2(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+			
+			 toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaAdresa ();
 			/*
-			 toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaUlica ();
-
-			if (kontrolaUnosKorisnika1->getGreskaUlica ()->Empty)
-			{
-				toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaBrojUlice ();
-				return;
-			}
-			else if (kontrolaUnosKorisnika1->getGreskaBrojUlice ()->Empty)
+			
+			if (kontrolaUnosKorisnika1->getGreskaAdresa ()->Empty)
 			{
 				toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaTelefon ();			
 				return;
@@ -653,12 +596,11 @@ private: System::Void kontrolaUnosKorisnika1_MouseMove_2(System::Object^  sender
 				toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaPassword ();
 				return;
 			}
-			*/
 			 toolStripStatusLabel1->Text = kontrolaUnosKorisnika1->getGreskaUsername ();
+			 */
 
 		 }
-private: System::Void kontrolaUnosKorisnika1_KeyPress_2(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
-			
-		 }
+
+
 };
 }

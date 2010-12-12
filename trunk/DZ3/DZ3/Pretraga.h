@@ -535,7 +535,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 */
 			 			 
 			 if (listViewOsoba->Items->Count == 0 && listViewFirma->Items->Count == 0)
-				 MessageBox::Show ("Nema trazenih podataka.", "Informacija", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				 MessageBox::Show ("Nema traženih podataka.", "Informacija", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 		 }
 		 
