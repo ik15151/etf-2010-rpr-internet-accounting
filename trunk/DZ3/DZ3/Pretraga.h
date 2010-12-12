@@ -1,7 +1,6 @@
 #pragma once
 #include "PromjenaOsoba.h"
 #include "PromjenaFirma.h"
-//#include "Korisnik.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 
@@ -194,7 +193,7 @@ namespace DZ3 {
 			// columnHeader22
 			// 
 			this->columnHeader22->Text = L"Username";
-			this->columnHeader22->Width = 80;
+			this->columnHeader22->Width = 63;
 			// 
 			// columnHeader23
 			// 
@@ -231,7 +230,7 @@ namespace DZ3 {
 			// columnHeader30
 			// 
 			this->columnHeader30->Text = L"Modem";
-			this->columnHeader30->Width = 80;
+			this->columnHeader30->Width = 50;
 			// 
 			// listViewFirma
 			// 
@@ -550,7 +549,8 @@ private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System
 						{
 							KorisnikOsoba ^korisnik = dynamic_cast <KorisnikOsoba ^> (k);
 							PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi);
-							po->ShowDialog ();
+							listViewOsoba->Items->Clear ();
+							po->ShowDialog ();							
 							return;
 						}
 				}
@@ -566,7 +566,8 @@ private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System
 						{
 							KorisnikFirma ^korisnik = dynamic_cast <KorisnikFirma ^> (k);
 							PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi);
-							pf->ShowDialog ();
+							listViewFirma->Items->Clear ();
+							pf->ShowDialog ();							
 							return;
 						}
 				}

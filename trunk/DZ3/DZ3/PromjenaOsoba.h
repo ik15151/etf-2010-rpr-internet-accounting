@@ -92,9 +92,11 @@ namespace DZ3 {
 
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
-	private: System::Windows::Forms::RadioButton^  p_suspenzija;
+	private: System::Windows::Forms::RadioButton^  p_aktivan;
+
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
 
 
 	private:
@@ -122,7 +124,7 @@ namespace DZ3 {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->p_mirovanje = (gcnew System::Windows::Forms::RadioButton());
-			this->p_suspenzija = (gcnew System::Windows::Forms::RadioButton());
+			this->p_aktivan = (gcnew System::Windows::Forms::RadioButton());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
@@ -140,7 +142,7 @@ namespace DZ3 {
 			this->c_CBox_paket->FormattingEnabled = true;
 			this->c_CBox_paket->Location = System::Drawing::Point(110, 19);
 			this->c_CBox_paket->Name = L"c_CBox_paket";
-			this->c_CBox_paket->Size = System::Drawing::Size(172, 21);
+			this->c_CBox_paket->Size = System::Drawing::Size(152, 21);
 			this->c_CBox_paket->TabIndex = 8;
 			// 
 			// label4
@@ -155,7 +157,7 @@ namespace DZ3 {
 			// Azuriranje
 			// 
 			this->Azuriranje->AutoSize = true;
-			this->Azuriranje->Location = System::Drawing::Point(256, 480);
+			this->Azuriranje->Location = System::Drawing::Point(226, 480);
 			this->Azuriranje->Name = L"Azuriranje";
 			this->Azuriranje->Size = System::Drawing::Size(75, 23);
 			this->Azuriranje->TabIndex = 103;
@@ -173,7 +175,7 @@ namespace DZ3 {
 			this->groupbox3->Controls->Add(this->label2);
 			this->groupbox3->Location = System::Drawing::Point(13, 13);
 			this->groupbox3->Name = L"groupbox3";
-			this->groupbox3->Size = System::Drawing::Size(318, 105);
+			this->groupbox3->Size = System::Drawing::Size(288, 105);
 			this->groupbox3->TabIndex = 105;
 			this->groupbox3->TabStop = false;
 			this->groupbox3->Text = L"Osnovni podaci";
@@ -182,7 +184,7 @@ namespace DZ3 {
 			// 
 			this->c_broj_licne_karte->Location = System::Drawing::Point(111, 73);
 			this->c_broj_licne_karte->Name = L"c_broj_licne_karte";
-			this->c_broj_licne_karte->Size = System::Drawing::Size(172, 20);
+			this->c_broj_licne_karte->Size = System::Drawing::Size(151, 20);
 			this->c_broj_licne_karte->TabIndex = 16;
 			// 
 			// label8
@@ -198,14 +200,14 @@ namespace DZ3 {
 			// 
 			this->c_prezime->Location = System::Drawing::Point(111, 47);
 			this->c_prezime->Name = L"c_prezime";
-			this->c_prezime->Size = System::Drawing::Size(172, 20);
+			this->c_prezime->Size = System::Drawing::Size(151, 20);
 			this->c_prezime->TabIndex = 15;
 			// 
 			// c_ime
 			// 
 			this->c_ime->Location = System::Drawing::Point(110, 21);
 			this->c_ime->Name = L"c_ime";
-			this->c_ime->Size = System::Drawing::Size(172, 20);
+			this->c_ime->Size = System::Drawing::Size(151, 20);
 			this->c_ime->TabIndex = 14;
 			// 
 			// label3
@@ -229,7 +231,7 @@ namespace DZ3 {
 			// groupBox4
 			// 
 			this->groupBox4->Controls->Add(this->p_mirovanje);
-			this->groupBox4->Controls->Add(this->p_suspenzija);
+			this->groupBox4->Controls->Add(this->p_aktivan);
 			this->groupBox4->Location = System::Drawing::Point(13, 421);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(122, 82);
@@ -248,23 +250,23 @@ namespace DZ3 {
 			this->p_mirovanje->Text = L"Mirovanje";
 			this->p_mirovanje->UseVisualStyleBackColor = true;
 			// 
-			// p_suspenzija
+			// p_aktivan
 			// 
-			this->p_suspenzija->AutoSize = true;
-			this->p_suspenzija->Location = System::Drawing::Point(23, 49);
-			this->p_suspenzija->Name = L"p_suspenzija";
-			this->p_suspenzija->Size = System::Drawing::Size(61, 17);
-			this->p_suspenzija->TabIndex = 6;
-			this->p_suspenzija->TabStop = true;
-			this->p_suspenzija->Text = L"Aktivan";
-			this->p_suspenzija->UseVisualStyleBackColor = true;
+			this->p_aktivan->AutoSize = true;
+			this->p_aktivan->Location = System::Drawing::Point(23, 49);
+			this->p_aktivan->Name = L"p_aktivan";
+			this->p_aktivan->Size = System::Drawing::Size(61, 17);
+			this->p_aktivan->TabIndex = 6;
+			this->p_aktivan->TabStop = true;
+			this->p_aktivan->Text = L"Aktivan";
+			this->p_aktivan->UseVisualStyleBackColor = true;
 			// 
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 515);
+			this->statusStrip1->Location = System::Drawing::Point(0, 509);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(343, 22);
+			this->statusStrip1->Size = System::Drawing::Size(315, 22);
 			this->statusStrip1->TabIndex = 107;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -281,17 +283,17 @@ namespace DZ3 {
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Location = System::Drawing::Point(13, 125);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(318, 52);
+			this->groupBox1->Size = System::Drawing::Size(288, 52);
 			this->groupBox1->TabIndex = 108;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Internet paket";
 			// 
 			// kontrolaUnosKorisnika1
 			// 
-			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::Color::White;
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 183);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
-			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 232);
+			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 109;
 			// 
 			// PromjenaOsoba
@@ -299,7 +301,7 @@ namespace DZ3 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(343, 537);
+			this->ClientSize = System::Drawing::Size(315, 531);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->statusStrip1);
@@ -333,13 +335,50 @@ namespace DZ3 {
 				 c_broj_licne_karte->Text = korisnik->Broj_licne_karte ();				 				 
 				 c_CBox_paket->SelectedItem = korisnik->Naziv_paketa ();
 
+
+				 kontrolaUnosKorisnika1->setAdresa (korisnik->Adresa ());
+				 kontrolaUnosKorisnika1->setTelefon (korisnik->Telefon ());
+				 kontrolaUnosKorisnika1->setUsername (korisnik->Username ());
+				 kontrolaUnosKorisnika1->setPassword (korisnik->Password ());
+				 kontrolaUnosKorisnika1->setModem (korisnik->Modem ());
+
+				 if (korisnik->Mirovanje () == true)
+					p_mirovanje->Checked = true;
+				else
+					p_aktivan->Checked = true;
+
 			 }
 private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArgs^  e) {
+			
+			 try
+			 {
+				korisnik->Ime (c_ime->Text);
+				korisnik->Prezime (c_prezime->Text);
+				korisnik->Broj_licne_karte (c_broj_licne_karte->Text);
+				korisnik->Naziv_paketa (c_CBox_paket->SelectedItem->ToString ());
+
+				korisnik->Adresa (kontrolaUnosKorisnika1->getAdresa ());
+				korisnik->Telefon (kontrolaUnosKorisnika1->getTelefon ());
+				korisnik->Username (kontrolaUnosKorisnika1->getUsername ());
+				korisnik->Password (kontrolaUnosKorisnika1->getPassword ());
+				korisnik->Modem (kontrolaUnosKorisnika1->getModem ());
+				
+				if (p_mirovanje->Checked)
+					korisnik->Mirovanje (true);
+				else if (p_aktivan->Checked)
+					korisnik->Mirovanje (false);
 
 
+				// treba cross-validacija!!!
+				Close ();
 
-
-			 Close ();
+			 }
+			 catch (...)
+			 {
+				 // Treba napraviti bolji/e izuzetke
+				 MessageBox::Show ("Greška!");
+			 }
+			 
 		 }
 };
 }

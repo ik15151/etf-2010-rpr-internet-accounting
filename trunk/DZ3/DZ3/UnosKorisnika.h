@@ -102,6 +102,7 @@ namespace DZ3 {
 
 
 
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -154,7 +155,7 @@ namespace DZ3 {
 			// button5
 			// 
 			this->button5->AutoSize = true;
-			this->button5->Location = System::Drawing::Point(253, 443);
+			this->button5->Location = System::Drawing::Point(226, 440);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
 			this->button5->TabIndex = 1;
@@ -165,7 +166,7 @@ namespace DZ3 {
 			// Unesi
 			// 
 			this->Unesi->AutoSize = true;
-			this->Unesi->Location = System::Drawing::Point(164, 443);
+			this->Unesi->Location = System::Drawing::Point(145, 440);
 			this->Unesi->Name = L"Unesi";
 			this->Unesi->Size = System::Drawing::Size(75, 23);
 			this->Unesi->TabIndex = 0;
@@ -182,7 +183,7 @@ namespace DZ3 {
 			this->tabControl2->Location = System::Drawing::Point(12, 12);
 			this->tabControl2->Name = L"tabControl2";
 			this->tabControl2->SelectedIndex = 0;
-			this->tabControl2->Size = System::Drawing::Size(316, 128);
+			this->tabControl2->Size = System::Drawing::Size(289, 128);
 			this->tabControl2->TabIndex = 1;
 			// 
 			// tabPage1
@@ -206,7 +207,7 @@ namespace DZ3 {
 			// 
 			this->c_broj_licne_karte->Location = System::Drawing::Point(107, 65);
 			this->c_broj_licne_karte->Name = L"c_broj_licne_karte";
-			this->c_broj_licne_karte->Size = System::Drawing::Size(172, 20);
+			this->c_broj_licne_karte->Size = System::Drawing::Size(152, 20);
 			this->c_broj_licne_karte->TabIndex = 3;
 			this->c_broj_licne_karte->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_broj_licne_karte_Validating);
 			// 
@@ -223,7 +224,7 @@ namespace DZ3 {
 			// 
 			this->c_prezime->Location = System::Drawing::Point(107, 39);
 			this->c_prezime->Name = L"c_prezime";
-			this->c_prezime->Size = System::Drawing::Size(172, 20);
+			this->c_prezime->Size = System::Drawing::Size(152, 20);
 			this->c_prezime->TabIndex = 2;
 			this->c_prezime->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_prezime_Validating);
 			// 
@@ -231,7 +232,7 @@ namespace DZ3 {
 			// 
 			this->c_ime->Location = System::Drawing::Point(107, 13);
 			this->c_ime->Name = L"c_ime";
-			this->c_ime->Size = System::Drawing::Size(172, 20);
+			this->c_ime->Size = System::Drawing::Size(152, 20);
 			this->c_ime->TabIndex = 1;
 			this->c_ime->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_ime_Validating);
 			// 
@@ -264,7 +265,7 @@ namespace DZ3 {
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(308, 102);
+			this->tabPage2->Size = System::Drawing::Size(281, 102);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Firma";
 			// 
@@ -300,16 +301,16 @@ namespace DZ3 {
 			// 
 			this->c_naziv_firme->Location = System::Drawing::Point(107, 27);
 			this->c_naziv_firme->Name = L"c_naziv_firme";
-			this->c_naziv_firme->Size = System::Drawing::Size(172, 20);
+			this->c_naziv_firme->Size = System::Drawing::Size(152, 20);
 			this->c_naziv_firme->TabIndex = 0;
 			this->c_naziv_firme->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_naziv_firme_Validating);
 			// 
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 477);
+			this->statusStrip1->Location = System::Drawing::Point(0, 475);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(342, 22);
+			this->statusStrip1->Size = System::Drawing::Size(316, 22);
 			this->statusStrip1->TabIndex = 100;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -331,7 +332,7 @@ namespace DZ3 {
 			this->cmbBoxPaket->FormattingEnabled = true;
 			this->cmbBoxPaket->Location = System::Drawing::Point(111, 19);
 			this->cmbBoxPaket->Name = L"cmbBoxPaket";
-			this->cmbBoxPaket->Size = System::Drawing::Size(172, 21);
+			this->cmbBoxPaket->Size = System::Drawing::Size(152, 21);
 			this->cmbBoxPaket->TabIndex = 15;
 			// 
 			// lbPaket
@@ -349,17 +350,17 @@ namespace DZ3 {
 			this->groupBox1->Controls->Add(this->lbPaket);
 			this->groupBox1->Location = System::Drawing::Point(12, 147);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(316, 52);
+			this->groupBox1->Size = System::Drawing::Size(289, 52);
 			this->groupBox1->TabIndex = 102;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Internet paket";
 			// 
 			// kontrolaUnosKorisnika1
 			// 
-			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::Color::White;
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 205);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
-			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 232);
+			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 103;
 			// 
 			// UnosKorisnika
@@ -368,7 +369,7 @@ namespace DZ3 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoValidate = System::Windows::Forms::AutoValidate::EnablePreventFocusChange;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(342, 499);
+			this->ClientSize = System::Drawing::Size(316, 497);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->statusStrip1);
@@ -451,14 +452,16 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 		try
 		{
+			//da baca excection ili nes drugo ako ne valja ime, prez...
+
 			kontrolaUnosKorisnika1->setAdresa ();
 			 kontrolaUnosKorisnika1->setTelefon ();
 			 kontrolaUnosKorisnika1->setUsername ();
-			 /*
+			 
 			for each (Korisnik ^k in korisnici)
-				if (c_username->Text == k->Username ())
-					throw "Isti username!";
-			*/
+				if (kontrolaUnosKorisnika1->getUsername () == k->Username ())
+					throw "Username zauzet; morate odabrati drugi.";
+			
 			 kontrolaUnosKorisnika1->setPassword ();
 			 kontrolaUnosKorisnika1->setModem ();
 			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
@@ -475,7 +478,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				c_broj_licne_karte->Clear ();
 				cmbBoxPaket->SelectedIndex = -1;
 
-				MessageBox::Show ("Uspješno ste unijeli podatke o osobi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				//MessageBox::Show ("Uspješno ste unijeli podatke o osobi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 			 }
 			 if (tabControl2->SelectedIndex == 1)
@@ -488,16 +491,15 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				c_PDV_broj->Clear (); 
 				cmbBoxPaket->SelectedIndex = -1;
 
-				MessageBox::Show ("Uspješno ste unijeli podatke o firmi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				//MessageBox::Show ("Uspješno ste unijeli podatke o firmi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			 }
 		}
-		catch (...)
+		catch (...) // ovdje bih mogla My exception da uhvatim dio o username
 		 {
 			 toolStripStatusLabel1->ForeColor = Color::Red;
 			 toolStripStatusLabel1->Text = "Podaci nisu spašeni zbog pogrešnog unosa.";
 			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Unos korisnika", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
-		 }
-		 
+		 } 
 	
 
 
