@@ -99,6 +99,7 @@ namespace DZ3 {
 
 
 
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -263,6 +264,7 @@ namespace DZ3 {
 			// 
 			// statusStrip1
 			// 
+			this->statusStrip1->BackColor = System::Drawing::SystemColors::Window;
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
 			this->statusStrip1->Location = System::Drawing::Point(0, 509);
 			this->statusStrip1->Name = L"statusStrip1";
@@ -290,8 +292,8 @@ namespace DZ3 {
 			// 
 			// kontrolaUnosKorisnika1
 			// 
-			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 183);
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::Control;
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 184);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 109;
@@ -300,7 +302,7 @@ namespace DZ3 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(315, 531);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);

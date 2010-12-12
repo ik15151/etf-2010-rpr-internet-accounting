@@ -234,6 +234,7 @@ namespace DZ3 {
 			// 
 			// listViewFirma
 			// 
+			this->listViewFirma->Activation = System::Windows::Forms::ItemActivation::OneClick;
 			this->listViewFirma->AllowColumnReorder = true;
 			this->listViewFirma->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(8) {this->columnHeader1, 
 				this->columnHeader2, this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, 
@@ -332,8 +333,7 @@ namespace DZ3 {
 			// 
 			this->cbx_pretrazivanje->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_pretrazivanje->FormattingEnabled = true;
-			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Username", L"Ime osobe", L"Naziv firme", 
-				L"Aktivni raèuni", L"Zamrznuti raèuni", L"Suspendovani raèuni"});
+			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Ime osobe", L"Naziv firme"});
 			this->cbx_pretrazivanje->Location = System::Drawing::Point(106, 19);
 			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
 			this->cbx_pretrazivanje->Size = System::Drawing::Size(157, 21);
@@ -351,6 +351,7 @@ namespace DZ3 {
 			// unos_pretrazivanje
 			// 
 			this->unos_pretrazivanje->AllowDrop = true;
+			this->unos_pretrazivanje->BackColor = System::Drawing::SystemColors::Window;
 			this->unos_pretrazivanje->Location = System::Drawing::Point(339, 19);
 			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
 			this->unos_pretrazivanje->Size = System::Drawing::Size(173, 20);

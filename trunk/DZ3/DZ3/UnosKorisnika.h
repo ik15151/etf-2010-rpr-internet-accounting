@@ -103,6 +103,9 @@ namespace DZ3 {
 
 
 
+
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -188,7 +191,7 @@ namespace DZ3 {
 			// 
 			// tabPage1
 			// 
-			this->tabPage1->BackColor = System::Drawing::Color::White;
+			this->tabPage1->BackColor = System::Drawing::SystemColors::Control;
 			this->tabPage1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->tabPage1->Controls->Add(this->c_broj_licne_karte);
 			this->tabPage1->Controls->Add(this->label8);
@@ -256,7 +259,7 @@ namespace DZ3 {
 			// 
 			// tabPage2
 			// 
-			this->tabPage2->BackColor = System::Drawing::Color::White;
+			this->tabPage2->BackColor = System::Drawing::SystemColors::Control;
 			this->tabPage2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->tabPage2->Controls->Add(this->c_PDV_broj);
 			this->tabPage2->Controls->Add(this->label9);
@@ -307,10 +310,11 @@ namespace DZ3 {
 			// 
 			// statusStrip1
 			// 
+			this->statusStrip1->BackColor = System::Drawing::SystemColors::Window;
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 475);
+			this->statusStrip1->Location = System::Drawing::Point(0, 474);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(316, 22);
+			this->statusStrip1->Size = System::Drawing::Size(314, 22);
 			this->statusStrip1->TabIndex = 100;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -358,7 +362,7 @@ namespace DZ3 {
 			// 
 			// kontrolaUnosKorisnika1
 			// 
-			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::Control;
 			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 205);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
@@ -369,8 +373,8 @@ namespace DZ3 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoValidate = System::Windows::Forms::AutoValidate::EnablePreventFocusChange;
-			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(316, 497);
+			this->BackColor = System::Drawing::SystemColors::Control;
+			this->ClientSize = System::Drawing::Size(314, 496);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->statusStrip1);
@@ -397,6 +401,23 @@ namespace DZ3 {
 		}
 #pragma endregion
 
+private:
+	void PostaviIme ()
+	{
+		// ne smiju biti brojevi u imenu
+		 if (c_ime->Text->Length < 3)
+		 {
+			 c_ime->Focus ();
+			 toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
+			 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
+		 }
+		 else
+		 {
+			errorProvider1->Clear ();
+			toolStripStatusLabel1->Text = "";
+		 }
+	}
+
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			Close ();
  }
@@ -405,19 +426,35 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 		try
 		{
-			//da baca excection ili nes drugo ako ne valja ime, prez...
+			CancelEventArgs ^cea;
 
-			kontrolaUnosKorisnika1->setAdresa ();
+			 if (tabControl2->SelectedIndex == 0)
+			 {
+				 PostaviIme ();
+				 if (!errorProvider1->GetError (c_ime))
+					 throw errorProvider1->GetError (c_ime);
+			 }
+			 if (tabControl2->SelectedIndex == 1)
+			 {
+				 // naziv, PDV
+			 }
+				
+			// treba i paket
+			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
+
+
+			 kontrolaUnosKorisnika1->setAdresa ();
 			 kontrolaUnosKorisnika1->setTelefon ();
 			 kontrolaUnosKorisnika1->setUsername ();
 			 
-			for each (Korisnik ^k in korisnici)
+			 for each (Korisnik ^k in korisnici)
 				if (kontrolaUnosKorisnika1->getUsername () == k->Username ())
-					throw "Username zauzet; morate odabrati drugi.";
+					throw "Username veæ zauzet.";
 			
-			 kontrolaUnosKorisnika1->setPassword ();
-			 kontrolaUnosKorisnika1->setModem ();
-			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
+			 kontrolaUnosKorisnika1->setPassword ();			 
+
+			 
+		     // Ako je sve uredu:
 
 			 if (tabControl2->SelectedIndex == 0)
 			 {
@@ -430,9 +467,6 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				c_prezime->Clear (); 
 				c_broj_licne_karte->Clear ();
 				cmbBoxPaket->SelectedIndex = -1;
-
-				//MessageBox::Show ("Uspješno ste unijeli podatke o osobi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
 			 }
 			 if (tabControl2->SelectedIndex == 1)
 			 {
@@ -443,33 +477,19 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				c_naziv_firme->Clear (); 
 				c_PDV_broj->Clear (); 
 				cmbBoxPaket->SelectedIndex = -1;
-
-				//MessageBox::Show ("Uspješno ste unijeli podatke o firmi.", "Unos korisnika", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			 }
 		}
-		catch (...) // ovdje bih mogla My exception da uhvatim dio o username
+		catch (Exception ^e) // ovdje bih mogla My exception da uhvatim dio o username
 		 {
-			 toolStripStatusLabel1->ForeColor = Color::Red;
-			 toolStripStatusLabel1->Text = "Podaci nisu spašeni zbog pogrešnog unosa.";
-			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Unos korisnika", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
+			 toolStripStatusLabel1->Text = e->ToString ();
+			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
 		 } 
 
 }
 
 private: System::Void c_ime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 		 
-	// ne smiju biti brojevi u imenu
-		 if (c_ime->Text->Length < 3)
-		 {
-			 c_ime->Focus ();
-			 toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
-			 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
-		 }
-		 else
-		 {
-			errorProvider1->Clear ();
-			toolStripStatusLabel1->Text = "";
-		 }
+			PostaviIme ();
 
 }
 private: System::Void c_prezime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
@@ -509,8 +529,6 @@ private: System::Void c_broj_licne_karte_Validating(System::Object^  sender, Sys
 				 wchar_t sedmo = c_broj_licne_karte->Text [6];
 				 wchar_t osmo = c_broj_licne_karte->Text [7];
 				 wchar_t deveto = c_broj_licne_karte->Text [8];		
-
-				 // Mora se ispitati da li su 3., 4., i 5. slova!
 				
 				 if ((prvo < '0' || drugo < '0' || sesto < '0' || sedmo < '0' || osmo < '0' || deveto < '0')  || (prvo > '9' || drugo > '9' || sesto > '9' || sedmo > '9' || osmo > '9' || deveto > '9') )
 				 {
@@ -518,12 +536,14 @@ private: System::Void c_broj_licne_karte_Validating(System::Object^  sender, Sys
 					toolStripStatusLabel1->Text = "Format broja liène karte: 2 slova + 3 slova + 4 broja.";
 					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte: 2 slova + 3 slova + 4 broja.");
 				 }
-			 }
-			else 
+				  // Mora se ispitati da li su 3., 4., i 5. slova!
+				 else 
 				 {
 					errorProvider1->Clear ();
 					toolStripStatusLabel1->Text = "";
 				 }
+			 }
+			
 			 			 
 
 		 }

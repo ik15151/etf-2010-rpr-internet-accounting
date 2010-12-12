@@ -197,9 +197,9 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 							 k->Suspenzija (false);
 					 }
 					 placeno = true;
+					 cBoxkorisnici->Items->RemoveAt (cBoxkorisnici->SelectedIndex);
 					 cBoxkorisnici->SelectedIndex = -1;
 					 t_mjesec->SelectedIndex = -1;
-					 //treba izbaciti korisnika koji je platio
 					 return;
 				 }
 			 }

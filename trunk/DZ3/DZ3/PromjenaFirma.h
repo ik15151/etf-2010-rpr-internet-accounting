@@ -92,10 +92,11 @@ namespace DZ3 {
 
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
-	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::ComboBox^  c_CBox_paket;
 	private: System::Windows::Forms::Label^  label4;
+	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
 
 	private:
 		/// <summary>
@@ -121,10 +122,10 @@ namespace DZ3 {
 			this->Azuriranje = (gcnew System::Windows::Forms::Button());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
-			this->kontrolaUnosKorisnika1 = (gcnew KontrolaUnos::KontrolaUnosKorisnika());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->c_CBox_paket = (gcnew System::Windows::Forms::ComboBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->kontrolaUnosKorisnika1 = (gcnew KontrolaUnos::KontrolaUnosKorisnika());
 			this->groupBox4->SuspendLayout();
 			this->groupbox3->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
@@ -222,7 +223,7 @@ namespace DZ3 {
 			// 
 			// statusStrip1
 			// 
-			this->statusStrip1->BackColor = System::Drawing::SystemColors::Control;
+			this->statusStrip1->BackColor = System::Drawing::SystemColors::Window;
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
 			this->statusStrip1->Location = System::Drawing::Point(0, 483);
 			this->statusStrip1->Name = L"statusStrip1";
@@ -235,14 +236,6 @@ namespace DZ3 {
 			this->toolStripStatusLabel1->ForeColor = System::Drawing::Color::Red;
 			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
 			this->toolStripStatusLabel1->Size = System::Drawing::Size(0, 17);
-			// 
-			// kontrolaUnosKorisnika1
-			// 
-			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::Color::White;
-			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(-1, 157);
-			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
-			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(342, 232);
-			this->kontrolaUnosKorisnika1->TabIndex = 116;
 			// 
 			// groupBox1
 			// 
@@ -274,11 +267,19 @@ namespace DZ3 {
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Paket:";
 			// 
+			// kontrolaUnosKorisnika1
+			// 
+			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::Control;
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 158);
+			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
+			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
+			this->kontrolaUnosKorisnika1->TabIndex = 116;
+			// 
 			// PromjenaFirma
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(314, 505);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
