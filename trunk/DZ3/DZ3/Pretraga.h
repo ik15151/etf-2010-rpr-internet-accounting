@@ -1,7 +1,7 @@
 #pragma once
 #include "PromjenaOsoba.h"
 #include "PromjenaFirma.h"
-#include "Korisnik.h"
+//#include "Korisnik.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 
@@ -36,14 +36,15 @@ namespace DZ3 {
 			//
 		}
 
-		Pretraga(ArrayList ^k, ArrayList ^r)
+		Pretraga(ArrayList ^k, ArrayList ^p)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
 			korisnici = k;
-			//racuni = r;
+			paketi = p;
+			
 		}
 
 	protected:
@@ -60,8 +61,10 @@ namespace DZ3 {
 
 	private:
 		ArrayList ^korisnici;
+		ArrayList ^paketi;
+
 	private: System::Windows::Forms::ListView^  listViewOsoba;
-			 //ArrayList ^racuni;
+			
 
 
 
@@ -178,10 +181,10 @@ namespace DZ3 {
 				this->columnHeader29, this->columnHeader30});
 			this->listViewOsoba->FullRowSelect = true;
 			this->listViewOsoba->GridLines = true;
-			this->listViewOsoba->Location = System::Drawing::Point(18, 109);
+			this->listViewOsoba->Location = System::Drawing::Point(12, 106);
 			this->listViewOsoba->MultiSelect = false;
 			this->listViewOsoba->Name = L"listViewOsoba";
-			this->listViewOsoba->Size = System::Drawing::Size(654, 213);
+			this->listViewOsoba->Size = System::Drawing::Size(657, 213);
 			this->listViewOsoba->Sorting = System::Windows::Forms::SortOrder::Descending;
 			this->listViewOsoba->TabIndex = 0;
 			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
@@ -238,13 +241,14 @@ namespace DZ3 {
 				this->columnHeader8});
 			this->listViewFirma->FullRowSelect = true;
 			this->listViewFirma->GridLines = true;
-			this->listViewFirma->Location = System::Drawing::Point(18, 347);
+			this->listViewFirma->Location = System::Drawing::Point(12, 347);
 			this->listViewFirma->MultiSelect = false;
 			this->listViewFirma->Name = L"listViewFirma";
 			this->listViewFirma->Size = System::Drawing::Size(657, 214);
 			this->listViewFirma->TabIndex = 1;
 			this->listViewFirma->UseCompatibleStateImageBehavior = false;
 			this->listViewFirma->View = System::Windows::Forms::View::Details;
+			this->listViewFirma->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewFirma_ItemActivate);
 			// 
 			// columnHeader1
 			// 
@@ -286,7 +290,7 @@ namespace DZ3 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 93);
+			this->label1->Location = System::Drawing::Point(9, 90);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(174, 13);
 			this->label1->TabIndex = 2;
@@ -295,7 +299,7 @@ namespace DZ3 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 331);
+			this->label2->Location = System::Drawing::Point(9, 331);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(177, 13);
 			this->label2->TabIndex = 3;
@@ -366,7 +370,7 @@ namespace DZ3 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(687, 573);
+			this->ClientSize = System::Drawing::Size(682, 573);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -541,11 +545,32 @@ private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System
 			 for (int i = 0; i < listViewOsoba->Items->Count; i++)
 				if (listViewOsoba->Items[i]->Selected == true)	
 				{
-					PromjenaOsoba ^po = gcnew PromjenaOsoba ();
-					po->ShowDialog ();
+					for each (Korisnik ^k in korisnici)
+						if (k->Username () == listViewOsoba->Items[i]->Text)
+						{
+							KorisnikOsoba ^korisnik = dynamic_cast <KorisnikOsoba ^> (k);
+							PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi);
+							po->ShowDialog ();
+							return;
+						}
+				}
+			 
+		 }
+private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System::EventArgs^  e) {
+			 
+			 for (int i = 0; i < listViewFirma->Items->Count; i++)
+				if (listViewFirma->Items[i]->Selected == true)	
+				{
+					for each (Korisnik ^k in korisnici)
+						if (k->Username () == listViewFirma->Items[i]->Text)
+						{
+							KorisnikFirma ^korisnik = dynamic_cast <KorisnikFirma ^> (k);
+							PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi);
+							pf->ShowDialog ();
+							return;
+						}
 				}
 
-			 
 		 }
 };
 }

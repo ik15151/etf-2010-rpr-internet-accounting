@@ -369,7 +369,7 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 
 private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-			 Pretraga ^p = gcnew Pretraga (korisnici, racuni);
+			 Pretraga ^p = gcnew Pretraga (korisnici, paketi);
 			 p->Show ();
 		 }
 private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {

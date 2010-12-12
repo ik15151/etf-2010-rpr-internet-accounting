@@ -1,5 +1,6 @@
 #pragma once
 #include "KorisnikOsoba.h"
+#include "Paket.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -31,18 +32,17 @@ namespace DZ3 {
 			//
 		}
 
-		/*
-		PromjenaOsoba(KorisnikOsoba ^k)
+		
+		PromjenaOsoba(KorisnikOsoba ^k, ArrayList ^p)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			korisnik = gcnew KorisnikOsoba ();
 			korisnik = k;	
+			paketi = p;
 			
 		}
-		*/
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -56,7 +56,8 @@ namespace DZ3 {
 		}
 
 	private:
-		//KorisnikOsoba ^korisnik;
+		KorisnikOsoba ^korisnik;
+		ArrayList ^paketi;
 
 
 	protected: 
@@ -66,11 +67,13 @@ namespace DZ3 {
 
 
 	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Button^  Izlaz;
+
+	private: System::Windows::Forms::Button^  Azuriranje;
 
 
 
-	private: System::Windows::Forms::Button^  Unos;
+
+
 
 
 
@@ -109,8 +112,7 @@ namespace DZ3 {
 		{
 			this->c_CBox_paket = (gcnew System::Windows::Forms::ComboBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->Izlaz = (gcnew System::Windows::Forms::Button());
-			this->Unos = (gcnew System::Windows::Forms::Button());
+			this->Azuriranje = (gcnew System::Windows::Forms::Button());
 			this->groupbox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->c_broj_licne_karte = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
@@ -150,25 +152,16 @@ namespace DZ3 {
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Paket:";
 			// 
-			// Izlaz
+			// Azuriranje
 			// 
-			this->Izlaz->AutoSize = true;
-			this->Izlaz->Location = System::Drawing::Point(256, 509);
-			this->Izlaz->Name = L"Izlaz";
-			this->Izlaz->Size = System::Drawing::Size(75, 23);
-			this->Izlaz->TabIndex = 104;
-			this->Izlaz->Text = L"Izlaz";
-			this->Izlaz->UseVisualStyleBackColor = true;
-			// 
-			// Unos
-			// 
-			this->Unos->AutoSize = true;
-			this->Unos->Location = System::Drawing::Point(175, 509);
-			this->Unos->Name = L"Unos";
-			this->Unos->Size = System::Drawing::Size(75, 23);
-			this->Unos->TabIndex = 103;
-			this->Unos->Text = L"Unos";
-			this->Unos->UseVisualStyleBackColor = true;
+			this->Azuriranje->AutoSize = true;
+			this->Azuriranje->Location = System::Drawing::Point(256, 480);
+			this->Azuriranje->Name = L"Azuriranje";
+			this->Azuriranje->Size = System::Drawing::Size(75, 23);
+			this->Azuriranje->TabIndex = 103;
+			this->Azuriranje->Text = L"Ažuriranje";
+			this->Azuriranje->UseVisualStyleBackColor = true;
+			this->Azuriranje->Click += gcnew System::EventHandler(this, &PromjenaOsoba::Azuriranje_Click);
 			// 
 			// groupbox3
 			// 
@@ -269,7 +262,7 @@ namespace DZ3 {
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 542);
+			this->statusStrip1->Location = System::Drawing::Point(0, 515);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(343, 22);
 			this->statusStrip1->TabIndex = 107;
@@ -306,17 +299,17 @@ namespace DZ3 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(343, 564);
+			this->ClientSize = System::Drawing::Size(343, 537);
 			this->Controls->Add(this->kontrolaUnosKorisnika1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupbox3);
-			this->Controls->Add(this->Izlaz);
-			this->Controls->Add(this->Unos);
+			this->Controls->Add(this->Azuriranje);
 			this->MaximizeBox = false;
 			this->Name = L"PromjenaOsoba";
 			this->Text = L"Promjena podataka o fizièkom licu";
+			this->Load += gcnew System::EventHandler(this, &PromjenaOsoba::PromjenaOsoba_Load);
 			this->groupbox3->ResumeLayout(false);
 			this->groupbox3->PerformLayout();
 			this->groupBox4->ResumeLayout(false);
@@ -330,5 +323,23 @@ namespace DZ3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void PromjenaOsoba_Load(System::Object^  sender, System::EventArgs^  e) {
+				 
+				 for each (Paket ^p in paketi)
+					 c_CBox_paket->Items->Add (p->Naziv_paketa ());
+
+				 c_ime->Text = korisnik->Ime ();
+				 c_prezime->Text = korisnik->Prezime ();
+				 c_broj_licne_karte->Text = korisnik->Broj_licne_karte ();				 				 
+				 c_CBox_paket->SelectedItem = korisnik->Naziv_paketa ();
+
+			 }
+private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+
+
+			 Close ();
+		 }
+};
 }
