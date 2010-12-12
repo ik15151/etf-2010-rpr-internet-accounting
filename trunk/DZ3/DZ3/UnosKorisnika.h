@@ -402,7 +402,7 @@ namespace DZ3 {
 #pragma endregion
 
 private:
-	void PostaviIme ()
+	bool PostaviIme ()
 	{
 		// ne smiju biti brojevi u imenu
 		 if (c_ime->Text->Length < 3)
@@ -410,13 +410,131 @@ private:
 			 c_ime->Focus ();
 			 toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
 			 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
+			 return false;
 		 }
 		 else
 		 {
 			errorProvider1->Clear ();
 			toolStripStatusLabel1->Text = "";
+			return true;
 		 }
 	}
+
+	bool PostaviPrezime ()
+	{
+		// ne smiju biti brojevi u prezimenu
+		 if (c_prezime->Text->Length < 3)
+		 {
+			 c_prezime->Focus ();
+			 toolStripStatusLabel1->Text = "Prezime ne smije sadržavati manje od 3 slova.";
+			 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");	
+			 return false;
+		 }			
+		else
+		 {
+			errorProvider1->Clear ();
+			toolStripStatusLabel1->Text = "";
+			return true;
+		 }	
+	}
+
+	bool PostaviLicnu ()
+	{
+		 if (c_broj_licne_karte->Text->Length < 9)
+			 {
+				 c_broj_licne_karte->Focus ();
+				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
+				 return false;
+			 }
+			else if (c_broj_licne_karte->Text->Length > 9)
+			 {
+				 c_broj_licne_karte->Focus ();
+				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
+				 return false;
+			 }
+			else if (c_broj_licne_karte->Text->Length == 9)
+			 {
+				 wchar_t prvo = c_broj_licne_karte->Text [0];
+				 wchar_t drugo = c_broj_licne_karte->Text [1];
+				 wchar_t sesto = c_broj_licne_karte->Text [5];
+				 wchar_t sedmo = c_broj_licne_karte->Text [6];
+				 wchar_t osmo = c_broj_licne_karte->Text [7];
+				 wchar_t deveto = c_broj_licne_karte->Text [8];		
+				
+				 if ((prvo < '0' || drugo < '0' || sesto < '0' || sedmo < '0' || osmo < '0' || deveto < '0')  || (prvo > '9' || drugo > '9' || sesto > '9' || sedmo > '9' || osmo > '9' || deveto > '9') )
+				 {
+					c_broj_licne_karte->Focus ();
+					toolStripStatusLabel1->Text = "Format broja liène karte: 2 slova + 3 slova + 4 broja.";
+					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte: 2 slova + 3 slova + 4 broja.");
+					return false;
+				 }
+				  // Mora se ispitati da li su 3., 4., i 5. slova!
+				 else 
+				 {
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;
+				 }
+			 }
+		}
+
+
+		bool PostaviNaziv ()
+		{
+
+			//ovdje se mora ispitati da ne bude brojeva u nazivu
+			 if (c_naziv_firme->Text->Length < 3)
+			 {
+				toolStripStatusLabel1->Text = "Naziv firme ne može imati manje od tri slova.";
+				errorProvider1->SetError (c_naziv_firme, "Naziv firme ne može imati manje od tri slova.");
+				c_naziv_firme->Focus ();
+				return false;
+			 }
+			 else 
+			 {
+				errorProvider1->Clear ();
+				toolStripStatusLabel1->Text = "";
+				return true;
+			 }
+		}
+
+		bool PostaviPDV ()
+		{
+			if (c_PDV_broj->Text->Length < 12)
+			 {
+				c_PDV_broj->Focus ();
+				toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
+				errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
+				return false;
+			 }
+			 else 
+			 {
+				errorProvider1->Clear ();
+				toolStripStatusLabel1->Text = "";
+				return true;
+			 }
+		}
+
+		bool PostaviPaket ()
+		{
+			if (cmbBoxPaket->SelectedIndex == -1)
+			 {
+				 cmbBoxPaket->Focus ();
+				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
+				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
+				 return false;
+			 }
+			 else
+			 {
+				errorProvider1->Clear ();
+				toolStripStatusLabel1->Text = "";
+				return true;
+			 }
+		}
+
+
 
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			Close ();
@@ -426,22 +544,33 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 		try
 		{
-			CancelEventArgs ^cea;
-
+		
 			 if (tabControl2->SelectedIndex == 0)
 			 {
-				 PostaviIme ();
-				 if (!errorProvider1->GetError (c_ime))
+				 if (!PostaviIme ())
 					 throw errorProvider1->GetError (c_ime);
+
+				 if (!PostaviPrezime ())
+					 throw errorProvider1->GetError (c_prezime);
+
+				 if (!PostaviLicnu ())
+					 throw errorProvider1->GetError (c_broj_licne_karte);				 
+
 			 }
 			 if (tabControl2->SelectedIndex == 1)
 			 {
-				 // naziv, PDV
+				 if (!PostaviNaziv ())
+					 throw errorProvider1->GetError (c_naziv_firme);
+
+				 if (!PostaviPDV ())
+					 throw errorProvider1->GetError (c_PDV_broj);
+
 			 }
 				
-			// treba i paket
-			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
+			 if (!PostaviPaket ())
+					 throw errorProvider1->GetError (cmbBoxPaket);
 
+			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
 
 			 kontrolaUnosKorisnika1->setAdresa ();
 			 kontrolaUnosKorisnika1->setTelefon ();
@@ -479,122 +608,38 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				cmbBoxPaket->SelectedIndex = -1;
 			 }
 		}
-		catch (Exception ^e) // ovdje bih mogla My exception da uhvatim dio o username
+		catch (...) // ovdje bih mogla My exception da uhvatim dio o username
 		 {
-			 toolStripStatusLabel1->Text = e->ToString ();
+			 //toolStripStatusLabel1->Text = e->ToString ();
 			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
 		 } 
 
 }
 
 private: System::Void c_ime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-		 
-			PostaviIme ();
-
-}
+		 	PostaviIme ();
+		}
 private: System::Void c_prezime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			// ne smiju biti brojevi u prezimenu
-			 if (c_prezime->Text->Length < 3)
-			 {
-				 c_prezime->Focus ();
-				 toolStripStatusLabel1->Text = "Prezime ne smije sadržavati manje od 3 slova.";
-				 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");				
-			 }			
-			else
-			 {
-				errorProvider1->Clear ();
-				toolStripStatusLabel1->Text = "";
-			 }		
-			
-
- }
+			PostaviPrezime ();	
+		 }
 private: System::Void c_broj_licne_karte_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (c_broj_licne_karte->Text->Length < 9)
-			 {
-				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
-			 }
-			else if (c_broj_licne_karte->Text->Length > 9)
-			 {
-				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
-			 }
-			else if (c_broj_licne_karte->Text->Length == 9)
-			 {
-				 wchar_t prvo = c_broj_licne_karte->Text [0];
-				 wchar_t drugo = c_broj_licne_karte->Text [1];
-				 wchar_t sesto = c_broj_licne_karte->Text [5];
-				 wchar_t sedmo = c_broj_licne_karte->Text [6];
-				 wchar_t osmo = c_broj_licne_karte->Text [7];
-				 wchar_t deveto = c_broj_licne_karte->Text [8];		
-				
-				 if ((prvo < '0' || drugo < '0' || sesto < '0' || sedmo < '0' || osmo < '0' || deveto < '0')  || (prvo > '9' || drugo > '9' || sesto > '9' || sedmo > '9' || osmo > '9' || deveto > '9') )
-				 {
-					c_broj_licne_karte->Focus ();
-					toolStripStatusLabel1->Text = "Format broja liène karte: 2 slova + 3 slova + 4 broja.";
-					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte: 2 slova + 3 slova + 4 broja.");
-				 }
-				  // Mora se ispitati da li su 3., 4., i 5. slova!
-				 else 
-				 {
-					errorProvider1->Clear ();
-					toolStripStatusLabel1->Text = "";
-				 }
-			 }
-			
-			 			 
-
+			 PostaviLicnu ();
 		 }
 private: System::Void c_naziv_firme_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
  
-			 //ovdje se mora ispitati da ne bude brojeva u nazivu
-			 if (c_naziv_firme->Text->Length < 3)
-			 {
-				toolStripStatusLabel1->Text = "Naziv firme ne može imati manje od tri slova.";
-				errorProvider1->SetError (c_naziv_firme, "Naziv firme ne može imati manje od tri slova.");
-				c_naziv_firme->Focus ();
-			 }
-			 else 
-			 {
-				errorProvider1->Clear ();
-				toolStripStatusLabel1->Text = "";
-			 }
-}
-private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (c_PDV_broj->Text->Length < 12)
-			 {
-				c_PDV_broj->Focus ();
-				toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
-				errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
-			 }
-			 else 
-			 {
-				errorProvider1->Clear ();
-				toolStripStatusLabel1->Text = "";
-			 }
+			PostaviNaziv ();
 		 }
-
+private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 PostaviPDV ();
+		 }
 private: System::Void cmbBoxPaket_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (cmbBoxPaket->SelectedIndex == -1)
-			 {
-				 cmbBoxPaket->Focus ();
-				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
-				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
-			 }
-			 else
-			 {
-				errorProvider1->Clear ();
-				toolStripStatusLabel1->Text = "";
-			 }
-}
+			 PostaviPaket ();
+		}
 
 private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventArgs^  e) {
 			 for each (Paket ^p in paketi)
 				cmbBoxPaket->Items->Add (p->Naziv_paketa ());
 		 }
-
 
 private: System::Void kontrolaUnosKorisnika1_MouseMove_2(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 			
