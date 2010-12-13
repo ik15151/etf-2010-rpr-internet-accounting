@@ -3,7 +3,10 @@
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 #include "Paket.h"
-
+#include "IzuzetakAdresa.h"
+#include "IzuzetakTelefon.h"
+#include "IzuzetakUsername.h"
+#include "IzuzetakPassword.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -93,6 +96,7 @@ namespace DZ3 {
 
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+
 
 
 
@@ -544,43 +548,75 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 		try
 		{
-		
 			 if (tabControl2->SelectedIndex == 0)
 			 {
 				 if (!PostaviIme ())
-					 throw errorProvider1->GetError (c_ime);
+					 throw gcnew Exception (errorProvider1->GetError (c_ime));
 
 				 if (!PostaviPrezime ())
-					 throw errorProvider1->GetError (c_prezime);
+					 throw gcnew Exception (errorProvider1->GetError (c_prezime));
 
 				 if (!PostaviLicnu ())
-					 throw errorProvider1->GetError (c_broj_licne_karte);				 
+					 throw gcnew Exception (errorProvider1->GetError (c_broj_licne_karte));				 
 
 			 }
 			 if (tabControl2->SelectedIndex == 1)
 			 {
 				 if (!PostaviNaziv ())
-					 throw errorProvider1->GetError (c_naziv_firme);
+					 throw gcnew Exception (errorProvider1->GetError (c_naziv_firme));
 
 				 if (!PostaviPDV ())
-					 throw errorProvider1->GetError (c_PDV_broj);
+					 throw gcnew Exception (errorProvider1->GetError (c_PDV_broj));
 
 			 }
+			 
 				
 			 if (!PostaviPaket ())
-					 throw errorProvider1->GetError (cmbBoxPaket);
-
+					 //throw errorProvider1->GetError (cmbBoxPaket);
+					 throw gcnew Exception ("Ne valja paket");
+			
+			 
 			 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
 
-			 kontrolaUnosKorisnika1->setAdresa ();
-			 kontrolaUnosKorisnika1->setTelefon ();
-			 kontrolaUnosKorisnika1->setUsername ();
+			 try
+			 {
+				kontrolaUnosKorisnika1->setAdresa ();
+			 }
+			 catch (...)
+			 {
+				 throw gcnew IzuzetakAdresa ("Adresa mora sadržavati najmanje 5 znakova.");
+			 }
+			 try 
+			 {
+				kontrolaUnosKorisnika1->setTelefon ();
+			 }
+			 catch (...)
+			 {
+				throw gcnew IzuzetakTelefon ("Telefon mora imati najmanje 6 cifara.");
+			 }
+
+			 try 
+			 {
+				kontrolaUnosKorisnika1->setUsername ();
+			 }
+			 catch (...)
+			 {
+				throw gcnew IzuzetakUsername ("Username mora imati najmanje 5 znakova.");
+			 }
+			 
 			 
 			 for each (Korisnik ^k in korisnici)
 				if (kontrolaUnosKorisnika1->getUsername () == k->Username ())
-					throw "Username veæ zauzet.";
+					throw gcnew IzuzetakUsername ("Username veæ zauzet!");
 			
-			 kontrolaUnosKorisnika1->setPassword ();			 
+			 try 
+			 {
+				kontrolaUnosKorisnika1->setPassword ();
+			 }
+			 catch (...)
+			 {
+				throw gcnew IzuzetakPassword ("Password mora imati najmanje 5 znakova.");
+			 }		 			 
 
 			 
 		     // Ako je sve uredu:
@@ -607,12 +643,36 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				c_PDV_broj->Clear (); 
 				cmbBoxPaket->SelectedIndex = -1;
 			 }
+		} 
+		 
+		catch (IzuzetakAdresa ^ia)
+		{
+			toolStripStatusLabel1->Text = ia->Message;
+			MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		catch (...) // ovdje bih mogla My exception da uhvatim dio o username
+		catch (IzuzetakTelefon ^it)
+		{
+			toolStripStatusLabel1->Text = it->Message;
+			MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (IzuzetakUsername ^iu)
+		{
+			toolStripStatusLabel1->Text = iu->Message;
+			MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (IzuzetakPassword ^ip)
+		{
+			toolStripStatusLabel1->Text = ip->Message;
+			MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (Exception ^pex) // ovdje bih mogla My exception da uhvatim dio o username
 		 {
-			 //toolStripStatusLabel1->Text = e->ToString ();
-			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OKCancel, MessageBoxIcon::Error);
+			 //toolStripStatusLabel1->Text = pex->Message;		 
+			 
+			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		 } 
+		catch (...)
+		{}
 
 }
 

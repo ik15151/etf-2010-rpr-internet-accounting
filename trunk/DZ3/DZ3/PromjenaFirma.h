@@ -98,6 +98,7 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label4;
 	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
 
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -270,7 +271,7 @@ namespace DZ3 {
 			// kontrolaUnosKorisnika1
 			// 
 			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::Control;
-			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 158);
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 157);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 116;

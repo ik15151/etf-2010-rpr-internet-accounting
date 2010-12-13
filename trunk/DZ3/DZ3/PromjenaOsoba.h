@@ -100,6 +100,7 @@ namespace DZ3 {
 
 
 
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -293,7 +294,7 @@ namespace DZ3 {
 			// kontrolaUnosKorisnika1
 			// 
 			this->kontrolaUnosKorisnika1->BackColor = System::Drawing::SystemColors::Control;
-			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 184);
+			this->kontrolaUnosKorisnika1->Location = System::Drawing::Point(0, 183);
 			this->kontrolaUnosKorisnika1->Name = L"kontrolaUnosKorisnika1";
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 109;

@@ -190,7 +190,7 @@
 		/>
 		<AssemblyReference
 			RelativePath="..\..\..\KontrolaUnos\Debug\KontrolaUnos.dll"
-			AssemblyName="KontrolaUnos, Version=1.0.3991.37814, processorArchitecture=x86"
+			AssemblyName="KontrolaUnos, Version=1.0.3998.34136, processorArchitecture=x86"
 			MinFrameworkVersion="131072"
 		/>
 		<AssemblyReference
@@ -211,6 +211,10 @@
 			</File>
 			<File
 				RelativePath=".\DZ3.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\IzuzetakAdresa.cpp"
 				>
 			</File>
 			<File
@@ -282,6 +286,22 @@
 					SubType="Designer"
 					>
 				</File>
+			</File>
+			<File
+				RelativePath=".\IzuzetakAdresa.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IzuzetakPassword.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IzuzetakTelefon.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IzuzetakUsername.h"
+				>
 			</File>
 			<File
 				RelativePath=".\Korisnik.h"
