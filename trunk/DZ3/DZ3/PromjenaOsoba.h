@@ -345,7 +345,15 @@ namespace DZ3 {
 				 kontrolaUnosKorisnika1->setPassword (korisnik->Password ());
 				 kontrolaUnosKorisnika1->setModem (korisnik->Modem ());
 
-				 if (korisnik->Mirovanje () == true)
+				 
+				 if (korisnik->Suspenzija () == true)
+				 {
+					 p_mirovanje->Checked = false;
+					 p_aktivan->Checked = false;
+					 p_mirovanje->Enabled = false;
+					 p_aktivan->Enabled = false;
+				 }
+				else if (korisnik->Mirovanje () == true)
 					p_mirovanje->Checked = true;
 				else
 					p_aktivan->Checked = true;
@@ -366,11 +374,12 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				korisnik->Password (kontrolaUnosKorisnika1->getPassword ());
 				korisnik->Modem (kontrolaUnosKorisnika1->getModem ());
 				
+				
 				if (p_mirovanje->Checked)
 					korisnik->Mirovanje (true);
 				else if (p_aktivan->Checked)
 					korisnik->Mirovanje (false);
-
+				
 
 				// treba cross-validacija!!!
 				Close ();

@@ -665,14 +665,11 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			toolStripStatusLabel1->Text = ip->Message;
 			MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		catch (Exception ^pex) // ovdje bih mogla My exception da uhvatim dio o username
-		 {
-			 //toolStripStatusLabel1->Text = pex->Message;		 
-			 
+		catch (...) 
+		 {			 
 			 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		 } 
-		catch (...)
-		{}
+		
 
 }
 
