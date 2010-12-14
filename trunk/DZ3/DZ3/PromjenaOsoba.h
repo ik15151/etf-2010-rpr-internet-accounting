@@ -96,6 +96,8 @@ namespace DZ3 {
 
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: KontrolaUnos::KontrolaUnosKorisnika^  kontrolaUnosKorisnika1;
+	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
+	private: System::ComponentModel::IContainer^  components;
 
 
 
@@ -105,7 +107,7 @@ namespace DZ3 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -114,6 +116,7 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->c_CBox_paket = (gcnew System::Windows::Forms::ComboBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->Azuriranje = (gcnew System::Windows::Forms::Button());
@@ -131,10 +134,12 @@ namespace DZ3 {
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->kontrolaUnosKorisnika1 = (gcnew KontrolaUnos::KontrolaUnosKorisnika());
+			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->groupbox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// c_CBox_paket
@@ -299,6 +304,10 @@ namespace DZ3 {
 			this->kontrolaUnosKorisnika1->Size = System::Drawing::Size(314, 229);
 			this->kontrolaUnosKorisnika1->TabIndex = 109;
 			// 
+			// errorProvider1
+			// 
+			this->errorProvider1->ContainerControl = this;
+			// 
 			// PromjenaOsoba
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -323,6 +332,7 @@ namespace DZ3 {
 			this->statusStrip1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -352,6 +362,7 @@ namespace DZ3 {
 					 p_aktivan->Checked = false;
 					 p_mirovanje->Enabled = false;
 					 p_aktivan->Enabled = false;
+					 kontrolaUnosKorisnika1->setModemDisabled ();
 				 }
 				else if (korisnik->Mirovanje () == true)
 					p_mirovanje->Checked = true;
@@ -363,6 +374,13 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 			
 			 try
 			 {
+				 if (p_mirovanje->Checked == true && kontrolaUnosKorisnika1->getModem () == true)
+				 {
+					errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
+					kontrolaUnosKorisnika1->setGreskaModem ("Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
+					throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
+				 }
+
 				korisnik->Ime (c_ime->Text);
 				korisnik->Prezime (c_prezime->Text);
 				korisnik->Broj_licne_karte (c_broj_licne_karte->Text);
@@ -380,15 +398,12 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				else if (p_aktivan->Checked)
 					korisnik->Mirovanje (false);
 				
-
-				// treba cross-validacija!!!
 				Close ();
-
 			 }
 			 catch (...)
 			 {
 				 // Treba napraviti bolji/e izuzetke
-				 MessageBox::Show ("Greška!");
+				 toolStripStatusLabel1->Text = "Greška u ažuriranju. Podaci nisu spašeni.";
 			 }
 			 
 		 }

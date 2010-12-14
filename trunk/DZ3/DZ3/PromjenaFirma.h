@@ -338,6 +338,7 @@ namespace DZ3 {
 					 p_aktivan->Checked = false;
 					 p_mirovanje->Enabled = false;
 					 p_aktivan->Enabled = false;
+					 kontrolaUnosKorisnika1->setModemDisabled ();
 				 }
 				else if (korisnik->Mirovanje () == true)
 					p_mirovanje->Checked = true;
