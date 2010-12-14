@@ -408,7 +408,6 @@ namespace DZ3 {
 private:
 	bool PostaviIme ()
 	{
-		// ne smiju biti brojevi u imenu
 		 if (c_ime->Text->Length < 3)
 		 {
 			 c_ime->Focus ();
@@ -416,30 +415,62 @@ private:
 			 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
 			 return false;
 		 }
-		 else
+		 else if (c_ime->Text->Length >= 3)
 		 {
+			for (int i = 0; i < c_ime->Text->Length; i++)
+				if (!c_ime->Text [i].IsLetter (c_ime->Text, i))
+				{
+					 c_ime->Focus ();
+					 toolStripStatusLabel1->Text = "Ime ne smije sadržavati brojeve i simbole.";
+					 errorProvider1->SetError (c_ime, "Ime ne smije sadržavati brojeve i simbole.");				
+					 return false;
+				}
+			if (!c_ime->Text [0].IsUpper (c_ime->Text, 0))
+			{
+				 c_ime->Focus ();
+				 toolStripStatusLabel1->Text = "Ime mora poèeti sa velikim slovom.";
+				 errorProvider1->SetError (c_ime, "Ime mora poèeti sa velikim slovom.");				
+				 return false;
+			}
+				
 			errorProvider1->Clear ();
 			toolStripStatusLabel1->Text = "";
-			return true;
+			return true;				
 		 }
+		 
 	}
 
 	bool PostaviPrezime ()
 	{
-		// ne smiju biti brojevi u prezimenu
-		 if (c_prezime->Text->Length < 3)
+		if (c_prezime->Text->Length < 3)
 		 {
 			 c_prezime->Focus ();
 			 toolStripStatusLabel1->Text = "Prezime ne smije sadržavati manje od 3 slova.";
-			 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");	
+			 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");				
 			 return false;
-		 }			
-		else
+		 }
+		 else if (c_prezime->Text->Length >= 3)
 		 {
+			for (int i = 0; i < c_prezime->Text->Length; i++)
+				if (!c_prezime->Text [i].IsLetter (c_prezime->Text, i))
+				{
+					 c_prezime->Focus ();
+					 toolStripStatusLabel1->Text = "Prezime ne smije sadržavati brojeve i simbole.";
+					 errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati brojeve i simbole.");				
+					 return false;
+				}
+			if (!c_prezime->Text [0].IsUpper (c_prezime->Text, 0))
+			{
+				 c_prezime->Focus ();
+				 toolStripStatusLabel1->Text = "Prezime mora poèeti sa velikim slovom.";
+				 errorProvider1->SetError (c_prezime, "Prezime mora poèeti sa velikim slovom.");				
+				 return false;
+			}
+				
 			errorProvider1->Clear ();
 			toolStripStatusLabel1->Text = "";
-			return true;
-		 }	
+			return true;				
+		 }
 	}
 
 	bool PostaviLicnu ()
@@ -487,20 +518,34 @@ private:
 
 		bool PostaviNaziv ()
 		{
-
-			//ovdje se mora ispitati da ne bude brojeva u nazivu
-			 if (c_naziv_firme->Text->Length < 3)
+			if (c_naziv_firme->Text->Length < 3)
 			 {
-				toolStripStatusLabel1->Text = "Naziv firme ne može imati manje od tri slova.";
-				errorProvider1->SetError (c_naziv_firme, "Naziv firme ne može imati manje od tri slova.");
-				c_naziv_firme->Focus ();
-				return false;
+				 c_naziv_firme->Focus ();
+				 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati manje od 3 slova.";
+				 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati manje od 3 slova.");				
+				 return false;
 			 }
-			 else 
+			 else if (c_naziv_firme->Text->Length >= 3)
 			 {
+				for (int i = 0; i < c_naziv_firme->Text->Length; i++)
+					if (!c_naziv_firme->Text [i].IsLetter (c_naziv_firme->Text, i))
+					{
+						 c_naziv_firme->Focus ();
+						 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati brojeve i simbole.";
+						 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati brojeve i simbole.");				
+						 return false;
+					}
+				if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
+				{
+					 c_naziv_firme->Focus ();
+					 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+					 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
+					 return false;
+				}
+					
 				errorProvider1->Clear ();
 				toolStripStatusLabel1->Text = "";
-				return true;
+				return true;				
 			 }
 		}
 
