@@ -491,27 +491,33 @@ private:
 			 }
 			else if (c_broj_licne_karte->Text->Length == 9)
 			 {
-				 wchar_t prvo = c_broj_licne_karte->Text [0];
-				 wchar_t drugo = c_broj_licne_karte->Text [1];
-				 wchar_t sesto = c_broj_licne_karte->Text [5];
-				 wchar_t sedmo = c_broj_licne_karte->Text [6];
-				 wchar_t osmo = c_broj_licne_karte->Text [7];
-				 wchar_t deveto = c_broj_licne_karte->Text [8];		
-				
-				 if ((prvo < '0' || drugo < '0' || sesto < '0' || sedmo < '0' || osmo < '0' || deveto < '0')  || (prvo > '9' || drugo > '9' || sesto > '9' || sedmo > '9' || osmo > '9' || deveto > '9') )
-				 {
-					c_broj_licne_karte->Focus ();
-					toolStripStatusLabel1->Text = "Format broja liène karte: 2 slova + 3 slova + 4 broja.";
-					errorProvider1->SetError (c_broj_licne_karte, "Format broja liène karte: 2 slova + 3 slova + 4 broja.");
-					return false;
-				 }
-				  // Mora se ispitati da li su 3., 4., i 5. slova!
-				 else 
-				 {
-					errorProvider1->Clear ();
-					toolStripStatusLabel1->Text = "";
-					return true;
-				 }
+				 for (int i = 0; i < 2; i++)
+					if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
+					{
+						c_broj_licne_karte->Focus ();
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
+						 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						 return false;
+					}
+				for (int i = 5; i < 9; i++)
+					if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
+					{
+						c_broj_licne_karte->Focus ();
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
+						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						return false;
+					}
+				for (int i = 2; i < 5; i++)
+					if (!c_broj_licne_karte->Text [i].IsUpper (c_broj_licne_karte->Text, i))
+					{
+						c_broj_licne_karte->Focus ();
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
+						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						return false;
+					}
+				errorProvider1->Clear ();
+				toolStripStatusLabel1->Text = "";
+				return true;
 			 }
 		}
 
