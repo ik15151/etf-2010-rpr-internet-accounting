@@ -349,9 +349,13 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 
 			 try
 			 {
-				 if (p_mirovanje->Checked == true &&  kontrolaUnosKorisnika1->getModem () == true)
-					 throw "Greska";
-				
+				 if (p_mirovanje->Checked == true && kontrolaUnosKorisnika1->getModem () == true)
+				 {
+					errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
+					kontrolaUnosKorisnika1->setGreskaModem ("Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
+					throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
+				 }
+						
 				korisnik->Naziv (c_naziv->Text);
 				korisnik->PDV_broj (c_PDV_broj->Text);
 				korisnik->Naziv_paketa (c_CBox_paket->SelectedItem->ToString ());
@@ -366,20 +370,18 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 					korisnik->Mirovanje (true);
 				else if (p_aktivan->Checked)
 					korisnik->Mirovanje (false);
-				Close ();
 
-			 }
-			 
+				Close ();
+			 }			 
 			 catch (...)
 			 {
 				 // Treba napraviti bolji/e izuzetke
-				 MessageBox::Show ("Greška!");
+				 toolStripStatusLabel1->Text = "Greška u ažuriranju. Podaci nisu spašeni.";
 			 }
 
 		 }
 private: System::Void p_mirovanje_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 if (p_mirovanje->Checked == true && kontrolaUnosKorisnika1->getModem () == true)
-					errorProvider1->SetError (p_mirovanje, "Ne može se zamrznuti raèun prije vraæanja modema.");
+			 
 		 }
 };
 }

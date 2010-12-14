@@ -607,7 +607,10 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 
 			 for each (Korisnik ^k in korisnici)
 				if (kontrolaUnosKorisnika1->getUsername () == k->Username ())
+				{
+					kontrolaUnosKorisnika1->setGreskaUsername ("Username veæ zauzet!");
 					throw gcnew IzuzetakUsername ("Username veæ zauzet!");
+				}
 			
 			 try 
 			 {
