@@ -8,6 +8,7 @@
 #include "IzuzetakUsername.h"
 #include "IzuzetakPassword.h"
 
+
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -432,6 +433,14 @@ private:
 				 errorProvider1->SetError (c_ime, "Ime mora poèeti sa velikim slovom.");				
 				 return false;
 			}
+			for (int i = 1; i < c_ime->Text->Length; i++)
+				if (c_ime->Text [i].IsUpper (c_ime->Text, i))
+				{
+					 c_ime->Focus ();
+					 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+					 errorProvider1->SetError (c_ime, "Samo prvo slovo smije biti veliko.");				
+					 return false;
+				}
 				
 			errorProvider1->Clear ();
 			toolStripStatusLabel1->Text = "";
@@ -466,7 +475,14 @@ private:
 				 errorProvider1->SetError (c_prezime, "Prezime mora poèeti sa velikim slovom.");				
 				 return false;
 			}
-				
+			for (int i = 1; i < c_prezime->Text->Length; i++)
+				if (c_prezime->Text [i].IsUpper (c_prezime->Text, i))
+				{
+					 c_prezime->Focus ();
+					 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+					 errorProvider1->SetError (c_prezime, "Samo prvo slovo smije biti veliko.");				
+					 return false;
+				}				
 			errorProvider1->Clear ();
 			toolStripStatusLabel1->Text = "";
 			return true;				
@@ -495,24 +511,24 @@ private:
 					if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
 					{
 						c_broj_licne_karte->Focus ();
-						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
-						 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+						 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
 						 return false;
 					}
 				for (int i = 5; i < 9; i++)
 					if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
 					{
 						c_broj_licne_karte->Focus ();
-						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
-						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
 						return false;
 					}
 				for (int i = 2; i < 5; i++)
 					if (!c_broj_licne_karte->Text [i].IsUpper (c_broj_licne_karte->Text, i))
 					{
 						c_broj_licne_karte->Focus ();
-						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 slova + 4 broja.";
-						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 slova + 4 broja.");	
+						toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+						errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
 						return false;
 					}
 				errorProvider1->Clear ();
@@ -548,7 +564,14 @@ private:
 					 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
 					 return false;
 				}
-					
+				for (int i = 1; i < c_naziv_firme->Text->Length; i++)
+				if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
+				{
+					 c_naziv_firme->Focus ();
+					 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+					 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
+					 return false;
+				}
 				errorProvider1->Clear ();
 				toolStripStatusLabel1->Text = "";
 				return true;				

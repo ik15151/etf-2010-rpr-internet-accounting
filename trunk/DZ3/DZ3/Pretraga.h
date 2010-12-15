@@ -96,35 +96,10 @@ namespace DZ3 {
 	private: System::Windows::Forms::ColumnHeader^  columnHeader6;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader8;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
+	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
+	private: System::ComponentModel::IContainer^  components;
 
 	protected: 
 
@@ -132,7 +107,7 @@ namespace DZ3 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -141,6 +116,7 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->listViewOsoba = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader22 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader23 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -168,7 +144,12 @@ namespace DZ3 {
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->unos_pretrazivanje = (gcnew System::Windows::Forms::TextBox());
 			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
+			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->panel1->SuspendLayout();
+			this->statusStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// listViewOsoba
@@ -185,7 +166,7 @@ namespace DZ3 {
 			this->listViewOsoba->Name = L"listViewOsoba";
 			this->listViewOsoba->Size = System::Drawing::Size(657, 213);
 			this->listViewOsoba->Sorting = System::Windows::Forms::SortOrder::Descending;
-			this->listViewOsoba->TabIndex = 0;
+			this->listViewOsoba->TabIndex = 4;
 			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
 			this->listViewOsoba->View = System::Windows::Forms::View::Details;
 			this->listViewOsoba->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewOsoba_ItemActivate);
@@ -193,7 +174,7 @@ namespace DZ3 {
 			// columnHeader22
 			// 
 			this->columnHeader22->Text = L"Username";
-			this->columnHeader22->Width = 63;
+			this->columnHeader22->Width = 71;
 			// 
 			// columnHeader23
 			// 
@@ -213,10 +194,12 @@ namespace DZ3 {
 			// columnHeader26
 			// 
 			this->columnHeader26->Text = L"Adresa";
+			this->columnHeader26->Width = 86;
 			// 
 			// columnHeader27
 			// 
 			this->columnHeader27->Text = L"Telefon";
+			this->columnHeader27->Width = 73;
 			// 
 			// columnHeader28
 			// 
@@ -245,7 +228,7 @@ namespace DZ3 {
 			this->listViewFirma->MultiSelect = false;
 			this->listViewFirma->Name = L"listViewFirma";
 			this->listViewFirma->Size = System::Drawing::Size(657, 214);
-			this->listViewFirma->TabIndex = 1;
+			this->listViewFirma->TabIndex = 5;
 			this->listViewFirma->UseCompatibleStateImageBehavior = false;
 			this->listViewFirma->View = System::Windows::Forms::View::Details;
 			this->listViewFirma->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewFirma_ItemActivate);
@@ -310,7 +293,7 @@ namespace DZ3 {
 			this->button2->Location = System::Drawing::Point(557, 19);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(84, 23);
-			this->button2->TabIndex = 36;
+			this->button2->TabIndex = 2;
 			this->button2->Text = L"Pretraži";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Pretraga::button2_Click);
@@ -327,17 +310,20 @@ namespace DZ3 {
 			this->panel1->Location = System::Drawing::Point(12, 12);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(657, 64);
-			this->panel1->TabIndex = 37;
+			this->panel1->TabIndex = 0;
 			// 
 			// cbx_pretrazivanje
 			// 
 			this->cbx_pretrazivanje->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_pretrazivanje->FormattingEnabled = true;
-			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Ime osobe", L"Naziv firme"});
+			this->cbx_pretrazivanje->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Username", L"Ime osobe", L"Naziv firme", 
+				L"Aktivni raèuni", L"Zamrznuti raèuni", L"Suspendovani raèuni"});
 			this->cbx_pretrazivanje->Location = System::Drawing::Point(106, 19);
 			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
 			this->cbx_pretrazivanje->Size = System::Drawing::Size(157, 21);
-			this->cbx_pretrazivanje->TabIndex = 1;
+			this->cbx_pretrazivanje->TabIndex = 0;
+			this->cbx_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::cbx_pretrazivanje_Validating);
+			this->cbx_pretrazivanje->SelectedIndexChanged += gcnew System::EventHandler(this, &Pretraga::cbx_pretrazivanje_SelectedIndexChanged);
 			// 
 			// label23
 			// 
@@ -355,7 +341,9 @@ namespace DZ3 {
 			this->unos_pretrazivanje->Location = System::Drawing::Point(339, 19);
 			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
 			this->unos_pretrazivanje->Size = System::Drawing::Size(173, 20);
-			this->unos_pretrazivanje->TabIndex = 2;
+			this->unos_pretrazivanje->TabIndex = 1;
+			this->unos_pretrazivanje->TextChanged += gcnew System::EventHandler(this, &Pretraga::unos_pretrazivanje_TextChanged);
+			this->unos_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::unos_pretrazivanje_Validating);
 			// 
 			// label24
 			// 
@@ -363,14 +351,36 @@ namespace DZ3 {
 			this->label24->Location = System::Drawing::Point(14, 22);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(86, 13);
-			this->label24->TabIndex = 25;
+			this->label24->TabIndex = 0;
 			this->label24->Text = L"Pretraživanje po:";
+			// 
+			// statusStrip1
+			// 
+			this->statusStrip1->BackColor = System::Drawing::Color::White;
+			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
+			this->statusStrip1->Location = System::Drawing::Point(0, 581);
+			this->statusStrip1->Name = L"statusStrip1";
+			this->statusStrip1->Size = System::Drawing::Size(680, 22);
+			this->statusStrip1->TabIndex = 6;
+			this->statusStrip1->Text = L"statusStrip1";
+			// 
+			// toolStripStatusLabel1
+			// 
+			this->toolStripStatusLabel1->BackColor = System::Drawing::Color::White;
+			this->toolStripStatusLabel1->ForeColor = System::Drawing::Color::Red;
+			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
+			this->toolStripStatusLabel1->Size = System::Drawing::Size(0, 17);
+			// 
+			// errorProvider1
+			// 
+			this->errorProvider1->ContainerControl = this;
 			// 
 			// Pretraga
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(682, 573);
+			this->ClientSize = System::Drawing::Size(680, 603);
+			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -382,12 +392,17 @@ namespace DZ3 {
 			this->Load += gcnew System::EventHandler(this, &Pretraga::Pretraga_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			this->statusStrip1->ResumeLayout(false);
+			this->statusStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void Pretraga_Load(System::Object^  sender, System::EventArgs^  e) {
+					unos_pretrazivanje->Enabled = false;
+					
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 				
@@ -396,26 +411,153 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 			 if (cbx_pretrazivanje->SelectedIndex == -1)
 			 {
-				 MessageBox::Show ("Morate odabrati po èemu želite pretraživati.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				 cbx_pretrazivanje->Focus ();
+				 unos_pretrazivanje->Enabled = false;
+				 toolStripStatusLabel1->Text = "Morate odabrati po èemu želite pretraživati.";
+				 errorProvider1->SetError (cbx_pretrazivanje, "Morate odabrati po èemu želite pretraživati.");
 				 return;
 			 }
-			 if (unos_pretrazivanje->Text->Length == 0)
+			 if (unos_pretrazivanje->Enabled == true)
 			 {
-				 MessageBox::Show ("Niste unijeli potrebne podatke.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				 unos_pretrazivanje->Focus ();
-				 return;
-			 }			 
+				 if (unos_pretrazivanje->Text->Length == 0)
+				 {
+					 unos_pretrazivanje->Focus ();
+					return;
+				 }
+			 }
 
 			 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();
-			 String ^uneseno = unos_pretrazivanje->Text;
-			 unos_pretrazivanje->Clear ();
-			 cbx_pretrazivanje->SelectedIndex = -1;
-
+			 
+			
 			 ListViewItem ^temp = gcnew ListViewItem ();
+
+			 if (atribut == "Aktivni raèuni")
+			 {
+				 for each (Korisnik ^korisnik in korisnici)
+					 if (korisnik->Mirovanje () == false && korisnik->Suspenzija () == false)
+					 {
+						 try
+						 {
+							 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+							 temp = listViewOsoba->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Ime ());
+							 temp->SubItems->Add (k->Prezime ());
+							 temp->SubItems->Add (k->Broj_licne_karte ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ()); 
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
+						 }
+						 catch (...)
+						 {
+							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+							 temp = listViewFirma->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Naziv ());
+							 temp->SubItems->Add (k->PDV_broj ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ());
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE"); 
+						 }
+					 }
+				 }
+
+
+			 if (atribut == "Zamrznuti raèuni")
+			 {
+				 for each (Korisnik ^korisnik in korisnici)
+					 if (korisnik->Mirovanje () == true)
+					 {
+						 try
+						 {
+							 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+							 temp = listViewOsoba->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Ime ());
+							 temp->SubItems->Add (k->Prezime ());
+							 temp->SubItems->Add (k->Broj_licne_karte ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ()); 
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
+						 }
+						 catch (...)
+						 {
+							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+							 temp = listViewFirma->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Naziv ());
+							 temp->SubItems->Add (k->PDV_broj ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ());
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE"); 
+						 }
+					 }
+				 }
+
+			 if (atribut == "Suspendovani raèuni")
+			 {
+				 for each (Korisnik ^korisnik in korisnici)
+					 if (korisnik->Suspenzija () == true)
+					 {
+						 try
+						 {
+							 KorisnikOsoba ^k = dynamic_cast <KorisnikOsoba ^> (korisnik);
+							 temp = listViewOsoba->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Ime ());
+							 temp->SubItems->Add (k->Prezime ());
+							 temp->SubItems->Add (k->Broj_licne_karte ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ()); 
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE");
+						 }
+						 catch (...)
+						 {
+							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
+							 temp = listViewFirma->Items->Add (k->Username ());	
+							 temp->SubItems->Add (k->Naziv ());
+							 temp->SubItems->Add (k->PDV_broj ());
+							 temp->SubItems->Add (k->Adresa ());
+							 temp->SubItems->Add (k->Telefon ());
+							 temp->SubItems->Add (k->Naziv_paketa ());
+							 temp->SubItems->Add (k->Password ());
+							 if (k->Modem ())
+								temp->SubItems->Add ("DA");
+							 else 
+								temp->SubItems->Add ("NE"); 
+						 }
+					 }
+				 }	
+
+			String ^uneseno = "";
+			if (unos_pretrazivanje->Enabled == true)
+			{
+				 uneseno = unos_pretrazivanje->Text;
+				 unos_pretrazivanje->Clear ();
+			}
 			
 			 if (atribut == "Ime osobe")
-			 {			 
+			 {	
 				 for each (Korisnik ^korisnik in korisnici)
 				 {
 					  try
@@ -444,7 +586,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 }
 
 			 if (atribut == "Naziv firme")
-			 {			 
+			 {	
 				 for each (Korisnik ^korisnik in korisnici)
 				 {
 					  try
@@ -470,7 +612,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 					 } 
 				 }
 			 }
-			 /*
+		
 			 if (atribut == "Username")
 			 {
 				 for each (Korisnik ^korisnik in korisnici)
@@ -485,7 +627,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Broj_licne_karte ());
 							 temp->SubItems->Add (k->Adresa ());
 							 temp->SubItems->Add (k->Telefon ());
-							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
 							 if (k->Modem ())
 								temp->SubItems->Add ("DA");
@@ -494,49 +636,27 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 						 }
 						 catch (...)
 						 {
-							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik))
+							 KorisnikFirma ^k = dynamic_cast <KorisnikFirma ^> (korisnik);
 							 temp = listViewFirma->Items->Add (k->Username ());	
 							 temp->SubItems->Add (k->Naziv ());
 							 temp->SubItems->Add (k->PDV_broj ());
 							 temp->SubItems->Add (k->Adresa ());
 							 temp->SubItems->Add (k->Telefon ());
-							 temp->SubItems->Add ("treba ime"); // Treba naziv paketa!
+							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
 							 if (k->Modem ())
 								temp->SubItems->Add ("DA");
 							 else 
-								temp->SubItems->Add ("NE");
+								temp->SubItems->Add ("NE"); 
 						 }
 					 }
-			 }
-			 */
+				 }
 
-			 /*
-
-			 if (atribut == "Aktivni raèuni")
-			 {			 
-				 for each (Korisnik ^k in korisnici)
-					 if (k->Mirovanje () == false && k->Suspenzija () == false)
-						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());						
-			 }
-
-			 if (atribut == "Zamrznuti raèuni")
-			 {			 
-				 for each (Korisnik ^k in korisnici)
-					 if (k->Mirovanje () == true)
-						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());				
-			 }
-
-			 if (atribut == "Suspendovani raèuni")
-			 {			 
-				 for each (Korisnik ^k in korisnici)
-					 if (k->Suspenzija () == true)
-						 listBox_pretraga->Items->Add (k->Username () + "\t\t" +  k->Print ());				
-			 }
-			 */
 			 			 
 			 if (listViewOsoba->Items->Count == 0 && listViewFirma->Items->Count == 0)
 				 MessageBox::Show ("Nema traženih podataka.", "Informacija", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+			 //cbx_pretrazivanje->SelectedIndex = -1;
 
 		 }
 		 
@@ -573,6 +693,42 @@ private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System
 						}
 				}
 
+		 }
+private: System::Void cbx_pretrazivanje_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+					 
+					
+					 toolStripStatusLabel1->Text = "";
+					 errorProvider1->Clear ();
+			
+					 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();	
+					 if (atribut == "Suspendovani raèuni" || atribut == "Zamrznuti raèuni" || atribut == "Aktivni raèuni")
+						unos_pretrazivanje->Enabled = false;
+					 else
+					 {
+						 unos_pretrazivanje->Enabled = true;
+						 unos_pretrazivanje->Focus ();
+					 }
+				
+		 }
+private: System::Void cbx_pretrazivanje_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 
+		 }
+private: System::Void unos_pretrazivanje_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 
+			  if (unos_pretrazivanje->Text->Length == 0)
+			  {
+				 unos_pretrazivanje->Focus ();
+				 toolStripStatusLabel1->Text = "Niste unijeli potrebne podatke.";
+				 errorProvider1->SetError (unos_pretrazivanje, "Niste unijeli potrebne podatke.");
+			  }
+			  else
+			  {
+				toolStripStatusLabel1->Text = "";
+				errorProvider1->Clear ();
+			  }	 
+		 }
+private: System::Void unos_pretrazivanje_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			  
 		 }
 };
 }

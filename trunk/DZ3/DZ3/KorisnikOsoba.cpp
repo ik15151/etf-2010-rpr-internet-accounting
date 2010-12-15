@@ -3,5 +3,5 @@
 
 String ^KorisnikOsoba::Print ()
 {
-	return _ime + "\t\t\t" + _prezime;
+	return _ime + " " + _prezime;
 }

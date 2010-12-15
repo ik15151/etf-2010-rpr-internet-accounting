@@ -62,7 +62,8 @@ namespace DZ3 {
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	protected: 
 	private: System::Windows::Forms::Label^  r_adresa;
-	private: System::Windows::Forms::Label^  r_username;
+	private: System::Windows::Forms::Label^  r_korisnik;
+
 	private: System::Windows::Forms::Label^  label11;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  cijena;
@@ -111,7 +112,7 @@ namespace DZ3 {
 		{
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->r_adresa = (gcnew System::Windows::Forms::Label());
-			this->r_username = (gcnew System::Windows::Forms::Label());
+			this->r_korisnik = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->cijena = (gcnew System::Windows::Forms::Label());
@@ -150,7 +151,7 @@ namespace DZ3 {
 			// groupBox2
 			// 
 			this->groupBox2->Controls->Add(this->r_adresa);
-			this->groupBox2->Controls->Add(this->r_username);
+			this->groupBox2->Controls->Add(this->r_korisnik);
 			this->groupBox2->Controls->Add(this->label11);
 			this->groupBox2->Controls->Add(this->label6);
 			this->groupBox2->Location = System::Drawing::Point(13, 185);
@@ -158,34 +159,34 @@ namespace DZ3 {
 			this->groupBox2->Size = System::Drawing::Size(290, 87);
 			this->groupBox2->TabIndex = 15;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Korisnik";
+			this->groupBox2->Text = L"Podaci o korisniku";
 			// 
 			// r_adresa
 			// 
 			this->r_adresa->AutoSize = true;
-			this->r_adresa->Location = System::Drawing::Point(189, 54);
+			this->r_adresa->Location = System::Drawing::Point(164, 54);
 			this->r_adresa->Name = L"r_adresa";
 			this->r_adresa->Size = System::Drawing::Size(48, 13);
 			this->r_adresa->TabIndex = 3;
 			this->r_adresa->Text = L"r_adresa";
 			// 
-			// r_username
+			// r_korisnik
 			// 
-			this->r_username->AutoSize = true;
-			this->r_username->Location = System::Drawing::Point(189, 28);
-			this->r_username->Name = L"r_username";
-			this->r_username->Size = System::Drawing::Size(62, 13);
-			this->r_username->TabIndex = 2;
-			this->r_username->Text = L"r_username";
+			this->r_korisnik->AutoSize = true;
+			this->r_korisnik->Location = System::Drawing::Point(164, 28);
+			this->r_korisnik->Name = L"r_korisnik";
+			this->r_korisnik->Size = System::Drawing::Size(52, 13);
+			this->r_korisnik->TabIndex = 2;
+			this->r_korisnik->Text = L"r_korisnik";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(14, 28);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(58, 13);
+			this->label11->Size = System::Drawing::Size(47, 13);
 			this->label11->TabIndex = 1;
-			this->label11->Text = L"Username:";
+			this->label11->Text = L"Korisnik:";
 			// 
 			// label6
 			// 
@@ -201,7 +202,7 @@ namespace DZ3 {
 			this->cijena->AutoSize = true;
 			this->cijena->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(238)));
-			this->cijena->Location = System::Drawing::Point(199, 495);
+			this->cijena->Location = System::Drawing::Point(177, 488);
 			this->cijena->Name = L"cijena";
 			this->cijena->Size = System::Drawing::Size(41, 13);
 			this->cijena->TabIndex = 14;
@@ -212,7 +213,7 @@ namespace DZ3 {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(238)));
-			this->label4->Location = System::Drawing::Point(27, 495);
+			this->label4->Location = System::Drawing::Point(27, 488);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(75, 13);
 			this->label4->TabIndex = 13;
@@ -238,7 +239,7 @@ namespace DZ3 {
 			// r_cijena
 			// 
 			this->r_cijena->AutoSize = true;
-			this->r_cijena->Location = System::Drawing::Point(189, 97);
+			this->r_cijena->Location = System::Drawing::Point(165, 98);
 			this->r_cijena->Name = L"r_cijena";
 			this->r_cijena->Size = System::Drawing::Size(44, 13);
 			this->r_cijena->TabIndex = 7;
@@ -247,7 +248,7 @@ namespace DZ3 {
 			// r_limit
 			// 
 			this->r_limit->AutoSize = true;
-			this->r_limit->Location = System::Drawing::Point(189, 51);
+			this->r_limit->Location = System::Drawing::Point(165, 52);
 			this->r_limit->Name = L"r_limit";
 			this->r_limit->Size = System::Drawing::Size(33, 13);
 			this->r_limit->TabIndex = 6;
@@ -256,7 +257,7 @@ namespace DZ3 {
 			// r_naziv_paketa
 			// 
 			this->r_naziv_paketa->AutoSize = true;
-			this->r_naziv_paketa->Location = System::Drawing::Point(189, 29);
+			this->r_naziv_paketa->Location = System::Drawing::Point(165, 30);
 			this->r_naziv_paketa->Name = L"r_naziv_paketa";
 			this->r_naziv_paketa->Size = System::Drawing::Size(80, 13);
 			this->r_naziv_paketa->TabIndex = 5;
@@ -265,7 +266,7 @@ namespace DZ3 {
 			// r_brzina
 			// 
 			this->r_brzina->AutoSize = true;
-			this->r_brzina->Location = System::Drawing::Point(189, 75);
+			this->r_brzina->Location = System::Drawing::Point(165, 76);
 			this->r_brzina->Name = L"r_brzina";
 			this->r_brzina->Size = System::Drawing::Size(44, 13);
 			this->r_brzina->TabIndex = 4;
@@ -285,9 +286,9 @@ namespace DZ3 {
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(14, 75);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(165, 13);
+			this->label9->Size = System::Drawing::Size(95, 13);
 			this->label9->TabIndex = 2;
-			this->label9->Text = L"Brzina pristupa download/upload:";
+			this->label9->Text = L"Download/upload:";
 			// 
 			// label8
 			// 
@@ -326,7 +327,7 @@ namespace DZ3 {
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(186, 12);
+			this->label13->Location = System::Drawing::Point(164, 12);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(35, 13);
 			this->label13->TabIndex = 7;
@@ -335,11 +336,11 @@ namespace DZ3 {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(186, 38);
+			this->label12->Location = System::Drawing::Point(164, 38);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(84, 13);
+			this->label12->Size = System::Drawing::Size(49, 13);
 			this->label12->TabIndex = 6;
-			this->label12->Text = L"Zmaja od Bosne";
+			this->label12->Text = L"Dunjaluk";
 			// 
 			// label1
 			// 
@@ -353,7 +354,7 @@ namespace DZ3 {
 			// r_mjesec
 			// 
 			this->r_mjesec->AutoSize = true;
-			this->r_mjesec->Location = System::Drawing::Point(186, 96);
+			this->r_mjesec->Location = System::Drawing::Point(164, 96);
 			this->r_mjesec->Name = L"r_mjesec";
 			this->r_mjesec->Size = System::Drawing::Size(49, 13);
 			this->r_mjesec->TabIndex = 5;
@@ -389,7 +390,7 @@ namespace DZ3 {
 			// r_id_racuna
 			// 
 			this->r_id_racuna->AutoSize = true;
-			this->r_id_racuna->Location = System::Drawing::Point(186, 69);
+			this->r_id_racuna->Location = System::Drawing::Point(164, 69);
 			this->r_id_racuna->Name = L"r_id_racuna";
 			this->r_id_racuna->Size = System::Drawing::Size(63, 13);
 			this->r_id_racuna->TabIndex = 3;
@@ -409,7 +410,7 @@ namespace DZ3 {
 			// r_modem
 			// 
 			this->r_modem->AutoSize = true;
-			this->r_modem->Location = System::Drawing::Point(189, 20);
+			this->r_modem->Location = System::Drawing::Point(165, 24);
 			this->r_modem->Name = L"r_modem";
 			this->r_modem->Size = System::Drawing::Size(50, 13);
 			this->r_modem->TabIndex = 2;
@@ -426,7 +427,7 @@ namespace DZ3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(189, 37);
+			this->button1->Location = System::Drawing::Point(169, 37);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 18;
@@ -436,7 +437,7 @@ namespace DZ3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(20, 37);
+			this->button2->Location = System::Drawing::Point(55, 37);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 19;
@@ -488,7 +489,7 @@ namespace DZ3 {
 		}
 #pragma endregion
 	private: System::Void RacunPrint_Load(System::Object^  sender, System::EventArgs^  e) {
-				 r_username->Text = korisnik->Username ();
+				 r_korisnik->Text = korisnik->Print ();
 				 r_adresa->Text = korisnik->Adresa ();
 				 if (korisnik->Modem ())
 				 {

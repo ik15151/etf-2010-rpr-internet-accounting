@@ -64,12 +64,16 @@ namespace DZ3 {
 	private: System::Windows::Forms::Label^  label30;
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
+	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
+	private: System::ComponentModel::IContainer^  components;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -78,13 +82,19 @@ namespace DZ3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->cBoxkorisnici = (gcnew System::Windows::Forms::ComboBox());
 			this->t_mjesec = (gcnew System::Windows::Forms::ComboBox());
 			this->label29 = (gcnew System::Windows::Forms::Label());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
+			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
+			this->statusStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cBoxkorisnici
@@ -93,7 +103,7 @@ namespace DZ3 {
 			this->cBoxkorisnici->FormattingEnabled = true;
 			this->cBoxkorisnici->Location = System::Drawing::Point(68, 17);
 			this->cBoxkorisnici->Name = L"cBoxkorisnici";
-			this->cBoxkorisnici->Size = System::Drawing::Size(169, 21);
+			this->cBoxkorisnici->Size = System::Drawing::Size(152, 21);
 			this->cBoxkorisnici->Sorted = true;
 			this->cBoxkorisnici->TabIndex = 0;
 			// 
@@ -105,7 +115,7 @@ namespace DZ3 {
 				L"Juni", L"Juli", L"August", L"Septembar", L"Oktobar", L"Novembar", L"Decembar"});
 			this->t_mjesec->Location = System::Drawing::Point(67, 66);
 			this->t_mjesec->Name = L"t_mjesec";
-			this->t_mjesec->Size = System::Drawing::Size(169, 21);
+			this->t_mjesec->Size = System::Drawing::Size(152, 21);
 			this->t_mjesec->TabIndex = 1;
 			// 
 			// label29
@@ -136,17 +146,37 @@ namespace DZ3 {
 			this->panel1->Location = System::Drawing::Point(13, 13);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(247, 123);
-			this->panel1->TabIndex = 9;
+			this->panel1->TabIndex = 0;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(185, 161);
+			this->button1->Location = System::Drawing::Point(185, 162);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 4;
+			this->button1->TabIndex = 1;
 			this->button1->Text = L"Plaæeno";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RacunNaplata::button1_Click);
+			// 
+			// errorProvider1
+			// 
+			this->errorProvider1->ContainerControl = this;
+			// 
+			// statusStrip1
+			// 
+			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
+			this->statusStrip1->Location = System::Drawing::Point(0, 269);
+			this->statusStrip1->Name = L"statusStrip1";
+			this->statusStrip1->Size = System::Drawing::Size(274, 22);
+			this->statusStrip1->TabIndex = 2;
+			this->statusStrip1->Text = L"statusStrip1";
+			// 
+			// toolStripStatusLabel1
+			// 
+			this->toolStripStatusLabel1->BackColor = System::Drawing::SystemColors::Control;
+			this->toolStripStatusLabel1->ForeColor = System::Drawing::Color::Red;
+			this->toolStripStatusLabel1->Name = L"toolStripStatusLabel1";
+			this->toolStripStatusLabel1->Size = System::Drawing::Size(0, 17);
 			// 
 			// RacunNaplata
 			// 
@@ -154,6 +184,7 @@ namespace DZ3 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(274, 291);
+			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel1);
 			this->MaximizeBox = false;
@@ -162,7 +193,11 @@ namespace DZ3 {
 			this->Load += gcnew System::EventHandler(this, &RacunNaplata::RacunNaplata_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
+			this->statusStrip1->ResumeLayout(false);
+			this->statusStrip1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -176,13 +211,25 @@ namespace DZ3 {
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if (cBoxkorisnici->SelectedIndex == -1)
 			 {
-				 MessageBox::Show ("Morate odabrati korisnika.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 toolStripStatusLabel1->Text = "Morate odabrati korisnika.";
+				 errorProvider1->SetError (cBoxkorisnici, "Morate odabrati korisnika.");
 				 return;
+			 }
+			 else
+			 {
+				 toolStripStatusLabel1->Text = "";
+			     errorProvider1->Clear ();
 			 }
 			 if (t_mjesec->SelectedIndex == -1)
 			 {
-				 MessageBox::Show ("Morate odabrati mjesec.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 toolStripStatusLabel1->Text = "Morate odabrati mjesec.";
+				 errorProvider1->SetError (t_mjesec, "Morate odabrati mjesec.");
 				 return;
+			 }
+			 else
+			 {
+				 toolStripStatusLabel1->Text = "";
+			     errorProvider1->Clear ();
 			 }
 			 
 			 bool placeno = false;
@@ -200,14 +247,18 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 cBoxkorisnici->Items->RemoveAt (cBoxkorisnici->SelectedIndex);
 					 cBoxkorisnici->SelectedIndex = -1;
 					 t_mjesec->SelectedIndex = -1;
+					 toolStripStatusLabel1->Text = "";
+					 errorProvider1->Clear ();
 					 return;
 				 }
 			 }
 
 			 if (!placeno)
-				 MessageBox::Show ("Nije odabran odgovarajuæi mjesec.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-
-
+			 { 
+				 toolStripStatusLabel1->Text = "Nije odabran odgovarajuæi mjesec.";
+				 errorProvider1->SetError (t_mjesec, "Nije odabran odgovarajuæi mjesec.");
+				 return;
+			 }
 		 }
 };
 }
