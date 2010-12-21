@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "PromjenaOsoba.h"
+#include "PromjenaOsoba.h"
 #include "PromjenaFirma.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
@@ -277,6 +277,7 @@ namespace InternetAccounting {
 			this->listViewOsoba->TabIndex = 10;
 			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
 			this->listViewOsoba->View = System::Windows::Forms::View::Details;
+			this->listViewOsoba->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewOsoba_ItemActivate);
 			// 
 			// columnHeader22
 			// 
@@ -686,6 +687,22 @@ private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System
 							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi);
 							 listViewFirma->Items->Clear ();
 							 pf->ShowDialog ();							
+							 return;
+						 }
+				 }
+		 }
+private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System::EventArgs^  e) {
+
+			 for (int i = 0; i < listViewOsoba->Items->Count; i++)
+				 if (listViewOsoba->Items[i]->Selected == true)	
+				 {
+					 for each (Korisnik ^k in korisnici)
+						 if (k->Username () == listViewOsoba->Items[i]->Text)
+						 {
+							 KorisnikOsoba ^korisnik = dynamic_cast <KorisnikOsoba ^> (k);
+							 PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi);
+							 listViewOsoba->Items->Clear ();
+							 po->ShowDialog ();							
 							 return;
 						 }
 				 }
