@@ -224,6 +224,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Racun.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -323,6 +327,24 @@
 				>
 				<File
 					RelativePath=".\PromjenaFirma.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\Racun.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RacunPrint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RacunPrint.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\RacunPrint.resx"
 					SubType="Designer"
 					>
 				</File>

@@ -1,11 +1,10 @@
 #pragma once
 
-/*
-#include "RacunNaplata.h"
+
+//#include "RacunNaplata.h"
 #include "RacunPrint.h"
 #include "Racun.h"
 #include "RacunPrint.h"
-*/
 #include "About.h"
 #include "Paket.h"
 #include "Pretraga.h"
@@ -137,8 +136,9 @@ namespace InternetAccounting {
 			// augustToolStripMenuItem
 			// 
 			this->augustToolStripMenuItem->Name = L"augustToolStripMenuItem";
-			this->augustToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->augustToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->augustToolStripMenuItem->Text = L"August";
+			this->augustToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::augustToolStripMenuItem_Click);
 			// 
 			// pictureBox1
 			// 
@@ -154,26 +154,30 @@ namespace InternetAccounting {
 			// juliToolStripMenuItem
 			// 
 			this->juliToolStripMenuItem->Name = L"juliToolStripMenuItem";
-			this->juliToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->juliToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->juliToolStripMenuItem->Text = L"Juli";
+			this->juliToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::juliToolStripMenuItem_Click);
 			// 
 			// septembarToolStripMenuItem
 			// 
 			this->septembarToolStripMenuItem->Name = L"septembarToolStripMenuItem";
-			this->septembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->septembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->septembarToolStripMenuItem->Text = L"Septembar";
+			this->septembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::septembarToolStripMenuItem_Click);
 			// 
 			// juniToolStripMenuItem
 			// 
 			this->juniToolStripMenuItem->Name = L"juniToolStripMenuItem";
-			this->juniToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->juniToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->juniToolStripMenuItem->Text = L"Juni";
+			this->juniToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::juniToolStripMenuItem_Click);
 			// 
 			// oktobarToolStripMenuItem
 			// 
 			this->oktobarToolStripMenuItem->Name = L"oktobarToolStripMenuItem";
-			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->oktobarToolStripMenuItem->Text = L"Oktobar";
+			this->oktobarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::oktobarToolStripMenuItem_Click);
 			// 
 			// pomoæToolStripMenuItem1
 			// 
@@ -194,33 +198,37 @@ namespace InternetAccounting {
 			// novembarToolStripMenuItem
 			// 
 			this->novembarToolStripMenuItem->Name = L"novembarToolStripMenuItem";
-			this->novembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->novembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->novembarToolStripMenuItem->Text = L"Novembar";
+			this->novembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::novembarToolStripMenuItem_Click);
 			// 
 			// naplataToolStripMenuItem
 			// 
 			this->naplataToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"naplataToolStripMenuItem.Image")));
 			this->naplataToolStripMenuItem->Name = L"naplataToolStripMenuItem";
-			this->naplataToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->naplataToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->naplataToolStripMenuItem->Text = L"Naplata...";
 			// 
 			// majToolStripMenuItem
 			// 
 			this->majToolStripMenuItem->Name = L"majToolStripMenuItem";
-			this->majToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->majToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->majToolStripMenuItem->Text = L"Maj";
+			this->majToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::majToolStripMenuItem_Click);
 			// 
 			// decembarToolStripMenuItem
 			// 
 			this->decembarToolStripMenuItem->Name = L"decembarToolStripMenuItem";
-			this->decembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->decembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->decembarToolStripMenuItem->Text = L"Decembar";
+			this->decembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::decembarToolStripMenuItem_Click);
 			// 
 			// aprilToolStripMenuItem
 			// 
 			this->aprilToolStripMenuItem->Name = L"aprilToolStripMenuItem";
-			this->aprilToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->aprilToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->aprilToolStripMenuItem->Text = L"April";
+			this->aprilToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::aprilToolStripMenuItem_Click);
 			// 
 			// noviKorisnikToolStripMenuItem
 			// 
@@ -234,8 +242,9 @@ namespace InternetAccounting {
 			// martToolStripMenuItem
 			// 
 			this->martToolStripMenuItem->Name = L"martToolStripMenuItem";
-			this->martToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->martToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->martToolStripMenuItem->Text = L"Mart";
+			this->martToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::martToolStripMenuItem_Click);
 			// 
 			// korisnikToolStripMenuItem
 			// 
@@ -291,20 +300,22 @@ namespace InternetAccounting {
 				this->novembarToolStripMenuItem, this->decembarToolStripMenuItem});
 			this->štampajToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"štampajToolStripMenuItem.Image")));
 			this->štampajToolStripMenuItem->Name = L"štampajToolStripMenuItem";
-			this->štampajToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->štampajToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->štampajToolStripMenuItem->Text = L"Izdavanje";
 			// 
 			// januarToolStripMenuItem
 			// 
 			this->januarToolStripMenuItem->Name = L"januarToolStripMenuItem";
-			this->januarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->januarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->januarToolStripMenuItem->Text = L"Januar";
+			this->januarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::januarToolStripMenuItem_Click);
 			// 
 			// februarToolStripMenuItem
 			// 
 			this->februarToolStripMenuItem->Name = L"februarToolStripMenuItem";
-			this->februarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->februarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->februarToolStripMenuItem->Text = L"Februar";
+			this->februarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::februarToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -338,6 +349,62 @@ private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, Syst
 private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 Pretraga ^p = gcnew Pretraga (korisnici, paketi);
 			 p->Show ();
+		 }
+
+private:
+	void IzdavanjeRacunaZaMjesec (String ^mjesec)
+	{
+		for each (Korisnik ^k in korisnici)
+		{
+			if (k->Suspenzija () == false && k->Mirovanje () == false)
+			{					
+				for each (Paket ^p in paketi)
+					if (k->Naziv_paketa () == p->Naziv_paketa ())
+					{
+						Racun ^r = gcnew Racun (k->Username (), mjesec, false);
+						racuni->Add (r);
+						RacunPrint ^rp = gcnew RacunPrint (k, r, p);
+						rp->ShowDialog ();
+					}
+			}					
+		}
+
+	}
+private: System::Void januarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Januar");
+		 }
+private: System::Void februarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Februar");
+		 }
+private: System::Void martToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Mart");
+		 }
+private: System::Void aprilToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("April");
+		 }
+private: System::Void majToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Maj");
+		 }
+private: System::Void juniToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Juni");
+		 }
+private: System::Void juliToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Juli");
+		 }
+private: System::Void augustToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("August");
+		 }
+private: System::Void septembarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Septembar");
+		 }
+private: System::Void oktobarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Oktobar");
+		 }
+private: System::Void novembarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Novembar");
+		 }
+private: System::Void decembarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 IzdavanjeRacunaZaMjesec ("Decembar");
 		 }
 };
 }
