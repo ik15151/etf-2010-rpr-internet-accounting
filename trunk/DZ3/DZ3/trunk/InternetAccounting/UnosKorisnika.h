@@ -12,7 +12,6 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
-//using namespace KontrolaModem;
 
 
 namespace InternetAccounting {
@@ -381,6 +380,7 @@ namespace InternetAccounting {
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(153, 20);
 			this->txtUsername->TabIndex = 4;
+			this->txtUsername->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::txtUsername_Validating);
 			// 
 			// lbPassword
 			// 
@@ -398,6 +398,7 @@ namespace InternetAccounting {
 			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(153, 20);
 			this->txtPassword->TabIndex = 5;
+			this->txtPassword->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::txtPassword_Validating);
 			// 
 			// groupBox3
 			// 
@@ -421,6 +422,7 @@ namespace InternetAccounting {
 			this->maskedTxtTelefon->Size = System::Drawing::Size(61, 20);
 			this->maskedTxtTelefon->TabIndex = 2;
 			this->maskedTxtTelefon->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->maskedTxtTelefon->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::maskedTxtTelefon_Validating);
 			// 
 			// txtAdresa
 			// 
@@ -428,6 +430,7 @@ namespace InternetAccounting {
 			this->txtAdresa->Name = L"txtAdresa";
 			this->txtAdresa->Size = System::Drawing::Size(152, 20);
 			this->txtAdresa->TabIndex = 0;
+			this->txtAdresa->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::txtAdresa_Validating);
 			// 
 			// lbTelefon
 			// 
@@ -483,8 +486,6 @@ namespace InternetAccounting {
 
 		}
 #pragma endregion
-
-
 		private:
 			bool PostaviIme ()
 			{
@@ -691,6 +692,96 @@ namespace InternetAccounting {
 			 }
 			}
 
+			bool PostaviAdresu ()
+			{
+				if (txtAdresa->Text->Length < 5)
+				{
+					txtAdresa->Focus ();
+					toolStripStatusLabel1->Text = "Adresa mora sadržavati najmanje 5 znakova.";
+					errorProvider1->SetError (txtAdresa, "Adresa mora sadržavati najmanje 5 znakova.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();	
+					return true;
+				}
+			}
+
+			bool PostaviTelefon ()
+			{
+				if (maskedTxtTelefon->Text->Length < 6)
+				{	
+					maskedTxtTelefon->Focus ();
+					toolStripStatusLabel1->Text = "Broj telefona mora imati najmanje 6 cifara.";
+					errorProvider1->SetError (maskedTxtTelefon, "Broj telefona mora imati najmanje 6 cifara.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					return true;
+				}
+			}
+
+			bool PostaviUsername ()
+			{
+				 if (txtUsername->Text->Length < 5)
+				 {
+					 txtUsername->Focus ();
+					 toolStripStatusLabel1->Text = "Username mora imati najmanje 5 znakova.";
+					 errorProvider1->SetError (txtUsername, "Username mora imati najmanje 5 znakova.");
+					 return false;
+				 }
+				 else if (txtUsername->Text->Length >= 5)
+				 {
+					 for each (Korisnik ^k in korisnici)
+					 if (txtUsername->Text == k->Username ())
+					 {
+						 toolStripStatusLabel1->Text = "Username veæ zauzet!";
+						 errorProvider1->SetError (txtUsername, "Username veæ zauzet!");
+						 return false;
+					 }
+
+					 errorProvider1->Clear ();
+					 return true;
+				 }
+			}
+
+			bool PostaviPassword ()
+			{
+				if (txtPassword->Text->Length < 5)
+				{	
+					txtPassword->Focus ();
+					toolStripStatusLabel1->Text = "Password mora imati najmanje 5 znakova.";
+					errorProvider1->SetError (txtPassword, "Password mora imati najmanje 5 znakova.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					return true;
+				}
+			}
+
+			void Resetuj ()
+			{
+				c_ime->Clear (); 
+				c_prezime->Clear (); 
+				c_broj_licne_karte->Clear ();
+
+				c_naziv_firme->Clear (); 
+				c_PDV_broj->Clear (); 
+
+				txtAdresa->Clear();
+				maskedTxtTelefon->Clear();
+				txtUsername->Clear();
+				txtPassword->Clear();
+				cmbBoxPaket->SelectedIndex = -1;
+
+				kontrolaModem1->setModem(false);
+			}
+
 
 
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -698,6 +789,73 @@ namespace InternetAccounting {
 			 }
 private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e) {
 
+			 try
+			 {
+				 if (tabControl2->SelectedIndex == 0)
+				 {
+					 if (!PostaviIme ())
+						 throw gcnew Exception (errorProvider1->GetError (c_ime));
+
+					 if (!PostaviPrezime ())
+						 throw gcnew Exception (errorProvider1->GetError (c_prezime));
+
+					 if (!PostaviLicnu ())
+						 throw gcnew Exception (errorProvider1->GetError (c_broj_licne_karte));
+
+				 }
+				 if (tabControl2->SelectedIndex == 1)
+				 {
+					 if (!PostaviNaziv ())
+						 throw gcnew Exception (errorProvider1->GetError (c_naziv_firme));
+
+					 if (!PostaviPDV ())
+						 throw gcnew Exception (errorProvider1->GetError (c_PDV_broj));					 
+				 }
+
+				 if (!PostaviAdresu())
+					 throw gcnew Exception (errorProvider1->GetError (txtAdresa));
+				 
+				 if (!PostaviTelefon())
+					 throw gcnew Exception (errorProvider1->GetError (maskedTxtTelefon));
+
+				 if (!PostaviUsername())
+					 throw gcnew Exception (errorProvider1->GetError (txtUsername));
+
+				 if (!PostaviPassword())
+					 throw gcnew Exception (errorProvider1->GetError (txtPassword));
+
+				 if (!PostaviPaket ())
+					 throw gcnew Exception (errorProvider1->GetError (cmbBoxPaket));
+
+				 String ^adresa = txtAdresa->Text;
+				 String ^telefon = maskedTxtTelefon->Text;
+				 String ^username = txtUsername->Text;
+				 String ^password = txtPassword->Text;
+				 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
+				 			 
+				 // Ako je sve uredu:
+
+				 if (tabControl2->SelectedIndex == 0)
+				 {
+					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
+					 korisnici->Add (ko);
+					
+					 Resetuj();
+				 }
+				 if (tabControl2->SelectedIndex == 1)
+				 {
+					 KorisnikFirma ^kf = gcnew KorisnikFirma (username, naziv_paketa, adresa, password, telefon, c_naziv_firme->Text, c_PDV_broj->Text);
+					 korisnici->Add (kf);
+
+					 Resetuj();
+				 }
+			 } 
+
+			 catch (...) 
+			 {			 
+				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			 } 
+				
 
 		 }
 private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventArgs^  e) {
@@ -722,6 +880,18 @@ private: System::Void c_PDV_broj_Validating(System::Object^  sender, System::Com
 		 }
 private: System::Void cmbBoxPaket_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 			 PostaviPaket ();
+		 }
+private: System::Void txtAdresa_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			PostaviAdresu ();
+		 }
+private: System::Void maskedTxtTelefon_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 PostaviTelefon ();
+		 }
+private: System::Void txtUsername_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 PostaviUsername ();
+		 }
+private: System::Void txtPassword_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 PostaviPassword ();
 		 }
 };
 }
