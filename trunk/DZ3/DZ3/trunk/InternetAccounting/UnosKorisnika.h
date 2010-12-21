@@ -628,34 +628,34 @@ namespace InternetAccounting {
 				 return false;
 			 }
 				else if (c_naziv_firme->Text->Length >= 3)
-			 {
-				 for (int i = 0; i < c_naziv_firme->Text->Length; i++)
-					 if (!c_naziv_firme->Text [i].IsLetter (c_naziv_firme->Text, i))
-					 {
-						 c_naziv_firme->Focus ();
-						 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati brojeve i simbole.";
-						 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati brojeve i simbole.");				
-						 return false;
-					 }
-					 if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
-					 {
-						 c_naziv_firme->Focus ();
-						 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
-						 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
-						 return false;
-					 }
-					 for (int i = 1; i < c_naziv_firme->Text->Length; i++)
-						 if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
+				 {
+					 for (int i = 0; i < c_naziv_firme->Text->Length; i++)
+						 if (!c_naziv_firme->Text [i].IsLetter (c_naziv_firme->Text, i))
 						 {
 							 c_naziv_firme->Focus ();
-							 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
-							 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
+							 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati brojeve i simbole.";
+							 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati brojeve i simbole.");				
 							 return false;
 						 }
-						 errorProvider1->Clear ();
-						 toolStripStatusLabel1->Text = "";
-						 return true;				
-			 }
+						 if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
+						 {
+							 c_naziv_firme->Focus ();
+							 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+							 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
+							 return false;
+						 }
+						 for (int i = 1; i < c_naziv_firme->Text->Length; i++)
+							 if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
+							 {
+								 c_naziv_firme->Focus ();
+								 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+								 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
+								 return false;
+							 }
+							 errorProvider1->Clear ();
+							 toolStripStatusLabel1->Text = "";
+							 return true;				
+				 }
 			}
 
 			bool PostaviPDV ()
@@ -701,11 +701,20 @@ namespace InternetAccounting {
 					errorProvider1->SetError (txtAdresa, "Adresa mora sadržavati najmanje 5 znakova.");
 					return false;
 				}
-				else
+				else if (txtAdresa->Text->Length >= 5)
 				{
-					errorProvider1->Clear ();	
-					return true;
-				}
+					for (int i = 0; i < txtAdresa->Text->Length; i++)
+						if (!txtAdresa->Text [0].IsUpper (txtAdresa->Text, 0))
+						{
+							txtAdresa->Focus ();
+							toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+							errorProvider1->SetError (txtAdresa, "Naziv mora poèeti sa velikim slovom.");				
+							return false;
+						}						
+						errorProvider1->Clear ();
+						toolStripStatusLabel1->Text = "";
+						return true;				
+				 }
 			}
 
 			bool PostaviTelefon ()
@@ -720,6 +729,7 @@ namespace InternetAccounting {
 				else
 				{
 					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
 					return true;
 				}
 			}
@@ -744,6 +754,7 @@ namespace InternetAccounting {
 					 }
 
 					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
 					 return true;
 				 }
 			}
@@ -760,6 +771,7 @@ namespace InternetAccounting {
 				else
 				{
 					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
 					return true;
 				}
 			}
