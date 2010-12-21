@@ -454,7 +454,6 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 			 }			 
 			 catch (...)
 			 {
-				 // Treba napraviti bolji/e izuzetke
 				 toolStripStatusLabel1->Text = "Greška u ažuriranju. Podaci nisu spašeni.";
 				 MessageBox::Show("Podaci nisu ažurirani.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 }

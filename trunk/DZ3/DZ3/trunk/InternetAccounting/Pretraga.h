@@ -1,7 +1,7 @@
 #pragma once
 
 //#include "PromjenaOsoba.h"
-//#include "PromjenaFirma.h"
+#include "PromjenaFirma.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 
@@ -207,6 +207,8 @@ namespace InternetAccounting {
 			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
 			this->cbx_pretrazivanje->Size = System::Drawing::Size(157, 21);
 			this->cbx_pretrazivanje->TabIndex = 0;
+			this->cbx_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::cbx_pretrazivanje_Validating);
+			this->cbx_pretrazivanje->SelectedIndexChanged += gcnew System::EventHandler(this, &Pretraga::cbx_pretrazivanje_SelectedIndexChanged);
 			// 
 			// label23
 			// 
@@ -225,6 +227,7 @@ namespace InternetAccounting {
 			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
 			this->unos_pretrazivanje->Size = System::Drawing::Size(173, 20);
 			this->unos_pretrazivanje->TabIndex = 1;
+			this->unos_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::unos_pretrazivanje_Validating);
 			// 
 			// label24
 			// 
@@ -355,6 +358,7 @@ namespace InternetAccounting {
 			this->listViewFirma->TabIndex = 11;
 			this->listViewFirma->UseCompatibleStateImageBehavior = false;
 			this->listViewFirma->View = System::Windows::Forms::View::Details;
+			this->listViewFirma->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewFirma_ItemActivate);
 			// 
 			// errorProvider1
 			// 
@@ -639,6 +643,52 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 if (listViewOsoba->Items->Count == 0 && listViewFirma->Items->Count == 0)
 				 MessageBox::Show ("Nema traženih podataka.", "Informacija", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
+		 }
+private: System::Void cbx_pretrazivanje_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+
+			 toolStripStatusLabel1->Text = "";
+			 errorProvider1->Clear ();
+
+			 String ^atribut = cbx_pretrazivanje->SelectedItem->ToString ();	
+			 if (atribut == "Suspendovani raèuni" || atribut == "Zamrznuti raèuni" || atribut == "Aktivni raèuni")
+				 unos_pretrazivanje->Enabled = false;
+			 else
+			 {
+				 unos_pretrazivanje->Enabled = true;
+				 unos_pretrazivanje->Focus ();
+			 }
+		 }
+private: System::Void cbx_pretrazivanje_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			  
+		 }
+private: System::Void unos_pretrazivanje_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+			 if (unos_pretrazivanje->Text->Length == 0)
+			 {
+				 unos_pretrazivanje->Focus ();
+				 toolStripStatusLabel1->Text = "Niste unijeli potrebne podatke.";
+				 errorProvider1->SetError (unos_pretrazivanje, "Niste unijeli potrebne podatke.");
+			 }
+			 else
+			 {
+				 toolStripStatusLabel1->Text = "";
+				 errorProvider1->Clear ();
+			 }	
+		 }
+private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System::EventArgs^  e) {
+
+			 for (int i = 0; i < listViewFirma->Items->Count; i++)
+				 if (listViewFirma->Items[i]->Selected == true)	
+				 {
+					 for each (Korisnik ^k in korisnici)
+						 if (k->Username () == listViewFirma->Items[i]->Text)
+						 {
+							 KorisnikFirma ^korisnik = dynamic_cast <KorisnikFirma ^> (k);
+							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi);
+							 listViewFirma->Items->Clear ();
+							 pf->ShowDialog ();							
+							 return;
+						 }
+				 }
 		 }
 };
 }
