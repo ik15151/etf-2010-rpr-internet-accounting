@@ -332,6 +332,20 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\PromjenaOsoba.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PromjenaOsoba.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\PromjenaOsoba.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\Racun.h"
 				>
 			</File>

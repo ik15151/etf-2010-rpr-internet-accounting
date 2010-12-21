@@ -86,9 +86,9 @@ namespace InternetAccounting {
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(12, 39);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(290, 13);
+			this->label4->Size = System::Drawing::Size(272, 13);
 			this->label4->TabIndex = 10;
-			this->label4->Text = L"Developer: Irma Kapetanoviæ (irmakapetanovic@gmail.com)";
+			this->label4->Text = L"Developer: Irma Kapetanoviæ (ikapetanovic@vaktija.ba)";
 			// 
 			// label3
 			// 
