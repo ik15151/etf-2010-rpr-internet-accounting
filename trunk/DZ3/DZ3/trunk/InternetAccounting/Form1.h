@@ -135,7 +135,7 @@ namespace InternetAccounting {
 			// augustToolStripMenuItem
 			// 
 			this->augustToolStripMenuItem->Name = L"augustToolStripMenuItem";
-			this->augustToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->augustToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->augustToolStripMenuItem->Text = L"August";
 			this->augustToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::augustToolStripMenuItem_Click);
 			// 
@@ -153,28 +153,28 @@ namespace InternetAccounting {
 			// juliToolStripMenuItem
 			// 
 			this->juliToolStripMenuItem->Name = L"juliToolStripMenuItem";
-			this->juliToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->juliToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->juliToolStripMenuItem->Text = L"Juli";
 			this->juliToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::juliToolStripMenuItem_Click);
 			// 
 			// septembarToolStripMenuItem
 			// 
 			this->septembarToolStripMenuItem->Name = L"septembarToolStripMenuItem";
-			this->septembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->septembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->septembarToolStripMenuItem->Text = L"Septembar";
 			this->septembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::septembarToolStripMenuItem_Click);
 			// 
 			// juniToolStripMenuItem
 			// 
 			this->juniToolStripMenuItem->Name = L"juniToolStripMenuItem";
-			this->juniToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->juniToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->juniToolStripMenuItem->Text = L"Juni";
 			this->juniToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::juniToolStripMenuItem_Click);
 			// 
 			// oktobarToolStripMenuItem
 			// 
 			this->oktobarToolStripMenuItem->Name = L"oktobarToolStripMenuItem";
-			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->oktobarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->oktobarToolStripMenuItem->Text = L"Oktobar";
 			this->oktobarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::oktobarToolStripMenuItem_Click);
 			// 
@@ -190,14 +190,14 @@ namespace InternetAccounting {
 			// 
 			this->uVeziSaSabilyToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"uVeziSaSabilyToolStripMenuItem.Image")));
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
-			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(139, 22);
+			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi Sabily";
 			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
 			// novembarToolStripMenuItem
 			// 
 			this->novembarToolStripMenuItem->Name = L"novembarToolStripMenuItem";
-			this->novembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->novembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->novembarToolStripMenuItem->Text = L"Novembar";
 			this->novembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::novembarToolStripMenuItem_Click);
 			// 
@@ -212,21 +212,21 @@ namespace InternetAccounting {
 			// majToolStripMenuItem
 			// 
 			this->majToolStripMenuItem->Name = L"majToolStripMenuItem";
-			this->majToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->majToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->majToolStripMenuItem->Text = L"Maj";
 			this->majToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::majToolStripMenuItem_Click);
 			// 
 			// decembarToolStripMenuItem
 			// 
 			this->decembarToolStripMenuItem->Name = L"decembarToolStripMenuItem";
-			this->decembarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->decembarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->decembarToolStripMenuItem->Text = L"Decembar";
 			this->decembarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::decembarToolStripMenuItem_Click);
 			// 
 			// aprilToolStripMenuItem
 			// 
 			this->aprilToolStripMenuItem->Name = L"aprilToolStripMenuItem";
-			this->aprilToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->aprilToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->aprilToolStripMenuItem->Text = L"April";
 			this->aprilToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::aprilToolStripMenuItem_Click);
 			// 
@@ -242,7 +242,7 @@ namespace InternetAccounting {
 			// martToolStripMenuItem
 			// 
 			this->martToolStripMenuItem->Name = L"martToolStripMenuItem";
-			this->martToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->martToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->martToolStripMenuItem->Text = L"Mart";
 			this->martToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::martToolStripMenuItem_Click);
 			// 
@@ -306,14 +306,14 @@ namespace InternetAccounting {
 			// januarToolStripMenuItem
 			// 
 			this->januarToolStripMenuItem->Name = L"januarToolStripMenuItem";
-			this->januarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->januarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->januarToolStripMenuItem->Text = L"Januar";
 			this->januarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::januarToolStripMenuItem_Click);
 			// 
 			// februarToolStripMenuItem
 			// 
 			this->februarToolStripMenuItem->Name = L"februarToolStripMenuItem";
-			this->februarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->februarToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->februarToolStripMenuItem->Text = L"Februar";
 			this->februarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::februarToolStripMenuItem_Click);
 			// 
@@ -325,7 +325,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"Sabily";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
