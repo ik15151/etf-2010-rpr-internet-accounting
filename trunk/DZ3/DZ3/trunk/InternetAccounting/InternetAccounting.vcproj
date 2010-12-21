@@ -250,6 +250,20 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\About.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\About.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\About.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\Form1.h"
 				FileType="3"
 				>
@@ -284,6 +298,34 @@
 			<File
 				RelativePath=".\Paket.h"
 				>
+			</File>
+			<File
+				RelativePath=".\Pretraga.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Pretraga.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\Pretraga.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\PromjenaFirma.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PromjenaFirma.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\PromjenaFirma.resx"
+					SubType="Designer"
+					>
+				</File>
 			</File>
 			<File
 				RelativePath=".\resource.h"

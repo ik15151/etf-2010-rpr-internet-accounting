@@ -1,15 +1,14 @@
 #pragma once
 
 /*
-#include "About.h"
-#include "Pretraga.h"
 #include "RacunNaplata.h"
 #include "RacunPrint.h"
-
 #include "Racun.h"
 #include "RacunPrint.h"
 */
+#include "About.h"
 #include "Paket.h"
+#include "Pretraga.h"
 #include "UnosKorisnika.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
@@ -188,8 +187,9 @@ namespace InternetAccounting {
 			// 
 			this->uVeziSaSabilyToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"uVeziSaSabilyToolStripMenuItem.Image")));
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
-			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(153, 22);
-			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi sa Sabily";
+			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(139, 22);
+			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi Sabily";
+			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
 			// novembarToolStripMenuItem
 			// 
@@ -253,6 +253,7 @@ namespace InternetAccounting {
 			this->pretragaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
 			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->pretragaToolStripMenuItem->Text = L"Pretraga...";
+			this->pretragaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::pretragaToolStripMenuItem_Click);
 			// 
 			// izlazToolStripMenuItem
 			// 
@@ -261,6 +262,7 @@ namespace InternetAccounting {
 			this->izlazToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Q));
 			this->izlazToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->izlazToolStripMenuItem->Text = L"Izlaz";
+			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click);
 			// 
 			// menuStrip1
 			// 
@@ -326,6 +328,17 @@ namespace InternetAccounting {
 				 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi);
 				 uk->Show ();
 			 }
+private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 About ^a = gcnew About ();
+			 a->ShowDialog ();
+		 }
+private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Close ();
+		 }
+private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Pretraga ^p = gcnew Pretraga (korisnici, paketi);
+			 p->Show ();
+		 }
 };
 }
 
