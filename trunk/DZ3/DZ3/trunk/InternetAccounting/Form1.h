@@ -1,7 +1,6 @@
 #pragma once
 
-
-//#include "RacunNaplata.h"
+#include "RacunNaplata.h"
 #include "RacunPrint.h"
 #include "Racun.h"
 #include "RacunPrint.h"
@@ -208,6 +207,7 @@ namespace InternetAccounting {
 			this->naplataToolStripMenuItem->Name = L"naplataToolStripMenuItem";
 			this->naplataToolStripMenuItem->Size = System::Drawing::Size(152, 22);
 			this->naplataToolStripMenuItem->Text = L"Naplata...";
+			this->naplataToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::naplataToolStripMenuItem_Click);
 			// 
 			// majToolStripMenuItem
 			// 
@@ -405,6 +405,11 @@ private: System::Void novembarToolStripMenuItem_Click(System::Object^  sender, S
 		 }
 private: System::Void decembarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 IzdavanjeRacunaZaMjesec ("Decembar");
+		 }
+private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 RacunNaplata ^rn = gcnew RacunNaplata (korisnici, racuni);
+			 rn->Show ();
 		 }
 };
 }

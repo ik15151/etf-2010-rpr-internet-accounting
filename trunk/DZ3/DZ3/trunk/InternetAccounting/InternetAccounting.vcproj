@@ -336,6 +336,20 @@
 				>
 			</File>
 			<File
+				RelativePath=".\RacunNaplata.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RacunNaplata.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\RacunNaplata.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\RacunPrint.cpp"
 				>
 			</File>
