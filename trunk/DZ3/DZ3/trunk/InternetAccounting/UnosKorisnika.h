@@ -5,6 +5,8 @@
 #include "KorisnikFirma.h"
 #include "Paket.h"
 #include "KontrolaModem.h"
+#include "IzuzetakOsoba.h"
+#include "IzuzetakFirma.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -806,22 +808,22 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 if (tabControl2->SelectedIndex == 0)
 				 {
 					 if (!PostaviIme ())
-						 throw gcnew Exception (errorProvider1->GetError (c_ime));
+						 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_ime));
 
 					 if (!PostaviPrezime ())
-						 throw gcnew Exception (errorProvider1->GetError (c_prezime));
+						 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_prezime));
 
 					 if (!PostaviLicnu ())
-						 throw gcnew Exception (errorProvider1->GetError (c_broj_licne_karte));
+						 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_broj_licne_karte));
 
 				 }
 				 if (tabControl2->SelectedIndex == 1)
 				 {
 					 if (!PostaviNaziv ())
-						 throw gcnew Exception (errorProvider1->GetError (c_naziv_firme));
+						 throw gcnew IzuzetakFirma (errorProvider1->GetError (c_naziv_firme));
 
 					 if (!PostaviPDV ())
-						 throw gcnew Exception (errorProvider1->GetError (c_PDV_broj));					 
+						 throw gcnew IzuzetakFirma (errorProvider1->GetError (c_PDV_broj));					 
 				 }
 
 				 if (!PostaviAdresu())
@@ -838,6 +840,8 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 				 if (!PostaviPaket ())
 					 throw gcnew Exception (errorProvider1->GetError (cmbBoxPaket));
+
+				 kontrolaModem1->setModem(); 
 
 				 String ^adresa = txtAdresa->Text;
 				 String ^telefon = maskedTxtTelefon->Text;
@@ -862,7 +866,14 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 Resetuj();
 				 }
 			 } 
-
+			 catch (IzuzetakOsoba ^iz)
+			 {
+				MessageBox::Show ("Greška pri unosu. Podaci o osobi nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			 }
+			 catch (IzuzetakFirma ^iz)
+			 {
+				 MessageBox::Show ("Greška pri unosu. Podaci o firmi nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			 }
 			 catch (...) 
 			 {			 
 				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);

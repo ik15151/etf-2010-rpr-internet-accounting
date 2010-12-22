@@ -23,7 +23,6 @@ namespace InternetAccounting {
 			//TODO: Add the constructor code here
 			//
 
-			modem = chBoxModem->Checked;
 		}
 
 	protected:
@@ -82,6 +81,8 @@ namespace InternetAccounting {
 			// chBoxModem
 			// 
 			this->chBoxModem->AutoSize = true;
+			this->chBoxModem->Checked = true;
+			this->chBoxModem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->chBoxModem->Location = System::Drawing::Point(111, 19);
 			this->chBoxModem->Name = L"chBoxModem";
 			this->chBoxModem->Size = System::Drawing::Size(61, 17);
@@ -112,6 +113,11 @@ namespace InternetAccounting {
 		void setModem ()
 		{
 			modem = chBoxModem->Checked;
+			if (modem)
+				MessageBox::Show("tacno");
+			else
+				MessageBox::Show("Netacno");
+
 		}
 
 		void setModem (bool m)

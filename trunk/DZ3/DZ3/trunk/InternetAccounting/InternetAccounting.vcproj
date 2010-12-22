@@ -278,6 +278,14 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\IzuzetakFirma.h"
+				>
+			</File>
+			<File
+				RelativePath=".\IzuzetakOsoba.h"
+				>
+			</File>
+			<File
 				RelativePath=".\KontrolaModem.h"
 				FileType="4"
 				>

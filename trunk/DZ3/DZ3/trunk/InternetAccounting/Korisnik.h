@@ -12,7 +12,7 @@ ref class Korisnik : KontrolaModem
 
 public:
 	Korisnik (String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon) 
-		: KontrolaModem (), _username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _suspenzija (false), _mirovanje (false)  {}
+		: _username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _suspenzija (false), _mirovanje (false)  {}
 
 	String ^Username () { return _username; }
 	void Username (String ^val) { _username = val; }
