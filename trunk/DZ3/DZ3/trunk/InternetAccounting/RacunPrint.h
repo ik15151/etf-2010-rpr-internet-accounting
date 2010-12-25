@@ -418,7 +418,7 @@ namespace InternetAccounting {
 			this->panel1->Controls->Add(this->r_id_racuna);
 			this->panel1->Location = System::Drawing::Point(12, 12);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(290, 131);
+			this->panel1->Size = System::Drawing::Size(290, 152);
 			this->panel1->TabIndex = 21;
 			// 
 			// label13
@@ -490,7 +490,7 @@ namespace InternetAccounting {
 
 				 r_korisnik->Text = korisnik->Print ();
 				 r_adresa->Text = korisnik->Adresa ();
-				 if (korisnik->getModem())
+				 if (korisnik->Modem())
 				 {
 					 r_modem->Text = "6 KM";
 					 cijena->Text = (paket->Cijena () + 6).ToString ();
@@ -515,7 +515,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 			 korisnik->Suspenzija (true);
-			 korisnik->setModem(false);
+			 korisnik->Modem(false);
 			 Close ();
 		 }
 };

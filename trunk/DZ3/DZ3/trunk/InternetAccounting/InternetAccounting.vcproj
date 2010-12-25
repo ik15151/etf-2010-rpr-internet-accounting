@@ -204,10 +204,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\KontrolaModem.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Korisnik.cpp"
 				>
 			</File>
@@ -284,16 +280,6 @@
 			<File
 				RelativePath=".\IzuzetakOsoba.h"
 				>
-			</File>
-			<File
-				RelativePath=".\KontrolaModem.h"
-				FileType="4"
-				>
-				<File
-					RelativePath=".\KontrolaModem.resx"
-					SubType="Designer"
-					>
-				</File>
 			</File>
 			<File
 				RelativePath=".\Korisnik.h"

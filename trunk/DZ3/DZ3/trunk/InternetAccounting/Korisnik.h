@@ -1,17 +1,16 @@
 #pragma once
-#include "KontrolaModem.h"
 
 using namespace System;
-using namespace InternetAccounting;
+//using namespace InternetAccounting;
 
-ref class Korisnik : KontrolaModem
+ref class Korisnik abstract
 {
 	String ^_username, ^_naziv_paketa, ^_adresa, ^_password, ^_telefon;
-	bool _suspenzija, _mirovanje;
+	bool _suspenzija, _mirovanje, _modem;
 
 public:
-	Korisnik (String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon) 
-		: _username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _suspenzija (false), _mirovanje (false)  {}
+	Korisnik (bool modem, String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon) 
+		: _modem (modem), _username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _suspenzija (false), _mirovanje (false)  {}
 
 	String ^Username () { return _username; }
 	void Username (String ^val) { _username = val; }
@@ -34,7 +33,10 @@ public:
 	bool Mirovanje () { return _mirovanje; }
 	void Mirovanje (bool val) { _mirovanje = val; }
 
-	virtual String ^Print ();
+	bool Modem () { return _modem; }
+	void Modem (bool val) { _modem = val; }
+
+	virtual String ^Print () = 0;
 
 
 };

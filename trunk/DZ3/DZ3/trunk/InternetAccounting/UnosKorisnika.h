@@ -4,7 +4,6 @@
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 #include "Paket.h"
-#include "KontrolaModem.h"
 #include "IzuzetakOsoba.h"
 #include "IzuzetakFirma.h"
 
@@ -80,7 +79,7 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::Label^  label9;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::TextBox^  c_naziv_firme;
-	private: InternetAccounting::KontrolaModem^  kontrolaModem1;
+
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: System::Windows::Forms::Button^  button5;
@@ -98,6 +97,9 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::Label^  lbTelefon;
 	private: System::Windows::Forms::Label^  lbAdresa;
 	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::CheckBox^  chBoxModem;
+
 	private: System::ComponentModel::IContainer^  components;
 
 	private:
@@ -127,7 +129,6 @@ namespace InternetAccounting {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->c_naziv_firme = (gcnew System::Windows::Forms::TextBox());
-			this->kontrolaModem1 = (gcnew InternetAccounting::KontrolaModem());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->button5 = (gcnew System::Windows::Forms::Button());
@@ -145,6 +146,8 @@ namespace InternetAccounting {
 			this->lbTelefon = (gcnew System::Windows::Forms::Label());
 			this->lbAdresa = (gcnew System::Windows::Forms::Label());
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->chBoxModem = (gcnew System::Windows::Forms::CheckBox());
 			this->tabControl2->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
@@ -152,6 +155,7 @@ namespace InternetAccounting {
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// tabControl2
@@ -284,13 +288,6 @@ namespace InternetAccounting {
 			this->c_naziv_firme->Size = System::Drawing::Size(152, 20);
 			this->c_naziv_firme->TabIndex = 0;
 			this->c_naziv_firme->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_naziv_firme_Validating);
-			// 
-			// kontrolaModem1
-			// 
-			this->kontrolaModem1->Location = System::Drawing::Point(8, 331);
-			this->kontrolaModem1->Name = L"kontrolaModem1";
-			this->kontrolaModem1->Size = System::Drawing::Size(298, 55);
-			this->kontrolaModem1->TabIndex = 105;
 			// 
 			// statusStrip1
 			// 
@@ -456,17 +453,38 @@ namespace InternetAccounting {
 			// 
 			this->errorProvider1->ContainerControl = this;
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->BackColor = System::Drawing::Color::Transparent;
+			this->groupBox1->Controls->Add(this->chBoxModem);
+			this->groupBox1->Location = System::Drawing::Point(12, 341);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(290, 46);
+			this->groupBox1->TabIndex = 111;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Najam opreme";
+			// 
+			// chBoxModem
+			// 
+			this->chBoxModem->AutoSize = true;
+			this->chBoxModem->Location = System::Drawing::Point(111, 19);
+			this->chBoxModem->Name = L"chBoxModem";
+			this->chBoxModem->Size = System::Drawing::Size(61, 17);
+			this->chBoxModem->TabIndex = 6;
+			this->chBoxModem->Text = L"Modem";
+			this->chBoxModem->UseVisualStyleBackColor = true;
+			// 
 			// UnosKorisnika
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(312, 463);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->Unesi);
-			this->Controls->Add(this->kontrolaModem1);
 			this->Controls->Add(this->tabControl2);
 			this->Name = L"UnosKorisnika";
 			this->Text = L"UnosKorisnika";
@@ -483,6 +501,8 @@ namespace InternetAccounting {
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -792,8 +812,7 @@ namespace InternetAccounting {
 				txtUsername->Clear();
 				txtPassword->Clear();
 				cmbBoxPaket->SelectedIndex = -1;
-
-				//kontrolaModem1->setModem(false);
+				chBoxModem->Checked = false;
 			}
 
 
@@ -841,33 +860,28 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 if (!PostaviPaket ())
 					 throw gcnew Exception (errorProvider1->GetError (cmbBoxPaket));
 
-				 kontrolaModem1->setModem(); 
-
-				 MessageBox::Show ("prolaz1");
-
 				 String ^adresa = txtAdresa->Text;
 				 String ^telefon = maskedTxtTelefon->Text;
 				 String ^username = txtUsername->Text;
 				 String ^password = txtPassword->Text;
 				 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
+				 bool modem = chBoxModem->Checked;
 				 			 
 				 // Ako je sve uredu:
 
 				 if (tabControl2->SelectedIndex == 0)
 				 {
-					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
+					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (modem, username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 					 korisnici->Add (ko);
 					
 					 Resetuj();
-					 MessageBox::Show ("prolaz2");
 				 }
 				 if (tabControl2->SelectedIndex == 1)
 				 {
-					 KorisnikFirma ^kf = gcnew KorisnikFirma (username, naziv_paketa, adresa, password, telefon, c_naziv_firme->Text, c_PDV_broj->Text);
+					 KorisnikFirma ^kf = gcnew KorisnikFirma (modem, username, naziv_paketa, adresa, password, telefon, c_naziv_firme->Text, c_PDV_broj->Text);
 					 korisnici->Add (kf);
 
 					 Resetuj();
-					 MessageBox::Show ("prolaz3");
 				 }
 			 } 
 			 catch (IzuzetakOsoba ^iz)

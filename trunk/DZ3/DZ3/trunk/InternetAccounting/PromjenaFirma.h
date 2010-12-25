@@ -1,7 +1,6 @@
 #pragma once
 #include "KorisnikFirma.h"
 #include "Paket.h"
-#include "KontrolaModem.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -45,7 +44,9 @@ namespace InternetAccounting {
 
 	private:
 		KorisnikFirma ^korisnik;
-		ArrayList ^paketi;
+	private: System::Windows::Forms::GroupBox^  groupBox5;
+	private: System::Windows::Forms::CheckBox^  chBoxModem;
+			 ArrayList ^paketi;
 
 	protected:
 		/// <summary>
@@ -76,7 +77,7 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::TextBox^  txtAdresa;
 	private: System::Windows::Forms::Label^  lbTelefon;
 	private: System::Windows::Forms::Label^  lbAdresa;
-	private: InternetAccounting::KontrolaModem^  kontrolaModem1;
+
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  toolStripStatusLabel1;
 	private: System::Windows::Forms::GroupBox^  groupBox4;
@@ -117,7 +118,6 @@ namespace InternetAccounting {
 			this->txtAdresa = (gcnew System::Windows::Forms::TextBox());
 			this->lbTelefon = (gcnew System::Windows::Forms::Label());
 			this->lbAdresa = (gcnew System::Windows::Forms::Label());
-			this->kontrolaModem1 = (gcnew InternetAccounting::KontrolaModem());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
@@ -125,12 +125,15 @@ namespace InternetAccounting {
 			this->p_aktivan = (gcnew System::Windows::Forms::RadioButton());
 			this->Azuriranje = (gcnew System::Windows::Forms::Button());
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->chBoxModem = (gcnew System::Windows::Forms::CheckBox());
 			this->groupbox3->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
+			this->groupBox5->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupbox3
@@ -294,13 +297,6 @@ namespace InternetAccounting {
 			this->lbAdresa->TabIndex = 15;
 			this->lbAdresa->Text = L"Adresa:";
 			// 
-			// kontrolaModem1
-			// 
-			this->kontrolaModem1->Location = System::Drawing::Point(10, 292);
-			this->kontrolaModem1->Name = L"kontrolaModem1";
-			this->kontrolaModem1->Size = System::Drawing::Size(298, 55);
-			this->kontrolaModem1->TabIndex = 114;
-			// 
 			// statusStrip1
 			// 
 			this->statusStrip1->BackColor = System::Drawing::SystemColors::Window;
@@ -365,17 +361,38 @@ namespace InternetAccounting {
 			// 
 			this->errorProvider1->ContainerControl = this;
 			// 
+			// groupBox5
+			// 
+			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
+			this->groupBox5->Controls->Add(this->chBoxModem);
+			this->groupBox5->Location = System::Drawing::Point(14, 294);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(290, 46);
+			this->groupBox5->TabIndex = 120;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"Najam opreme";
+			// 
+			// chBoxModem
+			// 
+			this->chBoxModem->AutoSize = true;
+			this->chBoxModem->Location = System::Drawing::Point(111, 19);
+			this->chBoxModem->Name = L"chBoxModem";
+			this->chBoxModem->Size = System::Drawing::Size(61, 17);
+			this->chBoxModem->TabIndex = 6;
+			this->chBoxModem->Text = L"Modem";
+			this->chBoxModem->UseVisualStyleBackColor = true;
+			// 
 			// PromjenaFirma
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(316, 475);
+			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->Azuriranje);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->kontrolaModem1);
 			this->Controls->Add(this->groupbox3);
 			this->Name = L"PromjenaFirma";
 			this->Text = L"PromjenaFirma";
@@ -391,11 +408,19 @@ namespace InternetAccounting {
 			this->groupBox4->ResumeLayout(false);
 			this->groupBox4->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
+			this->groupBox5->ResumeLayout(false);
+			this->groupBox5->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+		public:
+			void setModemDisabled ()
+			{
+				chBoxModem->Checked = false;
+				chBoxModem->Enabled = false;
+			}
 	private: System::Void PromjenaFirma_Load(System::Object^  sender, System::EventArgs^  e) {
 
 				 for each (Paket ^p in paketi)
@@ -410,15 +435,18 @@ namespace InternetAccounting {
 				 maskedTxtTelefon->Text = korisnik->Telefon ();
 				 txtUsername->Text = korisnik->Username ();
 				 txtPassword->Text = korisnik->Password ();
-				 kontrolaModem1->setModem (korisnik->getModem());
+				 chBoxModem->Checked = korisnik->Modem();
+				 
 
 				 if (korisnik->Suspenzija () == true)
 				 {
 					 p_mirovanje->Checked = false;
 					 p_aktivan->Checked = false;
+
 					 p_mirovanje->Enabled = false;
 					 p_aktivan->Enabled = false;
-					 kontrolaModem1->setModemDisabled();
+					 korisnik->Modem(false);
+					 setModemDisabled();
 				 }
 				 else if (korisnik->Mirovanje () == true)
 					 p_mirovanje->Checked = true;
@@ -429,10 +457,10 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 
 			 try
 			 {
-				 if (p_mirovanje->Checked == true && kontrolaModem1->getModem () == true)
+				 if (p_mirovanje->Checked == true && chBoxModem->Checked == true)
 				 {
 					 errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
-					 kontrolaModem1->setGreskaModem("Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
+					 errorProvider1->SetError(chBoxModem, "Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
 					 throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
 				 }
 
@@ -443,7 +471,7 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				 korisnik->Username (txtUsername->Text);
 				 korisnik->Password (txtPassword->Text);
 				 korisnik->Naziv_paketa (cmbBoxPaket->SelectedItem->ToString ());
-				 korisnik->setModem ();
+				 korisnik->Modem (chBoxModem->Checked);
 
 				 if (p_mirovanje->Checked)
 					 korisnik->Mirovanje (true);

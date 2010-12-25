@@ -435,7 +435,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE");
@@ -450,7 +450,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE"); 
@@ -475,7 +475,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE");
@@ -490,7 +490,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE"); 
@@ -514,7 +514,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE");
@@ -529,7 +529,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE"); 
@@ -564,7 +564,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 
 							 //MessageBox::Show(k->getModem());
 
-							 if (k->getModem() == true)
+							 if (k->Modem() == true)
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE");
@@ -592,7 +592,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE"); 
@@ -620,7 +620,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ()); 
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE");
@@ -635,7 +635,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 							 temp->SubItems->Add (k->Telefon ());
 							 temp->SubItems->Add (k->Naziv_paketa ());
 							 temp->SubItems->Add (k->Password ());
-							 if (k->getModem())
+							 if (k->Modem())
 								 temp->SubItems->Add ("DA");
 							 else 
 								 temp->SubItems->Add ("NE"); 

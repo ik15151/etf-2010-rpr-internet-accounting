@@ -6,8 +6,8 @@ ref class KorisnikFirma : Korisnik
 {
 	String ^_naziv, ^_PDV_broj;
 public:
-	KorisnikFirma (String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon, String ^naziv, String ^PDV_broj) 
-		: Korisnik (username, naziv_paketa, adresa, password, telefon), _naziv (naziv), _PDV_broj (PDV_broj) {}
+	KorisnikFirma (bool modem, String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon, String ^naziv, String ^PDV_broj) 
+		: Korisnik (modem, username, naziv_paketa, adresa, password, telefon), _naziv (naziv), _PDV_broj (PDV_broj) {}
 
 	String ^Naziv () { return _naziv; }
 	void Naziv (String ^val) { _naziv = val; }

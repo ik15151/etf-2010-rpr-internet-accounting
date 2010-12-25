@@ -87,7 +87,10 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::TextBox^  c_ime;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
-	private: InternetAccounting::KontrolaModem^  kontrolaModem1;
+	private: System::Windows::Forms::GroupBox^  groupBox5;
+	private: System::Windows::Forms::CheckBox^  chBoxModem;
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 	private:
@@ -130,13 +133,15 @@ namespace InternetAccounting {
 			this->c_ime = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->kontrolaModem1 = (gcnew InternetAccounting::KontrolaModem());
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->chBoxModem = (gcnew System::Windows::Forms::CheckBox());
 			this->statusStrip1->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->BeginInit();
 			this->groupbox3->SuspendLayout();
+			this->groupBox5->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// statusStrip1
@@ -382,25 +387,39 @@ namespace InternetAccounting {
 			this->label2->TabIndex = 17;
 			this->label2->Text = L"Ime:";
 			// 
-			// kontrolaModem1
+			// groupBox5
 			// 
-			this->kontrolaModem1->Location = System::Drawing::Point(10, 314);
-			this->kontrolaModem1->Name = L"kontrolaModem1";
-			this->kontrolaModem1->Size = System::Drawing::Size(298, 55);
-			this->kontrolaModem1->TabIndex = 121;
+			this->groupBox5->BackColor = System::Drawing::Color::Transparent;
+			this->groupBox5->Controls->Add(this->chBoxModem);
+			this->groupBox5->Location = System::Drawing::Point(14, 316);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(290, 46);
+			this->groupBox5->TabIndex = 104;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"Najam opreme";
+			// 
+			// chBoxModem
+			// 
+			this->chBoxModem->AutoSize = true;
+			this->chBoxModem->Location = System::Drawing::Point(111, 19);
+			this->chBoxModem->Name = L"chBoxModem";
+			this->chBoxModem->Size = System::Drawing::Size(61, 17);
+			this->chBoxModem->TabIndex = 6;
+			this->chBoxModem->Text = L"Modem";
+			this->chBoxModem->UseVisualStyleBackColor = true;
 			// 
 			// PromjenaOsoba
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(318, 495);
+			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupbox3);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->Azuriranje);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->kontrolaModem1);
 			this->Name = L"PromjenaOsoba";
 			this->Text = L"PromjenaOsoba";
 			this->Load += gcnew System::EventHandler(this, &PromjenaOsoba::PromjenaOsoba_Load);
@@ -415,11 +434,20 @@ namespace InternetAccounting {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->errorProvider1))->EndInit();
 			this->groupbox3->ResumeLayout(false);
 			this->groupbox3->PerformLayout();
+			this->groupBox5->ResumeLayout(false);
+			this->groupBox5->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+		public:
+			void setModemDisabled ()
+			{
+				chBoxModem->Checked = false;
+				chBoxModem->Enabled = false;
+			}
+
 	private: System::Void PromjenaOsoba_Load(System::Object^  sender, System::EventArgs^  e) {
 				 for each (Paket ^p in paketi)
 					 cmbBoxPaket->Items->Add (p->Naziv_paketa ());
@@ -434,7 +462,7 @@ namespace InternetAccounting {
 				 txtUsername->Text = korisnik->Username ();
 				 txtPassword->Text = korisnik->Password ();
 				 
-				 kontrolaModem1->setModem (korisnik->getModem());
+				 chBoxModem->Checked = korisnik->Modem();
 
 				 if (korisnik->Suspenzija () == true)
 				 {
@@ -442,7 +470,8 @@ namespace InternetAccounting {
 					 p_aktivan->Checked = false;
 					 p_mirovanje->Enabled = false;
 					 p_aktivan->Enabled = false;
-					 kontrolaModem1->setModemDisabled ();
+					 korisnik->Modem(false);
+					 setModemDisabled();
 				 }
 				 else if (korisnik->Mirovanje () == true)
 					 p_mirovanje->Checked = true;
@@ -453,10 +482,10 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 
 			 try
 			 {
-				 if (p_mirovanje->Checked == true && kontrolaModem1->getModem () == true)
+				 if (p_mirovanje->Checked == true && chBoxModem->Checked == true)
 				 {
 					 errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
-					 kontrolaModem1->setGreskaModem ("Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
+					 errorProvider1->SetError(chBoxModem, "Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
 					 throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
 				 }
 
@@ -471,7 +500,7 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				 korisnik->Password (txtPassword->Text);
 				 korisnik->Naziv_paketa (cmbBoxPaket->SelectedItem->ToString ());
 
-				 korisnik->setModem ();
+				 korisnik->Modem (chBoxModem->Checked);
 
 				 if (p_mirovanje->Checked)
 					 korisnik->Mirovanje (true);

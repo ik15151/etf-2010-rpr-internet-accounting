@@ -190,7 +190,7 @@ namespace InternetAccounting {
 			// 
 			this->uVeziSaSabilyToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"uVeziSaSabilyToolStripMenuItem.Image")));
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
-			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(139, 22);
 			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi Sabily";
 			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
@@ -205,7 +205,7 @@ namespace InternetAccounting {
 			// 
 			this->naplataToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"naplataToolStripMenuItem.Image")));
 			this->naplataToolStripMenuItem->Name = L"naplataToolStripMenuItem";
-			this->naplataToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->naplataToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->naplataToolStripMenuItem->Text = L"Naplata...";
 			this->naplataToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::naplataToolStripMenuItem_Click);
 			// 
@@ -300,7 +300,7 @@ namespace InternetAccounting {
 				this->novembarToolStripMenuItem, this->decembarToolStripMenuItem});
 			this->štampajToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"štampajToolStripMenuItem.Image")));
 			this->štampajToolStripMenuItem->Name = L"štampajToolStripMenuItem";
-			this->štampajToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->štampajToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->štampajToolStripMenuItem->Text = L"Izdavanje";
 			// 
 			// januarToolStripMenuItem
@@ -324,6 +324,7 @@ namespace InternetAccounting {
 			this->ClientSize = System::Drawing::Size(284, 262);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
+			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"Sabily";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
