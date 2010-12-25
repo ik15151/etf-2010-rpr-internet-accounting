@@ -3,7 +3,9 @@
 #include "Korisnik.h"
 #include "Paket.h"
 #include "Racun.h"
+#include "KontrolaTimer.h"
 
+//using namespace InternetAccounting;
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -95,6 +97,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::Label^  label13;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: InternetAccounting::KontrolaTimer^  kontrolaTimer1;
+	private: System::Windows::Forms::Label^  label15;
 
 	private:
 		/// <summary>
@@ -140,6 +144,8 @@ namespace InternetAccounting {
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->kontrolaTimer1 = (gcnew InternetAccounting::KontrolaTimer());
+			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
@@ -408,6 +414,8 @@ namespace InternetAccounting {
 			// panel1
 			// 
 			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->label15);
+			this->panel1->Controls->Add(this->kontrolaTimer1);
 			this->panel1->Controls->Add(this->label13);
 			this->panel1->Controls->Add(this->label12);
 			this->panel1->Controls->Add(this->label1);
@@ -456,6 +464,22 @@ namespace InternetAccounting {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Internet paket";
 			// 
+			// kontrolaTimer1
+			// 
+			this->kontrolaTimer1->Location = System::Drawing::Point(161, 113);
+			this->kontrolaTimer1->Name = L"kontrolaTimer1";
+			this->kontrolaTimer1->Size = System::Drawing::Size(110, 25);
+			this->kontrolaTimer1->TabIndex = 8;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(14, 122);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(67, 13);
+			this->label15->TabIndex = 9;
+			this->label15->Text = L"Raèun izdat:";
+			// 
 			// RacunPrint
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -469,6 +493,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->groupBox1);
+			this->MaximizeBox = false;
 			this->Name = L"RacunPrint";
 			this->Text = L"Raèun";
 			this->Load += gcnew System::EventHandler(this, &RacunPrint::RacunPrint_Load);

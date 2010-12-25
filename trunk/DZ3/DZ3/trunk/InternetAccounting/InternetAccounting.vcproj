@@ -282,6 +282,20 @@
 				>
 			</File>
 			<File
+				RelativePath=".\KontrolaTimer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\KontrolaTimer.h"
+				FileType="4"
+				>
+				<File
+					RelativePath=".\KontrolaTimer.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\Korisnik.h"
 				>
 			</File>

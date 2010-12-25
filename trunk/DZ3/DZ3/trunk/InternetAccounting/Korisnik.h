@@ -1,7 +1,6 @@
 #pragma once
 
 using namespace System;
-//using namespace InternetAccounting;
 
 ref class Korisnik abstract
 {
