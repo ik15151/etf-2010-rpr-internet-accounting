@@ -1,5 +1,4 @@
 #pragma once
-//#include "Paket.h"
 #include "KontrolaModem.h"
 
 using namespace System;

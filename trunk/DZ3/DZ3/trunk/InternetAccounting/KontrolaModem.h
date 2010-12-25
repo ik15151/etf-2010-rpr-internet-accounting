@@ -22,7 +22,6 @@ namespace InternetAccounting {
 			//
 			//TODO: Add the constructor code here
 			//
-
 		}
 
 	protected:
@@ -81,8 +80,6 @@ namespace InternetAccounting {
 			// chBoxModem
 			// 
 			this->chBoxModem->AutoSize = true;
-			this->chBoxModem->Checked = true;
-			this->chBoxModem->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->chBoxModem->Location = System::Drawing::Point(111, 19);
 			this->chBoxModem->Name = L"chBoxModem";
 			this->chBoxModem->Size = System::Drawing::Size(61, 17);
@@ -113,22 +110,37 @@ namespace InternetAccounting {
 		void setModem ()
 		{
 			modem = chBoxModem->Checked;
-			if (modem)
-				MessageBox::Show("tacno");
-			else
-				MessageBox::Show("Netacno");
 
+			// ovo je privremeno
+			if (modem)
+				MessageBox::Show("tacno1");
+			else
+				MessageBox::Show("Netacno1");
+			// ovo je privremeno
 		}
 
 		void setModem (bool m)
 		{
 			modem = m;
 			chBoxModem->Checked = modem;
+			// ovo je privremeno
+			if (modem)
+				MessageBox::Show("tacno2");
+			else
+				MessageBox::Show("Netacno2");
+			// ovo je privremeno
 		}
 
 		bool getModem ()
 		{
-			return modem;
+			// ovo je privremeno
+			if (modem)
+				MessageBox::Show("tacno3");
+			else
+				MessageBox::Show("Netacno3");
+			// ovo je privremeno
+
+			return modem;			
 		}
 
 		void setGreskaModem (String ^poruka)
@@ -138,6 +150,8 @@ namespace InternetAccounting {
 
 		void setModemDisabled ()
 		{
+			modem = false;
+			chBoxModem->Checked = false;
 			chBoxModem->Enabled = false;
 		}
 

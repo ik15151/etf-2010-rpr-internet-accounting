@@ -793,7 +793,7 @@ namespace InternetAccounting {
 				txtPassword->Clear();
 				cmbBoxPaket->SelectedIndex = -1;
 
-				kontrolaModem1->setModem(false);
+				//kontrolaModem1->setModem(false);
 			}
 
 
@@ -843,6 +843,8 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 				 kontrolaModem1->setModem(); 
 
+				 MessageBox::Show ("prolaz1");
+
 				 String ^adresa = txtAdresa->Text;
 				 String ^telefon = maskedTxtTelefon->Text;
 				 String ^username = txtUsername->Text;
@@ -857,6 +859,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 korisnici->Add (ko);
 					
 					 Resetuj();
+					 MessageBox::Show ("prolaz2");
 				 }
 				 if (tabControl2->SelectedIndex == 1)
 				 {
@@ -864,6 +867,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 korisnici->Add (kf);
 
 					 Resetuj();
+					 MessageBox::Show ("prolaz3");
 				 }
 			 } 
 			 catch (IzuzetakOsoba ^iz)

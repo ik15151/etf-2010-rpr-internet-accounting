@@ -433,9 +433,8 @@ namespace InternetAccounting {
 				 maskedTxtTelefon->Text = korisnik->Telefon ();
 				 txtUsername->Text = korisnik->Username ();
 				 txtPassword->Text = korisnik->Password ();
+				 
 				 kontrolaModem1->setModem (korisnik->getModem());
-
-
 
 				 if (korisnik->Suspenzija () == true)
 				 {
@@ -471,6 +470,7 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				 korisnik->Username (txtUsername->Text);
 				 korisnik->Password (txtPassword->Text);
 				 korisnik->Naziv_paketa (cmbBoxPaket->SelectedItem->ToString ());
+
 				 korisnik->setModem ();
 
 				 if (p_mirovanje->Checked)
