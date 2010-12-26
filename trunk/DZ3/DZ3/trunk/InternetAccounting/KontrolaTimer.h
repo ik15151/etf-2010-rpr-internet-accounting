@@ -87,6 +87,11 @@ namespace InternetAccounting {
 
 		}
 #pragma endregion
+	public:
+		String ^getVrijeme ()
+		{
+			return vrijeme->Text;
+		}
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 				 vrijeme->Text = Convert::ToString (System::DateTime::Now::get ());
 			 }

@@ -1,7 +1,10 @@
 #pragma once
+#include "KontrolaTimer.h"
+
+using namespace InternetAccounting;
 using namespace System;
 
-ref class Racun
+ref class Racun : KontrolaTimer
 {
 	static int _id_racuna = 0;
 	String ^_username, ^_mjesec;
