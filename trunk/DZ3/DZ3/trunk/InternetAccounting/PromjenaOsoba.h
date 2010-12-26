@@ -646,6 +646,7 @@ namespace InternetAccounting {
 				 }
 				 else if (txtUsername->Text->Length >= 5)
 				 {
+					 /*
 					 for each (Korisnik ^k in korisnici)
 					 if (txtUsername->Text == k->Username ())
 					 {
@@ -653,6 +654,7 @@ namespace InternetAccounting {
 						 errorProvider1->SetError (txtUsername, "Username veæ zauzet!");
 						 return false;
 					 }
+					 */
 
 					 errorProvider1->Clear ();
 					 toolStripStatusLabel1->Text = "";
