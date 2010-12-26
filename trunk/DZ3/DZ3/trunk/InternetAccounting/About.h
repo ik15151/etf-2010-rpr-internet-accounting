@@ -140,7 +140,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"About";
-			this->Text = L"U vezi Sabily";
+			this->Text = L"O Sabily";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();

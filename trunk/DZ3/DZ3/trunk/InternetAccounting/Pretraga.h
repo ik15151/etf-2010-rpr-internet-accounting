@@ -150,7 +150,7 @@ namespace InternetAccounting {
 			this->statusStrip1->Location = System::Drawing::Point(0, 564);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(679, 22);
-			this->statusStrip1->TabIndex = 12;
+			this->statusStrip1->TabIndex = 5;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// toolStripStatusLabel1
@@ -170,7 +170,7 @@ namespace InternetAccounting {
 			this->button2->Location = System::Drawing::Point(557, 19);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(84, 23);
-			this->button2->TabIndex = 2;
+			this->button2->TabIndex = 4;
 			this->button2->Text = L"Pretraži";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Pretraga::button2_Click);
@@ -195,7 +195,7 @@ namespace InternetAccounting {
 			this->panel1->Location = System::Drawing::Point(12, 6);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(657, 64);
-			this->panel1->TabIndex = 7;
+			this->panel1->TabIndex = 0;
 			// 
 			// cbx_pretrazivanje
 			// 
@@ -206,7 +206,7 @@ namespace InternetAccounting {
 			this->cbx_pretrazivanje->Location = System::Drawing::Point(106, 19);
 			this->cbx_pretrazivanje->Name = L"cbx_pretrazivanje";
 			this->cbx_pretrazivanje->Size = System::Drawing::Size(157, 21);
-			this->cbx_pretrazivanje->TabIndex = 0;
+			this->cbx_pretrazivanje->TabIndex = 1;
 			this->cbx_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::cbx_pretrazivanje_Validating);
 			this->cbx_pretrazivanje->SelectedIndexChanged += gcnew System::EventHandler(this, &Pretraga::cbx_pretrazivanje_SelectedIndexChanged);
 			// 
@@ -216,7 +216,7 @@ namespace InternetAccounting {
 			this->label23->Location = System::Drawing::Point(296, 27);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(37, 13);
-			this->label23->TabIndex = 26;
+			this->label23->TabIndex = 2;
 			this->label23->Text = L"Unesi:";
 			// 
 			// unos_pretrazivanje
@@ -226,7 +226,7 @@ namespace InternetAccounting {
 			this->unos_pretrazivanje->Location = System::Drawing::Point(339, 19);
 			this->unos_pretrazivanje->Name = L"unos_pretrazivanje";
 			this->unos_pretrazivanje->Size = System::Drawing::Size(173, 20);
-			this->unos_pretrazivanje->TabIndex = 1;
+			this->unos_pretrazivanje->TabIndex = 3;
 			this->unos_pretrazivanje->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &Pretraga::unos_pretrazivanje_Validating);
 			// 
 			// label24
@@ -244,7 +244,7 @@ namespace InternetAccounting {
 			this->label2->Location = System::Drawing::Point(9, 325);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(177, 13);
-			this->label2->TabIndex = 9;
+			this->label2->TabIndex = 3;
 			this->label2->Text = L"Pregled informacija o pravnim licima:";
 			// 
 			// columnHeader5
@@ -257,7 +257,7 @@ namespace InternetAccounting {
 			this->label1->Location = System::Drawing::Point(9, 84);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(174, 13);
-			this->label1->TabIndex = 8;
+			this->label1->TabIndex = 1;
 			this->label1->Text = L"Pregled informacija o fizièkim licima:";
 			// 
 			// listViewOsoba
@@ -274,7 +274,7 @@ namespace InternetAccounting {
 			this->listViewOsoba->Name = L"listViewOsoba";
 			this->listViewOsoba->Size = System::Drawing::Size(657, 213);
 			this->listViewOsoba->Sorting = System::Windows::Forms::SortOrder::Descending;
-			this->listViewOsoba->TabIndex = 10;
+			this->listViewOsoba->TabIndex = 2;
 			this->listViewOsoba->UseCompatibleStateImageBehavior = false;
 			this->listViewOsoba->View = System::Windows::Forms::View::Details;
 			this->listViewOsoba->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewOsoba_ItemActivate);
@@ -356,7 +356,7 @@ namespace InternetAccounting {
 			this->listViewFirma->MultiSelect = false;
 			this->listViewFirma->Name = L"listViewFirma";
 			this->listViewFirma->Size = System::Drawing::Size(657, 214);
-			this->listViewFirma->TabIndex = 11;
+			this->listViewFirma->TabIndex = 4;
 			this->listViewFirma->UseCompatibleStateImageBehavior = false;
 			this->listViewFirma->View = System::Windows::Forms::View::Details;
 			this->listViewFirma->ItemActivate += gcnew System::EventHandler(this, &Pretraga::listViewFirma_ItemActivate);
@@ -391,6 +391,7 @@ namespace InternetAccounting {
 #pragma endregion
 	private: System::Void Pretraga_Load(System::Object^  sender, System::EventArgs^  e) {
 					unos_pretrazivanje->Enabled = false;
+					cbx_pretrazivanje->Focus ();
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 

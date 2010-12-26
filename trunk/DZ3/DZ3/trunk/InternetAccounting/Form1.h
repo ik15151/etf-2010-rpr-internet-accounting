@@ -190,8 +190,8 @@ namespace InternetAccounting {
 			// 
 			this->uVeziSaSabilyToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"uVeziSaSabilyToolStripMenuItem.Image")));
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
-			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(139, 22);
-			this->uVeziSaSabilyToolStripMenuItem->Text = L"U vezi Sabily";
+			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(117, 22);
+			this->uVeziSaSabilyToolStripMenuItem->Text = L"O Sabily";
 			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
 			// novembarToolStripMenuItem
@@ -280,7 +280,7 @@ namespace InternetAccounting {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(284, 24);
-			this->menuStrip1->TabIndex = 3;
+			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// pomoæToolStripMenuItem

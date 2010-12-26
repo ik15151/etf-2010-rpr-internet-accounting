@@ -168,7 +168,8 @@ namespace InternetAccounting {
 			this->tabControl2->Name = L"tabControl2";
 			this->tabControl2->SelectedIndex = 0;
 			this->tabControl2->Size = System::Drawing::Size(289, 128);
-			this->tabControl2->TabIndex = 103;
+			this->tabControl2->TabIndex = 0;
+			this->tabControl2->SelectedIndexChanged += gcnew System::EventHandler(this, &UnosKorisnika::tabControl2_SelectedIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -192,7 +193,7 @@ namespace InternetAccounting {
 			this->c_broj_licne_karte->Location = System::Drawing::Point(107, 65);
 			this->c_broj_licne_karte->Name = L"c_broj_licne_karte";
 			this->c_broj_licne_karte->Size = System::Drawing::Size(152, 20);
-			this->c_broj_licne_karte->TabIndex = 3;
+			this->c_broj_licne_karte->TabIndex = 2;
 			this->c_broj_licne_karte->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_broj_licne_karte_Validating);
 			// 
 			// label8
@@ -201,7 +202,7 @@ namespace InternetAccounting {
 			this->label8->Location = System::Drawing::Point(11, 72);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(80, 13);
-			this->label8->TabIndex = 13;
+			this->label8->TabIndex = 5;
 			this->label8->Text = L"Broj liène karte:";
 			// 
 			// c_prezime
@@ -209,7 +210,7 @@ namespace InternetAccounting {
 			this->c_prezime->Location = System::Drawing::Point(107, 39);
 			this->c_prezime->Name = L"c_prezime";
 			this->c_prezime->Size = System::Drawing::Size(152, 20);
-			this->c_prezime->TabIndex = 2;
+			this->c_prezime->TabIndex = 1;
 			this->c_prezime->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_prezime_Validating);
 			// 
 			// c_ime
@@ -217,7 +218,7 @@ namespace InternetAccounting {
 			this->c_ime->Location = System::Drawing::Point(107, 13);
 			this->c_ime->Name = L"c_ime";
 			this->c_ime->Size = System::Drawing::Size(152, 20);
-			this->c_ime->TabIndex = 1;
+			this->c_ime->TabIndex = 0;
 			this->c_ime->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_ime_Validating);
 			// 
 			// label3
@@ -226,7 +227,7 @@ namespace InternetAccounting {
 			this->label3->Location = System::Drawing::Point(11, 46);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(47, 13);
-			this->label3->TabIndex = 10;
+			this->label3->TabIndex = 4;
 			this->label3->Text = L"Prezime:";
 			// 
 			// label2
@@ -235,7 +236,7 @@ namespace InternetAccounting {
 			this->label2->Location = System::Drawing::Point(11, 20);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(27, 13);
-			this->label2->TabIndex = 0;
+			this->label2->TabIndex = 3;
 			this->label2->Text = L"Ime:";
 			// 
 			// tabPage2
@@ -259,7 +260,7 @@ namespace InternetAccounting {
 			this->c_PDV_broj->Mask = L"000000000000";
 			this->c_PDV_broj->Name = L"c_PDV_broj";
 			this->c_PDV_broj->Size = System::Drawing::Size(80, 20);
-			this->c_PDV_broj->TabIndex = 11;
+			this->c_PDV_broj->TabIndex = 1;
 			this->c_PDV_broj->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->c_PDV_broj->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::c_PDV_broj_Validating);
 			// 
@@ -269,7 +270,7 @@ namespace InternetAccounting {
 			this->label9->Location = System::Drawing::Point(17, 60);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(52, 13);
-			this->label9->TabIndex = 10;
+			this->label9->TabIndex = 3;
 			this->label9->Text = L"PDV broj:";
 			// 
 			// label1
@@ -278,7 +279,7 @@ namespace InternetAccounting {
 			this->label1->Location = System::Drawing::Point(15, 34);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(37, 13);
-			this->label1->TabIndex = 8;
+			this->label1->TabIndex = 2;
 			this->label1->Text = L"Naziv:";
 			// 
 			// c_naziv_firme
@@ -296,7 +297,7 @@ namespace InternetAccounting {
 			this->statusStrip1->Location = System::Drawing::Point(0, 441);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(312, 22);
-			this->statusStrip1->TabIndex = 108;
+			this->statusStrip1->TabIndex = 6;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// toolStripStatusLabel1
@@ -312,7 +313,7 @@ namespace InternetAccounting {
 			this->button5->Location = System::Drawing::Point(226, 403);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(75, 23);
-			this->button5->TabIndex = 107;
+			this->button5->TabIndex = 5;
 			this->button5->Text = L"Izlaz";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &UnosKorisnika::button5_Click);
@@ -323,7 +324,7 @@ namespace InternetAccounting {
 			this->Unesi->Location = System::Drawing::Point(145, 403);
 			this->Unesi->Name = L"Unesi";
 			this->Unesi->Size = System::Drawing::Size(75, 23);
-			this->Unesi->TabIndex = 106;
+			this->Unesi->TabIndex = 4;
 			this->Unesi->Text = L"Unos";
 			this->Unesi->UseVisualStyleBackColor = true;
 			this->Unesi->Click += gcnew System::EventHandler(this, &UnosKorisnika::Unesi_Click);
@@ -340,7 +341,7 @@ namespace InternetAccounting {
 			this->groupBox2->Location = System::Drawing::Point(12, 231);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(290, 104);
-			this->groupBox2->TabIndex = 110;
+			this->groupBox2->TabIndex = 2;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Pristupni podaci";
 			// 
@@ -352,7 +353,7 @@ namespace InternetAccounting {
 			this->cmbBoxPaket->Location = System::Drawing::Point(110, 71);
 			this->cmbBoxPaket->Name = L"cmbBoxPaket";
 			this->cmbBoxPaket->Size = System::Drawing::Size(152, 21);
-			this->cmbBoxPaket->TabIndex = 22;
+			this->cmbBoxPaket->TabIndex = 2;
 			this->cmbBoxPaket->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::cmbBoxPaket_Validating);
 			// 
 			// lbPaket
@@ -361,7 +362,7 @@ namespace InternetAccounting {
 			this->lbPaket->Location = System::Drawing::Point(15, 79);
 			this->lbPaket->Name = L"lbPaket";
 			this->lbPaket->Size = System::Drawing::Size(38, 13);
-			this->lbPaket->TabIndex = 21;
+			this->lbPaket->TabIndex = 5;
 			this->lbPaket->Text = L"Paket:";
 			// 
 			// lbUsername
@@ -370,7 +371,7 @@ namespace InternetAccounting {
 			this->lbUsername->Location = System::Drawing::Point(15, 26);
 			this->lbUsername->Name = L"lbUsername";
 			this->lbUsername->Size = System::Drawing::Size(58, 13);
-			this->lbUsername->TabIndex = 20;
+			this->lbUsername->TabIndex = 3;
 			this->lbUsername->Text = L"Username:";
 			// 
 			// txtUsername
@@ -378,7 +379,7 @@ namespace InternetAccounting {
 			this->txtUsername->Location = System::Drawing::Point(110, 19);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(153, 20);
-			this->txtUsername->TabIndex = 4;
+			this->txtUsername->TabIndex = 0;
 			this->txtUsername->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::txtUsername_Validating);
 			// 
 			// lbPassword
@@ -387,7 +388,7 @@ namespace InternetAccounting {
 			this->lbPassword->Location = System::Drawing::Point(15, 52);
 			this->lbPassword->Name = L"lbPassword";
 			this->lbPassword->Size = System::Drawing::Size(56, 13);
-			this->lbPassword->TabIndex = 14;
+			this->lbPassword->TabIndex = 4;
 			this->lbPassword->Text = L"Password:";
 			// 
 			// txtPassword
@@ -396,7 +397,7 @@ namespace InternetAccounting {
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(153, 20);
-			this->txtPassword->TabIndex = 5;
+			this->txtPassword->TabIndex = 1;
 			this->txtPassword->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::txtPassword_Validating);
 			// 
 			// groupBox3
@@ -409,7 +410,7 @@ namespace InternetAccounting {
 			this->groupBox3->Location = System::Drawing::Point(12, 146);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(290, 79);
-			this->groupBox3->TabIndex = 109;
+			this->groupBox3->TabIndex = 1;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Kontaktni podaci";
 			// 
@@ -419,7 +420,7 @@ namespace InternetAccounting {
 			this->maskedTxtTelefon->Mask = L"000000000";
 			this->maskedTxtTelefon->Name = L"maskedTxtTelefon";
 			this->maskedTxtTelefon->Size = System::Drawing::Size(61, 20);
-			this->maskedTxtTelefon->TabIndex = 2;
+			this->maskedTxtTelefon->TabIndex = 1;
 			this->maskedTxtTelefon->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->maskedTxtTelefon->Validating += gcnew System::ComponentModel::CancelEventHandler(this, &UnosKorisnika::maskedTxtTelefon_Validating);
 			// 
@@ -437,7 +438,7 @@ namespace InternetAccounting {
 			this->lbTelefon->Location = System::Drawing::Point(15, 54);
 			this->lbTelefon->Name = L"lbTelefon";
 			this->lbTelefon->Size = System::Drawing::Size(46, 13);
-			this->lbTelefon->TabIndex = 17;
+			this->lbTelefon->TabIndex = 3;
 			this->lbTelefon->Text = L"Telefon:";
 			// 
 			// lbAdresa
@@ -446,7 +447,7 @@ namespace InternetAccounting {
 			this->lbAdresa->Location = System::Drawing::Point(15, 27);
 			this->lbAdresa->Name = L"lbAdresa";
 			this->lbAdresa->Size = System::Drawing::Size(43, 13);
-			this->lbAdresa->TabIndex = 15;
+			this->lbAdresa->TabIndex = 2;
 			this->lbAdresa->Text = L"Adresa:";
 			// 
 			// errorProvider1
@@ -460,7 +461,7 @@ namespace InternetAccounting {
 			this->groupBox1->Location = System::Drawing::Point(12, 341);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(290, 46);
-			this->groupBox1->TabIndex = 111;
+			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Najam opreme";
 			// 
@@ -470,7 +471,7 @@ namespace InternetAccounting {
 			this->chBoxModem->Location = System::Drawing::Point(111, 19);
 			this->chBoxModem->Name = L"chBoxModem";
 			this->chBoxModem->Size = System::Drawing::Size(61, 17);
-			this->chBoxModem->TabIndex = 6;
+			this->chBoxModem->TabIndex = 0;
 			this->chBoxModem->Text = L"Modem";
 			this->chBoxModem->UseVisualStyleBackColor = true;
 			// 
@@ -770,6 +771,7 @@ namespace InternetAccounting {
 					 for each (Korisnik ^k in korisnici)
 					 if (txtUsername->Text == k->Username ())
 					 {
+						 txtUsername->Focus ();
 						 toolStripStatusLabel1->Text = "Username veæ zauzet!";
 						 errorProvider1->SetError (txtUsername, "Username veæ zauzet!");
 						 return false;
@@ -900,9 +902,10 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 
 		 }
 private: System::Void UnosKorisnika_Load(System::Object^  sender, System::EventArgs^  e) {
-
+			
 			 for each (Paket ^p in paketi)
 				 cmbBoxPaket->Items->Add (p->Naziv_paketa ());
+			 
 		 }
 private: System::Void c_ime_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 			 PostaviIme ();
@@ -933,6 +936,16 @@ private: System::Void txtUsername_Validating(System::Object^  sender, System::Co
 		 }
 private: System::Void txtPassword_Validating(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 			 PostaviPassword ();
+		 }
+private: System::Void tabControl2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+			 if (tabControl2->SelectedIndex == 0)
+			 {
+				 c_ime->Focus ();
+			 }
+			 if (tabControl2->SelectedIndex == 1)
+			 {
+				 c_naziv_firme->Focus ();
+			 }
 		 }
 };
 }

@@ -141,11 +141,11 @@ namespace InternetAccounting {
 			this->cijena = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->kontrolaTimer1 = (gcnew InternetAccounting::KontrolaTimer());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->kontrolaTimer1 = (gcnew InternetAccounting::KontrolaTimer());
-			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
@@ -159,7 +159,7 @@ namespace InternetAccounting {
 			this->r_mjesec->Location = System::Drawing::Point(164, 96);
 			this->r_mjesec->Name = L"r_mjesec";
 			this->r_mjesec->Size = System::Drawing::Size(49, 13);
-			this->r_mjesec->TabIndex = 5;
+			this->r_mjesec->TabIndex = 3;
 			this->r_mjesec->Text = L"r_mjesec";
 			// 
 			// groupBox2
@@ -171,7 +171,7 @@ namespace InternetAccounting {
 			this->groupBox2->Location = System::Drawing::Point(13, 185);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(290, 87);
-			this->groupBox2->TabIndex = 25;
+			this->groupBox2->TabIndex = 2;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Podaci o korisniku";
 			// 
@@ -181,7 +181,7 @@ namespace InternetAccounting {
 			this->r_adresa->Location = System::Drawing::Point(164, 54);
 			this->r_adresa->Name = L"r_adresa";
 			this->r_adresa->Size = System::Drawing::Size(48, 13);
-			this->r_adresa->TabIndex = 3;
+			this->r_adresa->TabIndex = 1;
 			this->r_adresa->Text = L"r_adresa";
 			// 
 			// r_korisnik
@@ -190,7 +190,7 @@ namespace InternetAccounting {
 			this->r_korisnik->Location = System::Drawing::Point(164, 28);
 			this->r_korisnik->Name = L"r_korisnik";
 			this->r_korisnik->Size = System::Drawing::Size(52, 13);
-			this->r_korisnik->TabIndex = 2;
+			this->r_korisnik->TabIndex = 0;
 			this->r_korisnik->Text = L"r_korisnik";
 			// 
 			// label11
@@ -199,7 +199,7 @@ namespace InternetAccounting {
 			this->label11->Location = System::Drawing::Point(14, 28);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(47, 13);
-			this->label11->TabIndex = 1;
+			this->label11->TabIndex = 2;
 			this->label11->Text = L"Korisnik:";
 			// 
 			// label6
@@ -208,7 +208,7 @@ namespace InternetAccounting {
 			this->label6->Location = System::Drawing::Point(14, 54);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(43, 13);
-			this->label6->TabIndex = 0;
+			this->label6->TabIndex = 3;
 			this->label6->Text = L"Adresa:";
 			// 
 			// label2
@@ -217,7 +217,7 @@ namespace InternetAccounting {
 			this->label2->Location = System::Drawing::Point(14, 38);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(43, 13);
-			this->label2->TabIndex = 1;
+			this->label2->TabIndex = 6;
 			this->label2->Text = L"Adresa:";
 			// 
 			// label5
@@ -226,7 +226,7 @@ namespace InternetAccounting {
 			this->label5->Location = System::Drawing::Point(14, 96);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(47, 13);
-			this->label5->TabIndex = 4;
+			this->label5->TabIndex = 8;
 			this->label5->Text = L"Mjesec: ";
 			// 
 			// r_cijena
@@ -235,7 +235,7 @@ namespace InternetAccounting {
 			this->r_cijena->Location = System::Drawing::Point(165, 98);
 			this->r_cijena->Name = L"r_cijena";
 			this->r_cijena->Size = System::Drawing::Size(44, 13);
-			this->r_cijena->TabIndex = 7;
+			this->r_cijena->TabIndex = 3;
 			this->r_cijena->Text = L"r_cijena";
 			// 
 			// label3
@@ -244,7 +244,7 @@ namespace InternetAccounting {
 			this->label3->Location = System::Drawing::Point(14, 69);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(62, 13);
-			this->label3->TabIndex = 2;
+			this->label3->TabIndex = 7;
 			this->label3->Text = L"Raèun broj:";
 			// 
 			// r_limit
@@ -253,7 +253,7 @@ namespace InternetAccounting {
 			this->r_limit->Location = System::Drawing::Point(165, 52);
 			this->r_limit->Name = L"r_limit";
 			this->r_limit->Size = System::Drawing::Size(33, 13);
-			this->r_limit->TabIndex = 6;
+			this->r_limit->TabIndex = 1;
 			this->r_limit->Text = L"r_limit";
 			// 
 			// r_id_racuna
@@ -262,7 +262,7 @@ namespace InternetAccounting {
 			this->r_id_racuna->Location = System::Drawing::Point(164, 69);
 			this->r_id_racuna->Name = L"r_id_racuna";
 			this->r_id_racuna->Size = System::Drawing::Size(63, 13);
-			this->r_id_racuna->TabIndex = 3;
+			this->r_id_racuna->TabIndex = 2;
 			this->r_id_racuna->Text = L"r_id_racuna";
 			// 
 			// button2
@@ -270,7 +270,7 @@ namespace InternetAccounting {
 			this->button2->Location = System::Drawing::Point(33, 37);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 19;
+			this->button2->TabIndex = 1;
 			this->button2->Text = L"Plaæeno";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &RacunPrint::button2_Click);
@@ -281,7 +281,7 @@ namespace InternetAccounting {
 			this->r_brzina->Location = System::Drawing::Point(165, 76);
 			this->r_brzina->Name = L"r_brzina";
 			this->r_brzina->Size = System::Drawing::Size(44, 13);
-			this->r_brzina->TabIndex = 4;
+			this->r_brzina->TabIndex = 2;
 			this->r_brzina->Text = L"r_brzina";
 			// 
 			// r_naziv_paketa
@@ -290,7 +290,7 @@ namespace InternetAccounting {
 			this->r_naziv_paketa->Location = System::Drawing::Point(165, 30);
 			this->r_naziv_paketa->Name = L"r_naziv_paketa";
 			this->r_naziv_paketa->Size = System::Drawing::Size(80, 13);
-			this->r_naziv_paketa->TabIndex = 5;
+			this->r_naziv_paketa->TabIndex = 0;
 			this->r_naziv_paketa->Text = L"r_naziv_paketa";
 			// 
 			// label14
@@ -299,7 +299,7 @@ namespace InternetAccounting {
 			this->label14->Location = System::Drawing::Point(17, 24);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(45, 13);
-			this->label14->TabIndex = 0;
+			this->label14->TabIndex = 1;
 			this->label14->Text = L"Modem:";
 			// 
 			// button1
@@ -307,7 +307,7 @@ namespace InternetAccounting {
 			this->button1->Location = System::Drawing::Point(167, 37);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 18;
+			this->button1->TabIndex = 0;
 			this->button1->Text = L"Neplaæeno";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RacunPrint::button1_Click);
@@ -318,7 +318,7 @@ namespace InternetAccounting {
 			this->r_modem->Location = System::Drawing::Point(165, 24);
 			this->r_modem->Name = L"r_modem";
 			this->r_modem->Size = System::Drawing::Size(50, 13);
-			this->r_modem->TabIndex = 2;
+			this->r_modem->TabIndex = 0;
 			this->r_modem->Text = L"r_modem";
 			// 
 			// groupBox3
@@ -328,7 +328,7 @@ namespace InternetAccounting {
 			this->groupBox3->Location = System::Drawing::Point(12, 406);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(289, 55);
-			this->groupBox3->TabIndex = 26;
+			this->groupBox3->TabIndex = 4;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Najam opreme";
 			// 
@@ -338,7 +338,7 @@ namespace InternetAccounting {
 			this->label10->Location = System::Drawing::Point(14, 97);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(39, 13);
-			this->label10->TabIndex = 3;
+			this->label10->TabIndex = 7;
 			this->label10->Text = L"Cijena:";
 			// 
 			// label8
@@ -347,7 +347,7 @@ namespace InternetAccounting {
 			this->label8->Location = System::Drawing::Point(14, 52);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(81, 13);
-			this->label8->TabIndex = 1;
+			this->label8->TabIndex = 5;
 			this->label8->Text = L"Download limit: ";
 			// 
 			// label1
@@ -356,7 +356,7 @@ namespace InternetAccounting {
 			this->label1->Location = System::Drawing::Point(14, 12);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(35, 13);
-			this->label1->TabIndex = 0;
+			this->label1->TabIndex = 5;
 			this->label1->Text = L"Firma:";
 			// 
 			// label9
@@ -365,7 +365,7 @@ namespace InternetAccounting {
 			this->label9->Location = System::Drawing::Point(14, 75);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(95, 13);
-			this->label9->TabIndex = 2;
+			this->label9->TabIndex = 6;
 			this->label9->Text = L"Download/upload:";
 			// 
 			// groupBox4
@@ -376,7 +376,7 @@ namespace InternetAccounting {
 			this->groupBox4->Location = System::Drawing::Point(13, 530);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(288, 76);
-			this->groupBox4->TabIndex = 27;
+			this->groupBox4->TabIndex = 0;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Plaæanje u banci";
 			// 
@@ -386,7 +386,7 @@ namespace InternetAccounting {
 			this->label12->Location = System::Drawing::Point(164, 38);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(49, 13);
-			this->label12->TabIndex = 6;
+			this->label12->TabIndex = 1;
 			this->label12->Text = L"Dunjaluk";
 			// 
 			// cijena
@@ -397,7 +397,7 @@ namespace InternetAccounting {
 			this->cijena->Location = System::Drawing::Point(177, 488);
 			this->cijena->Name = L"cijena";
 			this->cijena->Size = System::Drawing::Size(41, 13);
-			this->cijena->TabIndex = 24;
+			this->cijena->TabIndex = 6;
 			this->cijena->Text = L"cijena";
 			// 
 			// label4
@@ -408,7 +408,7 @@ namespace InternetAccounting {
 			this->label4->Location = System::Drawing::Point(27, 488);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(75, 13);
-			this->label4->TabIndex = 23;
+			this->label4->TabIndex = 5;
 			this->label4->Text = L"NAPLATITI:";
 			// 
 			// panel1
@@ -427,7 +427,23 @@ namespace InternetAccounting {
 			this->panel1->Location = System::Drawing::Point(12, 12);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(290, 152);
-			this->panel1->TabIndex = 21;
+			this->panel1->TabIndex = 1;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(14, 122);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(67, 13);
+			this->label15->TabIndex = 9;
+			this->label15->Text = L"Raèun izdat:";
+			// 
+			// kontrolaTimer1
+			// 
+			this->kontrolaTimer1->Location = System::Drawing::Point(161, 113);
+			this->kontrolaTimer1->Name = L"kontrolaTimer1";
+			this->kontrolaTimer1->Size = System::Drawing::Size(110, 25);
+			this->kontrolaTimer1->TabIndex = 4;
 			// 
 			// label13
 			// 
@@ -435,7 +451,7 @@ namespace InternetAccounting {
 			this->label13->Location = System::Drawing::Point(164, 12);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(35, 13);
-			this->label13->TabIndex = 7;
+			this->label13->TabIndex = 0;
 			this->label13->Text = L"Sabily";
 			// 
 			// label7
@@ -444,7 +460,7 @@ namespace InternetAccounting {
 			this->label7->Location = System::Drawing::Point(14, 30);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(37, 13);
-			this->label7->TabIndex = 0;
+			this->label7->TabIndex = 4;
 			this->label7->Text = L"Naziv:";
 			// 
 			// groupBox1
@@ -460,25 +476,9 @@ namespace InternetAccounting {
 			this->groupBox1->Location = System::Drawing::Point(12, 278);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(290, 122);
-			this->groupBox1->TabIndex = 22;
+			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Internet paket";
-			// 
-			// kontrolaTimer1
-			// 
-			this->kontrolaTimer1->Location = System::Drawing::Point(161, 113);
-			this->kontrolaTimer1->Name = L"kontrolaTimer1";
-			this->kontrolaTimer1->Size = System::Drawing::Size(110, 25);
-			this->kontrolaTimer1->TabIndex = 8;
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(14, 122);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(67, 13);
-			this->label15->TabIndex = 9;
-			this->label15->Text = L"Raèun izdat:";
 			// 
 			// RacunPrint
 			// 

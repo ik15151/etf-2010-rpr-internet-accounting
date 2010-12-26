@@ -155,7 +155,7 @@ namespace InternetAccounting {
 			this->statusStrip1->Location = System::Drawing::Point(0, 473);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(318, 22);
-			this->statusStrip1->TabIndex = 126;
+			this->statusStrip1->TabIndex = 6;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// toolStripStatusLabel1
@@ -170,7 +170,7 @@ namespace InternetAccounting {
 			this->lbTelefon->Location = System::Drawing::Point(15, 54);
 			this->lbTelefon->Name = L"lbTelefon";
 			this->lbTelefon->Size = System::Drawing::Size(46, 13);
-			this->lbTelefon->TabIndex = 17;
+			this->lbTelefon->TabIndex = 3;
 			this->lbTelefon->Text = L"Telefon:";
 			// 
 			// lbAdresa
@@ -179,7 +179,7 @@ namespace InternetAccounting {
 			this->lbAdresa->Location = System::Drawing::Point(15, 27);
 			this->lbAdresa->Name = L"lbAdresa";
 			this->lbAdresa->Size = System::Drawing::Size(43, 13);
-			this->lbAdresa->TabIndex = 15;
+			this->lbAdresa->TabIndex = 2;
 			this->lbAdresa->Text = L"Adresa:";
 			// 
 			// groupBox4
@@ -189,7 +189,7 @@ namespace InternetAccounting {
 			this->groupBox4->Location = System::Drawing::Point(12, 375);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(122, 82);
-			this->groupBox4->TabIndex = 125;
+			this->groupBox4->TabIndex = 5;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Stanje raèuna";
 			// 
@@ -199,7 +199,7 @@ namespace InternetAccounting {
 			this->p_mirovanje->Location = System::Drawing::Point(23, 23);
 			this->p_mirovanje->Name = L"p_mirovanje";
 			this->p_mirovanje->Size = System::Drawing::Size(71, 17);
-			this->p_mirovanje->TabIndex = 5;
+			this->p_mirovanje->TabIndex = 0;
 			this->p_mirovanje->TabStop = true;
 			this->p_mirovanje->Text = L"Mirovanje";
 			this->p_mirovanje->UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@ namespace InternetAccounting {
 			this->p_aktivan->Location = System::Drawing::Point(23, 49);
 			this->p_aktivan->Name = L"p_aktivan";
 			this->p_aktivan->Size = System::Drawing::Size(61, 17);
-			this->p_aktivan->TabIndex = 6;
+			this->p_aktivan->TabIndex = 1;
 			this->p_aktivan->TabStop = true;
 			this->p_aktivan->Text = L"Aktivan";
 			this->p_aktivan->UseVisualStyleBackColor = true;
@@ -221,7 +221,7 @@ namespace InternetAccounting {
 			this->maskedTxtTelefon->Mask = L"000000000";
 			this->maskedTxtTelefon->Name = L"maskedTxtTelefon";
 			this->maskedTxtTelefon->Size = System::Drawing::Size(61, 20);
-			this->maskedTxtTelefon->TabIndex = 2;
+			this->maskedTxtTelefon->TabIndex = 1;
 			this->maskedTxtTelefon->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// txtAdresa
@@ -237,7 +237,7 @@ namespace InternetAccounting {
 			this->Azuriranje->Location = System::Drawing::Point(239, 434);
 			this->Azuriranje->Name = L"Azuriranje";
 			this->Azuriranje->Size = System::Drawing::Size(63, 23);
-			this->Azuriranje->TabIndex = 124;
+			this->Azuriranje->TabIndex = 4;
 			this->Azuriranje->Text = L"Auriranje";
 			this->Azuriranje->UseVisualStyleBackColor = true;
 			this->Azuriranje->Click += gcnew System::EventHandler(this, &PromjenaOsoba::Azuriranje_Click);
@@ -254,7 +254,7 @@ namespace InternetAccounting {
 			this->groupBox2->Location = System::Drawing::Point(12, 206);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(290, 104);
-			this->groupBox2->TabIndex = 123;
+			this->groupBox2->TabIndex = 2;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Pristupni podaci";
 			// 
@@ -266,7 +266,7 @@ namespace InternetAccounting {
 			this->cmbBoxPaket->Location = System::Drawing::Point(110, 71);
 			this->cmbBoxPaket->Name = L"cmbBoxPaket";
 			this->cmbBoxPaket->Size = System::Drawing::Size(152, 21);
-			this->cmbBoxPaket->TabIndex = 22;
+			this->cmbBoxPaket->TabIndex = 2;
 			// 
 			// lbPaket
 			// 
@@ -274,7 +274,7 @@ namespace InternetAccounting {
 			this->lbPaket->Location = System::Drawing::Point(15, 79);
 			this->lbPaket->Name = L"lbPaket";
 			this->lbPaket->Size = System::Drawing::Size(38, 13);
-			this->lbPaket->TabIndex = 21;
+			this->lbPaket->TabIndex = 5;
 			this->lbPaket->Text = L"Paket:";
 			// 
 			// lbUsername
@@ -283,7 +283,7 @@ namespace InternetAccounting {
 			this->lbUsername->Location = System::Drawing::Point(15, 26);
 			this->lbUsername->Name = L"lbUsername";
 			this->lbUsername->Size = System::Drawing::Size(58, 13);
-			this->lbUsername->TabIndex = 20;
+			this->lbUsername->TabIndex = 3;
 			this->lbUsername->Text = L"Username:";
 			// 
 			// txtUsername
@@ -291,7 +291,7 @@ namespace InternetAccounting {
 			this->txtUsername->Location = System::Drawing::Point(110, 19);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(153, 20);
-			this->txtUsername->TabIndex = 4;
+			this->txtUsername->TabIndex = 0;
 			// 
 			// lbPassword
 			// 
@@ -299,7 +299,7 @@ namespace InternetAccounting {
 			this->lbPassword->Location = System::Drawing::Point(15, 52);
 			this->lbPassword->Name = L"lbPassword";
 			this->lbPassword->Size = System::Drawing::Size(56, 13);
-			this->lbPassword->TabIndex = 14;
+			this->lbPassword->TabIndex = 4;
 			this->lbPassword->Text = L"Password:";
 			// 
 			// txtPassword
@@ -308,7 +308,7 @@ namespace InternetAccounting {
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(153, 20);
-			this->txtPassword->TabIndex = 5;
+			this->txtPassword->TabIndex = 1;
 			// 
 			// groupBox1
 			// 
@@ -320,7 +320,7 @@ namespace InternetAccounting {
 			this->groupBox1->Location = System::Drawing::Point(12, 121);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(290, 79);
-			this->groupBox1->TabIndex = 122;
+			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Kontaktni podaci";
 			// 
@@ -339,7 +339,7 @@ namespace InternetAccounting {
 			this->groupbox3->Location = System::Drawing::Point(14, 12);
 			this->groupbox3->Name = L"groupbox3";
 			this->groupbox3->Size = System::Drawing::Size(288, 105);
-			this->groupbox3->TabIndex = 127;
+			this->groupbox3->TabIndex = 0;
 			this->groupbox3->TabStop = false;
 			this->groupbox3->Text = L"Osnovni podaci";
 			// 
@@ -348,7 +348,7 @@ namespace InternetAccounting {
 			this->c_broj_licne_karte->Location = System::Drawing::Point(111, 73);
 			this->c_broj_licne_karte->Name = L"c_broj_licne_karte";
 			this->c_broj_licne_karte->Size = System::Drawing::Size(151, 20);
-			this->c_broj_licne_karte->TabIndex = 16;
+			this->c_broj_licne_karte->TabIndex = 2;
 			// 
 			// label8
 			// 
@@ -356,7 +356,7 @@ namespace InternetAccounting {
 			this->label8->Location = System::Drawing::Point(18, 80);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(80, 13);
-			this->label8->TabIndex = 19;
+			this->label8->TabIndex = 5;
 			this->label8->Text = L"Broj liène karte:";
 			// 
 			// c_prezime
@@ -364,14 +364,14 @@ namespace InternetAccounting {
 			this->c_prezime->Location = System::Drawing::Point(111, 47);
 			this->c_prezime->Name = L"c_prezime";
 			this->c_prezime->Size = System::Drawing::Size(151, 20);
-			this->c_prezime->TabIndex = 15;
+			this->c_prezime->TabIndex = 1;
 			// 
 			// c_ime
 			// 
 			this->c_ime->Location = System::Drawing::Point(110, 21);
 			this->c_ime->Name = L"c_ime";
 			this->c_ime->Size = System::Drawing::Size(151, 20);
-			this->c_ime->TabIndex = 14;
+			this->c_ime->TabIndex = 0;
 			// 
 			// label3
 			// 
@@ -379,7 +379,7 @@ namespace InternetAccounting {
 			this->label3->Location = System::Drawing::Point(18, 54);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(47, 13);
-			this->label3->TabIndex = 18;
+			this->label3->TabIndex = 4;
 			this->label3->Text = L"Prezime:";
 			// 
 			// label2
@@ -388,7 +388,7 @@ namespace InternetAccounting {
 			this->label2->Location = System::Drawing::Point(18, 28);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(27, 13);
-			this->label2->TabIndex = 17;
+			this->label2->TabIndex = 3;
 			this->label2->Text = L"Ime:";
 			// 
 			// groupBox5
@@ -398,7 +398,7 @@ namespace InternetAccounting {
 			this->groupBox5->Location = System::Drawing::Point(14, 316);
 			this->groupBox5->Name = L"groupBox5";
 			this->groupBox5->Size = System::Drawing::Size(290, 46);
-			this->groupBox5->TabIndex = 104;
+			this->groupBox5->TabIndex = 3;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Najam opreme";
 			// 
@@ -408,7 +408,7 @@ namespace InternetAccounting {
 			this->chBoxModem->Location = System::Drawing::Point(111, 19);
 			this->chBoxModem->Name = L"chBoxModem";
 			this->chBoxModem->Size = System::Drawing::Size(61, 17);
-			this->chBoxModem->TabIndex = 6;
+			this->chBoxModem->TabIndex = 0;
 			this->chBoxModem->Text = L"Modem";
 			this->chBoxModem->UseVisualStyleBackColor = true;
 			// 
@@ -715,6 +715,8 @@ namespace InternetAccounting {
 					 p_mirovanje->Checked = true;
 				 else
 					 p_aktivan->Checked = true;
+				 c_ime->Focus ();
+
 			 }
 private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArgs^  e) {
 				
@@ -771,6 +773,7 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 			 } 
 			 catch (IzuzetakOsoba ^iz)
 			 {
+				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				 toolStripStatusLabel1->Text = iz->Message;
 			 }
 			 

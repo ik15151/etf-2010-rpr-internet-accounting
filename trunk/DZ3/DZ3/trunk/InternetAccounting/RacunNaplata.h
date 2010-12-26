@@ -119,7 +119,7 @@ namespace InternetAccounting {
 			this->statusStrip1->Location = System::Drawing::Point(0, 191);
 			this->statusStrip1->Name = L"statusStrip1";
 			this->statusStrip1->Size = System::Drawing::Size(286, 22);
-			this->statusStrip1->TabIndex = 5;
+			this->statusStrip1->TabIndex = 2;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// toolStripStatusLabel1
@@ -138,7 +138,7 @@ namespace InternetAccounting {
 			this->button1->Location = System::Drawing::Point(199, 153);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 4;
+			this->button1->TabIndex = 1;
 			this->button1->Text = L"Plaæeno";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RacunNaplata::button1_Click);
@@ -155,7 +155,7 @@ namespace InternetAccounting {
 			this->panel1->Location = System::Drawing::Point(13, 7);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(261, 123);
-			this->panel1->TabIndex = 3;
+			this->panel1->TabIndex = 0;
 			// 
 			// vrijeme
 			// 
@@ -163,7 +163,7 @@ namespace InternetAccounting {
 			this->vrijeme->Location = System::Drawing::Point(94, 55);
 			this->vrijeme->Name = L"vrijeme";
 			this->vrijeme->Size = System::Drawing::Size(0, 13);
-			this->vrijeme->TabIndex = 14;
+			this->vrijeme->TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -171,7 +171,7 @@ namespace InternetAccounting {
 			this->label1->Location = System::Drawing::Point(10, 55);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(33, 13);
-			this->label1->TabIndex = 13;
+			this->label1->TabIndex = 4;
 			this->label1->Text = L"Izdat:";
 			// 
 			// label30
@@ -180,7 +180,7 @@ namespace InternetAccounting {
 			this->label30->Location = System::Drawing::Point(11, 86);
 			this->label30->Name = L"label30";
 			this->label30->Size = System::Drawing::Size(44, 13);
-			this->label30->TabIndex = 12;
+			this->label30->TabIndex = 5;
 			this->label30->Text = L"Mjesec:";
 			// 
 			// t_mjesec
@@ -192,7 +192,7 @@ namespace InternetAccounting {
 			this->t_mjesec->Location = System::Drawing::Point(94, 86);
 			this->t_mjesec->Name = L"t_mjesec";
 			this->t_mjesec->Size = System::Drawing::Size(147, 21);
-			this->t_mjesec->TabIndex = 1;
+			this->t_mjesec->TabIndex = 2;
 			// 
 			// label29
 			// 
@@ -200,7 +200,7 @@ namespace InternetAccounting {
 			this->label29->Location = System::Drawing::Point(10, 20);
 			this->label29->Name = L"label29";
 			this->label29->Size = System::Drawing::Size(47, 13);
-			this->label29->TabIndex = 11;
+			this->label29->TabIndex = 3;
 			this->label29->Text = L"Korisnik:";
 			// 
 			// RacunNaplata
