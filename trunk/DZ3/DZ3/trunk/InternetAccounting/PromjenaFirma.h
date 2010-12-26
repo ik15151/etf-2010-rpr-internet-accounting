@@ -1,7 +1,6 @@
 #pragma once
 #include "KorisnikFirma.h"
 #include "Paket.h"
-#include "IzuzetakOsoba.h"
 #include "IzuzetakFirma.h"
 #include "Korisnik.h"
 
@@ -622,13 +621,34 @@ namespace InternetAccounting {
 private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArgs^  e) {
 
 			 try
-			 {
+			 {				 
+				 if (!PostaviNaziv ())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (c_naziv_firme));
+
+				 if (!PostaviPDV ())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (c_PDV_broj));
+
+				 if (!PostaviAdresu())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (txtAdresa));
+				 
+				 if (!PostaviTelefon())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (maskedTxtTelefon));
+
+				 if (!PostaviUsername())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (txtUsername));
+
+				 if (!PostaviPassword())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (txtPassword));
+
+				 if (!PostaviPaket ())
+					 throw gcnew IzuzetakFirma (errorProvider1->GetError (cmbBoxPaket));
+
 				 if (p_mirovanje->Checked == true && chBoxModem->Checked == true)
 				 {
 					 errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
 					 errorProvider1->SetError(chBoxModem, "Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
-					 throw gcnew Exception ("Ne moe se zamrznuti raèun prije vraæanja modema.");
-				 }
+					 throw gcnew IzuzetakFirma ("Ne moe se zamrznuti raèun prije vraæanja modema.");
+				 }							 
 
 				 korisnik->Naziv (c_naziv_firme->Text);
 				 korisnik->PDV_broj (c_PDV_broj->Text);
@@ -645,11 +665,11 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 					 korisnik->Mirovanje (false);
 
 				 Close ();
-			 }			 
-			 catch (...)
+				 
+			 } 
+			 catch (IzuzetakFirma ^iz)
 			 {
-				 toolStripStatusLabel1->Text = "Greška u auriranju. Podaci nisu spašeni.";
-				 MessageBox::Show("Podaci nisu aurirani.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 toolStripStatusLabel1->Text = iz->Message;
 			 }
 		 }
 };

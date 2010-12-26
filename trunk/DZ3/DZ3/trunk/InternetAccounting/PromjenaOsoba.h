@@ -3,7 +3,6 @@
 #include "KorisnikOsoba.h"
 #include "Paket.h"
 #include "IzuzetakOsoba.h"
-#include "IzuzetakFirma.h"
 #include "Korisnik.h"
 
 using namespace System;
