@@ -672,8 +672,8 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 			 } 
 			 catch (IzuzetakFirma ^iz)
 			 {
-				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				 toolStripStatusLabel1->Text = iz->Message;
+				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				 
 			 }
 		 }

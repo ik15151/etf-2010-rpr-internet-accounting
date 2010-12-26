@@ -889,16 +889,23 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 } 
 			 catch (IzuzetakOsoba ^iz)
 			 {
+				toolStripStatusLabel1->Text = iz->Message;
 				MessageBox::Show ("Greška pri unosu. Podaci o osobi nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 }
 			 catch (IzuzetakFirma ^iz)
 			 {
+				 toolStripStatusLabel1->Text = iz->Message;
 				 MessageBox::Show ("Greška pri unosu. Podaci o firmi nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 }
-			 catch (...) 
-			 {			 
+			 catch (Exception ^iz) 
+			 {
+				 toolStripStatusLabel1->Text = iz->Message;
 				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 } 
+			 catch (...)
+			 {
+				  MessageBox::Show ("Greška pri unosu. Podaci nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			 }
 				
 
 		 }
