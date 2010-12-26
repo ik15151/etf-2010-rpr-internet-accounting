@@ -275,6 +275,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 cBoxkorisnici->SelectedIndex = -1;
 					 t_mjesec->SelectedIndex = -1;
 					 toolStripStatusLabel1->Text = "";
+					 vrijeme->Text = "";
 					 errorProvider1->Clear ();
 					 return;
 				 }
