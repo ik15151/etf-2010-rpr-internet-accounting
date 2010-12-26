@@ -487,6 +487,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->Unesi);
 			this->Controls->Add(this->tabControl2);
+			this->MaximizeBox = false;
 			this->Name = L"UnosKorisnika";
 			this->Text = L"UnosKorisnika";
 			this->Load += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Load);
@@ -529,25 +530,25 @@ namespace InternetAccounting {
 							errorProvider1->SetError (c_ime, "Ime ne smije sadržavati brojeve i simbole.");				
 							return false;
 						}
-						if (!c_ime->Text [0].IsUpper (c_ime->Text, 0))
+					if (!c_ime->Text [0].IsUpper (c_ime->Text, 0))
+					{
+						c_ime->Focus ();
+						toolStripStatusLabel1->Text = "Ime mora poèeti sa velikim slovom.";
+						errorProvider1->SetError (c_ime, "Ime mora poèeti sa velikim slovom.");				
+						return false;
+					}
+					for (int i = 1; i < c_ime->Text->Length; i++)
+						if (c_ime->Text [i].IsUpper (c_ime->Text, i))
 						{
 							c_ime->Focus ();
-							toolStripStatusLabel1->Text = "Ime mora poèeti sa velikim slovom.";
-							errorProvider1->SetError (c_ime, "Ime mora poèeti sa velikim slovom.");				
+							toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+							errorProvider1->SetError (c_ime, "Samo prvo slovo smije biti veliko.");				
 							return false;
 						}
-						for (int i = 1; i < c_ime->Text->Length; i++)
-							if (c_ime->Text [i].IsUpper (c_ime->Text, i))
-							{
-								c_ime->Focus ();
-								toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
-								errorProvider1->SetError (c_ime, "Samo prvo slovo smije biti veliko.");				
-								return false;
-							}
 
-							errorProvider1->Clear ();
-							toolStripStatusLabel1->Text = "";
-							return true;				
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;				
 				}
 
 			}
@@ -571,54 +572,46 @@ namespace InternetAccounting {
 							errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati brojeve i simbole.");				
 							return false;
 						}
-						if (!c_prezime->Text [0].IsUpper (c_prezime->Text, 0))
+					if (!c_prezime->Text [0].IsUpper (c_prezime->Text, 0))
+					{
+						c_prezime->Focus ();
+						toolStripStatusLabel1->Text = "Prezime mora poèeti sa velikim slovom.";
+						errorProvider1->SetError (c_prezime, "Prezime mora poèeti sa velikim slovom.");				
+						return false;
+					}
+					for (int i = 1; i < c_prezime->Text->Length; i++)
+						if (c_prezime->Text [i].IsUpper (c_prezime->Text, i))
 						{
 							c_prezime->Focus ();
-							toolStripStatusLabel1->Text = "Prezime mora poèeti sa velikim slovom.";
-							errorProvider1->SetError (c_prezime, "Prezime mora poèeti sa velikim slovom.");				
+							toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+							errorProvider1->SetError (c_prezime, "Samo prvo slovo smije biti veliko.");				
 							return false;
-						}
-						for (int i = 1; i < c_prezime->Text->Length; i++)
-							if (c_prezime->Text [i].IsUpper (c_prezime->Text, i))
-							{
-								c_prezime->Focus ();
-								toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
-								errorProvider1->SetError (c_prezime, "Samo prvo slovo smije biti veliko.");				
-								return false;
-							}				
-							errorProvider1->Clear ();
-							toolStripStatusLabel1->Text = "";
-							return true;				
+						}				
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;				
 				}
 			}
 
 			bool PostaviLicnu ()
 			{
 				if (c_broj_licne_karte->Text->Length < 9)
-			 {
-				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
-				 return false;
-			 }
+				 {
+					 c_broj_licne_karte->Focus ();
+					 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
+					 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
+					 return false;
+				 }
 				else if (c_broj_licne_karte->Text->Length > 9)
-			 {
-				 c_broj_licne_karte->Focus ();
-				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
-				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
-				 return false;
-			 }
+				 {
+					 c_broj_licne_karte->Focus ();
+					 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
+					 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
+					 return false;
+				 }
 				else if (c_broj_licne_karte->Text->Length == 9)
-			 {
-				 for (int i = 0; i < 2; i++)
-					 if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
-					 {
-						 c_broj_licne_karte->Focus ();
-						 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
-						 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
-						 return false;
-					 }
-					 for (int i = 5; i < 9; i++)
+				 {
+					 for (int i = 0; i < 2; i++)
 						 if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
 						 {
 							 c_broj_licne_karte->Focus ();
@@ -626,30 +619,38 @@ namespace InternetAccounting {
 							 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
 							 return false;
 						 }
-						 for (int i = 2; i < 5; i++)
-							 if (!c_broj_licne_karte->Text [i].IsUpper (c_broj_licne_karte->Text, i))
+						 for (int i = 5; i < 9; i++)
+							 if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
 							 {
 								 c_broj_licne_karte->Focus ();
 								 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
 								 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
 								 return false;
 							 }
-							 errorProvider1->Clear ();
-							 toolStripStatusLabel1->Text = "";
-							 return true;
-			 }
+							 for (int i = 2; i < 5; i++)
+								 if (!c_broj_licne_karte->Text [i].IsUpper (c_broj_licne_karte->Text, i))
+								 {
+									 c_broj_licne_karte->Focus ();
+									 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+									 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
+									 return false;
+								 }
+								 errorProvider1->Clear ();
+								 toolStripStatusLabel1->Text = "";
+								 return true;
+				 }
 			}
 
 
 			bool PostaviNaziv ()
 			{
 				if (c_naziv_firme->Text->Length < 3)
-			 {
-				 c_naziv_firme->Focus ();
-				 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati manje od 3 slova.";
-				 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati manje od 3 slova.");				
-				 return false;
-			 }
+				 {
+					 c_naziv_firme->Focus ();
+					 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati manje od 3 slova.";
+					 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati manje od 3 slova.");				
+					 return false;
+				 }
 				else if (c_naziv_firme->Text->Length >= 3)
 				 {
 					 for (int i = 0; i < c_naziv_firme->Text->Length; i++)
@@ -660,59 +661,59 @@ namespace InternetAccounting {
 							 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati brojeve i simbole.");				
 							 return false;
 						 }
-						 if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
+					 if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
+					 {
+						 c_naziv_firme->Focus ();
+						 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+						 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
+						 return false;
+					 }
+					 for (int i = 1; i < c_naziv_firme->Text->Length; i++)
+						 if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
 						 {
 							 c_naziv_firme->Focus ();
-							 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
-							 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
+							 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+							 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
 							 return false;
 						 }
-						 for (int i = 1; i < c_naziv_firme->Text->Length; i++)
-							 if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
-							 {
-								 c_naziv_firme->Focus ();
-								 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
-								 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
-								 return false;
-							 }
-							 errorProvider1->Clear ();
-							 toolStripStatusLabel1->Text = "";
-							 return true;				
+					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
+					 return true;				
 				 }
 			}
 
 			bool PostaviPDV ()
 			{
 				if (c_PDV_broj->Text->Length < 12)
-			 {
-				 c_PDV_broj->Focus ();
-				 toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
-				 errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
-				 return false;
-			 }
+				 {
+					 c_PDV_broj->Focus ();
+					 toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
+					 errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
+					 return false;
+				 }
 				else 
-			 {
-				 errorProvider1->Clear ();
-				 toolStripStatusLabel1->Text = "";
-				 return true;
-			 }
+				 {
+					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
+					 return true;
+				 }
 			}
 
 			bool PostaviPaket ()
 			{
 				if (cmbBoxPaket->SelectedIndex == -1)
-			 {
-				 cmbBoxPaket->Focus ();
-				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
-				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
-				 return false;
-			 }
+				 {
+					 cmbBoxPaket->Focus ();
+					 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
+					 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
+					 return false;
+				 }
 				else
-			 {
-				 errorProvider1->Clear ();
-				 toolStripStatusLabel1->Text = "";
-				 return true;
-			 }
+				 {
+					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
+					 return true;
+				 }
 			}
 
 			bool PostaviAdresu ()
