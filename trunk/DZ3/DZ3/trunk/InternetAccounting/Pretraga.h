@@ -687,7 +687,7 @@ private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System
 						 if (k->Username () == listViewFirma->Items[i]->Text)
 						 {
 							 KorisnikFirma ^korisnik = dynamic_cast <KorisnikFirma ^> (k);
-							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi);
+							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi, korisnici);
 							 listViewFirma->Items->Clear ();
 							 pf->ShowDialog ();							
 							 return;
@@ -703,7 +703,7 @@ private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System
 						 if (k->Username () == listViewOsoba->Items[i]->Text)
 						 {
 							 KorisnikOsoba ^korisnik = dynamic_cast <KorisnikOsoba ^> (k);
-							 PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi);
+							 PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi, korisnici);
 							 listViewOsoba->Items->Clear ();
 							 po->ShowDialog ();							
 							 return;

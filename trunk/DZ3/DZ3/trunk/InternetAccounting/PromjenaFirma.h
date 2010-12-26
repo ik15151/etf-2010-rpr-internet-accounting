@@ -1,6 +1,9 @@
 #pragma once
 #include "KorisnikFirma.h"
 #include "Paket.h"
+#include "IzuzetakOsoba.h"
+#include "IzuzetakFirma.h"
+#include "Korisnik.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -32,18 +35,21 @@ namespace InternetAccounting {
 			//
 		}
 
-		PromjenaFirma(KorisnikFirma ^k, ArrayList ^p)
+		PromjenaFirma(KorisnikFirma ^kf, ArrayList ^p, ArrayList ^k)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			korisnik = k;	
+			korisnik = kf;	
 			paketi = p;
+			korisnici = k;
 		}
 
 	private:
 		KorisnikFirma ^korisnik;
+		ArrayList ^korisnici;
+
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::CheckBox^  chBoxModem;
 			 ArrayList ^paketi;
@@ -62,7 +68,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::GroupBox^  groupbox3;
 	protected: 
 	private: System::Windows::Forms::TextBox^  c_PDV_broj;
-	private: System::Windows::Forms::TextBox^  c_naziv;
+	private: System::Windows::Forms::TextBox^  c_naziv_firme;
+
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
@@ -103,7 +110,7 @@ namespace InternetAccounting {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->groupbox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->c_PDV_broj = (gcnew System::Windows::Forms::TextBox());
-			this->c_naziv = (gcnew System::Windows::Forms::TextBox());
+			this->c_naziv_firme = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
@@ -139,7 +146,7 @@ namespace InternetAccounting {
 			// groupbox3
 			// 
 			this->groupbox3->Controls->Add(this->c_PDV_broj);
-			this->groupbox3->Controls->Add(this->c_naziv);
+			this->groupbox3->Controls->Add(this->c_naziv_firme);
 			this->groupbox3->Controls->Add(this->label3);
 			this->groupbox3->Controls->Add(this->label2);
 			this->groupbox3->Location = System::Drawing::Point(12, 12);
@@ -156,12 +163,12 @@ namespace InternetAccounting {
 			this->c_PDV_broj->Size = System::Drawing::Size(154, 20);
 			this->c_PDV_broj->TabIndex = 15;
 			// 
-			// c_naziv
+			// c_naziv_firme
 			// 
-			this->c_naziv->Location = System::Drawing::Point(110, 21);
-			this->c_naziv->Name = L"c_naziv";
-			this->c_naziv->Size = System::Drawing::Size(154, 20);
-			this->c_naziv->TabIndex = 14;
+			this->c_naziv_firme->Location = System::Drawing::Point(110, 21);
+			this->c_naziv_firme->Name = L"c_naziv_firme";
+			this->c_naziv_firme->Size = System::Drawing::Size(154, 20);
+			this->c_naziv_firme->TabIndex = 14;
 			// 
 			// label3
 			// 
@@ -416,6 +423,165 @@ namespace InternetAccounting {
 		}
 #pragma endregion
 		public:
+
+			bool PostaviNaziv ()
+			{
+				if (c_naziv_firme->Text->Length < 3)
+			 {
+				 c_naziv_firme->Focus ();
+				 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati manje od 3 slova.";
+				 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati manje od 3 slova.");				
+				 return false;
+			 }
+				else if (c_naziv_firme->Text->Length >= 3)
+				 {
+					 for (int i = 0; i < c_naziv_firme->Text->Length; i++)
+						 if (!c_naziv_firme->Text [i].IsLetter (c_naziv_firme->Text, i))
+						 {
+							 c_naziv_firme->Focus ();
+							 toolStripStatusLabel1->Text = "Naziv ne smije sadržavati brojeve i simbole.";
+							 errorProvider1->SetError (c_naziv_firme, "Naziv ne smije sadržavati brojeve i simbole.");				
+							 return false;
+						 }
+						 if (!c_naziv_firme->Text [0].IsUpper (c_naziv_firme->Text, 0))
+						 {
+							 c_naziv_firme->Focus ();
+							 toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+							 errorProvider1->SetError (c_naziv_firme, "Naziv mora poèeti sa velikim slovom.");				
+							 return false;
+						 }
+						 for (int i = 1; i < c_naziv_firme->Text->Length; i++)
+							 if (c_naziv_firme->Text [i].IsUpper (c_naziv_firme->Text, i))
+							 {
+								 c_naziv_firme->Focus ();
+								 toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+								 errorProvider1->SetError (c_naziv_firme, "Samo prvo slovo smije biti veliko.");				
+								 return false;
+							 }
+							 errorProvider1->Clear ();
+							 toolStripStatusLabel1->Text = "";
+							 return true;				
+				 }
+			}
+
+			bool PostaviPDV ()
+			{
+				if (c_PDV_broj->Text->Length < 12)
+			 {
+				 c_PDV_broj->Focus ();
+				 toolStripStatusLabel1->Text = "PDV broj mora imati 12 cifara.";
+				 errorProvider1->SetError (c_PDV_broj, "PDV broj mora imati 12 cifara.");
+				 return false;
+			 }
+				else 
+			 {
+				 errorProvider1->Clear ();
+				 toolStripStatusLabel1->Text = "";
+				 return true;
+			 }
+			}
+
+			bool PostaviPaket ()
+			{
+				if (cmbBoxPaket->SelectedIndex == -1)
+			 {
+				 cmbBoxPaket->Focus ();
+				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
+				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
+				 return false;
+			 }
+				else
+			 {
+				 errorProvider1->Clear ();
+				 toolStripStatusLabel1->Text = "";
+				 return true;
+			 }
+			}
+
+			bool PostaviAdresu ()
+			{
+				if (txtAdresa->Text->Length < 5)
+				{
+					txtAdresa->Focus ();
+					toolStripStatusLabel1->Text = "Adresa mora sadržavati najmanje 5 znakova.";
+					errorProvider1->SetError (txtAdresa, "Adresa mora sadržavati najmanje 5 znakova.");
+					return false;
+				}
+				else if (txtAdresa->Text->Length >= 5)
+				{
+					for (int i = 0; i < txtAdresa->Text->Length; i++)
+						if (!txtAdresa->Text [0].IsUpper (txtAdresa->Text, 0))
+						{
+							txtAdresa->Focus ();
+							toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+							errorProvider1->SetError (txtAdresa, "Naziv mora poèeti sa velikim slovom.");				
+							return false;
+						}						
+						errorProvider1->Clear ();
+						toolStripStatusLabel1->Text = "";
+						return true;				
+				 }
+			}
+
+			bool PostaviTelefon ()
+			{
+				if (maskedTxtTelefon->Text->Length < 6)
+				{	
+					maskedTxtTelefon->Focus ();
+					toolStripStatusLabel1->Text = "Broj telefona mora imati najmanje 6 cifara.";
+					errorProvider1->SetError (maskedTxtTelefon, "Broj telefona mora imati najmanje 6 cifara.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;
+				}
+			}
+
+			bool PostaviUsername ()
+			{
+				 if (txtUsername->Text->Length < 5)
+				 {
+					 txtUsername->Focus ();
+					 toolStripStatusLabel1->Text = "Username mora imati najmanje 5 znakova.";
+					 errorProvider1->SetError (txtUsername, "Username mora imati najmanje 5 znakova.");
+					 return false;
+				 }
+				 else if (txtUsername->Text->Length >= 5)
+				 {
+					 for each (Korisnik ^k in korisnici)
+					 if (txtUsername->Text == k->Username ())
+					 {
+						 toolStripStatusLabel1->Text = "Username veæ zauzet!";
+						 errorProvider1->SetError (txtUsername, "Username veæ zauzet!");
+						 return false;
+					 }
+
+					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
+					 return true;
+				 }
+			}
+
+			bool PostaviPassword ()
+			{
+				if (txtPassword->Text->Length < 5)
+				{	
+					txtPassword->Focus ();
+					toolStripStatusLabel1->Text = "Password mora imati najmanje 5 znakova.";
+					errorProvider1->SetError (txtPassword, "Password mora imati najmanje 5 znakova.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;
+				}
+			}
+		public:
 			void setModemDisabled ()
 			{
 				chBoxModem->Checked = false;
@@ -426,7 +592,7 @@ namespace InternetAccounting {
 				 for each (Paket ^p in paketi)
 					 cmbBoxPaket->Items->Add (p->Naziv_paketa ());
 
-				 c_naziv->Text = korisnik->Naziv ();
+				 c_naziv_firme->Text = korisnik->Naziv ();
 				 c_PDV_broj->Text = korisnik->PDV_broj ();
 
 				 cmbBoxPaket->SelectedItem = korisnik->Naziv_paketa ();
@@ -464,7 +630,7 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 					 throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
 				 }
 
-				 korisnik->Naziv (c_naziv->Text);
+				 korisnik->Naziv (c_naziv_firme->Text);
 				 korisnik->PDV_broj (c_PDV_broj->Text);
 				 korisnik->Adresa (txtAdresa->Text);
 				 korisnik->Telefon (maskedTxtTelefon->Text);

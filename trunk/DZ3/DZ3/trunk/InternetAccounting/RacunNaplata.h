@@ -108,7 +108,7 @@ namespace InternetAccounting {
 			this->cBoxkorisnici->FormattingEnabled = true;
 			this->cBoxkorisnici->Location = System::Drawing::Point(94, 17);
 			this->cBoxkorisnici->Name = L"cBoxkorisnici";
-			this->cBoxkorisnici->Size = System::Drawing::Size(152, 21);
+			this->cBoxkorisnici->Size = System::Drawing::Size(147, 21);
 			this->cBoxkorisnici->Sorted = true;
 			this->cBoxkorisnici->TabIndex = 0;
 			this->cBoxkorisnici->SelectedIndexChanged += gcnew System::EventHandler(this, &RacunNaplata::cBoxkorisnici_SelectedIndexChanged);
@@ -116,9 +116,9 @@ namespace InternetAccounting {
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 208);
+			this->statusStrip1->Location = System::Drawing::Point(0, 191);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(290, 22);
+			this->statusStrip1->Size = System::Drawing::Size(286, 22);
 			this->statusStrip1->TabIndex = 5;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -135,7 +135,7 @@ namespace InternetAccounting {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(185, 152);
+			this->button1->Location = System::Drawing::Point(199, 153);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 4;
@@ -154,7 +154,7 @@ namespace InternetAccounting {
 			this->panel1->Controls->Add(this->label29);
 			this->panel1->Location = System::Drawing::Point(13, 7);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(265, 123);
+			this->panel1->Size = System::Drawing::Size(261, 123);
 			this->panel1->TabIndex = 3;
 			// 
 			// vrijeme
@@ -191,7 +191,7 @@ namespace InternetAccounting {
 				L"Juni", L"Juli", L"August", L"Septembar", L"Oktobar", L"Novembar", L"Decembar"});
 			this->t_mjesec->Location = System::Drawing::Point(94, 86);
 			this->t_mjesec->Name = L"t_mjesec";
-			this->t_mjesec->Size = System::Drawing::Size(152, 21);
+			this->t_mjesec->Size = System::Drawing::Size(147, 21);
 			this->t_mjesec->TabIndex = 1;
 			// 
 			// label29
@@ -208,7 +208,7 @@ namespace InternetAccounting {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(290, 230);
+			this->ClientSize = System::Drawing::Size(286, 213);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel1);

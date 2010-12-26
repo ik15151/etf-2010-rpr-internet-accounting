@@ -2,6 +2,9 @@
 
 #include "KorisnikOsoba.h"
 #include "Paket.h"
+#include "IzuzetakOsoba.h"
+#include "IzuzetakFirma.h"
+#include "Korisnik.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -33,14 +36,15 @@ namespace InternetAccounting {
 			//
 		}
 
-		PromjenaOsoba(KorisnikOsoba ^k, ArrayList ^p)
+		PromjenaOsoba(KorisnikOsoba ^ko, ArrayList ^p, ArrayList ^k)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			korisnik = k;	
+			korisnik = ko;	
 			paketi = p;
+			korisnici = k;
 
 		}
 
@@ -59,6 +63,7 @@ namespace InternetAccounting {
 	private:
 		KorisnikOsoba ^korisnik;
 		ArrayList ^paketi;
+		ArrayList ^korisnici;
 
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	protected: 
@@ -441,6 +446,238 @@ namespace InternetAccounting {
 
 		}
 #pragma endregion
+		private:
+			bool PostaviIme ()
+			{
+				if (c_ime->Text->Length < 3)
+				{
+					c_ime->Focus ();
+					toolStripStatusLabel1->Text = "Ime ne smije sadržavati manje od 3 slova.";
+					errorProvider1->SetError (c_ime, "Ime ne smije sadržavati manje od 3 slova.");				
+					return false;
+				}
+				else if (c_ime->Text->Length >= 3)
+				{
+					for (int i = 0; i < c_ime->Text->Length; i++)
+						if (!c_ime->Text [i].IsLetter (c_ime->Text, i))
+						{
+							c_ime->Focus ();
+							toolStripStatusLabel1->Text = "Ime ne smije sadržavati brojeve i simbole.";
+							errorProvider1->SetError (c_ime, "Ime ne smije sadržavati brojeve i simbole.");				
+							return false;
+						}
+						if (!c_ime->Text [0].IsUpper (c_ime->Text, 0))
+						{
+							c_ime->Focus ();
+							toolStripStatusLabel1->Text = "Ime mora poèeti sa velikim slovom.";
+							errorProvider1->SetError (c_ime, "Ime mora poèeti sa velikim slovom.");				
+							return false;
+						}
+						for (int i = 1; i < c_ime->Text->Length; i++)
+							if (c_ime->Text [i].IsUpper (c_ime->Text, i))
+							{
+								c_ime->Focus ();
+								toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+								errorProvider1->SetError (c_ime, "Samo prvo slovo smije biti veliko.");				
+								return false;
+							}
+
+							errorProvider1->Clear ();
+							toolStripStatusLabel1->Text = "";
+							return true;				
+				}
+
+			}
+
+			bool PostaviPrezime ()
+			{
+				if (c_prezime->Text->Length < 3)
+				{
+					c_prezime->Focus ();
+					toolStripStatusLabel1->Text = "Prezime ne smije sadržavati manje od 3 slova.";
+					errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati manje od 3 slova.");				
+					return false;
+				}
+				else if (c_prezime->Text->Length >= 3)
+				{
+					for (int i = 0; i < c_prezime->Text->Length; i++)
+						if (!c_prezime->Text [i].IsLetter (c_prezime->Text, i))
+						{
+							c_prezime->Focus ();
+							toolStripStatusLabel1->Text = "Prezime ne smije sadržavati brojeve i simbole.";
+							errorProvider1->SetError (c_prezime, "Prezime ne smije sadržavati brojeve i simbole.");				
+							return false;
+						}
+						if (!c_prezime->Text [0].IsUpper (c_prezime->Text, 0))
+						{
+							c_prezime->Focus ();
+							toolStripStatusLabel1->Text = "Prezime mora poèeti sa velikim slovom.";
+							errorProvider1->SetError (c_prezime, "Prezime mora poèeti sa velikim slovom.");				
+							return false;
+						}
+						for (int i = 1; i < c_prezime->Text->Length; i++)
+							if (c_prezime->Text [i].IsUpper (c_prezime->Text, i))
+							{
+								c_prezime->Focus ();
+								toolStripStatusLabel1->Text = "Samo prvo slovo smije biti veliko.";
+								errorProvider1->SetError (c_prezime, "Samo prvo slovo smije biti veliko.");				
+								return false;
+							}				
+							errorProvider1->Clear ();
+							toolStripStatusLabel1->Text = "";
+							return true;				
+				}
+			}
+
+			bool PostaviLicnu ()
+			{
+				if (c_broj_licne_karte->Text->Length < 9)
+			 {
+				 c_broj_licne_karte->Focus ();
+				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati manje od 9 znakova.";
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati manje od 9 znakova.");	
+				 return false;
+			 }
+				else if (c_broj_licne_karte->Text->Length > 9)
+			 {
+				 c_broj_licne_karte->Focus ();
+				 toolStripStatusLabel1->Text = "Broj liène karte ne smije sadržavati više od 9 znakova.";
+				 errorProvider1->SetError (c_broj_licne_karte, "Broj liène karte ne smije sadržavati više od 9 znakova.");	
+				 return false;
+			 }
+				else if (c_broj_licne_karte->Text->Length == 9)
+				 {
+					 for (int i = 0; i < 2; i++)
+						 if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
+						 {
+							 c_broj_licne_karte->Focus ();
+							 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+							 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
+							 return false;
+						 }
+						 for (int i = 5; i < 9; i++)
+							 if (!c_broj_licne_karte->Text [i].IsDigit (c_broj_licne_karte->Text, i))
+							 {
+								 c_broj_licne_karte->Focus ();
+								 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+								 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
+								 return false;
+							 }
+							 for (int i = 2; i < 5; i++)
+								 if (!c_broj_licne_karte->Text [i].IsUpper (c_broj_licne_karte->Text, i))
+								 {
+									 c_broj_licne_karte->Focus ();
+									 toolStripStatusLabel1->Text = "Format liène karte: 2 broja + 3 velika slova + 4 broja.";
+									 errorProvider1->SetError (c_broj_licne_karte, "Format liène karte: 2 broja + 3 velika slova + 4 broja.");	
+									 return false;
+								 }
+								 errorProvider1->Clear ();
+								 toolStripStatusLabel1->Text = "";
+								 return true;
+				 }
+			}
+
+			bool PostaviPaket ()
+			{
+				if (cmbBoxPaket->SelectedIndex == -1)
+			 {
+				 cmbBoxPaket->Focus ();
+				 toolStripStatusLabel1->Text = "Morate odabrati vrstu paketa.";
+				 errorProvider1->SetError (cmbBoxPaket, "Morate odabrati vrstu paketa.");				 
+				 return false;
+			 }
+				else
+			 {
+				 errorProvider1->Clear ();
+				 toolStripStatusLabel1->Text = "";
+				 return true;
+			 }
+			}
+
+			bool PostaviAdresu ()
+			{
+				if (txtAdresa->Text->Length < 5)
+				{
+					txtAdresa->Focus ();
+					toolStripStatusLabel1->Text = "Adresa mora sadržavati najmanje 5 znakova.";
+					errorProvider1->SetError (txtAdresa, "Adresa mora sadržavati najmanje 5 znakova.");
+					return false;
+				}
+				else if (txtAdresa->Text->Length >= 5)
+				{
+					for (int i = 0; i < txtAdresa->Text->Length; i++)
+						if (!txtAdresa->Text [0].IsUpper (txtAdresa->Text, 0))
+						{
+							txtAdresa->Focus ();
+							toolStripStatusLabel1->Text = "Naziv mora poèeti sa velikim slovom.";
+							errorProvider1->SetError (txtAdresa, "Naziv mora poèeti sa velikim slovom.");				
+							return false;
+						}						
+						errorProvider1->Clear ();
+						toolStripStatusLabel1->Text = "";
+						return true;				
+				 }
+			}
+
+			bool PostaviTelefon ()
+			{
+				if (maskedTxtTelefon->Text->Length < 6)
+				{	
+					maskedTxtTelefon->Focus ();
+					toolStripStatusLabel1->Text = "Broj telefona mora imati najmanje 6 cifara.";
+					errorProvider1->SetError (maskedTxtTelefon, "Broj telefona mora imati najmanje 6 cifara.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;
+				}
+			}
+
+			bool PostaviUsername ()
+			{
+				 if (txtUsername->Text->Length < 5)
+				 {
+					 txtUsername->Focus ();
+					 toolStripStatusLabel1->Text = "Username mora imati najmanje 5 znakova.";
+					 errorProvider1->SetError (txtUsername, "Username mora imati najmanje 5 znakova.");
+					 return false;
+				 }
+				 else if (txtUsername->Text->Length >= 5)
+				 {
+					 for each (Korisnik ^k in korisnici)
+					 if (txtUsername->Text == k->Username ())
+					 {
+						 toolStripStatusLabel1->Text = "Username veæ zauzet!";
+						 errorProvider1->SetError (txtUsername, "Username veæ zauzet!");
+						 return false;
+					 }
+
+					 errorProvider1->Clear ();
+					 toolStripStatusLabel1->Text = "";
+					 return true;
+				 }
+			}
+
+			bool PostaviPassword ()
+			{
+				if (txtPassword->Text->Length < 5)
+				{	
+					txtPassword->Focus ();
+					toolStripStatusLabel1->Text = "Password mora imati najmanje 5 znakova.";
+					errorProvider1->SetError (txtPassword, "Password mora imati najmanje 5 znakova.");
+					return false;
+				}
+				else
+				{
+					errorProvider1->Clear ();
+					toolStripStatusLabel1->Text = "";
+					return true;
+				}
+			}
+
 		public:
 			void setModemDisabled ()
 			{
@@ -479,27 +716,48 @@ namespace InternetAccounting {
 					 p_aktivan->Checked = true;
 			 }
 private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArgs^  e) {
-
+				
 			 try
-			 {
+			 {				 
+				 if (!PostaviIme ())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_ime));
+
+				 if (!PostaviPrezime ())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_prezime));
+
+				 if (!PostaviLicnu ())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (c_broj_licne_karte));
+
+				 if (!PostaviAdresu())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (txtAdresa));
+				 
+				 if (!PostaviTelefon())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (maskedTxtTelefon));
+
+				 if (!PostaviUsername())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (txtUsername));
+
+				 if (!PostaviPassword())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (txtPassword));
+
+				 if (!PostaviPaket ())
+					 throw gcnew IzuzetakOsoba (errorProvider1->GetError (cmbBoxPaket));
+
 				 if (p_mirovanje->Checked == true && chBoxModem->Checked == true)
 				 {
 					 errorProvider1->SetError (p_mirovanje, "Ako se raèun stavlja na mirovanje, mora se vratiti modem.");
 					 errorProvider1->SetError(chBoxModem, "Ako je modem kod korisnika, raèun se ne smije staviti na mirovanje.");
-					 throw gcnew Exception ("Ne može se zamrznuti raèun prije vraæanja modema.");
-				 }
-
+					 throw gcnew IzuzetakOsoba ("Ne može se zamrznuti raèun prije vraæanja modema.");
+				 }							 
+					
 				 korisnik->Ime (c_ime->Text);
 				 korisnik->Prezime (c_prezime->Text);
 				 korisnik->Broj_licne_karte (c_broj_licne_karte->Text);
-				 korisnik->Naziv_paketa (cmbBoxPaket->SelectedItem->ToString ());
-
 				 korisnik->Adresa (txtAdresa->Text);
 				 korisnik->Telefon (maskedTxtTelefon->Text);
 				 korisnik->Username (txtUsername->Text);
 				 korisnik->Password (txtPassword->Text);
 				 korisnik->Naziv_paketa (cmbBoxPaket->SelectedItem->ToString ());
-
 				 korisnik->Modem (chBoxModem->Checked);
 
 				 if (p_mirovanje->Checked)
@@ -507,13 +765,14 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				 else if (p_aktivan->Checked)
 					 korisnik->Mirovanje (false);
 
-				 Close ();
-			 }
-			 catch (...)
+				 Close ();			
+				 
+			 } 
+			 catch (IzuzetakOsoba ^iz)
 			 {
-				 // Treba napraviti bolji/e izuzetke
-				 toolStripStatusLabel1->Text = "Greška u ažuriranju. Podaci nisu spašeni.";
+				 toolStripStatusLabel1->Text = iz->Message;
 			 }
+			 
 		 }
 };
 }
