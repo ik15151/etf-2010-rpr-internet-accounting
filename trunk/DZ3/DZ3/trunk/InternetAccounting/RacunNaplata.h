@@ -68,6 +68,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::Label^  label30;
 	private: System::Windows::Forms::ComboBox^  t_mjesec;
 	private: System::Windows::Forms::Label^  label29;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  vrijeme;
 	private: System::ComponentModel::IContainer^  components;
 
 	private:
@@ -90,6 +92,8 @@ namespace InternetAccounting {
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->vrijeme = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->t_mjesec = (gcnew System::Windows::Forms::ComboBox());
 			this->label29 = (gcnew System::Windows::Forms::Label());
@@ -102,18 +106,19 @@ namespace InternetAccounting {
 			// 
 			this->cBoxkorisnici->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cBoxkorisnici->FormattingEnabled = true;
-			this->cBoxkorisnici->Location = System::Drawing::Point(68, 17);
+			this->cBoxkorisnici->Location = System::Drawing::Point(94, 17);
 			this->cBoxkorisnici->Name = L"cBoxkorisnici";
 			this->cBoxkorisnici->Size = System::Drawing::Size(152, 21);
 			this->cBoxkorisnici->Sorted = true;
 			this->cBoxkorisnici->TabIndex = 0;
+			this->cBoxkorisnici->SelectedIndexChanged += gcnew System::EventHandler(this, &RacunNaplata::cBoxkorisnici_SelectedIndexChanged);
 			// 
 			// statusStrip1
 			// 
 			this->statusStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->toolStripStatusLabel1});
-			this->statusStrip1->Location = System::Drawing::Point(0, 241);
+			this->statusStrip1->Location = System::Drawing::Point(0, 208);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(272, 22);
+			this->statusStrip1->Size = System::Drawing::Size(290, 22);
 			this->statusStrip1->TabIndex = 5;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -141,19 +146,38 @@ namespace InternetAccounting {
 			// panel1
 			// 
 			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->vrijeme);
+			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->cBoxkorisnici);
 			this->panel1->Controls->Add(this->label30);
 			this->panel1->Controls->Add(this->t_mjesec);
 			this->panel1->Controls->Add(this->label29);
 			this->panel1->Location = System::Drawing::Point(13, 7);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(247, 123);
+			this->panel1->Size = System::Drawing::Size(264, 123);
 			this->panel1->TabIndex = 3;
+			// 
+			// vrijeme
+			// 
+			this->vrijeme->AutoSize = true;
+			this->vrijeme->Location = System::Drawing::Point(94, 55);
+			this->vrijeme->Name = L"vrijeme";
+			this->vrijeme->Size = System::Drawing::Size(0, 13);
+			this->vrijeme->TabIndex = 14;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(10, 55);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(67, 13);
+			this->label1->TabIndex = 13;
+			this->label1->Text = L"Raèun izdat:";
 			// 
 			// label30
 			// 
 			this->label30->AutoSize = true;
-			this->label30->Location = System::Drawing::Point(10, 74);
+			this->label30->Location = System::Drawing::Point(11, 86);
 			this->label30->Name = L"label30";
 			this->label30->Size = System::Drawing::Size(44, 13);
 			this->label30->TabIndex = 12;
@@ -165,7 +189,7 @@ namespace InternetAccounting {
 			this->t_mjesec->FormattingEnabled = true;
 			this->t_mjesec->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"Januar", L"Februar", L"Mart", L"April", L"Maj", 
 				L"Juni", L"Juli", L"August", L"Septembar", L"Oktobar", L"Novembar", L"Decembar"});
-			this->t_mjesec->Location = System::Drawing::Point(67, 66);
+			this->t_mjesec->Location = System::Drawing::Point(94, 86);
 			this->t_mjesec->Name = L"t_mjesec";
 			this->t_mjesec->Size = System::Drawing::Size(152, 21);
 			this->t_mjesec->TabIndex = 1;
@@ -184,10 +208,11 @@ namespace InternetAccounting {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(272, 263);
+			this->ClientSize = System::Drawing::Size(290, 230);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel1);
+			this->MaximizeBox = false;
 			this->Name = L"RacunNaplata";
 			this->Text = L"RacunNaplata";
 			this->Load += gcnew System::EventHandler(this, &RacunNaplata::RacunNaplata_Load);
@@ -263,5 +288,14 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			 }
 		 }
 		 
+private: System::Void cBoxkorisnici_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each (Racun ^r in racuni)
+				 if (r->Username () == cBoxkorisnici->SelectedItem->ToString ())
+				 {
+					 vrijeme->Text = r->getVrijeme ();
+					 return;
+				 }
+			  
+		 }
 };
 }
