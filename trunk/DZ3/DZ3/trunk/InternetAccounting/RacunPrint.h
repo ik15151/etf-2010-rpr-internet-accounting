@@ -533,12 +533,13 @@ namespace InternetAccounting {
 				 r_mjesec->Text = racun->Mjesec ();
 			 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-
+			
+			 racun->setVrijeme ();
 			 racun->Placeno (true);
 			 Close ();
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-
+			 racun->setVrijeme ();
 			 korisnik->Suspenzija (true);
 			 korisnik->Modem(false);
 			 Close ();

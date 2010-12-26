@@ -35,6 +35,9 @@ namespace InternetAccounting {
 				delete components;
 			}
 		}
+	private:
+		String ^time;
+
 	private: System::Windows::Forms::Label^  vrijeme;
 	protected: 
 
@@ -65,9 +68,8 @@ namespace InternetAccounting {
 			this->vrijeme->AutoSize = true;
 			this->vrijeme->Location = System::Drawing::Point(3, 7);
 			this->vrijeme->Name = L"vrijeme";
-			this->vrijeme->Size = System::Drawing::Size(35, 13);
+			this->vrijeme->Size = System::Drawing::Size(0, 13);
 			this->vrijeme->TabIndex = 0;
-			this->vrijeme->Text = L"label1";
 			// 
 			// timer1
 			// 
@@ -90,7 +92,11 @@ namespace InternetAccounting {
 	public:
 		String ^getVrijeme ()
 		{
-			return vrijeme->Text;
+			return time;
+		}
+		void setVrijeme ()
+		{
+			time = vrijeme->Text;
 		}
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 				 vrijeme->Text = Convert::ToString (System::DateTime::Now::get ());

@@ -135,7 +135,7 @@ namespace InternetAccounting {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(185, 156);
+			this->button1->Location = System::Drawing::Point(185, 152);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 4;
@@ -154,7 +154,7 @@ namespace InternetAccounting {
 			this->panel1->Controls->Add(this->label29);
 			this->panel1->Location = System::Drawing::Point(13, 7);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(264, 123);
+			this->panel1->Size = System::Drawing::Size(265, 123);
 			this->panel1->TabIndex = 3;
 			// 
 			// vrijeme
@@ -170,9 +170,9 @@ namespace InternetAccounting {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(10, 55);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(67, 13);
+			this->label1->Size = System::Drawing::Size(33, 13);
 			this->label1->TabIndex = 13;
-			this->label1->Text = L"Raèun izdat:";
+			this->label1->Text = L"Izdat:";
 			// 
 			// label30
 			// 
@@ -214,7 +214,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->panel1);
 			this->MaximizeBox = false;
 			this->Name = L"RacunNaplata";
-			this->Text = L"RacunNaplata";
+			this->Text = L"Naplata";
 			this->Load += gcnew System::EventHandler(this, &RacunNaplata::RacunNaplata_Load);
 			this->statusStrip1->ResumeLayout(false);
 			this->statusStrip1->PerformLayout();
