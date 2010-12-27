@@ -706,7 +706,7 @@ private: System::Void listViewOsoba_ItemActivate(System::Object^  sender, System
 						 if (k->Username () == listViewOsoba->Items[i]->Text)
 						 {
 							 KorisnikOsoba ^korisnik = dynamic_cast <KorisnikOsoba ^> (k);
-							 PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi, korisnici);
+							 PromjenaOsoba ^po = gcnew PromjenaOsoba (korisnik, paketi, korisnici, datoteka);
 							 listViewOsoba->Items->Clear ();
 							 po->ShowDialog ();							
 							 return;

@@ -427,7 +427,6 @@ private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, Sy
  
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-			 			
 			 
 			 try
 			 {
