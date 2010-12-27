@@ -905,11 +905,6 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (modem, username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 					 korisnici->Add (ko);
 
-					 XmlSerializer ^x = gcnew XmlSerializer(ko->GetType());
-	   				 Stream ^writer = gcnew FileStream("proba1.xml", FileMode::Create);
-					 x->Serialize(writer, ko);
-					 writer->Close();
-
 					 Resetuj();
 				 }
 				 if (tabControl2->SelectedIndex == 1)

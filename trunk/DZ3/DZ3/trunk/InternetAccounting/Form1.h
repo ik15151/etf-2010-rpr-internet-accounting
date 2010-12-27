@@ -52,7 +52,7 @@ namespace InternetAccounting {
 			paketi->Add (gcnew Paket ("Standard", "18 GB", "2048/256 kbps", 25));
 			paketi->Add (gcnew Paket ("Flat", "Neogranièeno", "3072/1024 kbps", 65));
 
-			datoteka = "Podaci.txt";
+			datoteka = "korisnici.txt";
 		}
 
 	protected:
@@ -470,15 +470,16 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 {
 				 MessageBox::Show ("Greska pri upisivanju podataka u datoteku.");
 			 }
-			 /*
+			 
 
 			 try
 			 {
 				 
 				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
-				 // U nasem slucaju ArrayLista sadrzi klasu PlainKnjiga
-				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (1);
+				 // U nasem slucaju ArrayLista sadrzi klasu KorisnikOsoba, KorisnikFirma	
+				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (2);
 				 dodatniTipovi [0] = KorisnikOsoba::typeid;
+				 dodatniTipovi [1] = KorisnikFirma::typeid;
 				 
 
 				 // Serijaliziramo ArrayListu knjiga u XML datoteku
@@ -493,7 +494,7 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 {
 				 MessageBox::Show ("Greska pri XML serijalizaciji." + i->Message);
 			 }
-			 */
+			 
 
 		 }
 };
