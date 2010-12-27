@@ -672,11 +672,14 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 				 else if (p_aktivan->Checked)
 					 korisnik->Mirovanje (false);
 
+				 /*
+
 				 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
 				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
 
 				 bf->Serialize (fs, korisnici);
 				 fs->Close ();
+				 */
 
 				 Close ();
 				 

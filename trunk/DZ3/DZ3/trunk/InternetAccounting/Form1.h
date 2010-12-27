@@ -339,6 +339,7 @@ namespace InternetAccounting {
 			this->Name = L"Form1";
 			this->Text = L"Sabily";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Form1::Form1_FormClosing);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -441,11 +442,7 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 					 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
 
 					 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
-					 
-					 //privremeno
-					 for each (Korisnik ^k in korisnici)
-						 MessageBox::Show (k->Username ());
-				 
+							 
 					 fstrm->Close ();
 				 }
 
@@ -457,6 +454,14 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 
 			 }
 		
+		 }
+private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
+			 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
+			 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+
+			 bf->Serialize (fs, korisnici);
+			 fs->Close ();
+
 		 }
 };
 }
