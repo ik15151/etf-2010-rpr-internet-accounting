@@ -890,15 +890,13 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 						 throw gcnew Exception ("Morate odabrati datoteku za spašavanje podataka.");
 				 }
 
-				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Append, FileAccess::Write);
+				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Create);
 				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
 				 
 				 if (tabControl2->SelectedIndex == 0)
 				 {
 					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (modem, username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 					 korisnici->Add (ko);
-					 bf->Serialize (fstrm, ko);
-					 fstrm->Close ();
 					
 					 Resetuj();
 				 }
@@ -906,11 +904,12 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 {
 					 KorisnikFirma ^kf = gcnew KorisnikFirma (modem, username, naziv_paketa, adresa, password, telefon, c_naziv_firme->Text, c_PDV_broj->Text);
 					 korisnici->Add (kf);
-					 bf->Serialize (fstrm, kf);
-					 fstrm->Close ();
 
 					 Resetuj();
 				 }
+
+				 bf->Serialize (fstrm, korisnici);
+				 fstrm->Close ();
 			 } 
 			 catch (IzuzetakOsoba ^iz)
 			 {

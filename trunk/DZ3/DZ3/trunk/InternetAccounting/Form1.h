@@ -42,7 +42,7 @@ namespace InternetAccounting {
 			//TODO: Add the constructor code here
 			//
 
-//			korisnici = gcnew ArrayList ();
+			korisnici = gcnew ArrayList ();
 			racuni = gcnew ArrayList ();
 			paketi = gcnew ArrayList ();
 
@@ -425,7 +425,7 @@ private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, Sy
 	 String ^datoteka;
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-
+			 			
 			 
 			 try
 			 {
@@ -436,35 +436,21 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Open);
 				 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
 
-				 korisnici = gcnew ArrayList ();
 				 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
 				 
 				 for each (Korisnik ^k in korisnici)
 					 MessageBox::Show (k->Username ());
-
-				 /*
-				 
-				 try
-				 {
-					KorisnikOsoba ^ko =  dynamic_cast <KorisnikOsoba ^> (bf->Deserialize (fstrm));
-					korisnici->Add (ko);
-				 }
-				 catch (...)
-				 {
-					 KorisnikFirma ^kf = dynamic_cast <KorisnikFirma ^> (bf->Deserialize (fstrm));
-					 korisnici->Add (kf);
-				 }
-				 */
-				 
+			 
 				 fstrm->Close ();
 
 			 }
 			 catch (Exception ^i)
 			 {
 				 // ovo bih mogla i zanemariti
-				 MessageBox::Show (i->Message);
+				 MessageBox::Show ("Nisu ucitani podaci iz datoteke");
 
 			 }
+		
 		 }
 };
 }
