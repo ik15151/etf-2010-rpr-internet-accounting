@@ -2,6 +2,7 @@
 
 using namespace System;
 
+[Serializable]
 ref class Korisnik abstract
 {
 	String ^_username, ^_naziv_paketa, ^_adresa, ^_password, ^_telefon;

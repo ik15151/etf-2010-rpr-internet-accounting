@@ -20,6 +20,8 @@ namespace InternetAccounting {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
+	using namespace System::Runtime::Serialization::Formatters::Binary;
 
 	/// <summary>
 	/// Summary for Form1
@@ -40,7 +42,7 @@ namespace InternetAccounting {
 			//TODO: Add the constructor code here
 			//
 
-			korisnici = gcnew ArrayList ();
+//			korisnici = gcnew ArrayList ();
 			racuni = gcnew ArrayList ();
 			paketi = gcnew ArrayList ();
 
@@ -90,6 +92,7 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ToolStripMenuItem^  štampajToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  januarToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  februarToolStripMenuItem;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 
 	private:
 		/// <summary>
@@ -128,6 +131,7 @@ namespace InternetAccounting {
 			this->štampajToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->januarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->februarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -317,6 +321,10 @@ namespace InternetAccounting {
 			this->februarToolStripMenuItem->Text = L"Februar";
 			this->februarToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::februarToolStripMenuItem_Click);
 			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -327,6 +335,7 @@ namespace InternetAccounting {
 			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"Sabily";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -411,6 +420,51 @@ private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, Sy
 
 			 RacunNaplata ^rn = gcnew RacunNaplata (korisnici, racuni);
 			 rn->Show ();
+		 }
+ private:
+	 String ^datoteka;
+
+private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+
+			 
+			 try
+			 {
+				 System::Windows::Forms::DialogResult d = openFileDialog1->ShowDialog ();
+				 if (d == System::Windows::Forms::DialogResult::OK) 
+					 datoteka = openFileDialog1->FileName;
+					
+				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Open);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
+
+				 korisnici = gcnew ArrayList ();
+				 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
+				 
+				 for each (Korisnik ^k in korisnici)
+					 MessageBox::Show (k->Username ());
+
+				 /*
+				 
+				 try
+				 {
+					KorisnikOsoba ^ko =  dynamic_cast <KorisnikOsoba ^> (bf->Deserialize (fstrm));
+					korisnici->Add (ko);
+				 }
+				 catch (...)
+				 {
+					 KorisnikFirma ^kf = dynamic_cast <KorisnikFirma ^> (bf->Deserialize (fstrm));
+					 korisnici->Add (kf);
+				 }
+				 */
+				 
+				 fstrm->Close ();
+
+			 }
+			 catch (Exception ^i)
+			 {
+				 // ovo bih mogla i zanemariti
+				 MessageBox::Show (i->Message);
+
+			 }
 		 }
 };
 }

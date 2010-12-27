@@ -13,6 +13,8 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+using namespace System::IO;
+using namespace System::Runtime::Serialization::Formatters::Binary;
 
 
 namespace InternetAccounting {
@@ -99,6 +101,7 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ErrorProvider^  errorProvider1;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::CheckBox^  chBoxModem;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
 	private: System::ComponentModel::IContainer^  components;
 
@@ -148,6 +151,7 @@ namespace InternetAccounting {
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->chBoxModem = (gcnew System::Windows::Forms::CheckBox());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->tabControl2->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
@@ -489,7 +493,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->tabControl2);
 			this->MaximizeBox = false;
 			this->Name = L"UnosKorisnika";
-			this->Text = L"UnosKorisnika";
+			this->Text = L"Unos novog korisnika";
 			this->Load += gcnew System::EventHandler(this, &UnosKorisnika::UnosKorisnika_Load);
 			this->tabControl2->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
@@ -820,9 +824,13 @@ namespace InternetAccounting {
 
 
 
-	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-				 Close ();
-			 }
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Close ();
+		 }
+ private:
+	 static int brojac = 0;
+	 String ^datoteka;
+
 private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e) {
 
 			 try
@@ -870,12 +878,27 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
 				 bool modem = chBoxModem->Checked;
 				 			 
-				 // Ako je sve uredu:
+				 if (brojac == 0)
+				 {
+					 System::Windows::Forms::DialogResult d = saveFileDialog1->ShowDialog ();
+					 if (d == System::Windows::Forms::DialogResult::OK) 
+					 {
+						 datoteka = saveFileDialog1->FileName;
+						 brojac++;
+					 }
+					 else
+						 throw gcnew Exception ("Morate odabrati datoteku za spašavanje podataka.");
+				 }
 
+				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Append, FileAccess::Write);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+				 
 				 if (tabControl2->SelectedIndex == 0)
 				 {
 					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (modem, username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 					 korisnici->Add (ko);
+					 bf->Serialize (fstrm, ko);
+					 fstrm->Close ();
 					
 					 Resetuj();
 				 }
@@ -883,6 +906,8 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 {
 					 KorisnikFirma ^kf = gcnew KorisnikFirma (modem, username, naziv_paketa, adresa, password, telefon, c_naziv_firme->Text, c_PDV_broj->Text);
 					 korisnici->Add (kf);
+					 bf->Serialize (fstrm, kf);
+					 fstrm->Close ();
 
 					 Resetuj();
 				 }
@@ -900,12 +925,14 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 catch (Exception ^iz) 
 			 {
 				 toolStripStatusLabel1->Text = iz->Message;
-				 MessageBox::Show ("Greška pri unosu. Podaci o korisniku nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 MessageBox::Show ("Podaci nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 } 
-			 catch (...)
+			 /*
+			 _finally
 			 {
-				  MessageBox::Show ("Greška pri unosu. Podaci nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 
 			 }
+			 */
 				
 
 		 }

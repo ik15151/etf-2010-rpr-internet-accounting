@@ -2,6 +2,7 @@
 #include "Korisnik.h"
 using namespace System;
 
+[Serializable]
 ref class KorisnikFirma : Korisnik
 {
 	String ^_naziv, ^_PDV_broj;
