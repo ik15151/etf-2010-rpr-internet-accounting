@@ -10,6 +10,8 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+using namespace System::IO;
+using namespace System::Runtime::Serialization::Formatters::Binary;
 
 
 namespace InternetAccounting {
@@ -34,7 +36,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		PromjenaFirma(KorisnikFirma ^kf, ArrayList ^p, ArrayList ^k)
+		PromjenaFirma(KorisnikFirma ^kf, ArrayList ^p, ArrayList ^k, String ^d)
 		{
 			InitializeComponent();
 			//
@@ -43,11 +45,13 @@ namespace InternetAccounting {
 			korisnik = kf;	
 			paketi = p;
 			korisnici = k;
+			datoteka = d;
 		}
 
 	private:
 		KorisnikFirma ^korisnik;
 		ArrayList ^korisnici;
+		String ^datoteka;
 
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::CheckBox^  chBoxModem;
@@ -667,6 +671,12 @@ private: System::Void Azuriranje_Click(System::Object^  sender, System::EventArg
 					 korisnik->Mirovanje (true);
 				 else if (p_aktivan->Checked)
 					 korisnik->Mirovanje (false);
+
+				 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+
+				 bf->Serialize (fs, korisnici);
+				 fs->Close ();
 
 				 Close ();
 				 

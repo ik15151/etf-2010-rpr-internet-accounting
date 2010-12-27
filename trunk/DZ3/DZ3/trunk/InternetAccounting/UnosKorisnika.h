@@ -39,7 +39,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		UnosKorisnika(ArrayList ^k, ArrayList ^p)
+		UnosKorisnika(ArrayList ^k, ArrayList ^p, String ^d)
 		{
 			InitializeComponent();
 			//
@@ -47,6 +47,7 @@ namespace InternetAccounting {
 			//
 			korisnici = k;
 			paketi = p;
+			datoteka = d;
 		}
 
 	protected:
@@ -66,6 +67,7 @@ namespace InternetAccounting {
 	private:
 		ArrayList ^korisnici;
 		ArrayList ^paketi;
+		String ^datoteka;
 
 
 	private: System::Windows::Forms::TabControl^  tabControl2;
@@ -828,8 +830,10 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 			 Close ();
 		 }
  private:
+	 /*
 	 static int brojac = 0;
 	 String ^datoteka;
+	 */
 
 private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -878,6 +882,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 String ^naziv_paketa = cmbBoxPaket->SelectedItem->ToString ();
 				 bool modem = chBoxModem->Checked;
 				 			 
+				 /*
 				 if (brojac == 0)
 				 {
 					 System::Windows::Forms::DialogResult d = saveFileDialog1->ShowDialog ();
@@ -889,6 +894,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 else
 						 throw gcnew Exception ("Morate odabrati datoteku za spašavanje podataka.");
 				 }
+				 */
 
 				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Create);
 				 BinaryFormatter ^bf = gcnew BinaryFormatter ();

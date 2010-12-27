@@ -49,6 +49,8 @@ namespace InternetAccounting {
 			paketi->Add (gcnew Paket ("Economic", "7 GB", "1250/128 kbps", 15));
 			paketi->Add (gcnew Paket ("Standard", "18 GB", "2048/256 kbps", 25));
 			paketi->Add (gcnew Paket ("Flat", "Neogranièeno", "3072/1024 kbps", 65));
+
+			datoteka = "Podaci.txt";
 		}
 
 	protected:
@@ -67,6 +69,7 @@ namespace InternetAccounting {
 			ArrayList ^korisnici;
 			ArrayList ^paketi;
 			ArrayList ^racuni;
+			String ^datoteka;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  augustToolStripMenuItem;
 	protected: 
@@ -346,7 +349,7 @@ namespace InternetAccounting {
 #pragma endregion
 	private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi);
+				 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi, datoteka);
 				 uk->Show ();
 			 }
 private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -357,7 +360,7 @@ private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, Syst
 			 Close ();
 		 }
 private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Pretraga ^p = gcnew Pretraga (korisnici, paketi);
+			 Pretraga ^p = gcnew Pretraga (korisnici, paketi, datoteka);
 			 p->Show ();
 		 }
 
@@ -421,33 +424,37 @@ private: System::Void naplataToolStripMenuItem_Click(System::Object^  sender, Sy
 			 RacunNaplata ^rn = gcnew RacunNaplata (korisnici, racuni);
 			 rn->Show ();
 		 }
- private:
-	 String ^datoteka;
+ 
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 			 			
 			 
 			 try
 			 {
-				 System::Windows::Forms::DialogResult d = openFileDialog1->ShowDialog ();
+				 /*System::Windows::Forms::DialogResult d = openFileDialog1->ShowDialog ();
 				 if (d == System::Windows::Forms::DialogResult::OK) 
 					 datoteka = openFileDialog1->FileName;
+				*/
+				 if (File::Exists (datoteka))
+				 {
 					
-				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Open);
-				 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
+					 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Open);
+					 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
 
-				 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
+					 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
+					 
+					 //privremeno
+					 for each (Korisnik ^k in korisnici)
+						 MessageBox::Show (k->Username ());
 				 
-				 for each (Korisnik ^k in korisnici)
-					 MessageBox::Show (k->Username ());
-			 
-				 fstrm->Close ();
+					 fstrm->Close ();
+				 }
 
 			 }
 			 catch (Exception ^i)
 			 {
 				 // ovo bih mogla i zanemariti
-				 MessageBox::Show ("Nisu ucitani podaci iz datoteke");
+				 MessageBox::Show ("Nisu ucitani podaci iz datoteke.");
 
 			 }
 		

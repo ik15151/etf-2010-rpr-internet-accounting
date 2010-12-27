@@ -35,7 +35,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		Pretraga(ArrayList ^k, ArrayList ^p)
+		Pretraga(ArrayList ^k, ArrayList ^p, String ^d)
 		{
 			InitializeComponent();
 			//
@@ -43,6 +43,7 @@ namespace InternetAccounting {
 			//
 			korisnici = k;
 			paketi = p;
+			datoteka = d;
 
 		}
 
@@ -60,6 +61,7 @@ namespace InternetAccounting {
 	private:
 		ArrayList ^korisnici;
 		ArrayList ^paketi;
+		String ^datoteka;
 
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	protected: 
@@ -688,7 +690,7 @@ private: System::Void listViewFirma_ItemActivate(System::Object^  sender, System
 						 if (k->Username () == listViewFirma->Items[i]->Text)
 						 {
 							 KorisnikFirma ^korisnik = dynamic_cast <KorisnikFirma ^> (k);
-							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi, korisnici);
+							 PromjenaFirma ^pf = gcnew PromjenaFirma (korisnik, paketi, korisnici, datoteka);
 							 listViewFirma->Items->Clear ();
 							 pf->ShowDialog ();							
 							 return;
