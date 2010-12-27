@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #pragma once
 
 #include "RacunNaplata.h"
@@ -22,6 +23,7 @@ namespace InternetAccounting {
 	using namespace System::Drawing;
 	using namespace System::IO;
 	using namespace System::Runtime::Serialization::Formatters::Binary;
+	using namespace System::Xml::Serialization;
 
 	/// <summary>
 	/// Summary for Form1
@@ -456,11 +458,42 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 		
 		 }
 private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
-			 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
-			 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+			 try
+			 {
+				 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
 
-			 bf->Serialize (fs, korisnici);
-			 fs->Close ();
+				 bf->Serialize (fs, korisnici);
+				 fs->Close ();
+			 }
+			 catch (...)
+			 {
+				 MessageBox::Show ("Greska pri upisivanju podataka u datoteku.");
+			 }
+			 /*
+
+			 try
+			 {
+				 
+				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
+				 // U nasem slucaju ArrayLista sadrzi klasu PlainKnjiga
+				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (1);
+				 dodatniTipovi [0] = KorisnikOsoba::typeid;
+				 
+
+				 // Serijaliziramo ArrayListu knjiga u XML datoteku
+				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);
+				 Stream ^writer = gcnew FileStream("korisnici.xml", FileMode::Create);
+				 x->Serialize(writer, korisnici);
+
+				 writer->Close();
+				 
+			 }
+			 catch (Exception ^i)
+			 {
+				 MessageBox::Show ("Greska pri XML serijalizaciji." + i->Message);
+			 }
+			 */
 
 		 }
 };

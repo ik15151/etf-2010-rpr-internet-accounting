@@ -1,12 +1,18 @@
 #pragma once
 #include "Korisnik.h"
 using namespace System;
+using namespace System::Xml::Serialization;
 
 [Serializable]
-ref class KorisnikFirma : Korisnik
+public ref class KorisnikFirma : Korisnik
 {
-	String ^_naziv, ^_PDV_broj;
 public:
+	[ XmlElement( ElementName = "Naziv" )]
+	String ^_naziv;
+	[ XmlElement( ElementName = "PDV" )]
+	String ^_PDV_broj;
+public:
+	KorisnikFirma () {}
 	KorisnikFirma (bool modem, String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon, String ^naziv, String ^PDV_broj) 
 		: Korisnik (modem, username, naziv_paketa, adresa, password, telefon), _naziv (naziv), _PDV_broj (PDV_broj) {}
 

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #pragma once
 
 #include "Korisnik.h"
@@ -903,7 +904,12 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 {
 					 KorisnikOsoba ^ko = gcnew KorisnikOsoba (modem, username, naziv_paketa, adresa, password, telefon, c_ime->Text, c_prezime->Text, c_broj_licne_karte->Text);
 					 korisnici->Add (ko);
-					
+
+					 XmlSerializer ^x = gcnew XmlSerializer(ko->GetType());
+	   				 Stream ^writer = gcnew FileStream("proba1.xml", FileMode::Create);
+					 x->Serialize(writer, ko);
+					 writer->Close();
+
 					 Resetuj();
 				 }
 				 if (tabControl2->SelectedIndex == 1)
@@ -930,7 +936,7 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 			 catch (Exception ^iz) 
 			 {
 				 toolStripStatusLabel1->Text = iz->Message;
-				 MessageBox::Show ("Podaci nisu spašeni.", "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				 MessageBox::Show ("Podaci nisu spašeni." + iz->Message, "Greška", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			 } 
 			 /*
 			 _finally

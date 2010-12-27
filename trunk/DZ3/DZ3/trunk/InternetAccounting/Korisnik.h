@@ -1,14 +1,32 @@
 #pragma once
 
 using namespace System;
+using namespace System::Xml::Serialization;
 
 [Serializable]
-ref class Korisnik abstract
+public ref class Korisnik abstract
 {
-	String ^_username, ^_naziv_paketa, ^_adresa, ^_password, ^_telefon;
-	bool _suspenzija, _mirovanje, _modem;
+public:
+	[ XmlElement( ElementName = "Username" )]
+	String ^_username;
+	[ XmlElement( ElementName = "Paket" )]
+	String ^_naziv_paketa; 
+	[ XmlElement( ElementName = "Adresa" )]
+	String ^_adresa; 
+	[ XmlElement( ElementName = "Password" )]
+	String ^_password; 
+	[ XmlElement( ElementName = "Telefon" )]
+	String ^_telefon;
+
+	[ XmlElement( ElementName = "Suspenzija" )]
+	bool _suspenzija; 
+	[ XmlElement( ElementName = "Mirovanje" )]
+	bool _mirovanje; 
+	[ XmlElement( ElementName = "Modem" )]
+	bool _modem;
 
 public:
+	Korisnik () {}
 	Korisnik (bool modem, String ^username, String ^naziv_paketa, String ^adresa, String ^password, String ^telefon) 
 		: _modem (modem), _username (username), _naziv_paketa (naziv_paketa), _adresa (adresa), _password (password), _telefon (telefon), _suspenzija (false), _mirovanje (false)  {}
 
