@@ -11,6 +11,7 @@
 #include "UnosKorisnika.h"
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
+#include "XMLPregled.h"
 
 
 namespace InternetAccounting {
@@ -98,6 +99,7 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ToolStripMenuItem^  januarToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  februarToolStripMenuItem;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^  xMLPregledToolStripMenuItem;
 
 	private:
 		/// <summary>
@@ -131,6 +133,7 @@ namespace InternetAccounting {
 			this->korisnikToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pretragaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->izlazToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->xMLPregledToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->pomoæToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->štampajToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -257,8 +260,8 @@ namespace InternetAccounting {
 			// 
 			// korisnikToolStripMenuItem
 			// 
-			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->noviKorisnikToolStripMenuItem, 
-				this->pretragaToolStripMenuItem, this->izlazToolStripMenuItem});
+			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->noviKorisnikToolStripMenuItem, 
+				this->pretragaToolStripMenuItem, this->xMLPregledToolStripMenuItem, this->izlazToolStripMenuItem});
 			this->korisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"korisnikToolStripMenuItem.Image")));
 			this->korisnikToolStripMenuItem->Name = L"korisnikToolStripMenuItem";
 			this->korisnikToolStripMenuItem->Size = System::Drawing::Size(77, 20);
@@ -281,6 +284,15 @@ namespace InternetAccounting {
 			this->izlazToolStripMenuItem->Size = System::Drawing::Size(195, 22);
 			this->izlazToolStripMenuItem->Text = L"Izlaz";
 			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click);
+			// 
+			// xMLPregledToolStripMenuItem
+			// 
+			this->xMLPregledToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"xMLPregledToolStripMenuItem.Image")));
+			this->xMLPregledToolStripMenuItem->Name = L"xMLPregledToolStripMenuItem";
+			this->xMLPregledToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::X));
+			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(195, 22);
+			this->xMLPregledToolStripMenuItem->Text = L"XML pregled";
+			this->xMLPregledToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::xMLPregledToolStripMenuItem_Click);
 			// 
 			// menuStrip1
 			// 
@@ -496,6 +508,10 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 }
 			 
 
+		 }
+private: System::Void xMLPregledToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 XMLPregled ^xp = gcnew XMLPregled ();
+			 xp->ShowDialog ();
 		 }
 };
 }

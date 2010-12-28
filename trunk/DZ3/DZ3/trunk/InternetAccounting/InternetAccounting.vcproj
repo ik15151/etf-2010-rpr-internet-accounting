@@ -407,6 +407,20 @@
 					>
 				</File>
 			</File>
+			<File
+				RelativePath=".\XMLPregled.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\XMLPregled.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\XMLPregled.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
