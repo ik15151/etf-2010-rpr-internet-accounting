@@ -87,12 +87,19 @@ namespace InternetAccounting {
 		}
 #pragma endregion
 	private: System::Void XMLPregled_Load(System::Object^  sender, System::EventArgs^  e) {
-				 // Novi XML Data Dokument
-			 XmlDataDocument ^xmlDatadoc = gcnew XmlDataDocument();
-			 xmlDatadoc->DataSet->ReadXml("korisnici.xml");	// ucitamo serializirani XML u DataSet XmlDataDokumenta
+				 try
+				 {
+					// Novi XML Data Dokument
+					 XmlDataDocument ^xmlDatadoc = gcnew XmlDataDocument();
+					 xmlDatadoc->DataSet->ReadXml("korisnici.xml");	// ucitamo serializirani XML u DataSet XmlDataDokumenta
 
-			 dataGridView1->DataSource = xmlDatadoc->DataSet;	// Postavimo da GridView uzima podatke iz DataSet-a
-			 dataGridView1->DataMember = "anyType";				// Naziv elementa knjiga u XML-u posto je iz ArrayListe
+					 dataGridView1->DataSource = xmlDatadoc->DataSet;	// Postavimo da GridView uzima podatke iz DataSet-a
+					 dataGridView1->DataMember = "anyType";				// Naziv elementa knjiga u XML-u posto je iz ArrayListe
+				 }
+				 catch (Exception ^e)
+				 {
+					 MessageBox::Show ("Podaci nisu ucitani. XML fajl ne postoji.");
+				 }
 			 }
 	};
 }
