@@ -634,6 +634,29 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 
 		 }
 private: System::Void xMLPregledToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 try
+			 {
+				 
+				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
+				 // U nasem slucaju ArrayLista sadrzi klasu KorisnikOsoba, KorisnikFirma	
+				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (2);
+				 dodatniTipovi [0] = KorisnikOsoba::typeid;
+				 dodatniTipovi [1] = KorisnikFirma::typeid;
+				 
+
+				 // Serijaliziramo ArrayListu knjiga u XML datoteku
+				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);
+				 Stream ^writer = gcnew FileStream(korisniciXML, FileMode::Create);
+				 x->Serialize(writer, korisnici);
+
+				 writer->Close();
+				 
+			 }
+			 catch (Exception ^i)
+			 {
+				 MessageBox::Show ("Greska pri XML serijalizaciji korisnika." + i->Message);
+			 }
+
 			 XMLPregled ^xp = gcnew XMLPregled ();
 			 xp->ShowDialog ();
 		 }

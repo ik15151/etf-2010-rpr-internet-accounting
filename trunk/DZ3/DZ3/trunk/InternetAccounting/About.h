@@ -97,7 +97,7 @@ namespace InternetAccounting {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(65, 13);
 			this->label3->TabIndex = 9;
-			this->label3->Text = L"Verzija: v1.3";
+			this->label3->Text = L"Verzija: v1.4";
 			// 
 			// label2
 			// 
