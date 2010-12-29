@@ -12,6 +12,7 @@
 #include "KorisnikOsoba.h"
 #include "KorisnikFirma.h"
 #include "XMLPregled.h"
+#include "RacunPlain.h"
 
 
 namespace InternetAccounting {
@@ -53,7 +54,11 @@ namespace InternetAccounting {
 			paketi->Add (gcnew Paket ("Standard", "18 GB", "2048/256 kbps", 25));
 			paketi->Add (gcnew Paket ("Flat", "Neogranièeno", "3072/1024 kbps", 65));
 
-			datoteka = "korisnici.txt";
+			korisniciBinarno = "korisnici.txt";
+			korisniciXML = "korisnici.xml";
+			racuniBinarno = "racuni.txt";
+			racuniXML = "racuni.xml";
+
 		}
 
 	protected:
@@ -72,7 +77,10 @@ namespace InternetAccounting {
 			ArrayList ^korisnici;
 			ArrayList ^paketi;
 			ArrayList ^racuni;
-			String ^datoteka;
+			String ^korisniciBinarno;
+			String ^korisniciXML;
+			String ^racuniBinarno;
+			String ^racuniXML;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  augustToolStripMenuItem;
 	protected: 
@@ -364,7 +372,7 @@ namespace InternetAccounting {
 #pragma endregion
 	private: System::Void noviKorisnikToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi, datoteka);
+				 UnosKorisnika ^uk = gcnew UnosKorisnika (korisnici, paketi);
 				 uk->Show ();
 			 }
 private: System::Void uVeziSaSabilyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -375,7 +383,7 @@ private: System::Void izlazToolStripMenuItem_Click(System::Object^  sender, Syst
 			 Close ();
 		 }
 private: System::Void pretragaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Pretraga ^p = gcnew Pretraga (korisnici, paketi, datoteka);
+			 Pretraga ^p = gcnew Pretraga (korisnici, paketi);
 			 p->Show ();
 		 }
 
@@ -449,10 +457,10 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 				 if (d == System::Windows::Forms::DialogResult::OK) 
 					 datoteka = openFileDialog1->FileName;
 				*/
-				 if (File::Exists (datoteka))
+				 if (File::Exists (korisniciBinarno))
 				 {
 					
-					 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Open);
+					 FileStream ^fstrm = gcnew FileStream (korisniciBinarno, FileMode::Open);
 					 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
 
 					 korisnici = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
@@ -464,15 +472,54 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 			 catch (Exception ^i)
 			 {
 				 // ovo bih mogla i zanemariti
-				 MessageBox::Show ("Nisu ucitani podaci iz datoteke.");
+				 MessageBox::Show ("Nisu ucitani podaci iz datoteke o korisnicima.");
 
 			 }
+
+			 
+
+			 try
+			 {
+				 //System::Windows::Forms::DialogResult d = openFileDialog1->ShowDialog ();
+				 //if (d == System::Windows::Forms::DialogResult::OK) 
+				//	 datoteka = openFileDialog1->FileName; 
+				
+				 if (File::Exists (racuniBinarno))
+				 {
+					 ArrayList ^racuniplain = gcnew ArrayList();
+									
+					 FileStream ^fstrm = gcnew FileStream (racuniBinarno, FileMode::Open);
+					 BinaryFormatter ^bf = gcnew BinaryFormatter ();			 
+
+					 racuniplain = dynamic_cast <ArrayList ^> (bf->Deserialize (fstrm));
+							 
+					 fstrm->Close ();
+					 for each (RacunPlain ^r in racuniplain) 
+					 {
+						 racuni->Add (gcnew Racun (r->_izdat, r->_username, r->_mjesec, r->_placeno));
+						 //((Racun ^) racuni [racuni->Count - 1])->Id_racuna (r->_id_racuna);
+
+					 }
+
+				 }
+
+			 }
+			 catch (Exception ^i)
+			 {
+				 // ovo bih mogla i zanemariti
+				 MessageBox::Show ("Nisu ucitani podaci iz datoteke o racunima. " + i->Message);
+
+			 }
+			 
 		
 		 }
+
+
+
 private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
 			 try
 			 {
-				 FileStream ^fs = gcnew FileStream (datoteka, FileMode::Create);
+				 FileStream ^fs = gcnew FileStream (korisniciBinarno, FileMode::Create);
 				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
 
 				 bf->Serialize (fs, korisnici);
@@ -480,8 +527,28 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 }
 			 catch (...)
 			 {
-				 MessageBox::Show ("Greska pri upisivanju podataka u datoteku.");
+				 MessageBox::Show ("Greska pri upisivanju podataka o korisnicima u datoteku.");
 			 }
+
+			 
+			 try
+			 {
+				 ArrayList ^racuniplain = gcnew ArrayList();
+				 for each (Racun ^r in racuni) 
+					 racuniplain->Add (gcnew RacunPlain (r->getVrijeme (), r->Username (), r->Mjesec (), r->Placeno ()));
+				 // Treba se odraditi i da (de)serijalizira i id_racuna, a ne dozvoljava preko konstruktora staticke atribute
+
+				 FileStream ^fs = gcnew FileStream (racuniBinarno, FileMode::Create);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+
+				 bf->Serialize (fs, racuniplain);
+				 fs->Close ();
+			 }
+			 catch (...)
+			 {
+				 MessageBox::Show ("Greska pri upisivanju podataka o racunima u datoteku.");
+			 }
+			 
 			 
 
 			 try
@@ -496,7 +563,7 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 
 				 // Serijaliziramo ArrayListu knjiga u XML datoteku
 				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);
-				 Stream ^writer = gcnew FileStream("korisnici.xml", FileMode::Create);
+				 Stream ^writer = gcnew FileStream(korisniciXML, FileMode::Create);
 				 x->Serialize(writer, korisnici);
 
 				 writer->Close();
@@ -504,8 +571,65 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 }
 			 catch (Exception ^i)
 			 {
-				 MessageBox::Show ("Greska pri XML serijalizaciji." + i->Message);
+				 MessageBox::Show ("Greska pri XML serijalizaciji korisnika." + i->Message);
 			 }
+
+			 /*
+
+			 try
+			 {
+				 
+				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
+				 // U nasem slucaju ArrayLista sadrzi klasu KorisnikOsoba, KorisnikFirma	
+				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (1);
+				 dodatniTipovi [0] = Racun::typeid;
+				 			 
+
+				 // Serijaliziramo ArrayListu knjiga u XML datoteku
+				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);
+				 Stream ^writer = gcnew FileStream(racuniXML, FileMode::Create);
+				 x->Serialize(writer, racuni);
+
+				 writer->Close();
+				 
+			 }
+			 catch (Exception ^i)
+			 {
+				 MessageBox::Show ("Greska pri XML serijalizaciji racuna." + i->Message);
+			 }
+
+			 */
+
+			  
+			 /*
+			 try
+			 {
+		
+				 ArrayList ^racuniplain = gcnew ArrayList();
+
+				 // Kopiramo sve racune iz racuni u jednostavnu klasu RacunPlain pogodnu za serijalizaciju
+				 for each (Racun ^r in racuni) 
+					 racuniplain->Add (gcnew RacunPlain (r->getVrijeme (), r->Username (), r->Mjesec (), r->Placeno (), r->Id_racuna ()));
+
+			
+				 // Moramo naznaciti sve ne standarde tipove koji su koristeni prilikom serijalizacije
+				 // U nasem slucaju ArrayLista sadrzi klasu PlainKnjiga
+				 array<Type^>^dodatniTipovi = gcnew array<Type^>(1);
+				 dodatniTipovi[0] = RacunPlain::typeid;
+
+				 // Serijaliziramo ArrayListu knjiga u XML datoteku
+				 XmlSerializer ^x = gcnew XmlSerializer(ArrayList::typeid, dodatniTipovi);
+				 Stream ^writer = gcnew FileStream(racuniXML, FileMode::Create);
+				 x->Serialize(writer, racuniplain);
+
+				 writer->Close();			 
+			 }
+			 catch (Exception ^e)
+			 {
+				 MessageBox::Show ("Greska pri serijalizaciji racuna. " + e->Message);
+			 }
+			 */
+	 
 			 
 
 		 }

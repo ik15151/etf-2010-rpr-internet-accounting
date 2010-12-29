@@ -36,7 +36,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		PromjenaFirma(KorisnikFirma ^kf, ArrayList ^p, ArrayList ^k, String ^d)
+		PromjenaFirma(KorisnikFirma ^kf, ArrayList ^p, ArrayList ^k)
 		{
 			InitializeComponent();
 			//
@@ -45,13 +45,13 @@ namespace InternetAccounting {
 			korisnik = kf;	
 			paketi = p;
 			korisnici = k;
-			datoteka = d;
+	
 		}
 
 	private:
 		KorisnikFirma ^korisnik;
 		ArrayList ^korisnici;
-		String ^datoteka;
+		
 
 	private: System::Windows::Forms::GroupBox^  groupBox5;
 	private: System::Windows::Forms::CheckBox^  chBoxModem;

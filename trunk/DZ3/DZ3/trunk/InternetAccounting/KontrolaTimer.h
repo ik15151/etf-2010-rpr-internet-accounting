@@ -24,6 +24,15 @@ namespace InternetAccounting {
 			//
 		}
 
+		KontrolaTimer(String ^izdat)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			time = izdat;
+		}
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.

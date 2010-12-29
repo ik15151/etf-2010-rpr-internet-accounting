@@ -372,6 +372,10 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\RacunPlain.h"
+				>
+			</File>
+			<File
 				RelativePath=".\RacunPrint.cpp"
 				>
 			</File>

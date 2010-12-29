@@ -40,7 +40,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		UnosKorisnika(ArrayList ^k, ArrayList ^p, String ^d)
+		UnosKorisnika(ArrayList ^k, ArrayList ^p)
 		{
 			InitializeComponent();
 			//
@@ -48,7 +48,7 @@ namespace InternetAccounting {
 			//
 			korisnici = k;
 			paketi = p;
-			datoteka = d;
+		
 		}
 
 	protected:
@@ -68,9 +68,7 @@ namespace InternetAccounting {
 	private:
 		ArrayList ^korisnici;
 		ArrayList ^paketi;
-		String ^datoteka;
-
-
+	
 	private: System::Windows::Forms::TabControl^  tabControl2;
 	private: System::Windows::Forms::TabPage^  tabPage1;
 	private: System::Windows::Forms::TextBox^  c_broj_licne_karte;
@@ -897,8 +895,8 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 				 }
 				 */
 
-				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Create);
-				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+//				 FileStream ^fstrm = gcnew FileStream (datoteka, FileMode::Create);
+//				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
 				 
 				 if (tabControl2->SelectedIndex == 0)
 				 {
@@ -915,8 +913,8 @@ private: System::Void Unesi_Click(System::Object^  sender, System::EventArgs^  e
 					 Resetuj();
 				 }
 
-				 bf->Serialize (fstrm, korisnici);
-				 fstrm->Close ();
+//				 bf->Serialize (fstrm, korisnici);
+//				 fstrm->Close ();
 			 } 
 			 catch (IzuzetakOsoba ^iz)
 			 {

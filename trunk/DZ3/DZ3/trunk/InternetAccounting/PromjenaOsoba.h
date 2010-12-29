@@ -37,7 +37,7 @@ namespace InternetAccounting {
 			//
 		}
 
-		PromjenaOsoba(KorisnikOsoba ^ko, ArrayList ^p, ArrayList ^k, String ^d)
+		PromjenaOsoba(KorisnikOsoba ^ko, ArrayList ^p, ArrayList ^k)
 		{
 			InitializeComponent();
 			//
@@ -46,7 +46,7 @@ namespace InternetAccounting {
 			korisnik = ko;	
 			paketi = p;
 			korisnici = k;
-			datoteka = d;
+
 		}
 
 	protected:
@@ -65,7 +65,7 @@ namespace InternetAccounting {
 		KorisnikOsoba ^korisnik;
 		ArrayList ^paketi;
 		ArrayList ^korisnici;
-		String ^datoteka;
+
 
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	protected: 
