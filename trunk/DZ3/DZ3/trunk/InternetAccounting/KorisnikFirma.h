@@ -7,9 +7,9 @@ using namespace System::Xml::Serialization;
 public ref class KorisnikFirma : Korisnik
 {
 public:
-	[ XmlElement( ElementName = "Naziv" )]
+	[ XmlElement( ElementName = "Naziv firme" )]
 	String ^_naziv;
-	[ XmlElement( ElementName = "PDV" )]
+	[ XmlElement( ElementName = "PDV broj" )]
 	String ^_PDV_broj;
 public:
 	KorisnikFirma () {}

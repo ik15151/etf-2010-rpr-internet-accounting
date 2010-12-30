@@ -108,6 +108,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ToolStripMenuItem^  februarToolStripMenuItem;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	private: System::Windows::Forms::ToolStripMenuItem^  xMLPregledToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  spasiUDatotekuToolStripMenuItem;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
 	private:
 		/// <summary>
@@ -140,14 +142,16 @@ namespace InternetAccounting {
 			this->martToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->korisnikToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pretragaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->izlazToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->spasiUDatotekuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->xMLPregledToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->izlazToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->pomoæToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->štampajToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->januarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->februarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -162,11 +166,11 @@ namespace InternetAccounting {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pictureBox1->Location = System::Drawing::Point(0, 24);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(284, 238);
+			this->pictureBox1->Size = System::Drawing::Size(290, 219);
 			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -210,8 +214,8 @@ namespace InternetAccounting {
 			// 
 			this->uVeziSaSabilyToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"uVeziSaSabilyToolStripMenuItem.Image")));
 			this->uVeziSaSabilyToolStripMenuItem->Name = L"uVeziSaSabilyToolStripMenuItem";
-			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(117, 22);
-			this->uVeziSaSabilyToolStripMenuItem->Text = L"O Sabily";
+			this->uVeziSaSabilyToolStripMenuItem->Size = System::Drawing::Size(190, 22);
+			this->uVeziSaSabilyToolStripMenuItem->Text = L"O Internet accounting";
 			this->uVeziSaSabilyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uVeziSaSabilyToolStripMenuItem_Click);
 			// 
 			// novembarToolStripMenuItem
@@ -255,7 +259,7 @@ namespace InternetAccounting {
 			this->noviKorisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"noviKorisnikToolStripMenuItem.Image")));
 			this->noviKorisnikToolStripMenuItem->Name = L"noviKorisnikToolStripMenuItem";
 			this->noviKorisnikToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::N));
-			this->noviKorisnikToolStripMenuItem->Size = System::Drawing::Size(195, 22);
+			this->noviKorisnikToolStripMenuItem->Size = System::Drawing::Size(201, 22);
 			this->noviKorisnikToolStripMenuItem->Text = L"Novi korisnik...";
 			this->noviKorisnikToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::noviKorisnikToolStripMenuItem_Click);
 			// 
@@ -268,8 +272,8 @@ namespace InternetAccounting {
 			// 
 			// korisnikToolStripMenuItem
 			// 
-			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {this->noviKorisnikToolStripMenuItem, 
-				this->pretragaToolStripMenuItem, this->xMLPregledToolStripMenuItem, this->izlazToolStripMenuItem});
+			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {this->noviKorisnikToolStripMenuItem, 
+				this->pretragaToolStripMenuItem, this->spasiUDatotekuToolStripMenuItem, this->xMLPregledToolStripMenuItem, this->izlazToolStripMenuItem});
 			this->korisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"korisnikToolStripMenuItem.Image")));
 			this->korisnikToolStripMenuItem->Name = L"korisnikToolStripMenuItem";
 			this->korisnikToolStripMenuItem->Size = System::Drawing::Size(77, 20);
@@ -280,27 +284,36 @@ namespace InternetAccounting {
 			this->pretragaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pretragaToolStripMenuItem.Image")));
 			this->pretragaToolStripMenuItem->Name = L"pretragaToolStripMenuItem";
 			this->pretragaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
-			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(195, 22);
+			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(201, 22);
 			this->pretragaToolStripMenuItem->Text = L"Pretraga...";
 			this->pretragaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::pretragaToolStripMenuItem_Click);
 			// 
-			// izlazToolStripMenuItem
+			// spasiUDatotekuToolStripMenuItem
 			// 
-			this->izlazToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"izlazToolStripMenuItem.Image")));
-			this->izlazToolStripMenuItem->Name = L"izlazToolStripMenuItem";
-			this->izlazToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Q));
-			this->izlazToolStripMenuItem->Size = System::Drawing::Size(195, 22);
-			this->izlazToolStripMenuItem->Text = L"Izlaz";
-			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click);
+			this->spasiUDatotekuToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"spasiUDatotekuToolStripMenuItem.Image")));
+			this->spasiUDatotekuToolStripMenuItem->Name = L"spasiUDatotekuToolStripMenuItem";
+			this->spasiUDatotekuToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::S));
+			this->spasiUDatotekuToolStripMenuItem->Size = System::Drawing::Size(210, 22);
+			this->spasiUDatotekuToolStripMenuItem->Text = L"Spasi u datoteku...";
+			this->spasiUDatotekuToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::spasiUDatotekuToolStripMenuItem_Click);
 			// 
 			// xMLPregledToolStripMenuItem
 			// 
 			this->xMLPregledToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"xMLPregledToolStripMenuItem.Image")));
 			this->xMLPregledToolStripMenuItem->Name = L"xMLPregledToolStripMenuItem";
 			this->xMLPregledToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::X));
-			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(195, 22);
+			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(210, 22);
 			this->xMLPregledToolStripMenuItem->Text = L"XML pregled";
 			this->xMLPregledToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::xMLPregledToolStripMenuItem_Click);
+			// 
+			// izlazToolStripMenuItem
+			// 
+			this->izlazToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"izlazToolStripMenuItem.Image")));
+			this->izlazToolStripMenuItem->Name = L"izlazToolStripMenuItem";
+			this->izlazToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Q));
+			this->izlazToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->izlazToolStripMenuItem->Text = L"Izlaz";
+			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click);
 			// 
 			// menuStrip1
 			// 
@@ -308,7 +321,7 @@ namespace InternetAccounting {
 				this->pomoæToolStripMenuItem, this->pomoæToolStripMenuItem1});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(284, 24);
+			this->menuStrip1->Size = System::Drawing::Size(290, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -354,12 +367,12 @@ namespace InternetAccounting {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 262);
+			this->ClientSize = System::Drawing::Size(290, 243);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->MaximizeBox = false;
 			this->Name = L"Form1";
-			this->Text = L"Sabily";
+			this->Text = L"Internet accounting";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Form1::Form1_FormClosing);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
@@ -453,10 +466,7 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 			 
 			 try
 			 {
-				 /*System::Windows::Forms::DialogResult d = openFileDialog1->ShowDialog ();
-				 if (d == System::Windows::Forms::DialogResult::OK) 
-					 datoteka = openFileDialog1->FileName;
-				*/
+				 
 				 if (File::Exists (korisniciBinarno))
 				 {
 					
@@ -471,7 +481,7 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 			 }
 			 catch (Exception ^i)
 			 {
-				 // ovo bih mogla i zanemariti
+				 
 				 MessageBox::Show ("Nisu ucitani podaci iz datoteke o korisnicima.");
 
 			 }
@@ -659,6 +669,44 @@ private: System::Void xMLPregledToolStripMenuItem_Click(System::Object^  sender,
 
 			 XMLPregled ^xp = gcnew XMLPregled ();
 			 xp->ShowDialog ();
+		 }
+private: System::Void spasiUDatotekuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			  try
+			 {
+				 String ^naziv_datoteke;
+				 System::Windows::Forms::DialogResult d = saveFileDialog1->ShowDialog ();
+				 if (d == System::Windows::Forms::DialogResult::OK) 
+					 naziv_datoteke = saveFileDialog1->FileName;
+			
+				 FileStream ^fs = gcnew FileStream (naziv_datoteke, FileMode::Create);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+
+				 bf->Serialize (fs, korisnici);
+				 fs->Close ();
+			 }
+			 catch (...)
+			 {
+				 MessageBox::Show ("Greska pri upisivanju podataka o korisnicima u datoteku.");
+			 }
+
+			 try
+			 {
+				 ArrayList ^racuniplain = gcnew ArrayList();
+				 for each (Racun ^r in racuni) 
+					 racuniplain->Add (gcnew RacunPlain (r->getVrijeme (), r->Username (), r->Mjesec (), r->Placeno ()));
+				 // Treba se odraditi i da (de)serijalizira i id_racuna, a ne dozvoljava preko konstruktora staticke atribute
+
+				 FileStream ^fs = gcnew FileStream ("racuni2.txt", FileMode::Create);
+				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
+
+				 bf->Serialize (fs, racuniplain);
+				 fs->Close ();
+			 }
+			 catch (...)
+			 {
+				 MessageBox::Show ("Greska pri upisivanju podataka o racunima u datoteku.");
+			 }
+
 		 }
 };
 }

@@ -11,7 +11,7 @@ public:
 	String ^_ime;
 	[ XmlElement( ElementName = "Prezime" )]
 	String ^_prezime; 
-	[ XmlElement( ElementName = "Licna" )]
+	[ XmlElement( ElementName = "Broj licne karte" )]
 	String ^_broj_licne_karte;
 public:
 	KorisnikOsoba () {}
