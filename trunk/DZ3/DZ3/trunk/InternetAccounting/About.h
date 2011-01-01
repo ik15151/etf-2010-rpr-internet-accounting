@@ -104,9 +104,10 @@ namespace InternetAccounting {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(12, 26);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(194, 13);
+			this->label2->Size = System::Drawing::Size(184, 13);
 			this->label2->TabIndex = 8;
-			this->label2->Text = L"Predmet: \"Razvoj programskih rješenja\"";
+			this->label2->Text = L"Predmet: Razvoj programskih rješenja";
+			this->label2->Click += gcnew System::EventHandler(this, &About::label2_Click);
 			// 
 			// label1
 			// 
@@ -147,5 +148,7 @@ namespace InternetAccounting {
 
 		}
 #pragma endregion
-	};
+	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 }
+};
 }

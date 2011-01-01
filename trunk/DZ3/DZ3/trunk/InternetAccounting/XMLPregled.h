@@ -69,14 +69,14 @@ namespace InternetAccounting {
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(741, 209);
+			this->dataGridView1->Size = System::Drawing::Size(741, 270);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// XMLPregled
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(741, 209);
+			this->ClientSize = System::Drawing::Size(741, 270);
 			this->Controls->Add(this->dataGridView1);
 			this->MaximizeBox = false;
 			this->Name = L"XMLPregled";
@@ -95,7 +95,7 @@ namespace InternetAccounting {
 					 xmlDatadoc->DataSet->ReadXml("korisnici.xml");	// ucitamo serializirani XML u DataSet XmlDataDokumenta
 
 					 dataGridView1->DataSource = xmlDatadoc->DataSet;	// Postavimo da GridView uzima podatke iz DataSet-a
-					 dataGridView1->DataMember = "anyType";				// Naziv elementa knjiga u XML-u posto je iz ArrayListe
+					 dataGridView1->DataMember = "anyType";				// Naziv elementa korisnik u XML-u posto je iz ArrayListe
 				 }
 				 catch (Exception ^e)
 				 {
