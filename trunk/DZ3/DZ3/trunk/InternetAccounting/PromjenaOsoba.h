@@ -428,7 +428,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"PromjenaOsoba";
-			this->Text = L"PromjenaOsoba";
+			this->Text = L"Promjena podataka o fizièkom licu";
 			this->Load += gcnew System::EventHandler(this, &PromjenaOsoba::PromjenaOsoba_Load);
 			this->statusStrip1->ResumeLayout(false);
 			this->statusStrip1->PerformLayout();

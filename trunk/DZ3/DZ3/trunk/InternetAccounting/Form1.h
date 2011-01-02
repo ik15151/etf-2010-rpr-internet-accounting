@@ -110,6 +110,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ToolStripMenuItem^  xMLPregledToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  spasiUDatotekuToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^  spasiKaoXMLToolStripMenuItem;
+
 
 	private:
 		/// <summary>
@@ -143,6 +145,7 @@ namespace InternetAccounting {
 			this->korisnikToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pretragaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->spasiUDatotekuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->spasiKaoXMLToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->xMLPregledToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->izlazToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -259,7 +262,7 @@ namespace InternetAccounting {
 			this->noviKorisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"noviKorisnikToolStripMenuItem.Image")));
 			this->noviKorisnikToolStripMenuItem->Name = L"noviKorisnikToolStripMenuItem";
 			this->noviKorisnikToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::N));
-			this->noviKorisnikToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->noviKorisnikToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->noviKorisnikToolStripMenuItem->Text = L"Novi korisnik...";
 			this->noviKorisnikToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::noviKorisnikToolStripMenuItem_Click);
 			// 
@@ -272,8 +275,9 @@ namespace InternetAccounting {
 			// 
 			// korisnikToolStripMenuItem
 			// 
-			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {this->noviKorisnikToolStripMenuItem, 
-				this->pretragaToolStripMenuItem, this->spasiUDatotekuToolStripMenuItem, this->xMLPregledToolStripMenuItem, this->izlazToolStripMenuItem});
+			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {this->noviKorisnikToolStripMenuItem, 
+				this->pretragaToolStripMenuItem, this->spasiUDatotekuToolStripMenuItem, this->spasiKaoXMLToolStripMenuItem, this->xMLPregledToolStripMenuItem, 
+				this->izlazToolStripMenuItem});
 			this->korisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"korisnikToolStripMenuItem.Image")));
 			this->korisnikToolStripMenuItem->Name = L"korisnikToolStripMenuItem";
 			this->korisnikToolStripMenuItem->Size = System::Drawing::Size(77, 20);
@@ -284,7 +288,7 @@ namespace InternetAccounting {
 			this->pretragaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pretragaToolStripMenuItem.Image")));
 			this->pretragaToolStripMenuItem->Name = L"pretragaToolStripMenuItem";
 			this->pretragaToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::F));
-			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->pretragaToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->pretragaToolStripMenuItem->Text = L"Pretraga...";
 			this->pretragaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::pretragaToolStripMenuItem_Click);
 			// 
@@ -293,16 +297,25 @@ namespace InternetAccounting {
 			this->spasiUDatotekuToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"spasiUDatotekuToolStripMenuItem.Image")));
 			this->spasiUDatotekuToolStripMenuItem->Name = L"spasiUDatotekuToolStripMenuItem";
 			this->spasiUDatotekuToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::S));
-			this->spasiUDatotekuToolStripMenuItem->Size = System::Drawing::Size(210, 22);
-			this->spasiUDatotekuToolStripMenuItem->Text = L"Spasi u datoteku...";
+			this->spasiUDatotekuToolStripMenuItem->Size = System::Drawing::Size(232, 22);
+			this->spasiUDatotekuToolStripMenuItem->Text = L"Snimanje u datoteku...";
 			this->spasiUDatotekuToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::spasiUDatotekuToolStripMenuItem_Click);
+			// 
+			// spasiKaoXMLToolStripMenuItem
+			// 
+			this->spasiKaoXMLToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"spasiKaoXMLToolStripMenuItem.Image")));
+			this->spasiKaoXMLToolStripMenuItem->Name = L"spasiKaoXMLToolStripMenuItem";
+			this->spasiKaoXMLToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
+			this->spasiKaoXMLToolStripMenuItem->Size = System::Drawing::Size(232, 22);
+			this->spasiKaoXMLToolStripMenuItem->Text = L"Snimanje kao XML...";
+			this->spasiKaoXMLToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::spasiKaoXMLToolStripMenuItem_Click);
 			// 
 			// xMLPregledToolStripMenuItem
 			// 
 			this->xMLPregledToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"xMLPregledToolStripMenuItem.Image")));
 			this->xMLPregledToolStripMenuItem->Name = L"xMLPregledToolStripMenuItem";
 			this->xMLPregledToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::X));
-			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(210, 22);
+			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->xMLPregledToolStripMenuItem->Text = L"XML pregled";
 			this->xMLPregledToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::xMLPregledToolStripMenuItem_Click);
 			// 
@@ -311,7 +324,7 @@ namespace InternetAccounting {
 			this->izlazToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"izlazToolStripMenuItem.Image")));
 			this->izlazToolStripMenuItem->Name = L"izlazToolStripMenuItem";
 			this->izlazToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Q));
-			this->izlazToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->izlazToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->izlazToolStripMenuItem->Text = L"Izlaz";
 			this->izlazToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::izlazToolStripMenuItem_Click);
 			// 
@@ -689,6 +702,8 @@ private: System::Void spasiUDatotekuToolStripMenuItem_Click(System::Object^  sen
 				 MessageBox::Show ("Greska pri upisivanju podataka o korisnicima u datoteku.");
 			 }
 
+			 /*
+
 			 try
 			 {
 				 ArrayList ^racuniplain = gcnew ArrayList();
@@ -705,6 +720,38 @@ private: System::Void spasiUDatotekuToolStripMenuItem_Click(System::Object^  sen
 			 catch (...)
 			 {
 				 MessageBox::Show ("Greska pri upisivanju podataka o racunima u datoteku.");
+			 }
+
+			 */
+
+		 }
+private: System::Void spasiKaoXMLToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 try
+			 {
+				  String ^naziv_datoteke;
+				 System::Windows::Forms::DialogResult d = saveFileDialog1->ShowDialog ();
+				 if (d == System::Windows::Forms::DialogResult::OK) 
+					 naziv_datoteke = saveFileDialog1->FileName;
+
+				 
+				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
+				 // U nasem slucaju ArrayLista sadrzi klasu KorisnikOsoba, KorisnikFirma	
+				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (2);
+				 dodatniTipovi [0] = KorisnikOsoba::typeid;
+				 dodatniTipovi [1] = KorisnikFirma::typeid;
+				 
+				 FileStream ^f = gcnew FileStream (naziv_datoteke, FileMode::Create);
+				 // Serijaliziramo ArrayListu korisnika u XML datoteku
+
+				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);				 
+				 x->Serialize(f, korisnici);
+
+				 f->Close();
+				 
+			 }
+			 catch (Exception ^i)
+			 {
+				 MessageBox::Show ("Greska pri XML serijalizaciji korisnika." + i->Message);
 			 }
 
 		 }

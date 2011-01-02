@@ -91,11 +91,17 @@ namespace InternetAccounting {
 				 try
 				 {
 					// Novi XML Data Dokument
-					 XmlDataDocument ^xmlDatadoc = gcnew XmlDataDocument();
-					 xmlDatadoc->DataSet->ReadXml("korisnici.xml");	// ucitamo serializirani XML u DataSet XmlDataDokumenta
+					 XmlDataDocument ^xdd = gcnew XmlDataDocument();
 
-					 dataGridView1->DataSource = xmlDatadoc->DataSet;	// Postavimo da GridView uzima podatke iz DataSet-a
-					 dataGridView1->DataMember = "anyType";				// Naziv elementa korisnik u XML-u posto je iz ArrayListe
+					 // ucitamo serijalizirani XML u DataSet XmlDataDokumenta
+					 xdd->DataSet->ReadXml("korisnici.xml");	
+
+					// Postavimo da GridView uzima podatke iz DataSet-a
+					 dataGridView1->DataSource = xdd->DataSet;	
+
+					 // Naziv elementa korisnik u XML-u posto je iz ArrayListe
+					 dataGridView1->DataMember = "anyType";				
+
 				 }
 				 catch (Exception ^e)
 				 {

@@ -1,7 +1,7 @@
 #pragma once
 
 using namespace System;
-using namespace System::Xml::Serialization;
+using namespace System::Xml::Serialization; // za XmlElement
 
 [Serializable]
 public ref class Korisnik abstract

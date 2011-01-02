@@ -406,7 +406,7 @@ namespace InternetAccounting {
 			this->Controls->Add(this->groupbox3);
 			this->MaximizeBox = false;
 			this->Name = L"PromjenaFirma";
-			this->Text = L"Promjena podataka o fizièkom licu";
+			this->Text = L"Promjena podataka o pravnom licu";
 			this->Load += gcnew System::EventHandler(this, &PromjenaFirma::PromjenaFirma_Load);
 			this->groupbox3->ResumeLayout(false);
 			this->groupbox3->PerformLayout();
