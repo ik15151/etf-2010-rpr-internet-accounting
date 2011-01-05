@@ -26,6 +26,7 @@ namespace InternetAccounting {
 	using namespace System::IO;
 	using namespace System::Runtime::Serialization::Formatters::Binary;
 	using namespace System::Xml::Serialization;
+	using namespace System::Threading;
 
 	/// <summary>
 	/// Summary for Form1
@@ -111,6 +112,8 @@ namespace InternetAccounting {
 	private: System::Windows::Forms::ToolStripMenuItem^  spasiUDatotekuToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 	private: System::Windows::Forms::ToolStripMenuItem^  spasiKaoXMLToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  startThreadToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  threadStopToolStripMenuItem;
 
 
 	private:
@@ -147,6 +150,8 @@ namespace InternetAccounting {
 			this->spasiUDatotekuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->spasiKaoXMLToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->xMLPregledToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->startThreadToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->threadStopToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->izlazToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->pomoæToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -275,9 +280,9 @@ namespace InternetAccounting {
 			// 
 			// korisnikToolStripMenuItem
 			// 
-			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {this->noviKorisnikToolStripMenuItem, 
+			this->korisnikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {this->noviKorisnikToolStripMenuItem, 
 				this->pretragaToolStripMenuItem, this->spasiUDatotekuToolStripMenuItem, this->spasiKaoXMLToolStripMenuItem, this->xMLPregledToolStripMenuItem, 
-				this->izlazToolStripMenuItem});
+				this->startThreadToolStripMenuItem, this->threadStopToolStripMenuItem, this->izlazToolStripMenuItem});
 			this->korisnikToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"korisnikToolStripMenuItem.Image")));
 			this->korisnikToolStripMenuItem->Name = L"korisnikToolStripMenuItem";
 			this->korisnikToolStripMenuItem->Size = System::Drawing::Size(77, 20);
@@ -305,7 +310,6 @@ namespace InternetAccounting {
 			// 
 			this->spasiKaoXMLToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"spasiKaoXMLToolStripMenuItem.Image")));
 			this->spasiKaoXMLToolStripMenuItem->Name = L"spasiKaoXMLToolStripMenuItem";
-			this->spasiKaoXMLToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
 			this->spasiKaoXMLToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->spasiKaoXMLToolStripMenuItem->Text = L"Snimanje kao XML...";
 			this->spasiKaoXMLToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::spasiKaoXMLToolStripMenuItem_Click);
@@ -314,10 +318,25 @@ namespace InternetAccounting {
 			// 
 			this->xMLPregledToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"xMLPregledToolStripMenuItem.Image")));
 			this->xMLPregledToolStripMenuItem->Name = L"xMLPregledToolStripMenuItem";
-			this->xMLPregledToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::X));
 			this->xMLPregledToolStripMenuItem->Size = System::Drawing::Size(232, 22);
 			this->xMLPregledToolStripMenuItem->Text = L"XML pregled";
 			this->xMLPregledToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::xMLPregledToolStripMenuItem_Click);
+			// 
+			// startThreadToolStripMenuItem
+			// 
+			this->startThreadToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"startThreadToolStripMenuItem.Image")));
+			this->startThreadToolStripMenuItem->Name = L"startThreadToolStripMenuItem";
+			this->startThreadToolStripMenuItem->Size = System::Drawing::Size(232, 22);
+			this->startThreadToolStripMenuItem->Text = L"Thread - Start";
+			this->startThreadToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::startThreadToolStripMenuItem_Click);
+			// 
+			// threadStopToolStripMenuItem
+			// 
+			this->threadStopToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"threadStopToolStripMenuItem.Image")));
+			this->threadStopToolStripMenuItem->Name = L"threadStopToolStripMenuItem";
+			this->threadStopToolStripMenuItem->Size = System::Drawing::Size(232, 22);
+			this->threadStopToolStripMenuItem->Text = L"Thread - Stop";
+			this->threadStopToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::threadStopToolStripMenuItem_Click);
 			// 
 			// izlazToolStripMenuItem
 			// 
@@ -492,11 +511,9 @@ private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e)
 				 }
 
 			 }
-			 catch (Exception ^i)
-			 {
-				 
+			 catch (Exception ^)
+			 {				 
 				 MessageBox::Show ("Nisu ucitani podaci iz datoteke o korisnicima.");
-
 			 }
 
 			 
@@ -596,63 +613,6 @@ private: System::Void Form1_FormClosing(System::Object^  sender, System::Windows
 			 {
 				 MessageBox::Show ("Greska pri XML serijalizaciji korisnika." + i->Message);
 			 }
-
-			 /*
-
-			 try
-			 {
-				 
-				 // Moramo naznaciti sve nestandarde tipove koji su koristeni prilikom serijalizacije
-				 // U nasem slucaju ArrayLista sadrzi klasu KorisnikOsoba, KorisnikFirma	
-				 array <Type ^> ^dodatniTipovi = gcnew array <Type^> (1);
-				 dodatniTipovi [0] = Racun::typeid;
-				 			 
-
-				 // Serijaliziramo ArrayListu knjiga u XML datoteku
-				 XmlSerializer ^x = gcnew XmlSerializer (ArrayList::typeid, dodatniTipovi);
-				 Stream ^writer = gcnew FileStream(racuniXML, FileMode::Create);
-				 x->Serialize(writer, racuni);
-
-				 writer->Close();
-				 
-			 }
-			 catch (Exception ^i)
-			 {
-				 MessageBox::Show ("Greska pri XML serijalizaciji racuna." + i->Message);
-			 }
-
-			 */
-
-			  
-			 /*
-			 try
-			 {
-		
-				 ArrayList ^racuniplain = gcnew ArrayList();
-
-				 // Kopiramo sve racune iz racuni u jednostavnu klasu RacunPlain pogodnu za serijalizaciju
-				 for each (Racun ^r in racuni) 
-					 racuniplain->Add (gcnew RacunPlain (r->getVrijeme (), r->Username (), r->Mjesec (), r->Placeno (), r->Id_racuna ()));
-
-			
-				 // Moramo naznaciti sve ne standarde tipove koji su koristeni prilikom serijalizacije
-				 // U nasem slucaju ArrayLista sadrzi klasu PlainKnjiga
-				 array<Type^>^dodatniTipovi = gcnew array<Type^>(1);
-				 dodatniTipovi[0] = RacunPlain::typeid;
-
-				 // Serijaliziramo ArrayListu knjiga u XML datoteku
-				 XmlSerializer ^x = gcnew XmlSerializer(ArrayList::typeid, dodatniTipovi);
-				 Stream ^writer = gcnew FileStream(racuniXML, FileMode::Create);
-				 x->Serialize(writer, racuniplain);
-
-				 writer->Close();			 
-			 }
-			 catch (Exception ^e)
-			 {
-				 MessageBox::Show ("Greska pri serijalizaciji racuna. " + e->Message);
-			 }
-			 */
-	 
 			 
 
 		 }
@@ -702,28 +662,7 @@ private: System::Void spasiUDatotekuToolStripMenuItem_Click(System::Object^  sen
 				 MessageBox::Show ("Greska pri upisivanju podataka o korisnicima u datoteku.");
 			 }
 
-			 /*
-
-			 try
-			 {
-				 ArrayList ^racuniplain = gcnew ArrayList();
-				 for each (Racun ^r in racuni) 
-					 racuniplain->Add (gcnew RacunPlain (r->getVrijeme (), r->Username (), r->Mjesec (), r->Placeno ()));
-				 // Treba se odraditi i da (de)serijalizira i id_racuna, a ne dozvoljava preko konstruktora staticke atribute
-
-				 FileStream ^fs = gcnew FileStream ("racuni2.txt", FileMode::Create);
-				 BinaryFormatter ^bf = gcnew BinaryFormatter ();
-
-				 bf->Serialize (fs, racuniplain);
-				 fs->Close ();
-			 }
-			 catch (...)
-			 {
-				 MessageBox::Show ("Greska pri upisivanju podataka o racunima u datoteku.");
-			 }
-
-			 */
-
+			
 		 }
 private: System::Void spasiKaoXMLToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 try
@@ -777,6 +716,83 @@ private: System::Void spasiKaoXMLToolStripMenuItem_Click(System::Object^  sender
 				 MessageBox::Show ("Greska pri XML serijalizaciji korisnika." + i->Message);
 			 }
 
+		 }
+private:
+			Thread ^t1, ^t2;
+			ArrayList ^fajlovi1, ^fajlovi2;			
+private:
+
+			void traziRekurzivno1 (DirectoryInfo ^d)
+			{
+				for each (FileInfo ^f in d->GetFiles ())
+					if (f->Name->Contains (".xml"))
+					{
+						int brojac = 0;
+						String ^s = File::ReadAllText (f->FullName);
+						for (int i = 0; i < s->Length; i++)
+							if (s [i] == '<')
+								brojac++;
+						fajlovi1->Add (f->Name + ", " + brojac);
+					}
+				for each (DirectoryInfo ^di in d->GetDirectories ())
+					if (di->Name != "." && di->Name != ".." && !(di->FullName->Contains ("Documents")))
+						traziRekurzivno1 (di);
+			}
+
+			void Pretrazi1 ()
+			{
+				fajlovi1 = gcnew ArrayList ();
+				DirectoryInfo ^d = gcnew DirectoryInfo ("c:\\");
+				traziRekurzivno1 (d);
+				String ^izlaz;
+				for each (String ^s in fajlovi1)
+					izlaz += s;
+				File::WriteAllText ("izvjestaj.txt", izlaz);
+			}
+
+
+
+			void traziRekurzivno2 (DirectoryInfo ^d)
+			{
+				for each (FileInfo ^f in d->GetFiles ())
+					if (f->Name->Contains (".xml"))
+					{
+						String ^s = File::ReadAllText (f->FullName);
+						if (s->Contains ("KorisnikOsoba"))
+							fajlovi2->Add (f->Name);
+					}
+				for each (DirectoryInfo ^di in d->GetDirectories ())
+					if (di->Name != "." && di->Name != ".." && !(di->FullName->Contains ("Documents")))
+						traziRekurzivno2 (di);
+			}
+
+			void Pretrazi2 ()
+			{
+				fajlovi2 = gcnew ArrayList ();
+				DirectoryInfo ^d = gcnew DirectoryInfo ("c:\\");
+				traziRekurzivno2 (d);
+				String ^izlaz;
+				for each (String ^s in fajlovi2)
+					izlaz += s;
+				File::WriteAllText ("izvjestaj2.txt", izlaz);
+			}
+
+private: System::Void startThreadToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 ThreadStart ^ts1 = gcnew ThreadStart (this, &Form1::Pretrazi1);
+			 t1 = gcnew Thread (ts1);
+
+			 ThreadStart ^ts2 = gcnew ThreadStart (this, &Form1::Pretrazi2);
+			 t2 = gcnew Thread (ts2);
+
+			 t1->Start ();
+			 t2->Start ();
+
+
+		 }
+private: System::Void threadStopToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 t1->Abort ();
+			 t2->Abort ();
 		 }
 };
 }

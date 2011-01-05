@@ -103,7 +103,7 @@ namespace InternetAccounting {
 					 dataGridView1->DataMember = "anyType";				
 
 				 }
-				 catch (Exception ^e)
+				 catch (Exception ^)
 				 {
 					 MessageBox::Show ("Podaci nisu ucitani. XML fajl ne postoji.");
 				 }
