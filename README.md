@@ -1,6 +1,4 @@
-# Internet accounting
-
-**Tema:** Internet accounting
+# **Tema:** Internet accounting
 
 **Oblast:** Razvoj programskih rješenja (RPR)
 
